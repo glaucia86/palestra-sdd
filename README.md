@@ -1,4 +1,7 @@
 # SDD — Spec-Driven Development com GitHub Copilot
+
+![Banner da Apresentação](./resources/images/palestra-banner.png)
+
 ### Apresentação Web Interativa
 
 > **Palestra técnica** sobre Spec-Driven Development (SDD) com GitHub Copilot, construída com Reveal.js.  

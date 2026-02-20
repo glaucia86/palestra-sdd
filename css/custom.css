@@ -1413,10 +1413,12 @@ html, body {
   margin-top: 0.25em;
 }
 
-#sobre-mim,
-#the-end {
+#sobre-mim {
   position: relative;
-  overflow: hidden;
+}
+
+.reveal .slides > section#sobre-mim {
+  min-height: 100%;
 }
 
 #sobre-mim::before {
@@ -1710,15 +1712,6 @@ html, body {
 /* ============================================================================
    SLIDE: THE END
    ============================================================================ */
-.the-end-slide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
 
 #the-end::before {
   content: '';
@@ -1757,61 +1750,7 @@ html, body {
   100% { transform: translateY(-10px); }
 }
 
-#the-end .the-end-title {
-  animation: none;
-}
 
-#the-end .author-badge {
-  animation: none;
-}
-
-.the-end-orb {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 221, 179, 0.09) 0%, transparent 68%);
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  animation: the-end-orb-pulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes the-end-orb-pulse {
-  0%   { transform: scale(1);    opacity: 0.7; }
-  100% { transform: scale(1.15); opacity: 1.0; }
-}
-
-.the-end-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.55em !important;
-  color: var(--text-muted) !important;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 0.3em !important;
-  position: relative;
-  z-index: 1;
-}
-
-.the-end-title {
-  font-size: 5.5em !important;
-  letter-spacing: 0.1em !important;
-  line-height: 1 !important;
-  margin: 0 0 0.1em 0 !important;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 45px rgba(0, 221, 179, 0.32));
-}
-
-.the-end-sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72em !important;
-  color: var(--text-muted) !important;
-  margin: 0.3em 0 0 0 !important;
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.04em;
-}
 
 /* ============================================================================
    Responsive
@@ -2301,28 +2240,7 @@ svg.lucide {
   animation-duration: 64s !important;
 }
 
-#the-end .the-end-orb {
-  width: 420px !important;
-  height: 420px !important;
-  opacity: 0.75 !important;
-  animation-duration: 10s !important;
-}
 
-#the-end .the-end-title {
-  font-size: 4.6em !important;
-  margin-bottom: 0.03em !important;
-}
-
-#the-end .the-end-sub {
-  font-size: 0.62em !important;
-  margin-top: 0.12em !important;
-}
-
-#the-end .the-end-author-badge {
-  margin-top: 0.75em !important;
-  position: relative;
-  z-index: 2;
-}
 
 @media (max-width: 768px) {
   #sobre-mim .sm-layout {
@@ -2338,46 +2256,9 @@ svg.lucide {
   }
 }
 
-/* ============================================================================
-   HOTFIX 2: Pattern + Real Centering for THE END
-   ============================================================================ */
-#the-end {
-  overflow: hidden !important;
-}
-
-#the-end > .section-header {
-  position: absolute !important;
-  top: 0.35em !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 3 !important;
-  margin-bottom: 0 !important;
-}
-
-#the-end .the-end-slide {
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 0.2em 0 0.55em !important;
-  box-sizing: border-box !important;
-}
-
-#the-end .the-end-eyebrow {
-  margin-bottom: 0.2em !important;
-}
-
-#the-end .the-end-title {
-  margin: 0 0 0.03em 0 !important;
-}
-
-#the-end .the-end-sub {
-  margin-top: 0 !important;
-}
-
-#the-end .the-end-author-badge {
-  margin-top: 0.62em !important;
+#the-end::before,
+#the-end::after {
+  content: none !important;
 }
 
 /* ============================================================================
@@ -2416,166 +2297,13 @@ svg.lucide {
   margin-bottom: 0.06em !important;
 }
 
-/* ── THE END — Gradient title (clears filter que conflita com background-clip) ── */
-#the-end .the-end-title {
-  filter: none !important;
-  text-shadow: none !important;
-}
-/* gradient-text já aplica background-clip: text via classe */
-
-/* ── THE END — Eyebrow: accent green + tracking generoso ── */
-#the-end .the-end-eyebrow {
-  color: var(--accent-green) !important;
-  letter-spacing: 0.28em !important;
-  font-size: 0.62em !important;
-  opacity: 0.88 !important;
-  margin-bottom: 0.1em !important;
-  margin-top: 0 !important;
-}
-
-/* ── THE END — Subtitle: secondary tone ── */
-#the-end .the-end-sub {
-  color: var(--text-secondary) !important;
-  font-size: 0.68em !important;
-  letter-spacing: 0.03em !important;
-  margin-top: 0.18em !important;
-  margin-bottom: 0 !important;
-}
-
-/* ── THE END — Divider line ── */
-.the-end-divider {
-  width: 56px;
-  height: 2px;
-  background: var(--gradient-main);
-  border-radius: 2px;
-  margin: 0.65em auto 0;
-  opacity: 0.6;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── THE END — Author badge: glowing border ── */
-#the-end .the-end-author-badge {
-  border-color: rgba(0,221,179,0.42) !important;
-  box-shadow:
-    0 0 22px rgba(0,221,179,0.14),
-    0 0 48px rgba(56,200,250,0.06) !important;
-  font-size: 0.82em !important;
-}
-
-/* ── THE END — Hashtag tags block ── */
-.the-end-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45em;
-  justify-content: center;
-  margin-top: 0.7em;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── THE END — Orb: keep it centered behind content ── */
-#the-end .the-end-orb {
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-}
-
-/* ── THE END — unified centering (replaces old HOTFIX overrides) ── */
-/* Kept intentionally empty — all rules unified in HOTFIX 2 above */
-
-/* ============================================================================
-   THE END — Key Takeaways + Social Links (Feb 2026)
-   ============================================================================ */
-
-/* ── Takeaways container ── */
-.the-end-takeaways {
-  display: flex;
-  flex-direction: column;
-  gap: 0.28em;
-  margin-top: 0.55em;
-  width: 100%;
-  max-width: 580px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Single takeaway row ── */
-.the-end-tk {
-  display: flex;
-  align-items: center;
-  gap: 0.55em;
-  background: transparent;
-  border: none;
-  padding: 0.3em 0;
-  text-align: left;
-}
-
-.the-end-tk-icon {
-  flex-shrink: 0;
-  color: var(--accent-green);
-  opacity: 0.8;
-  line-height: 0;
-}
-
-.the-end-tk-icon svg.lucide {
-  width: 0.85em;
-  height: 0.85em;
-}
-
-.the-end-tk-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.62em;
-  color: var(--text-secondary);
-  line-height: 1.35;
-}
-
-.the-end-tk-text strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* ── Footer row: author badge + social icons ── */
-.the-end-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.9em;
-  margin-top: 0.7em;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Social icon buttons ── */
-.the-end-socials {
-  display: flex;
-  gap: 0.35em;
-}
-
-.the-end-soc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.9em;
-  height: 1.9em;
-  border-radius: 50%;
-  background: rgba(9, 16, 42, 0.85);
-  border: 1px solid rgba(0, 221, 179, 0.18);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
-}
-
-.the-end-soc:hover {
-  color: var(--accent-green);
-  border-color: rgba(0, 221, 179, 0.5);
-  background: rgba(0, 221, 179, 0.07);
-  box-shadow: 0 0 12px rgba(0, 221, 179, 0.18);
-  text-decoration: none;
-}
-
-.the-end-soc svg.lucide {
-  width: 0.78em;
-  height: 0.78em;
+/* ── SOBRE MIM — flatten panels to match full-screen section look ── */
+#sobre-mim .sm-panel--profile,
+#sobre-mim .sm-panel--main {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 /* ============================================================================
@@ -2583,8 +2311,7 @@ svg.lucide {
    ============================================================================ */
 
 /* ── Particles layers (reuses .particles + .particle from capa) ── */
-#sobre-mim .particles,
-#the-end .particles {
+#sobre-mim .particles {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -2607,20 +2334,6 @@ svg.lucide {
   animation: orb-drift 12s ease-in-out infinite alternate-reverse;
 }
 
-/* ── THE END — Hero orbs ── */
-.hero-orb-end-1 {
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(0,221,179,0.10) 0%, transparent 68%);
-  top: -160px; right: -100px;
-  animation: orb-drift 15s ease-in-out infinite alternate;
-}
-.hero-orb-end-2 {
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(124,92,252,0.13) 0%, transparent 68%);
-  bottom: -120px; left: -80px;
-  animation: orb-drift 11s ease-in-out infinite alternate-reverse;
-}
-
 /* ── SOBRE MIM — Photo glow pulse ── */
 #sobre-mim .sm-photo-shell {
   animation: sm-photo-glow 5s ease-in-out infinite alternate;
@@ -2641,47 +2354,334 @@ svg.lucide {
   text-shadow: 0 0 12px rgba(184,164,255,0.25);
 }
 
-/* ── THE END — Takeaway rows: staggered entrance animations ── */
-#the-end .the-end-tk {
+/* ============================================================================
+   SOBRE MIM — Full-bleed mode (no panel boxes)
+   ============================================================================ */
+#sobre-mim .sm-layout {
+  grid-template-columns: 1fr !important;
+  gap: 0.9em !important;
+  max-width: 980px;
+  margin: 0 auto !important;
+}
+
+#sobre-mim .sm-panel--profile,
+#sobre-mim .sm-panel--main,
+#sobre-mim .sm-summary,
+#sobre-mim .sm-project {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+#sobre-mim .sm-photo-shell {
+  width: 220px !important;
+  height: 220px !important;
+  margin: 0 auto 0.4em auto !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+#sobre-mim .sm-photo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  transform: scale(1.12);
+  transform-origin: center center;
+}
+
+/* ============================================================================
+   SOBRE MIM — Modern single-surface layout
+   ============================================================================ */
+#sobre-mim .sm-modern {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0.2em auto 0;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.2em;
+  align-items: center;
+}
+
+#sobre-mim .sm-modern-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55em;
+}
+
+#sobre-mim .sm-modern-photo-ring {
+  width: 9.8em;
+  height: 9.8em;
+  border-radius: 50%;
+  padding: 0.13em;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(145deg, rgba(0,221,179,0.95), rgba(56,200,250,0.8), rgba(146,119,255,0.75));
+  box-shadow: 0 0 24px rgba(0,221,179,0.26), 0 0 46px rgba(56,200,250,0.18);
+}
+
+#sobre-mim .sm-modern-photo {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover !important;
+  object-position: center 24% !important;
+  transform: scale(1.28);
+  transform-origin: center center;
+}
+
+#sobre-mim .sm-modern-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35em;
+}
+
+#sobre-mim .sm-modern-content h2 {
+  margin-bottom: 0.06em !important;
+  line-height: 1 !important;
+  font-size: 2.15em !important;
+}
+
+#sobre-mim .sm-modern-lead {
+  font-size: 0.79em;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0 0 0.45em 0;
+}
+
+#sobre-mim .sm-modern-pills .tag {
+  font-size: 0.64em;
+}
+
+#sobre-mim .sm-modern-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  margin-bottom: 0.45em;
+  justify-content: center;
+}
+
+#sobre-mim .sm-modern-highlights .highlight-box {
+  margin: 0 0 0.54em 0;
+  padding: 0.68em 0.9em;
+  border-color: rgba(56,200,250,0.35);
+  background: rgba(9,16,42,0.55);
+}
+
+#sobre-mim .sm-modern-highlights .highlight-box p {
+  margin: 0;
+  font-size: 0.84em;
+  line-height: 1.46;
+}
+
+#sobre-mim .sm-modern-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42em;
+  justify-content: center;
+  margin-top: 0.55em;
+}
+
+#sobre-mim .sm-modern-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42em;
+  justify-content: center;
+}
+
+#sobre-mim .sm-modern-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36em;
+  padding: 0.34em 0.74em;
+  border-radius: 999px;
+  border: 1px solid rgba(56,200,250,0.34);
+  background: linear-gradient(140deg, rgba(9,16,42,0.78), rgba(9,16,42,0.54));
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.68em;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#sobre-mim .sm-modern-link:hover {
+  color: var(--accent-green) !important;
+  border-color: rgba(0,221,179,0.4);
+  background: rgba(0,221,179,0.08);
+  transform: translateY(-1px);
+}
+
+#sobre-mim .sm-modern-link--project {
+  border-color: rgba(0,221,179,0.38);
+  background: linear-gradient(140deg, rgba(0,221,179,0.12), rgba(56,200,250,0.1));
+  color: #b7fff2 !important;
+}
+
+#sobre-mim .sm-modern-link--project:hover {
+  color: #d6fff7 !important;
+  border-color: rgba(0,221,179,0.62);
+  background: linear-gradient(140deg, rgba(0,221,179,0.2), rgba(56,200,250,0.16));
+}
+
+#sobre-mim .sm-modern-link--social {
+  border-color: rgba(146,119,255,0.36);
+  background: linear-gradient(140deg, rgba(146,119,255,0.14), rgba(9,16,42,0.58));
+  color: #ddd8ff !important;
+}
+
+#sobre-mim .sm-modern-link--social:hover {
+  color: #f0ecff !important;
+  border-color: rgba(184,164,255,0.62);
+  background: linear-gradient(140deg, rgba(146,119,255,0.24), rgba(56,200,250,0.14));
+}
+
+/* Social brand hover accents */
+#sobre-mim .sm-modern-links a[href*="linkedin.com"]:hover {
+  color: #e7f3ff !important;
+  border-color: rgba(10,102,194,0.82);
+  background: linear-gradient(140deg, rgba(10,102,194,0.24), rgba(9,16,42,0.62));
+}
+
+#sobre-mim .sm-modern-links a[href*="x.com"]:hover {
+  color: #eef5ff !important;
+  border-color: rgba(107,168,255,0.82);
+  background: linear-gradient(140deg, rgba(88,101,242,0.2), rgba(9,16,42,0.62));
+}
+
+#sobre-mim .sm-modern-links a[href*="youtube.com"]:hover {
+  color: #ffeaea !important;
+  border-color: rgba(255,59,59,0.84);
+  background: linear-gradient(140deg, rgba(255,59,59,0.22), rgba(9,16,42,0.62));
+}
+
+#sobre-mim .sm-modern-links a[href$="github.com/glaucia86"]:hover {
+  color: #f2f2f2 !important;
+  border-color: rgba(154,160,166,0.8);
+  background: linear-gradient(140deg, rgba(154,160,166,0.18), rgba(9,16,42,0.62));
+}
+
+#sobre-mim .sm-modern-links a[href*="instagram.com"]:hover {
+  color: #ffe9f2 !important;
+  border-color: rgba(225,48,108,0.82);
+  background: linear-gradient(140deg, rgba(225,48,108,0.21), rgba(9,16,42,0.62));
+}
+
+#sobre-mim .sm-modern-link svg.lucide {
+  width: 1em;
+  height: 1em;
+}
+
+@media (max-width: 900px) {
+  #sobre-mim .sm-modern {
+    grid-template-columns: 1fr;
+    gap: 0.75em;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  #sobre-mim .sm-modern-pills,
+  #sobre-mim .sm-modern-links {
+    justify-content: center;
+  }
+}
+
+/* Remove rectangular overlay and re-center content on #sobre-mim */
+#sobre-mim::before,
+#sobre-mim::after {
+  content: none !important;
+}
+
+#sobre-mim .sm-modern {
+  margin-top: 1.0em;
+}
+
+/* Move #sobre-mim visual FX to Reveal background layer (full slide) */
+#sobre-mim .particles,
+#sobre-mim .hero-orb {
+  display: none !important;
+}
+
+.reveal .slides > section#sobre-mim {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content::before {
+  content: '';
+  position: absolute;
+  inset: -12% -8%;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(0, 221, 179, 0.16) 0%, transparent 36%),
+    radial-gradient(circle at 82% 22%, rgba(56, 200, 250, 0.13) 0%, transparent 36%),
+    radial-gradient(circle at 64% 82%, rgba(146, 119, 255, 0.11) 0%, transparent 44%);
+  filter: blur(2px);
+  z-index: 0;
+  animation: sm-bg-screen-drift 32s ease-in-out infinite alternate;
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(56, 200, 250, 0.18) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.07;
+  z-index: 1;
+  animation: sm-bg-screen-stars 62s linear infinite;
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-cosmos {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 0 8px rgba(255,255,255,0.38);
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-star.lg {
+  width: 3px;
+  height: 3px;
+  background: rgba(56,200,250,0.96);
+  box-shadow: 0 0 12px rgba(56,200,250,0.52);
+}
+
+.reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-comet {
+  position: absolute;
+  left: 110%;
+  height: 1.5px;
+  border-radius: 2px;
   opacity: 0;
-  transform: translateY(8px);
-  animation: sm-reveal-up 0.65s ease forwards;
-}
-#the-end .the-end-tk:nth-child(1) { animation-delay: 0.1s; }
-#the-end .the-end-tk:nth-child(2) { animation-delay: 0.22s; }
-#the-end .the-end-tk:nth-child(3) { animation-delay: 0.34s; }
-
-/* ── THE END — Takeaway hover glow ── */
-#the-end .the-end-tk {
-  transition: transform 0.25s ease, text-shadow 0.25s ease;
-}
-#the-end .the-end-tk:hover {
-  transform: translateY(-2px);
-  text-shadow: 0 0 12px rgba(0,221,179,0.3);
 }
 
-/* ── THE END — Title enhanced glow ── */
-#the-end .the-end-title {
-  text-shadow: 0 0 60px rgba(0,221,179,0.18), 0 0 120px rgba(56,200,250,0.08);
+@keyframes sm-bg-screen-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-0.5%, 0.45%, 0) scale(1.01); }
+  100% { transform: translate3d(0.45%, -0.4%, 0) scale(1.006); }
 }
 
-/* ── THE END — Social icons staggered entrance ── */
-#the-end .the-end-footer {
-  opacity: 0;
-  animation: sm-reveal-up 0.65s ease forwards;
-  animation-delay: 0.45s;
-}
-#the-end .the-end-tags {
-  opacity: 0;
-  animation: sm-reveal-up 0.65s ease forwards;
-  animation-delay: 0.55s;
-}
-
-/* ── THE END — Divider gradient pulse ── */
-#the-end .the-end-divider {
-  animation: end-divider-pulse 4s ease-in-out infinite alternate;
-}
-@keyframes end-divider-pulse {
-  0%   { opacity: 0.45; width: 52px; }
-  100% { opacity: 0.85; width: 72px; }
+@keyframes sm-bg-screen-stars {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
 }
