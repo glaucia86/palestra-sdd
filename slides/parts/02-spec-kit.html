@@ -27,7 +27,7 @@
           <li class="fragment"><strong>+70k estrelas</strong> no GitHub · 79 contribuidores</li>
           <li class="fragment"><strong>Mantido pelo GitHub</strong>, inspirado na pesquisa de <em>John Lam</em></li>
           <li class="fragment"><strong>Specify CLI</strong> — installável via <code>uv tool install</code></li>
-          <li class="fragment"><strong>Slash Commands</strong> nativos nos agentes IA (<code>/speckit.*</code>)</li>
+          <li class="fragment"><strong>Slash Commands</strong> via integração do agente (<code>/speckit.*</code>, quando suportado)</li>
         </ul>
       </div>
       <div>
@@ -102,10 +102,10 @@ specify init meu-projeto --ai claude</code></pre>
       <span class="section-label">02 / spec-kit — Slash Commands</span>
     </div>
     <h2>Slash Commands do <span class="accent">spec-kit</span></h2>
-    <div class="two-cols" style="gap:1.5em;">
+    <div class="two-cols" style="gap:1.2em;">
       <div>
-        <h3 style="margin-bottom:0.3em; font-size:0.85em;">⚡ Comandos Essenciais (Core)</h3>
-        <table class="table-compact" style="font-size:0.72em;">
+        <h3 style="margin-bottom:0.25em; font-size:0.82em;">⚡ Comandos Essenciais (Core)</h3>
+        <table class="table-compact" style="font-size:0.69em;">
           <thead><tr><th>Comando</th><th>Função</th></tr></thead>
           <tbody>
             <tr><td><code>/speckit.constitution</code></td><td>Cria os princípios e diretrizes do projeto</td></tr>
@@ -115,8 +115,8 @@ specify init meu-projeto --ai claude</code></pre>
             <tr><td><code>/speckit.implement</code></td><td>Executa todas as tarefas e constrói o projeto</td></tr>
           </tbody>
         </table>
-        <h3 style="margin-top:0.4em; margin-bottom:0.3em; font-size:0.85em;">🔍 Comandos Opcionais</h3>
-        <table class="table-compact" style="font-size:0.72em;">
+        <h3 style="margin-top:0.3em; margin-bottom:0.25em; font-size:0.82em;">🔍 Comandos Opcionais</h3>
+        <table class="table-compact" style="font-size:0.69em;">
           <thead><tr><th>Comando</th><th>Função</th></tr></thead>
           <tbody>
             <tr><td><code>/speckit.clarify</code></td><td>Clarifica áreas sub-especificadas (antes do plan)</td></tr>
@@ -126,12 +126,15 @@ specify init meu-projeto --ai claude</code></pre>
         </table>
       </div>
       <div>
-        <div class="highlight-box purple" style="margin-bottom:0.7em; font-size:0.78em;">
+        <div class="highlight-box purple" style="margin-bottom:0.45em; font-size:0.72em;">
           🎯 <strong>Trabalham no contexto do agente:</strong> Após <code>specify init</code>, esses comandos ficam disponíveis diretamente no GitHub Copilot Chat, Claude Code, Cursor etc.
         </div>
-        <div class="card" style="border-color:var(--accent-green);">
-          <h3 style="font-size:0.88em;">Exemplo — Copilot + spec-kit</h3>
-          <pre style="font-size:0.7em; margin-top:0.4em;"><code class="language-text">/speckit.constitution
+        <div class="highlight-box" style="margin-bottom:0.45em; font-size:0.68em;">
+          <strong>Nota:</strong> em alguns ambientes, os slash commands podem não aparecer; fallback: rodar via CLI e/ou usar templates manualmente.
+        </div>
+        <div class="card" style="border-color:var(--accent-green); padding:0.8em 0.9em;">
+          <h3 style="font-size:0.82em; margin-bottom:0.3em;">Exemplo — Copilot + spec-kit</h3>
+          <pre style="font-size:0.62em; margin-top:0.2em; line-height:1.25;"><code class="language-text">/speckit.constitution
   Focar em qualidade de código,
   padrões de testes e consistência
   de UX.
@@ -320,7 +323,48 @@ Performance, segurança, acessibilidade.
     </div>
   </section>
 
-  <!-- spec-kit 6 — Agentes Suportados -->
+  <!-- spec-kit 6 — Mini Checklist de Qualidade -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 50% at 85% 20%, rgba(56,200,250,0.06) 0%, transparent 65%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="clipboard-check"></i></span>
+      <span class="section-label">02 / spec-kit — Checklist Operacional</span>
+    </div>
+    <h2>Mini Checklist de <span class="accent">Qualidade</span> (Spec → Plan → Tasks)</h2>
+    <div class="card-grid-3" style="gap:0.7em; margin-top:0.7em;">
+      <div class="card" style="border-color:var(--accent-green);">
+        <span class="card-icon"><i data-lucide="file-text"></i></span>
+        <h3 style="font-size:0.9em;">Spec</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Objetivos + não-objetivos explícitos</li>
+          <li class="check">Critérios de aceitação testáveis</li>
+          <li class="check">Exemplos e edge cases relevantes</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--accent-blue);">
+        <span class="card-icon"><i data-lucide="git-branch"></i></span>
+        <h3 style="font-size:0.9em;">Plan</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Decomposição incremental por etapas</li>
+          <li class="check">Dependências e riscos mapeados</li>
+          <li class="check">Gate de revisão humana antes de implementar</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--accent-purple);">
+        <span class="card-icon"><i data-lucide="circle-check"></i></span>
+        <h3 style="font-size:0.9em;">Tasks</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Small batches (mudanças pequenas)</li>
+          <li class="check">Verificação a cada lote (teste/lint/build)</li>
+          <li class="check">Evidência de conclusão por tarefa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box blue" style="margin-top:0.65em; font-size:0.74em;">
+      ✅ Se o checklist passa, o agente ganha velocidade <em>sem</em> perder confiabilidade.
+    </div>
+  </section>
+
+  <!-- spec-kit 7 — Agentes Suportados -->
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="bot"></i></span>

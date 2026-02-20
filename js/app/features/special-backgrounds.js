@@ -1,10 +1,15 @@
+import { isReducedMotionPreferred } from './motion-preferences.js';
+
 function attachSobreMimBackgroundFx(backgroundEl) {
+  if (isReducedMotionPreferred()) return;
+
   const content = backgroundEl?.querySelector('.slide-background-content');
   if (!content || content.querySelector('.sm-bg-cosmos')) return;
 
   const cosmos = document.createElement('div');
   cosmos.className = 'sm-bg-cosmos';
   cosmos.setAttribute('aria-hidden', 'true');
+  const starsFragment = document.createDocumentFragment();
 
   for (let i = 0; i < 24; i++) {
     const star = document.createElement('span');
@@ -24,9 +29,11 @@ function attachSobreMimBackgroundFx(backgroundEl) {
         easing: 'ease-in-out',
       },
     );
-    cosmos.appendChild(star);
+    starsFragment.appendChild(star);
   }
+  cosmos.appendChild(starsFragment);
 
+  const cometsFragment = document.createDocumentFragment();
   [
     { top: '12%', len: 190, delay: 2, dur: 28000, angle: -24, color: 'rgba(255,255,255,0.9)' },
     { top: '34%', len: 140, delay: 9, dur: 34000, angle: -27, color: 'rgba(56,200,250,0.8)' },
@@ -47,8 +54,9 @@ function attachSobreMimBackgroundFx(backgroundEl) {
       ],
       { duration: dur, delay: delay * 1000, iterations: Infinity, easing: 'ease-out' },
     );
-    cosmos.appendChild(comet);
+    cometsFragment.appendChild(comet);
   });
+  cosmos.appendChild(cometsFragment);
 
   content.appendChild(cosmos);
 }

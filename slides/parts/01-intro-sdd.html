@@ -143,7 +143,10 @@
           <p style="font-size:0.75em;">Assim como um arquiteto precisa de <strong style="color:var(--accent-green)">plantas antes de construir</strong>, um AI agent precisa de specs antes de codificar.</p>
         </div>
         <div class="highlight-box" style="margin-top:0.8em;">
-          <strong>SDD ≈ TDD</strong>, mas para <em>especificações</em>, não testes. A spec guia a implementação, não o contrário.
+          <p><strong>Analogia didática:</strong> <strong>SDD ≈ TDD</strong>, mas para <em>especificações</em>, não testes. A spec guia a implementação, não o contrário.</p>
+          <p style="margin-top:0.45em; font-size:0.94em;">
+            <strong>SDD não elimina TDD/BDD:</strong> SDD define o "o quê" e "por quê"; testes validam o "funciona".
+          </p>
         </div>
       </div>
     </div>
@@ -236,6 +239,38 @@
         <h3>Comunicação</h3>
         <p>Specs alinham desenvolvedores, PMs e stakeholders em uma única fonte de verdade.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 3.4 Limites e Riscos -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 20%, rgba(255,120,73,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="shield-alert"></i></span>
+      <span class="section-label">01 / SDD — Limites e Riscos</span>
+    </div>
+    <h2><span class="accent">SDD</span> reduz ambiguidade, mas não substitui:</h2>
+    <div class="card" style="margin-top:0.8em;">
+      <ul class="icon-list" style="font-size:0.82em;">
+        <li class="fragment">
+          <span class="icon"><i data-lucide="flask-conical"></i></span>
+          <div><strong>Testes automatizados</strong></div>
+        </li>
+        <li class="fragment">
+          <span class="icon"><i data-lucide="git-pull-request"></i></span>
+          <div><strong>Code review</strong></div>
+        </li>
+        <li class="fragment">
+          <span class="icon"><i data-lucide="shield-check"></i></span>
+          <div><strong>Threat modeling / security review</strong></div>
+        </li>
+        <li class="fragment">
+          <span class="icon"><i data-lucide="clipboard-check"></i></span>
+          <div><strong>Evals</strong> (nem que seja checklist qualitativa)</div>
+        </li>
+      </ul>
+    </div>
+    <div class="highlight-box orange" style="margin-top:0.7em; font-size:0.76em;">
+      🎯 SDD aumenta previsibilidade. Qualidade final ainda depende de validação técnica contínua.
     </div>
   </section>
 

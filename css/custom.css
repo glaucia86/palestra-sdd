@@ -2370,3 +2370,27 @@ svg.lucide {
   0% { transform: translateY(0); }
   100% { transform: translateY(-10px); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .nebula,
+  .starfield,
+  .section-cosmos,
+  .reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-cosmos,
+  #particles,
+  #particles-the-end {
+    display: none !important;
+  }
+
+  .particle,
+  .starfield .star,
+  .starfield .shooting-star,
+  .section-cosmos .comet,
+  .section-cosmos .sp-star,
+  .reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content::before,
+  .reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content::after,
+  .reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-star,
+  .reveal .backgrounds .slide-background.bg-sobre-mim .slide-background-content .sm-bg-comet {
+    animation: none !important;
+    transition: none !important;
+  }
+}

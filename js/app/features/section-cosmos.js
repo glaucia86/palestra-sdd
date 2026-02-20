@@ -1,4 +1,8 @@
+import { isReducedMotionPreferred } from './motion-preferences.js';
+
 export function createSectionCosmics() {
+  if (isReducedMotionPreferred()) return;
+
   const slides = Array.from(document.querySelectorAll('.reveal .slides section'))
     .filter((section) => !Array.from(section.children).some((child) => child.tagName === 'SECTION'));
 
@@ -16,6 +20,7 @@ export function createSectionCosmics() {
       if (v) accent = v.replace('0.15)', '0.65)');
     }
     const accentDim = accent.replace('0.65)', '0.35)');
+    const cometsFragment = document.createDocumentFragment();
 
     [
       { angle: 132, w: 220, dur: 18000, color: 'rgba(255,255,255,0.85)', top: '4%' },
@@ -27,9 +32,9 @@ export function createSectionCosmics() {
     ].forEach(({ angle, w, dur, color, top }) => {
       const el = document.createElement('span');
       el.className = 'comet';
-      el.style.cssText =
-        `top:${top};width:${w}px;` +
-        `background:linear-gradient(to right,rgba(255,255,255,0.95) 0%,${color} 30%,transparent 100%);`;
+      el.style.top = top;
+      el.style.width = `${w}px`;
+      el.style.background = `linear-gradient(to right,rgba(255,255,255,0.95) 0%,${color} 30%,transparent 100%)`;
 
       el.animate(
         [
@@ -46,14 +51,17 @@ export function createSectionCosmics() {
           easing: 'ease-out',
         },
       );
-      cosmos.appendChild(el);
+      cometsFragment.appendChild(el);
     });
+    cosmos.appendChild(cometsFragment);
 
+    const starsFragment = document.createDocumentFragment();
     for (let i = 0; i < 14; i++) {
       const s = document.createElement('span');
       const isLg = i < 2;
       s.className = isLg ? 'sp-star lg' : 'sp-star';
-      s.style.cssText = `left:${(2 + Math.random() * 94).toFixed(1)}%;top:${(5 + Math.random() * 88).toFixed(1)}%;`;
+      s.style.left = `${(2 + Math.random() * 94).toFixed(1)}%`;
+      s.style.top = `${(5 + Math.random() * 88).toFixed(1)}%`;
       s.animate(
         [
           { opacity: 0.04, transform: 'scale(1)' },
@@ -67,8 +75,9 @@ export function createSectionCosmics() {
           easing: 'ease-in-out',
         },
       );
-      cosmos.appendChild(s);
+      starsFragment.appendChild(s);
     }
+    cosmos.appendChild(starsFragment);
 
     slide.prepend(cosmos);
   });

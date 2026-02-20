@@ -32,6 +32,7 @@ export function bootstrapPresentation() {
       runMermaid();
     }
 
+    quiz.mount();
     quiz.renderQuestion(0);
   });
 

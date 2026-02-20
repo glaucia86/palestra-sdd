@@ -1,4 +1,8 @@
+import { isReducedMotionPreferred } from './motion-preferences.js';
+
 export function createStarfield() {
+  if (isReducedMotionPreferred()) return;
+
   const viewport = document.querySelector('.reveal-viewport');
   if (!viewport) return;
 
@@ -26,6 +30,7 @@ export function createStarfield() {
 
   layers.forEach(({ el, sm, md, lg, xl }) => {
     const addStars = (count, sizeCls, durMin, durMax, baseMin, baseMax, maxMin, maxMax) => {
+      const fragment = document.createDocumentFragment();
       for (let i = 0; i < count; i++) {
         const s = document.createElement('span');
         const tint = colorTints[Math.floor(Math.random() * colorTints.length)];
@@ -34,13 +39,15 @@ export function createStarfield() {
         const del = (Math.random() * 18).toFixed(2);
         const base = (baseMin + Math.random() * (baseMax - baseMin)).toFixed(2);
         const max = (maxMin + Math.random() * (maxMax - maxMin)).toFixed(2);
-        s.style.cssText =
-          `left:${(Math.random() * 110 - 5).toFixed(2)}%;` +
-          `top:${(Math.random() * 110 - 5).toFixed(2)}%;` +
-          `--star-dur:${dur}s;--star-del:-${del}s;` +
-          `--star-base:${base};--star-max:${max};`;
-        el.appendChild(s);
+        s.style.left = `${(Math.random() * 110 - 5).toFixed(2)}%`;
+        s.style.top = `${(Math.random() * 110 - 5).toFixed(2)}%`;
+        s.style.setProperty('--star-dur', `${dur}s`);
+        s.style.setProperty('--star-del', `-${del}s`);
+        s.style.setProperty('--star-base', base);
+        s.style.setProperty('--star-max', max);
+        fragment.appendChild(s);
       }
+      el.appendChild(fragment);
     };
 
     addStars(sm, 'star-sm', 4.5, 10, 0.12, 0.28, 0.42, 0.7);
@@ -57,10 +64,13 @@ export function createStarfield() {
   ].forEach(({ left, top, dur, del, len, dist, angle }) => {
     const ss = document.createElement('span');
     ss.className = 'shooting-star';
-    ss.style.cssText =
-      `left:${left};top:${top};` +
-      `--shoot-dur:${dur}s;--shoot-del:${del}s;` +
-      `--shoot-len:${len}px;--shoot-dist:${dist}px;--angle:${angle}deg;`;
+    ss.style.left = left;
+    ss.style.top = top;
+    ss.style.setProperty('--shoot-dur', `${dur}s`);
+    ss.style.setProperty('--shoot-del', `${del}s`);
+    ss.style.setProperty('--shoot-len', `${len}px`);
+    ss.style.setProperty('--shoot-dist', `${dist}px`);
+    ss.style.setProperty('--angle', `${angle}deg`);
     sf.appendChild(ss);
   });
 

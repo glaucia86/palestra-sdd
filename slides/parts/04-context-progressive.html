@@ -73,7 +73,7 @@
     <div class="two-cols">
       <div>
         <div class="definition" style="margin-bottom:0.7em;">
-          <p><strong>AGENTS.md</strong> é um padrão aberto para comunicar aos AI agents o contexto, regras e comportamentos esperados de um repositório. Posicionado na <em>raiz do projeto</em>, é lido automaticamente pelos agentes modernos.</p>
+          <p><strong>AGENTS.md</strong> é um padrão aberto para comunicar aos AI agents o contexto, regras e comportamentos esperados de um repositório. Posicionado na <em>raiz do projeto</em>, é lido por várias ferramentas e agentes (dependendo do produto/integração), servindo como um "README para agentes".</p>
         </div>
         <div class="card-grid-2" style="gap:0.6em;">
           <div class="card">
@@ -131,7 +131,7 @@ API REST de gerenciamento de tarefas.
           <strong>Rules</strong> são diretrizes globais que definem o comportamento padrão do agente para todo o workspace, independente do projeto ou tarefa específica.
         </p>
         <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 No GitHub Copilot, as Rules são configuradas em arquivos <code>.github/copilot-instructions.md</code> ou <code>.instructions.md</code>.
+          📌 No GitHub Copilot, as Rules usam <code>.github/copilot-instructions.md</code> como principal e também <code>.github/instructions/**</code> (quando suportado).
         </div>
         <div class="highlight-box">
           As Rules são o <em>"modo padrão"</em> do agente. AGENTS.md pode sobrescrever Rules para um projeto específico.
@@ -190,16 +190,15 @@ API REST de gerenciamento de tarefas.
         </div>
       </div>
       <div>
-        <h3 style="margin-bottom:0.6em;">Exemplos de Skills</h3>
-        <ul class="icon-list" style="font-size:0.8em;">
-          <li><span class="icon"><i data-lucide="atom"></i></span><div><strong>react-patterns.skill.md</strong><br /><span class="text-muted">Padrões de componentes React</span></div></li>
-          <li><span class="icon"><i data-lucide="link"></i></span><div><strong>api-design.skill.md</strong><br /><span class="text-muted">Design de APIs REST/GraphQL</span></div></li>
-          <li><span class="icon"><i data-lucide="test-tube-2"></i></span><div><strong>testing-strategy.skill.md</strong><br /><span class="text-muted">TDD, BDD e estratégias de teste</span></div></li>
-          <li><span class="icon"><i data-lucide="database"></i></span><div><strong>database-patterns.skill.md</strong><br /><span class="text-muted">Migrations, indexes e queries</span></div></li>
-          <li><span class="icon"><i data-lucide="lock"></i></span><div><strong>security-owasp.skill.md</strong><br /><span class="text-muted">OWASP Top 10 e melhores práticas</span></div></li>
-        </ul>
+        <div class="highlight-box blue" style="margin-top:0.45em; font-size:0.7em;">
+          <strong>Exemplos reais (clicáveis):</strong><br />
+          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank">find-skills</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank">vercel-react-best-practices</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank">web-design-guidelines</a> ·
+          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank">frontend-design</a>
+        </div>
         <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
-          🎯 Use <em>#skill:react-patterns</em> ou <em>@react-patterns.skill.md</em> para carregar uma Skill específica no chat.
+          🎯 Carregue apenas a Skill da tarefa atual para reduzir ruído e tokens no contexto.
         </div>
       </div>
     </div>
