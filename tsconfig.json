@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "allowUmdGlobalAccess": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "rootDir": "src-ts",
+    "outDir": "js",
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src-ts/**/*.ts", "src-ts/**/*.d.ts"]
+}
