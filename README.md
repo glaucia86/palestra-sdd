@@ -21,7 +21,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Reveal.js-5.1.0-0f172a?style=for-the-badge&logo=reveal.js" alt="Reveal.js" />
   <img src="https://img.shields.io/badge/Mermaid-11.x-111827?style=for-the-badge&logo=mermaid" alt="Mermaid" />
-  <img src="https://img.shields.io/badge/JavaScript-ESM-f59e0b?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript ESM" />
+  <img src="https://img.shields.io/badge/TypeScript-5.x-0f172a?style=for-the-badge&logo=typescript" alt="TypeScript 5.x" />
   <img src="https://img.shields.io/badge/GitHub%20Pages-Deploy-0b1220?style=for-the-badge&logo=github" alt="GitHub Pages" />
   <img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="MIT" />
   <img src="https://img.shields.io/github/last-commit/glaucia86/palestra-sdd?style=for-the-badge&color=0ea5e9" alt="Last Commit" />
@@ -75,8 +75,8 @@ A experiência foi desenvolvida como slides web com Reveal.js, sem build step, c
 <td width="50%">
 
 ### 🚀 Experiência do Desenvolvedor
-- **Zero Build** — Sem etapa de compilação
-- **ESM Modular** — Código JavaScript moderno
+- **TypeScript incremental** — Migração segura com saída ESM para browser
+- **Runtime sem bundler** — Arquivos JS servidos direto pelo live-server
 - **Hot Reload** — Atualização automática durante desenvolvimento
 
 </td>
@@ -121,6 +121,19 @@ npm install
 npm run start
 ```
 
+### Fluxo TypeScript (breaking change branch)
+
+```bash
+# type-check sem emitir arquivos
+npm run typecheck
+
+# compila src-ts/** para js/app/**
+npm run build:ts
+
+# compila em watch mode durante desenvolvimento
+npm run build:ts:watch
+```
+
 ### Acesso
 
 A aplicação será aberta automaticamente em `http://127.0.0.1:3000/index.html`
@@ -157,10 +170,10 @@ A aplicação será aberta automaticamente em `http://127.0.0.1:3000/index.html`
 </td>
 <td align="center" width="120">
 <a href="https://www.javascript.com/">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="48" height="48" alt="JavaScript"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="48" height="48" alt="TypeScript"/>
 </a>
-<br><strong>JavaScript</strong>
-<br><sub>ESM Modules</sub>
+<br><strong>TypeScript</strong>
+<br><sub>Incremental ESM</sub>
 </td>
 </tr>
 </table>
@@ -192,11 +205,21 @@ palestra-sdd/
 |  |- custom.css
 |- js/
 |  |- app/
-|     |- init.js
-|     |- bootstrap.js
+|     |- init.js            # emitido pelo TypeScript
+|     |- bootstrap.js       # emitido pelo TypeScript
 |     |- config/
 |     |- features/
 |     |- quiz/
+|- src-ts/
+|  |- app/
+|     |- init.ts
+|     |- bootstrap.ts
+|     |- config/
+|     |- features/
+|     |- quiz/
+|  |- types/
+|- tsconfig.json
+|- tsconfig.typecheck-js.json
 |- slides/
 |  |- manifest.json
 |  |- parts/

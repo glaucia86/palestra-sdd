@@ -1,0 +1,1 @@
+{"version":3,"file":"motion-preferences.js","sourceRoot":"","sources":["../../../src-ts/app/features/motion-preferences.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,wBAAwB;IACtC,IAAI,OAAO,MAAM,KAAK,WAAW,IAAI,OAAO,MAAM,CAAC,UAAU,KAAK,UAAU,EAAE,CAAC;QAC7E,OAAO,KAAK,CAAC;IACf,CAAC;IAED,OAAO,MAAM,CAAC,UAAU,CAAC,kCAAkC,CAAC,CAAC,OAAO,CAAC;AACvE,CAAC"}

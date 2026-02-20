@@ -4,6 +4,24 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [Unreleased]
+
+### Added
+- TypeScript migration scaffolding:
+  - `tsconfig.json`
+  - `tsconfig.typecheck-js.json`
+  - `src-ts/` source tree for typed modules
+  - `src-ts/types/globals.d.ts` for browser/CDN globals
+- New npm scripts:
+  - `typecheck`
+  - `build:ts`
+  - `build:ts:watch`
+
+### Changed
+- Presentation runtime modules in `js/app/*` are now generated from TypeScript sources in `src-ts/app/*`.
+- Kept `index.html` module entrypoint unchanged (`js/app/init.js`) to preserve browser runtime behavior.
+- No CSS changes in this migration (`css/custom.css` unchanged).
+
 ## [1.1.0] - 2026-02-20
 
 ### Added
@@ -53,4 +71,3 @@ The format is based on Keep a Changelog and this project follows Semantic Versio
 ### Removed
 - Inline `onclick` wiring in quiz slide/actions in favor of controller-level event delegation.
 - Temporary minimal local skill snippet (`api-design.md`, `testing.md`, `security.md`) from slide content.
-
