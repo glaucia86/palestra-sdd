@@ -1,8 +1,12 @@
 # Spec-Driven Development com GitHub Copilot
 
 <p align="center">
-  <strong>Apresentação web interativa (Reveal.js)</strong><br />
+  <strong>Uma palestra interativa sobre como transformar specs em software previsível com IA.</strong><br />
   por <strong>Glaucia Lemos</strong> · <a href="https://x.com/glaucia_lemos86">@glaucia_lemos86</a>
+</p>
+
+<p align="center">
+  <a href="https://glaucia86.github.io/palestra-sdd/"><strong>▶ Ver apresentação online (GitHub Pages)</strong></a>
 </p>
 
 <p align="center">
@@ -13,47 +17,44 @@
   <img src="https://img.shields.io/badge/Reveal.js-5.1.0-111827?style=for-the-badge&logo=reveal.js" alt="Reveal.js" />
   <img src="https://img.shields.io/badge/Mermaid-11.x-0f172a?style=for-the-badge&logo=mermaid" alt="Mermaid" />
   <img src="https://img.shields.io/badge/JavaScript-ESM-f59e0b?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript ESM" />
-  <img src="https://img.shields.io/badge/live--server-1.2.2-0b1220?style=for-the-badge&logo=nodedotjs" alt="live-server" />
-  <img src="https://img.shields.io/badge/Lucide-Icons-0b1220?style=for-the-badge" alt="Lucide" />
+  <img src="https://img.shields.io/badge/GitHub%20Pages-Live-0b1220?style=for-the-badge&logo=github" alt="GitHub Pages" />
 </p>
 
 ---
 
-## Sobre
+## O que você vai encontrar aqui
 
-Palestra técnica sobre **Spec-Driven Development (SDD)** com **GitHub Copilot**, cobrindo:
-- fundamentos de SDD;
-- uso de `spec-kit`;
-- modos e capacidades do Copilot;
-- arquitetura de contexto com `AGENTS.md`, Rules e Skills;
-- Progressive Disclosure;
-- referências, conclusão e quiz interativo.
+Esta apresentação cobre, de forma prática:
 
-> Projeto sem build step: roda direto no navegador com servidor local.
-> O conteúdo dos slides fica em `slides/parts/*.html` e é carregado dinamicamente via `slides/manifest.json`.
+- fundamentos de **Spec-Driven Development (SDD)**;
+- uso de **spec-kit** no fluxo de desenvolvimento;
+- **GitHub Copilot** (modos, capacidades e boas práticas);
+- arquitetura de contexto com `PRD.md`, `AGENTS.md`, Rules e Skills;
+- **Progressive Disclosure** para reduzir ruído e custo de contexto;
+- seção de **Demo** com efeitos interativos;
+- quiz final e referências para aprofundamento.
+
+> Projeto sem build step: roda direto no navegador.
 
 ---
 
-## Como executar
+## Rodando localmente
 
 ### Pré-requisitos
 - Node.js 18+
 - npm
 
-### Desenvolvimento local
+### Start
 ```bash
 npm install
 npm run start
 ```
 
-Abra: `http://127.0.0.1:3000/index.html`
-
-Observação:
-- o servidor local usa middleware de **no-cache** para reduzir problemas de atualização durante edição.
+Abra em: `http://127.0.0.1:3000/index.html`
 
 ---
 
-## Estrutura do projeto
+## Estrutura rápida do projeto
 
 ```text
 palestra-sdd/
@@ -61,11 +62,6 @@ palestra-sdd/
 ├── slides/
 │   ├── manifest.json
 │   └── parts/
-│       ├── 01-intro-sdd.html
-│       ├── 02-spec-kit.html
-│       ├── 03-copilot.html
-│       ├── 04-context-progressive.html
-│       └── 05-refs-end.html
 ├── css/
 │   └── custom.css
 ├── js/
@@ -73,73 +69,43 @@ palestra-sdd/
 │       ├── init.js
 │       ├── bootstrap.js
 │       ├── config/
-│       │   ├── mermaid-config.js
-│       │   └── reveal-config.js
 │       ├── features/
-│       │   ├── starfield.js
-│       │   ├── particles.js
-│       │   ├── section-cosmos.js
-│       │   └── special-backgrounds.js
 │       └── quiz/
-│           ├── data.js
-│           └── controller.js
-├── server/
-│   ├── dev-server.js
-│   └── no-cache-middleware.js
-├── docs/
-│   ├── agents/
-│   └── architecture-js.md
-└── resources/
-    └── images/
+├── resources/
+│   ├── images/
+│   └── sounds/
+└── server/
 ```
 
-Observações:
-- `index.html` carrega `slides/manifest.json`.
-- O manifesto define os arquivos em `slides/parts/` e o app concatena os blocos antes do `Reveal.initialize(...)`.
+Como funciona:
+- `index.html` aponta para `slides/manifest.json`;
+- o app carrega `slides/parts/*.html` dinamicamente antes do `Reveal.initialize(...)`.
 
 ---
 
-## Seções da palestra
-
-1. Capa
-2. Sumário interativo
-3. Seção 01 · O que é SDD?
-4. Seção 02 · spec-kit
-5. Seção 03 · GitHub Copilot
-6. Seção 04 · Arquitetura de Contexto
-7. Seção 05 · Progressive Disclosure
-8. Referências
-9. Conclusão
-10. Quiz
-11. Sobre a palestrante
-12. The End
-
----
-
-## Stack e recursos
+## Stack
 
 - **Slides:** Reveal.js 5.1 (CDN)
 - **Diagramas:** Mermaid 11 (CDN)
 - **Ícones:** Lucide (CDN)
-- **Tipografia:** Google Fonts (Bebas Neue, Exo 2, DM Sans, JetBrains Mono)
-- **Estilo:** Design system próprio em `css/custom.css`
-- **Interatividade:** quiz, starfield, particles e efeitos de background por slide
+- **Estilos:** design system em `css/custom.css`
+- **Lógica:** ESM modular em `js/app/*`
+- **Publicação:** GitHub Pages via GitHub Actions
 
 ---
 
-## Arquitetura JavaScript
+## Publicação (GitHub Pages)
 
-A lógica foi refatorada em módulos por responsabilidade (clean by feature):
-- `config`: setup de Mermaid e Reveal;
-- `features`: efeitos visuais e backgrounds especiais;
-- `quiz`: dados e controller;
-- `bootstrap`: orquestração da inicialização.
+Este repositório já está preparado para deploy automático com GitHub Actions.
 
-Detalhes: `docs/architecture-js.md`.
+- Workflow: `.github/workflows/deploy-pages.yml`
+- URL de produção: `https://glaucia86.github.io/palestra-sdd/`
+
+Basta fazer push na `main`.
 
 ---
 
-## Navegação durante a apresentação
+## Navegação durante a palestra
 
 - `→` / `Espaço`: próximo slide
 - `←`: slide anterior
