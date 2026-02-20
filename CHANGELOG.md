@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
-## [Unreleased]
+## [2.0.0] - 2026-02-20
 
 ### Added
 - TypeScript migration scaffolding:
