@@ -1352,6 +1352,273 @@ html, body {
 }
 
 /* ============================================================================
+   Demo section — Lightsaber accent
+   ============================================================================ */
+#demo-talk-code {
+  position: relative;
+}
+
+#demo-talk-code .section-page-container {
+  z-index: 2;
+}
+
+#demo-talk-code .section-page-desc::after {
+  content: '';
+  display: block;
+  margin-top: 0.55em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52em;
+  letter-spacing: 0.06em;
+  color: rgba(255, 122, 122, 0.86);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+#demo-talk-code.demo-audio-locked .section-page-desc::after {
+  content: 'Clique no lightsaber para ativar o hum';
+  opacity: 0.95;
+}
+
+#demo-talk-code.demo-audio-ready .section-page-desc::after {
+  content: 'Som real do lightsaber: ON (clique para desligar)';
+  color: rgba(255, 154, 154, 0.72);
+  opacity: 0.62;
+}
+
+#demo-talk-code.demo-audio-ready.demo-hum-muted .section-page-desc::after {
+  content: 'Som real do lightsaber: OFF (clique para ligar)';
+  color: rgba(255, 180, 180, 0.85);
+  opacity: 0.88;
+}
+
+#demo-talk-code .section-page-title {
+  background: linear-gradient(92deg, #ffe2e2 0%, #ff7a7a 38%, #d60000 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  filter: drop-shadow(0 0 0.3em rgba(214, 0, 0, 0.42));
+}
+
+#demo-talk-code .section-page-label,
+#demo-talk-code .section-page-title,
+#demo-talk-code .section-page-desc,
+#demo-talk-code .demo-lightsaber,
+#demo-talk-code .section-page-icon {
+  opacity: 0;
+}
+
+#demo-talk-code.present .section-page-label {
+  animation: demo-fade-up 0.45s ease forwards;
+}
+
+#demo-talk-code.present .section-page-title {
+  animation:
+    demo-fade-up 0.6s ease 0.08s forwards,
+    demo-sith-title-glow 2.6s ease-in-out 0.9s infinite alternate;
+}
+
+#demo-talk-code.present .section-page-desc {
+  animation: demo-fade-up 0.55s ease 0.18s forwards;
+}
+
+#demo-talk-code .demo-lightsaber {
+  position: relative;
+  width: min(26em, 76vw);
+  height: 1.4em;
+  margin-top: 0.45em;
+  margin-bottom: 0.15em;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#demo-talk-code .demo-lightsaber-hilt {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5.05em;
+  height: 0.62em;
+  border-radius: 0.32em;
+  background: linear-gradient(90deg, rgba(45,55,76,1) 0%, rgba(139,152,182,1) 48%, rgba(44,53,73,1) 100%);
+  border: 1px solid rgba(189, 202, 226, 0.34);
+  box-shadow:
+    0 0.1em 0.45em rgba(0, 0, 0, 0.45),
+    inset 0 0.05em 0.18em rgba(255, 255, 255, 0.18);
+}
+
+#demo-talk-code .demo-lightsaber-hilt::before,
+#demo-talk-code .demo-lightsaber-hilt::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 0.26em;
+}
+
+#demo-talk-code .demo-lightsaber-hilt::before {
+  left: 0.65em;
+  width: 2.5em;
+  height: 0.82em;
+  border-radius: 0.35em;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(26, 34, 48, 0.95) 0,
+    rgba(26, 34, 48, 0.95) 0.14em,
+    rgba(126, 140, 170, 0.98) 0.14em,
+    rgba(126, 140, 170, 0.98) 0.24em
+  );
+  border: 1px solid rgba(180, 197, 225, 0.24);
+}
+
+#demo-talk-code .demo-lightsaber-hilt::after {
+  right: -0.42em;
+  width: 0.46em;
+  height: 0.78em;
+  border-radius: 0.28em;
+  background: rgba(255, 84, 84, 0.92);
+  box-shadow: 0 0 0.6em rgba(214, 0, 0, 0.72);
+}
+
+#demo-talk-code .demo-lightsaber-blade {
+  position: absolute;
+  left: 4.65em;
+  top: 50%;
+  height: 0.24em;
+  width: 0;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,232,232,1) 16%, rgba(255,91,91,0.95) 45%, rgba(214,0,0,0.92) 100%);
+  box-shadow:
+    0 0 0.34em rgba(255,255,255,0.95),
+    0 0 0.82em rgba(255,84,84,0.92),
+    0 0 1.45em rgba(214,0,0,0.62),
+    0 0 2.05em rgba(214,0,0,0.28);
+  transform-origin: left center;
+}
+
+#demo-talk-code .demo-lightsaber-blade::before,
+#demo-talk-code .demo-lightsaber-blade::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 999px;
+}
+
+#demo-talk-code .demo-lightsaber-blade::before {
+  top: 50%;
+  height: 0.1em;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(255,255,255,0.82), rgba(216,251,255,0.68));
+  opacity: 0.92;
+}
+
+#demo-talk-code .demo-lightsaber-blade::after {
+  top: -0.1em;
+  height: 0.44em;
+  background: linear-gradient(90deg, rgba(255,160,160,0.28), rgba(255,64,64,0.2), rgba(214,0,0,0.12));
+  filter: blur(1.9px);
+  opacity: 0.7;
+}
+
+#demo-talk-code .demo-lightsaber-spark {
+  position: absolute;
+  left: 4.66em;
+  top: 50%;
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+}
+
+#demo-talk-code.present .demo-lightsaber {
+  animation:
+    demo-fade-up 0.45s ease 0.32s forwards,
+    demo-lightsaber-drift 3.8s ease-in-out 1.1s infinite alternate;
+}
+
+#demo-talk-code.present .demo-lightsaber-blade {
+  animation:
+    demo-lightsaber-ignite 0.65s cubic-bezier(0.2, 0.9, 0.1, 1) forwards,
+    demo-lightsaber-pulse 2.2s ease-in-out 0.8s infinite alternate;
+}
+
+#demo-talk-code.present .demo-lightsaber-spark:nth-child(3) {
+  animation: demo-lightsaber-spark-a 0.55s ease-out 0.12s 1;
+}
+
+#demo-talk-code.present .demo-lightsaber-spark:nth-child(4) {
+  animation: demo-lightsaber-spark-b 0.62s ease-out 0.2s 1;
+}
+
+#demo-talk-code.present .section-page-icon {
+  animation: demo-fade-up 0.58s ease 0.46s forwards;
+}
+
+@keyframes demo-lightsaber-reveal {
+  from { opacity: 0; transform: translateY(0.22em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes demo-fade-up {
+  from { opacity: 0; transform: translateY(0.22em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes demo-lightsaber-ignite {
+  0% { width: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { width: calc(100% - 4.3em); opacity: 1; }
+}
+
+@keyframes demo-lightsaber-pulse {
+  from {
+    box-shadow:
+      0 0 0.34em rgba(255,255,255,0.92),
+      0 0 0.82em rgba(255,84,84,0.78),
+      0 0 1.45em rgba(214,0,0,0.56),
+      0 0 2.05em rgba(214,0,0,0.2);
+  }
+  to {
+    box-shadow:
+      0 0 0.52em rgba(255,255,255,0.98),
+      0 0 1.25em rgba(255,74,74,0.98),
+      0 0 2.1em rgba(214,0,0,0.8),
+      0 0 2.8em rgba(214,0,0,0.36);
+  }
+}
+
+@keyframes demo-lightsaber-spark-a {
+  0% { transform: translate(0, -50%) scale(0.5); opacity: 0; }
+  40% { opacity: 0.95; }
+  100% { transform: translate(0.9em, -1.05em) scale(0.2); opacity: 0; }
+}
+
+@keyframes demo-lightsaber-spark-b {
+  0% { transform: translate(0, -50%) scale(0.5); opacity: 0; }
+  40% { opacity: 0.85; }
+  100% { transform: translate(1.1em, 0.35em) scale(0.2); opacity: 0; }
+}
+
+@keyframes demo-sith-title-glow {
+  from { filter: drop-shadow(0 0 0.3em rgba(214, 0, 0, 0.42)); }
+  to { filter: drop-shadow(0 0 0.52em rgba(214, 0, 0, 0.72)); }
+}
+
+@keyframes demo-lightsaber-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-0.06em); }
+}
+
+@media (max-width: 768px) {
+  #demo-talk-code .demo-lightsaber {
+    width: min(22em, 86vw);
+    height: 1.3em;
+  }
+}
+
+/* ============================================================================
    Animations
    ============================================================================ */
 @keyframes glow-pulse {
