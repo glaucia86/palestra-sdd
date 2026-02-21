@@ -19,3 +19,29 @@ export interface QuizDomRefs {
   btnNext: HTMLButtonElement | null;
   btnFinish: HTMLButtonElement | null;
 }
+
+export interface QuizValidationMessages {
+  noneFound: string;
+  invalidFormat: (qNum: number) => string;
+  invalidQuestion: (qNum: number) => string;
+  invalidOptionsCount: (qNum: number) => string;
+  invalidOptionsValue: (qNum: number) => string;
+  invalidCorrectType: (qNum: number) => string;
+  invalidCorrectRange: (qNum: number) => string;
+  invalidExplanation: (qNum: number) => string;
+  friendlyPrefix: string;
+}
+
+export interface QuizUiMessages {
+  validationTitle: string;
+  validationHint: string;
+  progressLabel: (current: number, total: number) => string;
+  incorrectPrefix: string;
+  nextLabel: string;
+  finishLabel: string;
+  restartLabel: string;
+  perfectMessage: string;
+  goodMessage: string;
+  improveMessage: string;
+  scoreSummaryTemplate: string;
+}

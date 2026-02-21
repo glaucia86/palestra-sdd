@@ -1,3 +1,4 @@
+import { DEFAULT_LOCALE, toLocale } from '../i18n/language.js';
 const THE_END_SLIDE_ID = 'the-end';
 const FINAL_SONG = 'resources/sounds/star-wars-final-song.mp3';
 const HYPERDRIVE_TAP_WINDOW_MS = 1800;
@@ -18,6 +19,35 @@ let hyperdriveTapTimes = [];
 let endAudioButton = null;
 let endAudioTextEl = null;
 let endAudioHintEl = null;
+const THE_END_MESSAGES = {
+    'pt-BR': {
+        buttonOn: 'Pausar trilha final',
+        buttonOff: 'Ativar trilha final',
+        hintHyperdrive: 'Hyperdrive ativo. Obrigada por embarcar nessa jornada.',
+        hintNudge: 'Quase la... continue tocando nessa frequencia.',
+        hintOn: 'Tema final tocando. Clique para pausar.',
+        hintOff: 'Clique para iniciar o tema de encerramento. Dica: alguns segredos respondem a cliques rapidos.',
+    },
+    'en-US': {
+        buttonOn: 'Pause final soundtrack',
+        buttonOff: 'Enable final soundtrack',
+        hintHyperdrive: 'Hyperdrive engaged. Thanks for joining this journey.',
+        hintNudge: 'Almost there... keep tapping that rhythm.',
+        hintOn: 'Final theme is playing. Click to pause.',
+        hintOff: 'Click to start the closing theme. Tip: some secrets react to rapid clicks.',
+    },
+    'es-ES': {
+        buttonOn: 'Pausar banda sonora final',
+        buttonOff: 'Activar banda sonora final',
+        hintHyperdrive: 'Hyperdrive activado. Gracias por sumarte a este viaje.',
+        hintNudge: 'Casi listo... sigue tocando ese ritmo.',
+        hintOn: 'Tema final en reproduccion. Haz clic para pausar.',
+        hintOff: 'Haz clic para iniciar el tema de cierre. Tip: algunos secretos reaccionan a clics rapidos.',
+    },
+};
+function getCurrentLocale() {
+    return toLocale(document.documentElement.getAttribute('lang')) ?? DEFAULT_LOCALE;
+}
 function ensureFinalSong() {
     if (finalSongEl)
         return;
@@ -27,6 +57,7 @@ function ensureFinalSong() {
     finalSongEl.volume = 0.62;
 }
 function updateTheEndUi(slide) {
+    const copy = THE_END_MESSAGES[getCurrentLocale()];
     slide.classList.toggle('the-end-audio-on', endAudioEnabled);
     slide.classList.toggle('the-end-audio-off', !endAudioEnabled);
     slide.classList.toggle('the-end-hyperdrive', hyperdriveEnabled);
@@ -35,15 +66,15 @@ function updateTheEndUi(slide) {
     if (endAudioButton)
         endAudioButton.setAttribute('aria-pressed', String(endAudioEnabled));
     if (endAudioTextEl)
-        endAudioTextEl.textContent = endAudioEnabled ? 'Pausar trilha final' : 'Ativar trilha final';
+        endAudioTextEl.textContent = endAudioEnabled ? copy.buttonOn : copy.buttonOff;
     if (endAudioHintEl) {
         endAudioHintEl.textContent = hyperdriveEnabled
-            ? 'Hyperdrive ativo. Obrigada por embarcar nessa jornada.'
+            ? copy.hintHyperdrive
             : hyperdriveNudge
-                ? 'Quase la... continue tocando nessa frequencia.'
+                ? copy.hintNudge
                 : endAudioEnabled
-                    ? 'Tema final tocando. Clique para pausar.'
-                    : 'Clique para iniciar o tema de encerramento. Dica: alguns segredos respondem a cliques rapidos.';
+                    ? copy.hintOn
+                    : copy.hintOff;
     }
 }
 function clearHyperdriveTapWindow() {

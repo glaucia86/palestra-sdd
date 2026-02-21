@@ -1,3 +1,4 @@
+import { DEFAULT_LOCALE, toLocale } from '../i18n/language.js';
 const DEMO_SLIDE_ID = 'demo-talk-code';
 const REAL_SABER_SOUND = 'resources/sounds/lightsaber-sound.mp3';
 const EASTER_TAP_WINDOW_MS = 1200;
@@ -27,6 +28,26 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 let wasDemoSlideVisible = false;
+const DEMO_HINT_MESSAGES = {
+    'pt-BR': {
+        easter: 'Easter egg ativado.',
+        nudge: 'Quase la... tente mais rapido.',
+        default: 'Dica: alguns comandos respondem a cliques em sequencia.',
+    },
+    'en-US': {
+        easter: 'Easter egg activated.',
+        nudge: 'Almost there... try faster.',
+        default: 'Tip: some commands react to click sequences.',
+    },
+    'es-ES': {
+        easter: 'Easter egg activado.',
+        nudge: 'Casi listo... intenta mas rapido.',
+        default: 'Tip: algunos comandos reaccionan a secuencias de clics.',
+    },
+};
+function getCurrentLocale() {
+    return toLocale(document.documentElement.getAttribute('lang')) ?? DEFAULT_LOCALE;
+}
 function ensureRealSound() {
     if (soundEl)
         return;
@@ -51,14 +72,15 @@ function updateAudioStateClass(slide) {
 function updateDemoHintText(slide) {
     if (!demoHintEl)
         return;
+    const copy = DEMO_HINT_MESSAGES[getCurrentLocale()];
     if (duelModeEnabled) {
-        demoHintEl.textContent = 'Easter egg ativado.';
+        demoHintEl.textContent = copy.easter;
     }
     else if (demoEasterNudge) {
-        demoHintEl.textContent = 'Quase la... tente mais rapido.';
+        demoHintEl.textContent = copy.nudge;
     }
     else {
-        demoHintEl.textContent = 'Dica: alguns comandos respondem a cliques em sequencia.';
+        demoHintEl.textContent = copy.default;
     }
     updateAudioStateClass(slide);
 }

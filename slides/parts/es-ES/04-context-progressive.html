@@ -1,0 +1,407 @@
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label" style="color:var(--accent-blue);">Seccion 04</div>
+    <h2 class="section-page-title gradient-text-purple">Arquitectura<br>de Contexto</h2>
+    <p class="section-page-desc">PRD.md, AGENTS.md, Rules y Skills — los cuatro pilares del contexto estructurado</p>
+    <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
+  </div>
+</section>
+<section id="arquitetura">
+
+  <!-- 7.1 Overview -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 30% 70%, rgba(179,157,219,0.05) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="building-2"></i></span>
+      <span class="section-label">04 / Arquitectura de Contexto</span>
+    </div>
+    <h2>Arquitectura de <span class="accent">Contexto</span></h2>
+    <p style="font-size:0.8em; text-align:center; max-width:700px; margin:0 auto 0.8em;">
+      La <strong>Arquitectura de Contexto</strong> define como se organizan los artefactos SDD para dar al agente de IA exactamente el contexto que necesita. Ni mas, ni menos.
+    </p>
+    <!-- Context Architecture — diagrama HTML/CSS (sem Mermaid) -->
+    <div class="ctx-arch">
+      <div class="ctx-inputs">
+        <div class="ctx-input-node" style="--clr:var(--accent-green)">
+          <span class="ctx-inp-icon"><i data-lucide="clipboard-list"></i></span>
+          <div class="ctx-inp-text"><strong>PRD.md</strong><small>Requisitos del Producto</small></div>
+        </div>
+        <div class="ctx-input-node" style="--clr:var(--accent-blue)">
+          <span class="ctx-inp-icon"><i data-lucide="folder"></i></span>
+          <div class="ctx-inp-text"><strong>AGENTS.md</strong><small>Contexto y Rules</small></div>
+        </div>
+        <div class="ctx-input-node" style="--clr:var(--accent-purple)">
+          <span class="ctx-inp-icon"><i data-lucide="settings-2"></i></span>
+          <div class="ctx-inp-text"><strong>Rules</strong><small>Lineamientos Globales</small></div>
+        </div>
+        <div class="ctx-input-node" style="--clr:var(--accent-orange)">
+          <span class="ctx-inp-icon"><i data-lucide="wrench"></i></span>
+          <div class="ctx-inp-text"><strong>Skills</strong><small>Habilidades Especializadas</small></div>
+        </div>
+      </div>
+
+      <div class="ctx-beam ctx-beam-l" aria-hidden="true"></div>
+
+      <div class="ctx-center-node">
+        <div class="ctx-ring ctx-ring-2"></div>
+        <div class="ctx-ring ctx-ring-1"></div>
+        <div class="ctx-core">
+          <i data-lucide="cpu"></i>
+          <strong>AI Agent</strong>
+          <small>GitHub Copilot</small>
+        </div>
+      </div>
+
+      <div class="ctx-beam ctx-beam-r" aria-hidden="true"></div>
+
+      <div class="ctx-outputs">
+          <div class="ctx-output-node"><i data-lucide="code-2"></i><span>Codigo</span></div>
+        <div class="ctx-output-node"><i data-lucide="flask-conical"></i><span>Pruebas</span></div>
+        <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.2 AGENTS.md -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="folder"></i></span>
+      <span class="section-label">04 / Arquitectura - AGENTS.md</span>
+    </div>
+    <h2><span class="accent">AGENTS.md</span> — El Contrato Vivo</h2>
+    <div class="two-cols">
+      <div>
+        <div class="definition" style="margin-bottom:0.7em;">
+          <p><strong>AGENTS.md</strong> es un estandar abierto para comunicar a los agentes de IA el contexto, las reglas y los comportamientos esperados de un repositorio. Ubicado en la <em>raiz del proyecto</em>, lo leen varias herramientas y agentes (segun el producto/integracion), actuando como un "README para agentes".</p>
+        </div>
+        <div class="card-grid-2" style="gap:0.6em;">
+          <div class="card">
+            <span class="card-icon"><i data-lucide="map-pin"></i></span>
+            <h3>Ubicacion</h3>
+            <p style="font-size:0.72em;">Siempre en la <code>raiz</code> del repositorio — <code>./AGENTS.md</code></p>
+          </div>
+          <div class="card">
+            <span class="card-icon"><i data-lucide="refresh-cw"></i></span>
+            <h3>Documento Vivo</h3>
+            <p style="font-size:0.72em;">Actualizado junto al proyecto, siempre refleja el estado actual.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <pre><code class="language-markdown"># AGENTS.md
+
+## Objetivo del Proyecto
+API REST de gestion de tareas.
+
+## Stack Tecnologico
+- Node.js 22 + TypeScript strict
+- Express 5 + Prisma ORM
+- PostgreSQL 16
+- Vitest para pruebas
+
+## Convenciones de Codigo
+- Nomenclatura: camelCase para variables
+- Imports: siempre absolutos (src/...)
+- Errores: nunca uses `any`, usa Result types
+
+## DO ✅
+- Escribe pruebas para cada funcion publica
+- Use TypeScript strict mode
+- Documenta endpoints con JSDoc
+
+## DON'T ❌
+- No uses `any` type
+- No hagas commit sin pruebas pasando
+- No alteres el schema sin migracion</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.3 Rules -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="settings-2"></i></span>
+      <span class="section-label">04 / Arquitectura - Rules</span>
+    </div>
+    <h2><span class="accent">Rules</span> — Lineamientos Globales</h2>
+    <div class="two-cols">
+      <div>
+        <p style="font-size:0.8em; margin-bottom:0.6em;">
+          <strong>Rules</strong> son lineamientos globales que definen el comportamiento por defecto del agente para todo el workspace, sin depender del proyecto o de la tarea.
+        </p>
+        <div class="highlight-box blue" style="margin-bottom:0.6em;">
+          📌 En GitHub Copilot, las Rules usan <code>.github/copilot-instructions.md</code> como principal y tambien <code>.github/instructions/**</code> (cuando esta soportado).
+        </div>
+        <div class="highlight-box">
+          Las Rules son el <em>"modo por defecto"</em> del agente. AGENTS.md puede sobrescribir Rules para un proyecto especifico.
+        </div>
+      </div>
+      <div>
+        <div class="card" style="border-color:var(--accent-green); margin-bottom:0.7em;">
+          <h3><i data-lucide="check-circle"></i> DO — Siempre hacer</h3>
+          <ul class="checklist" style="font-size:0.78em;">
+            <li class="check">Use TypeScript strict mode</li>
+            <li class="check">Escribe pruebas para funciones publicas</li>
+            <li class="check">Documenta APIs con OpenAPI/JSDoc</li>
+            <li class="check">Sigue principios SOLID y Clean Code</li>
+            <li class="check">Valida entradas en cada frontera externa</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color:var(--accent-red);">
+          <h3 class="text-red"><i data-lucide="x-circle"></i> DON'T — Nunca hacer</h3>
+          <ul class="checklist" style="font-size:0.78em;">
+            <li class="cross">Usar <code>any</code> type en TypeScript</li>
+            <li class="cross">Hacer commit sin pruebas pasando</li>
+            <li class="cross">Hardcodear credenciales o secretos</li>
+            <li class="cross">Ignorar errores silenciosamente (empty catch)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.4 Skills.md -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="wrench"></i></span>
+      <span class="section-label">04 / Arquitectura - Skills.md</span>
+    </div>
+    <h2><span class="accent">Skills.md</span> — Conocimiento Especializado</h2>
+    <div class="two-cols-60">
+      <div>
+        <div class="definition" style="margin-bottom:0.4em;">
+          <p><strong>Skills</strong> son <em>directorios</em> con un archivo <code>SKILL.md</code> como entrada — patron abierto de <strong>agentskills.io</strong> adoptado por GitHub Copilot en dic/2025. El agente mantiene la descripcion en contexto y carga el contenido completo solo cuando es necesario: <strong>Progressive Disclosure</strong> en la practica.</p>
+        </div>
+        <div class="card-grid-2" style="gap:0.5em;">
+          <div class="card fragment">
+            <span class="card-icon"><i data-lucide="zap"></i></span>
+            <h3>Performance</h3>
+            <p style="font-size:0.72em;">Menos tokens consumidos = sesiones mas eficientes y baratas.</p>
+          </div>
+          <div class="card fragment">
+            <span class="card-icon"><i data-lucide="plug"></i></span>
+            <h3>Portabilidad</h3>
+            <p style="font-size:0.72em;">Las Skills funcionan en VS Code, Claude y otras herramientas de IA.</p>
+          </div>
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.35em; font-size:0.75em;">
+          📖 <strong>Ver seccion 05</strong> para profundizar en <em>Progressive Disclosure</em> — principios, estructura en capas y buenas practicas.
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box blue" style="margin-top:0.45em; font-size:0.7em;">
+          <strong>Ejemplos reales (clicables):</strong><br />
+          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank">find-skills</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank">vercel-react-best-practices</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank">web-design-guidelines</a> ·
+          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank">frontend-design</a>
+        </div>
+        <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
+          🎯 Carga solo la Skill de la tarea actual para reducir ruido y tokens en el contexto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.5 Context Architecture Mermaid + Resumo -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="map"></i></span>
+      <span class="section-label">04 / Arquitectura - Vista completa</span>
+    </div>
+    <h2>Vista <span class="accent">completa</span> de la arquitectura</h2>
+    <div class="two-cols" style="gap:1.5em; align-items:center;">
+      <div>
+        <!-- Vista completa - pipeline HTML/CSS (sin Mermaid) -->
+        <div class="ctx-pipeline">
+          <div class="ctx-pipe-step">
+            <div class="ctx-pipe-dot" style="--c:var(--accent-blue)"><i data-lucide="user"></i></div>
+            <div class="ctx-pipe-body"><strong>Desarrollador</strong><small>escribe spec.md</small></div>
+          </div>
+          <div class="ctx-pipe-connector"></div>
+          <div class="ctx-pipe-step">
+            <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
+            <div class="ctx-pipe-body"><strong>Copilot genera artefactos</strong><small>PRD.md + AGENTS.md</small></div>
+          </div>
+          <div class="ctx-pipe-connector"></div>
+          <div class="ctx-pipe-step">
+            <div class="ctx-pipe-dot" style="--c:var(--accent-purple)"><i data-lucide="layers"></i></div>
+            <div class="ctx-pipe-body"><strong>Contexto del Agente</strong><small>Rules + Skills enriquecen</small></div>
+          </div>
+          <div class="ctx-pipe-connector"></div>
+          <div class="ctx-pipe-step">
+            <div class="ctx-pipe-dot" style="--c:var(--accent-orange)"><i data-lucide="code-2"></i></div>
+            <div class="ctx-pipe-body"><strong>Implementacion</strong><small>codigo, pruebas, docs</small></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:0.6em;">Los 4 pilares</h3>
+        <ul class="icon-list" style="font-size:0.82em;">
+          <li><span class="icon"><i data-lucide="clipboard-list"></i></span><div><strong class="text-green">PRD.md</strong> — el "que" y el "por que"</div></li>
+          <li><span class="icon"><i data-lucide="folder"></i></span><div><strong class="text-blue">AGENTS.md</strong> — el "como" y el "contexto"</div></li>
+          <li><span class="icon"><i data-lucide="settings-2"></i></span><div><strong class="text-purple">Rules</strong> — lineamientos globales</div></li>
+          <li><span class="icon"><i data-lucide="wrench"></i></span><div><strong class="text-orange">Skills.md</strong> — conocimiento especializado</div></li>
+        </ul>
+        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
+          🏆 <strong>Principio fundamental:</strong> <em>Contexto correcto, en el momento correcto, para la tarea correcta.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section><!-- /arquitetura -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  SLIDE — PROGRESSIVE DISCLOSURE  (vertical group)
+════════════════════════════════════════════════════════════════════════════ -->
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(255,120,73,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label" style="color:var(--accent-orange);">Seccion 05</div>
+    <h2 class="section-page-title gradient-text-warm">Progressive<br>Disclosure</h2>
+    <p class="section-page-desc">Revelar solo el contexto necesario, en el momento correcto — el secreto para un agente eficiente</p>
+    <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
+  </div>
+</section>
+<section id="progressive-disclosure">
+
+  <!-- PD 1 — Que es Progressive Disclosure -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layers"></i></span>
+      <span class="section-label">05 / Progressive Disclosure</span>
+    </div>
+    <h2><span class="accent">Progressive Disclosure</span></h2>
+    <div class="two-cols" style="align-items:start; gap:2em;">
+      <div>
+        <div class="definition" style="margin-bottom:0.8em;">
+          <p><strong>Progressive Disclosure</strong> es el principio de revelar solo el contexto necesario para la tarea actual. En SDD, eso significa dividir el conocimiento del agente en capas — cargando informacion especializada <em>bajo demanda</em>, ahorrando tokens y reduciendo ruido.</p>
+        </div>
+        <ul style="font-size:0.82em;">
+          <li class="fragment"><strong>AGENTS.md raiz:</strong> minimo, global y estable — reglas validas para <em>todas</em> las tareas</li>
+          <li class="fragment"><strong>Skills especializadas:</strong> cargadas bajo demanda, solo cuando hace falta</li>
+          <li class="fragment"><strong>Context Window:</strong> hasta 70% de ahorro de tokens</li>
+          <li class="fragment"><strong>Calidad:</strong> menos ruido = respuestas mas precisas y consistentes</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="text-align:center; border-color:var(--accent-orange);">
+          <span class="card-icon"><i data-lucide="layers"></i></span>
+          <h3 class="text-orange">Analogia</h3>
+          <p style="font-size:0.75em;">Como en medicina: el medico general atiende lo basico; el especialista se llama solo cuando el problema lo exige. El contexto funciona igual.</p>
+        </div>
+        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
+          📊 AGENTS.md <strong>minimalista + Skills bajo demanda</strong> puede reducir hasta 70% el uso de context window por sesion.
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+      ↓ presiona ↓ para continuar en esta seccion
+    </p>
+  </section>
+
+  <!-- PD 2 — Estructura en Capas -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="folder-tree"></i></span>
+      <span class="section-label">05 / Progressive Disclosure — Estructura</span>
+    </div>
+    <h2>Estructura en <span class="accent">capas</span></h2>
+    <div class="two-cols">
+      <div>
+        <pre><code class="language-bash">proyecto/
+├── AGENTS.md              ← Capa 1 (global, lean)
+├── docs/
+│   └── agents/            ← Capa 2 (especializada)
+│       ├── testing.md
+│       ├── architecture.md
+│       ├── conventions.md
+│       └── security.md
+├── .github/
+│   └── copilot-instructions.md  ← Rules (global)
+└── skills/                ← Skills (spec-kit)
+    ├── api-design.skill.md
+    └── react-patterns.skill.md</code></pre>
+        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+          🎯 AGENTS.md raiz apunta a archivos especializados mediante enlaces. El agente los carga <em>solo cuando se solicita</em>.
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:0.5em; font-size:0.85em;">AGENTS.md — Ejemplo Minimalista</h3>
+        <pre><code class="language-markdown"># AGENTS.md
+
+## Proyecto
+API de gestion de tareas con JWT.
+
+## Reglas Globales
+- TypeScript strict mode
+- Pruebas obligatorias para funciones publicas
+- Nunca uses `any` type
+
+## Instrucciones Especializadas
+- Pruebas: docs/agents/testing.md
+- Arquitectura: docs/agents/architecture.md
+- Seguridad: docs/agents/security.md
+
+## Limites del Agente
+- No alteres el schema sin migracion
+- No hagas commit sin pruebas pasando</code></pre>
+        <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.75em;">
+          💡 La IA genera archivos especializados automaticamente - <em>no necesitas crearlos manualmente</em>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PD 3 — 6 Principios -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="list-checks"></i></span>
+      <span class="section-label">05 / Progressive Disclosure — Principios</span>
+    </div>
+    <h2>6 Principios de <span class="accent">Progressive Disclosure</span></h2>
+    <div class="card-grid-3" style="margin-top:0.35em; gap:0.4em;">
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="minimize-2"></i></span>
+        <h3>1. Minimalismo</h3>
+        <p style="font-size:0.7em;">AGENTS.md debe contener solo reglas necesarias para <em>todas</em> las tareas del repositorio. Reglas especificas van en archivos secundarios.</p>
+      </div>
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="split"></i></span>
+        <h3>2. Separacion</h3>
+        <p style="font-size:0.7em;">Instruccion especializada → archivo secundario (<code>docs/agents/</code>). Nada de "documento gigante" con todo adentro.</p>
+      </div>
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="link"></i></span>
+        <h3>3. Delegacion</h3>
+        <p style="font-size:0.7em;">AGENTS.md raiz declara <strong>donde encontrar</strong> instrucciones especializadas mediante enlaces. El agente las busca cuando hace falta.</p>
+      </div>
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="zap"></i></span>
+        <h3>4. Accionabilidad</h3>
+        <p style="font-size:0.7em;">Prefiere instrucciones directas: <em>"Antes de cambiar codigo, explica el motivo."</em> Evita textos genericos como "sigue buenas practicas".</p>
+      </div>
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="shield"></i></span>
+        <h3>5. Estabilidad</h3>
+        <p style="font-size:0.7em;">Las estructuras de carpetas inestables y la informacion volatil <strong>no</strong> deben ir en AGENTS.md raiz; deben quedar en archivos secundarios.</p>
+      </div>
+      <div class="card fragment" style="padding:0.65em 0.9em;">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="trending-down"></i></span>
+        <h3>6. Economia</h3>
+        <p style="font-size:0.7em;">Cada token ahorrado = respuestas mas rapidas y baratas. Un AGENTS.md ligero mejora la calidad y reduce el costo por sesion.</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
+      📚 Estos archivos especializados tambien se conocen como <strong>"Skills"</strong> en la comunidad de agentes de IA (Claude Code, Cursor, etc.) — mismo concepto, carga bajo demanda.
+    </div>
+  </section>
+
+</section><!-- /progressive-disclosure -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  SLIDE 8 — REFERÊNCIAS
+════════════════════════════════════════════════════════════════════════════ -->

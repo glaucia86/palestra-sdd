@@ -1,0 +1,9 @@
+{
+  "parts": [
+    "slides/parts/es-ES/01-intro-sdd.html",
+    "slides/parts/es-ES/02-spec-kit.html",
+    "slides/parts/es-ES/03-copilot.html",
+    "slides/parts/es-ES/04-context-progressive.html",
+    "slides/parts/es-ES/05-refs-end.html"
+  ]
+}

@@ -17,8 +17,12 @@ export class QuizController {
     dom;
     onRootClick;
     validationError;
-    constructor(quizData) {
+    uiMessages;
+    validationMessages;
+    constructor(quizData, uiMessages, validationMessages) {
         this.quizData = quizData;
+        this.uiMessages = uiMessages;
+        this.validationMessages = validationMessages;
         this.qIndex = 0;
         this.qScore = 0;
         this.qAnswered = false;
@@ -84,7 +88,7 @@ export class QuizController {
         this.onRootClick = null;
     }
     validateData() {
-        const result = validateQuizData(this.quizData);
+        const result = validateQuizData(this.quizData, this.validationMessages);
         this.validationError = result.friendlyError;
         if (!result.ok)
             console.error('Quiz data validation failed:', result.errors);
@@ -93,11 +97,11 @@ export class QuizController {
         if (!this.rootEl || !this.validationError)
             return;
         this.rootEl.innerHTML = `
-    <div style="text-align:center; padding:1em;">
+      <div style="text-align:center; padding:1em;">
       <div style="font-size:2.2em; margin-bottom:0.25em;">⚠️</div>
-      <h3 class="text-blue" style="font-size:1.05em; margin-bottom:0.3em;">Falha ao carregar o quiz</h3>
+      <h3 class="text-blue" style="font-size:1.05em; margin-bottom:0.3em;">${this.uiMessages.validationTitle}</h3>
       <p style="color:var(--text-muted); font-size:0.78em;">${this.validationError}</p>
-      <p style="color:var(--text-muted); font-size:0.68em; margin-top:0.45em;">Verifique o arquivo de dados do quiz e tente novamente.</p>
+      <p style="color:var(--text-muted); font-size:0.68em; margin-top:0.45em;">${this.uiMessages.validationHint}</p>
     </div>
   `;
     }
@@ -130,11 +134,15 @@ export class QuizController {
             feedback.textContent = '';
         }
         if (score)
-            score.textContent = `Questão ${i + 1} de ${this.quizData.length}`;
+            score.textContent = this.uiMessages.progressLabel(i + 1, this.quizData.length);
         if (btnNext)
             btnNext.style.display = i < this.quizData.length - 1 ? 'inline-block' : 'none';
         if (btnFinish)
             btnFinish.style.display = i === this.quizData.length - 1 ? 'inline-block' : 'none';
+        if (btnNext)
+            btnNext.textContent = this.uiMessages.nextLabel;
+        if (btnFinish)
+            btnFinish.textContent = this.uiMessages.finishLabel;
     }
     pickAnswer(selected) {
         if (this.qAnswered)
@@ -165,7 +173,7 @@ export class QuizController {
         }
         if (fbEl) {
             fbEl.className = 'quiz-feedback wrong show';
-            fbEl.textContent = `❌ Incorreto. ${q.explanation}`;
+            fbEl.textContent = `${this.uiMessages.incorrectPrefix} ${q.explanation}`;
         }
     }
     nextQuestion() {
@@ -188,19 +196,19 @@ export class QuizController {
         const pct = Math.round((this.qScore / this.quizData.length) * 100);
         const icon = this.qScore === this.quizData.length ? '🏆' : this.qScore >= 2 ? '🎯' : '📚';
         const msg = this.qScore === this.quizData.length
-            ? 'Perfeito! Você domina os conceitos de SDD! 🚀'
+            ? this.uiMessages.perfectMessage
             : this.qScore >= 2
-                ? 'Ótimo trabalho! Pratique mais com spec.md! 💪'
-                : 'Continue estudando! SDD tem muito a oferecer! 📖';
+                ? this.uiMessages.goodMessage
+                : this.uiMessages.improveMessage;
         this.rootEl.innerHTML = `
     <div style="text-align:center; padding:1em;">
       <div style="font-size:3em; margin-bottom:0.3em;">${icon}</div>
       <h2 class="gradient-text" style="font-size:1.8em; margin-bottom:0.2em;">${this.qScore}/${this.quizData.length}</h2>
       <p style="color:var(--text-secondary); font-size:0.85em;">
-        Você acertou <strong style="color:var(--accent-green)">${pct}%</strong> das questões!
+        ${this.uiMessages.scoreSummaryTemplate.replace('{pct}', `<strong style="color:var(--accent-green)">${pct}%</strong>`)}
       </p>
       <p style="color:var(--text-muted); font-size:0.72em; margin-top:0.5em;">${msg}</p>
-      <button class="quiz-btn" style="margin-top:1.2em;" data-quiz-action="restart">Tentar Novamente</button>
+      <button class="quiz-btn" style="margin-top:1.2em;" data-quiz-action="restart">${this.uiMessages.restartLabel}</button>
     </div>
   `;
     }
@@ -225,8 +233,8 @@ export class QuizController {
     <div class="quiz-nav">
       <span class="quiz-score"></span>
       <div style="display:flex; gap:0.5em;">
-        <button class="quiz-btn quiz-btn-next" data-quiz-action="next">Próxima →</button>
-        <button class="quiz-btn quiz-btn-finish purple" data-quiz-action="finish" style="display:none">Ver Resultado 🏆</button>
+        <button class="quiz-btn quiz-btn-next" data-quiz-action="next">${this.uiMessages.nextLabel}</button>
+        <button class="quiz-btn quiz-btn-finish purple" data-quiz-action="finish" style="display:none">${this.uiMessages.finishLabel}</button>
       </div>
     </div>
   `;

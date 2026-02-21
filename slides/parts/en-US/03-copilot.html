@@ -1,0 +1,435 @@
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(146,119,255,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label" style="color:var(--accent-copilot-light);">Section 03</div>
+    <h2 class="section-page-title gradient-text-purple">GitHub Copilot</h2>
+    <p class="section-page-desc">Modes, models, Agent Skills, and how Copilot powers SDD</p>
+    <div class="section-page-icon" style="color:var(--accent-copilot-light);"><i data-lucide="bot"></i></div>
+  </div>
+</section>
+<section id="copilot-chat">
+
+  <!-- 5.1 — What is GitHub Copilot Chat -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="bot"></i></span>
+      <span class="section-label">03 / GitHub Copilot Chat</span>
+    </div>
+    <h2>GitHub <span class="accent">Copilot Chat</span></h2>
+    <div class="two-cols" style="align-items:center; gap:2.4em;">
+      <div style="text-align:center;">
+        <img src="resources/images/github-copilot-icon.png" alt="GitHub Copilot" style="max-width:160px; max-height:160px; filter:drop-shadow(0 0 32px rgba(124,92,252,0.55)); margin-bottom:0.7em;" />
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.52em; color:var(--accent-copilot-light); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5em;">Powered by AI</div>
+        <div style="display:flex; flex-wrap:wrap; gap:0.4em; justify-content:center;">
+          <span class="tag purple">GPT-5.3-Codex</span>
+          <span class="tag orange">Claude Sonnet 4.6</span>
+          <span class="tag">Claude Opus 4.6</span>
+          <span class="tag blue">Gemini 3.1 Pro</span>
+          <span class="tag red">20+ models</span>
+        </div>
+      </div>
+      <div>
+        <div class="definition" style="margin-bottom:0.8em;">
+          <p><strong>GitHub Copilot Chat</strong> is Copilot's conversational interface. It lets you ask natural-language questions about code, generate implementations, debug, and in <strong>Agent Mode</strong> execute complex tasks autonomously.</p>
+        </div>
+        <ul style="font-size:0.8em;">
+          <li class="fragment"><strong>Real-time completions</strong> while you type</li>
+          <li class="fragment"><strong>Chat Panel</strong> for Q&amp;A, explanations, and refactoring</li>
+          <li class="fragment"><strong>Inline Chat</strong> ( <code>Ctrl+I</code> ) directly in the editor</li>
+          <li class="fragment"><strong>Agent Mode</strong> — autonomous, multi-step execution</li>
+          <li class="fragment"><strong>Multi-modal</strong> — accepts screenshots as context</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.2 — Timeline 2021–2026 -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="clock"></i></span>
+      <span class="section-label">03 / GitHub Copilot — Timeline</span>
+    </div>
+    <h2><span class="accent">Timeline</span></h2>
+    <div class="copilot-timeline">
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2021</div>
+          <p>Technical preview of Copilot in VS Code.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2022</div>
+          <p>Copilot GA for developers and teams.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">NOV 2023</div>
+          <p><strong>Copilot Chat GA</strong> in VS Code and Visual Studio.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2025</div>
+          <p><strong>Agent Mode GA</strong> with multi-step execution.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment copilot-timeline-item-cli">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">SEP 2025</div>
+          <p><strong>Copilot CLI</strong> enters <strong>public preview</strong>.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment copilot-timeline-item-cli">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">OCT 2025</div>
+          <p><code>gh-copilot</code> is deprecated; migrate to Copilot CLI.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">DEC 2025</div>
+          <p><strong>Agent Skills</strong> + Free + <strong>Plan Mode</strong> preview.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">FEB 2026</div>
+          <p>Multi-model era consolidated for specialized tasks.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+    </div>
+    <div class="highlight-box" style="margin-top:0.45em; font-size:0.7em;">
+      <strong>SDD reading:</strong> evolution moved from "autocomplete" to a full engineering experience in <strong>IDE + terminal</strong>, with more autonomy and governance.
+    </div>
+    <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
+      CLI dates: public preview on 09/25/2025 and <code>gh-copilot</code> deprecation on 10/25/2025.
+    </p>
+  </section>
+
+  <!-- 5.3 — Copilot Chat modes -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layers"></i></span>
+      <span class="section-label">03 / GitHub Copilot Chat — Modes</span>
+    </div>
+    <h2>The 4 Copilot Chat <span class="accent">Modes</span></h2>
+    <div class="card-grid-2" style="margin-top:0.7em; gap:0.9em;">
+      <div class="card fragment">
+        <span class="card-icon"><i data-lucide="message-circle"></i></span>
+        <h3>Ask Mode</h3>
+        <p>Conversational mode: ask questions, get explanations, discuss architecture. Copilot responds but <strong>does not edit files</strong>. Ideal for exploration.</p>
+      </div>
+      <div class="card fragment" style="border-color:rgba(56,200,250,0.35);">
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="search"></i></span>
+        <h3 style="color:var(--accent-blue);">Explore Mode</h3>
+        <p>Read-only exploration — navigates the codebase with read tools (Grep, Glob, Read). Ideal to understand an unknown codebase without making changes. Currently available in VS Code Insiders.</p>
+      </div>
+      <div class="card fragment" style="border-color:rgba(124,92,252,0.6); box-shadow:0 0 28px rgba(124,92,252,0.15);">
+        <span class="card-icon" style="color:var(--accent-copilot-light);"><i data-lucide="bot"></i></span>
+        <h3 style="color:var(--accent-copilot-light);">Agent Mode ✦</h3>
+        <p>Autonomous mode — runs end-to-end tasks: analyzes the codebase, decides which files to change, runs terminal commands, and <strong>iterates until done</strong>. The ideal mode for SDD.</p>
+      </div>
+      <div class="card fragment" style="border-color:rgba(255,205,71,0.35);">
+        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="clipboard-check"></i></span>
+        <h3 style="color:var(--accent-gold);">Plan Mode</h3>
+        <p><em>(Public preview)</em> — Copilot creates a detailed implementation plan for human review <strong>before</strong> any code change. Perfect for SDD.</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
+      <strong>Explore → Plan → Agent:</strong> explore the codebase, create the plan, execute with structured context. The full SDD flow.
+    </div>
+  </section>
+
+  <!-- 5.4 — Available models (February 2026) -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="cpu"></i></span>
+      <span class="section-label">03 / GitHub Copilot — Models (Feb 2026)</span>
+    </div>
+    <h2><span class="accent">Available</span> Models — Feb/2026</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; align-items:start; margin-top:0.4em;">
+      <div>
+        <table style="font-size:0.65em;">
+          <thead><tr><th colspan="2"><i data-lucide="zap"></i> OpenAI</th></tr></thead>
+          <tbody>
+            <tr><td><strong>GPT-4.1</strong></td><td><span class="tag">Free · 0×</span></td></tr>
+            <tr><td><strong>GPT-5 mini</strong></td><td><span class="tag">Free · 0×</span></td></tr>
+            <tr><td><strong>GPT-5.2</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>GPT-5.2-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>GPT-5.3-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
+          </tbody>
+        </table>
+        <table style="font-size:0.65em; margin-top:0.5em;">
+          <thead><tr><th colspan="2"><i data-lucide="cpu"></i> xAI</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Grok Code Fast 1</strong></td><td><span class="tag">GA · 0.25×</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table style="font-size:0.65em;">
+          <thead><tr><th colspan="2"><i data-lucide="sparkles"></i> Anthropic Claude</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Claude Haiku 4.5</strong></td><td><span class="tag">Free · 0.33×</span></td></tr>
+            <tr><td><strong>Claude Sonnet 4</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
+            <tr><td><strong>Claude Sonnet 4.5</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
+            <tr><td><strong>Claude Sonnet 4.6</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
+            <tr><td><strong>Claude Opus 4.5</strong></td><td><span class="tag orange">GA · 3×</span></td></tr>
+            <tr><td><strong>Claude Opus 4.6</strong></td><td><span class="tag orange">GA · 3×</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table style="font-size:0.65em;">
+          <thead><tr><th colspan="2"><i data-lucide="globe"></i> Google Gemini</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Gemini 2.5 Pro</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>Gemini 3 Flash</strong></td><td><span class="tag">Preview · 0.33×</span></td></tr>
+            <tr><td><strong>Gemini 3 Pro</strong></td><td><span class="tag blue">Preview · 1×</span></td></tr>
+            <tr><td><strong>Gemini 3.1 Pro</strong> <span class="tag green" style="font-size:0.75em;">New!</span></td><td><span class="tag blue">Preview · 1×</span></td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:0.5em; font-size:0.68em;">
+          <strong>Auto</strong> — selects the best model automatically. Recommended in Agent Mode.
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.3em; font-size:0.65em;">
+          Planos: <span class="tag">Free $0</span> <span class="tag blue">Pro $10</span> <span class="tag purple">Pro+ $39</span> <span class="tag orange">Business $19/seat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 — Features: participants, commands, MCP -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="puzzle"></i></span>
+      <span class="section-label">03 / GitHub Copilot Chat — Features</span>
+    </div>
+    <h2>Main <span class="accent">Features</span></h2>
+    <div class="card-grid-3" style="font-size:0.88em; gap:0.5em; margin-top:0.35em;">
+      <div class="card" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="at-sign"></i></span>
+        <h3>Participants (@)</h3>
+        <ul style="font-size:0.7em; margin-top:0.3em;">
+          <li><code>@workspace</code> — whole-project context</li>
+          <li><code>@vscode</code> — editor commands and settings</li>
+          <li><code>@terminal</code> — terminal help</li>
+          <li><code>@github</code> — PRs, issues, web search</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>Slash Commands (/)</h3>
+        <ul style="font-size:0.7em; margin-top:0.3em;">
+          <li><code>/explain</code> — explains selected code</li>
+          <li><code>/fix</code> — fixes bugs automatically</li>
+          <li><code>/tests</code> — generates unit tests</li>
+          <li><code>/doc</code> — documents functions and APIs</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="hash"></i></span>
+        <h3>Chat Variables (#)</h3>
+        <ul style="font-size:0.7em; margin-top:0.3em;">
+          <li><code>#file</code> — attaches file as context</li>
+          <li><code>#web</code> — real-time web search</li>
+          <li><code>#selection</code> — focuses on selected snippet</li>
+          <li><code>#codebase</code> — indexes the entire workspace</li>
+        </ul>
+      </div>
+      <div class="card fragment" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="plug"></i></span>
+        <h3>MCP Integration</h3>
+        <p style="font-size:0.7em;">Model Context Protocol — open standard to connect Copilot to external tools: databases, APIs, cloud services. GitHub MCP Server already available.</p>
+      </div>
+      <div class="card fragment" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="image"></i></span>
+        <h3>Image Support</h3>
+        <p style="font-size:0.7em;">Attach screenshots (JPEG, PNG, GIF, WEBP) to describe UIs, explain architecture diagrams, or analyze visual issues with multimodal models.</p>
+      </div>
+      <div class="card fragment" style="padding:0.9em 1em;">
+        <span class="card-icon"><i data-lucide="keyboard"></i></span>
+        <h3>Inline Chat</h3>
+        <p style="font-size:0.7em;"><code>Ctrl+I</code> directly in the editor — edit code without opening the side panel. Refactor any selection with natural language.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5a — Copilot CLI: strategic view -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 20%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="terminal-square"></i></span>
+      <span class="section-label">03 / GitHub Copilot CLI - Overview</span>
+    </div>
+    <h2>GitHub <span class="accent">Copilot CLI</span></h2>
+    <div class="two-cols" style="align-items:center; gap:1.6em;">
+      <div style="text-align:center;">
+        <img src="resources/images/copilot-cli.png" alt="GitHub Copilot CLI no terminal" style="max-width:92%; border-radius:0.55em; border:1px solid rgba(124,92,252,0.35); box-shadow:0 0 28px rgba(124,92,252,0.16);" />
+        <div style="margin-top:0.55em;">
+          <span class="tag purple">Public Preview</span>
+          <span class="tag blue">Terminal-first</span>
+          <span class="tag">SDD-ready</span>
+        </div>
+      </div>
+      <div>
+        <div class="definition" style="margin-bottom:0.55em;">
+          <p><strong>Copilot CLI</strong> brings the GitHub Copilot experience to the terminal, complementing IDE chat with natural-language shell execution.</p>
+        </div>
+        <ul style="font-size:0.76em;">
+          <li class="fragment"><strong>Official GitHub product</strong> for terminal engineering workflow</li>
+          <li class="fragment"><strong>Complements Copilot Chat</strong> (does not fully replace the IDE)</li>
+          <li class="fragment"><strong>Useful in SDD</strong> to explore, automate, and iterate tasks outside the editor</li>
+          <li class="fragment"><strong>Supported plans:</strong> Pro, Pro+, Business, and Enterprise</li>
+        </ul>
+        <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
+          <strong>IDE + Terminal = continuous context:</strong> specify in PRD, validate in plan, execute with traceability between editor and shell.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5aa — Copilot CLI: practice and governance -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="workflow"></i></span>
+      <span class="section-label">03 / GitHub Copilot CLI — Practice</span>
+    </div>
+    <h2>When to Use It in the <span class="accent">SDD</span> Flow</h2>
+    <div class="card-grid-2" style="gap:0.8em; margin-top:0.45em;">
+      <div class="card" style="padding:0.95em 1em;">
+        <span class="card-icon"><i data-lucide="list-checks"></i></span>
+        <h3>Ideal scenarios</h3>
+        <ul style="font-size:0.7em; margin-top:0.25em;">
+          <li>Explore and understand repositories directly in the terminal</li>
+          <li>Generate shell commands from natural language</li>
+          <li>Accelerate local automations and repetitive workflows</li>
+          <li>Support error triage and quick fixes outside the IDE</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="shield-check"></i></span>
+        <h3 style="color:var(--accent-blue);">Governance and security</h3>
+        <pre style="font-size:0.64em; margin-top:0.35em;"><code class="language-bash"># Example flow
+copilot --help
+# review suggestion
+# run only in trusted directory
+# validate diff before commit</code></pre>
+        <p style="font-size:0.66em; margin-top:0.35em; color:var(--text-secondary);">
+          Keep <strong>human-in-the-loop</strong>: review suggested commands, limit permissions, and validate impact before running.
+        </p>
+      </div>
+    </div>
+    <p style="font-size:0.56em; color:var(--text-muted); text-align:center; margin-top:0.65em;">
+      Public preview: <strong>September 25, 2025</strong>. Legacy path (<code>gh-copilot</code>) deprecated on <strong>October 25, 2025</strong>.
+    </p>
+  </section>
+
+  <!-- 5.5b — Agent Skills (Dec 2025) -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="wrench"></i></span>
+      <span class="section-label">03 / GitHub Copilot — Agent Skills</span>
+    </div>
+    <h2>Agent <span class="accent">Skills</span> — Dec/2025</h2>
+    <div class="two-cols" style="align-items:start; gap:1.5em; margin-top:0.3em;">
+      <div>
+        <div class="definition" style="margin-bottom:0.5em;">
+          <p style="font-size:0.9em;">GitHub Copilot natively supports <strong>Agent Skills</strong> — directories with a <code>SKILL.md</code> entrypoint, following the open <strong>agentskills.io</strong> pattern introduced by Anthropic for Claude Code and adopted by GitHub in Dec/2025.</p>
+        </div>
+        <ul style="font-size:0.77em;">
+          <li class="fragment"><strong>Open standard:</strong> <a href="https://agentskills.io" target="_blank">agentskills.io</a> — directory spec with SKILL.md</li>
+          <li class="fragment"><strong>Auto-discovery:</strong> Copilot scans <code>.github/skills/</code> automatically</li>
+          <li class="fragment"><strong>Progressive Disclosure:</strong> description always in context; full skill loaded on demand</li>
+          <li class="fragment"><strong>Portability:</strong> same pattern works in Claude Code, Cursor, Gemini CLI, and other agents</li>
+          <li class="fragment"><strong>VS Code:</strong> create Skills via chat — <em>"@copilot create a skill for React patterns"</em></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:var(--accent-green);">
+          <h3>Skill Structure</h3>
+          <pre style="font-size:0.63em;"><code class="language-bash">.github/
+└── skills/
+    └── react-patterns/
+        ├── SKILL.md        ← entrypoint
+        ├── hooks.md
+        └── examples/</code></pre>
+        </div>
+        <div class="card fragment" style="margin-top:0.4em; border-color:var(--accent-copilot);">
+          <h3 style="color:var(--accent-copilot-light);">SKILL.md — Entrypoint</h3>
+          <pre style="font-size:0.63em;"><code class="language-markdown">---
+name: react-patterns
+description: React component patterns
+  with hooks, Context API, and performance.
+---
+
+Load this skill when working
+with React components. Includes:
+hooks, Context, memo, lazy.</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.6 — Copilot + SDD -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(124,92,252,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="link-2"></i></span>
+      <span class="section-label">03 / GitHub Copilot Chat — SDD</span>
+    </div>
+    <h2>GitHub Copilot + <span class="accent">SDD</span> = 🚀</h2>
+    <div class="two-cols" style="gap:2em;">
+      <div>
+        <div class="highlight-box purple" style="margin-bottom:0.8em;">
+          <strong>The spec is the perfect prompt.</strong> When you provide GitHub Copilot with a well-structured PRD.md + AGENTS.md, it has the context needed to deliver what you need.
+        </div>
+        <ul style="font-size:0.82em;">
+          <li class="fragment"><strong>PRD.md</strong> as primary context via <code>#file</code></li>
+          <li class="fragment"><strong>AGENTS.md</strong> loaded automatically in Agent Mode</li>
+          <li class="fragment"><strong>Agent Mode</strong> executes requirement by requirement with traceability</li>
+          <li class="fragment"><strong>Plan Mode</strong> creates an implementation plan for human review</li>
+          <li class="fragment"><strong>Iteration</strong> guided by PRD acceptance criteria (AC)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:var(--accent-copilot); box-shadow:0 0 24px rgba(124,92,252,0.15);">
+          <h3 style="color:var(--accent-copilot-light);">Prompt SDD Ideal</h3>
+          <pre style="background:rgba(6,12,30,0.9); border-color:rgba(124,92,252,0.3); font-size:0.7em; margin-top:0.6em;"><code class="language-markdown">@workspace Based on:
+- #file:PRD.md (requirements)
+- #file:AGENTS.md (context)
+
+Implement FR01 following
+exactly acceptance criteria
+AC01 and AC02. Write tests to
+cover both described scenarios.</code></pre>
+        </div>
+        <div class="highlight-box" style="margin-top:0.7em; font-size:0.75em;">
+          🎯 <em>SDD turns vague prompts into precise instructions and GitHub Copilot into a predictable collaborator.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section><!-- /copilot-chat -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  SLIDE — ARQUITETURA DE CONTEXTO  (vertical group)
+════════════════════════════════════════════════════════════════════════════ -->

@@ -24,10 +24,19 @@
 </head>
 <body>
 
+<div class="language-switcher" role="group" aria-label="Language switcher">
+  <span class="language-switcher-label">Idioma</span>
+  <div class="language-switcher-options">
+    <button class="language-switcher-option" type="button" data-locale="pt-BR" title="Português (Brasil)" aria-pressed="false">PT</button>
+    <button class="language-switcher-option" type="button" data-locale="en-US" title="English (US)" aria-pressed="false">EN</button>
+    <button class="language-switcher-option" type="button" data-locale="es-ES" title="Español" aria-pressed="false">ES</button>
+  </div>
+</div>
+
 <a href="#/sumario" class="back-to-summary-btn" title="Voltar ao Sumário">
   <i data-lucide="list"></i>
 </a>
-<div class="reveal">
+<div class="reveal reveal-hidden">
 <div class="slides" data-slides-manifest="slides/manifest.json">
   <!-- slides loaded dynamically -->
 </div><!-- /slides -->

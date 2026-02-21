@@ -6,11 +6,12 @@ import { createSectionCosmics } from './features/section-cosmos.js';
 import { syncSpecialSlideBackgrounds } from './features/special-backgrounds.js';
 import { syncDemoExperience } from './features/demo-experience.js';
 import { syncTheEndExperience } from './features/the-end-experience.js';
-import { quizData } from './quiz/data.js';
+import { getQuizData } from './quiz/data.js';
 import { QuizController } from './quiz/controller.js';
-export function bootstrapPresentation() {
+import { getQuizUiMessages, getQuizValidationMessages } from './quiz/messages.js';
+export function bootstrapPresentation(locale) {
     initMermaid();
-    const quiz = new QuizController(quizData);
+    const quiz = new QuizController(getQuizData(locale), getQuizUiMessages(locale), getQuizValidationMessages(locale));
     quiz.bindGlobals();
     Reveal.initialize(revealConfig);
     Reveal.on('ready', () => {

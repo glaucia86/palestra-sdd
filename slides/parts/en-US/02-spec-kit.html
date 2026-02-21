@@ -1,0 +1,416 @@
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(0,221,179,0.15);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label" style="color:var(--accent-green);">Section 02</div>
+    <h2 class="section-page-title gradient-text">spec-kit</h2>
+    <p class="section-page-desc">The open-source toolkit that operationalizes SDD with CLI and slash commands for AI agents</p>
+    <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="package"></i></div>
+  </div>
+</section>
+<section id="spec-kit">
+
+  <!-- spec-kit 1 - What is spec-kit? -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.05) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="package"></i></span>
+      <span class="section-label">02 / spec-kit</span>
+    </div>
+    <h2><span class="accent">spec-kit</span> — The SDD Toolkit</h2>
+    <div class="two-cols" style="align-items:start; gap:2em;">
+      <div>
+        <div class="definition" style="margin-bottom:0.8em;">
+          <p>The <strong>spec-kit</strong> is an open-source toolkit maintained by GitHub that helps teams focus on product scenarios and predictable outcomes, instead of vibe-coding every piece from scratch. It <em>operationalizes</em> SDD with a CLI and slash commands for AI agents.</p>
+        </div>
+        <ul style="font-size:0.82em;">
+          <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank">github/spec-kit</a></li>
+          <li class="fragment"><strong>+70k stars</strong> on GitHub · 79 contributors</li>
+          <li class="fragment"><strong>Maintained by GitHub</strong>, inspired by <em>John Lam</em>'s research</li>
+          <li class="fragment"><strong>Specify CLI</strong> — installable via <code>uv tool install</code></li>
+          <li class="fragment"><strong>Slash Commands</strong> through agent integration (<code>/speckit.*</code>, when supported)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:var(--accent-green); text-align:center;">
+          <span class="card-icon"><i data-lucide="package-open"></i></span>
+          <h3 class="text-green">Mission</h3>
+          <p style="font-size:0.75em;">"Build high-quality software faster. Focus on product scenarios and predictable outcomes — not vibe coding."</p>
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.8em; font-size:0.78em;">
+          💡 <strong>spec-kit ≠ vibe coding.</strong> Every line of code is traceable to a human-approved requirement.
+        </div>
+        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+          🤖 Compatible with: GitHub Copilot, Claude Code, Cursor, Gemini CLI, Windsurf, Codex CLI, and <strong>20+ agents</strong>!
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+      ↓ press ↓ to continue in this section
+    </p>
+  </section>
+
+  <!-- spec-kit 2 - Installation and Setup -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="terminal"></i></span>
+      <span class="section-label">02 / spec-kit - Installation</span>
+    </div>
+    <h2>Installing <span class="accent">spec-kit</span></h2>
+    <div class="two-cols">
+      <div>
+        <h3 style="margin-bottom:0.5em; font-size:0.85em;">Option 1 - Permanent installation (recommended)</h3>
+        <pre><code class="language-bash"># Install once, use in any project
+uv tool install specify-cli \
+  --from git+https://github.com/github/spec-kit.git
+
+# Check available tools
+specify check</code></pre>
+        <h3 style="margin-top:0.8em; margin-bottom:0.5em; font-size:0.85em;">Option 2 - One-time use (no install)</h3>
+        <pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git \
+  specify init &lt;PROJECT_NAME&gt;</code></pre>
+        <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.78em;">
+          📋 <strong>Prerequisites:</strong> Python 3.11+, <code>uv</code>, Git, and a supported AI agent.
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:0.5em; font-size:0.85em;">Initialize Project</h3>
+        <pre><code class="language-bash"># New project with GitHub Copilot
+specify init my-project --ai copilot
+
+# In an existing project
+specify init --here --ai copilot
+
+# Windows (PowerShell)
+specify init my-project --ai copilot --script ps
+
+# With integrated AI Skills
+specify init my-project --ai copilot --ai-skills
+
+# With Claude Code
+specify init my-project --ai claude</code></pre>
+        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+          🔧 <code>specify init</code> sets up templates, slash commands (<code>/speckit.*</code>), and folder structure automatically.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- spec-kit 3 — Slash Commands -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="terminal-square"></i></span>
+      <span class="section-label">02 / spec-kit — Slash Commands</span>
+    </div>
+    <h2><span class="accent">spec-kit</span> Slash Commands</h2>
+    <div class="two-cols" style="gap:1.2em;">
+      <div>
+        <h3 style="margin-bottom:0.25em; font-size:0.82em;">⚡ Essential Commands (Core)</h3>
+        <table class="table-compact" style="font-size:0.69em;">
+          <thead><tr><th>Command</th><th>Function</th></tr></thead>
+          <tbody>
+            <tr><td><code>/speckit.constitution</code></td><td>Creates project principles and guidelines</td></tr>
+            <tr><td><code>/speckit.specify</code></td><td>Defines <em>what</em> to build (requirements + user stories)</td></tr>
+            <tr><td><code>/speckit.plan</code></td><td>Generates the technical implementation plan (≈ PRD)</td></tr>
+            <tr><td><code>/speckit.tasks</code></td><td>Creates an actionable task list</td></tr>
+            <tr><td><code>/speckit.implement</code></td><td>Executes all tasks and builds the project</td></tr>
+          </tbody>
+        </table>
+        <h3 style="margin-top:0.3em; margin-bottom:0.25em; font-size:0.82em;">🔍 Optional Commands</h3>
+        <table class="table-compact" style="font-size:0.69em;">
+          <thead><tr><th>Command</th><th>Function</th></tr></thead>
+          <tbody>
+            <tr><td><code>/speckit.clarify</code></td><td>Clarifies underspecified areas (before plan)</td></tr>
+            <tr><td><code>/speckit.analyze</code></td><td>Consistency analysis across artifacts</td></tr>
+            <tr><td><code>/speckit.checklist</code></td><td>Generates customized quality checklists</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="highlight-box purple" style="margin-bottom:0.45em; font-size:0.72em;">
+          🎯 <strong>Run in agent context:</strong> after <code>specify init</code>, these commands become available directly in GitHub Copilot Chat, Claude Code, Cursor, etc.
+        </div>
+        <div class="highlight-box" style="margin-bottom:0.45em; font-size:0.68em;">
+          <strong>Note:</strong> in some environments slash commands may not appear; fallback: run via CLI and/or use templates manually.
+        </div>
+        <div class="card" style="border-color:var(--accent-green); padding:0.8em 0.9em;">
+          <h3 style="font-size:0.82em; margin-bottom:0.3em;">Example — Copilot + spec-kit</h3>
+          <pre style="font-size:0.62em; margin-top:0.2em; line-height:1.25;"><code class="language-text">/speckit.constitution
+  Focus on code quality,
+  testing standards, and
+  UX consistency.
+
+/speckit.specify
+  Task REST API with auth
+  JWT and PostgreSQL.
+
+/speckit.plan
+  Stack: Node.js + TypeScript +
+  Prisma.</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- spec-kit 4 — SDD Pipeline Flow -->
+  <section data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,255,157,0.04) 0%, transparent 70%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="refresh-cw"></i></span>
+      <span class="section-label">02 / spec-kit — SDD Flow</span>
+    </div>
+    <h2>SDD Flow with <span class="accent">spec-kit</span></h2>
+
+    <div class="sdd-pipeline">
+
+      <div class="sdd-step sdd-step--init">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle sdd-circle--init">
+            <i data-lucide="play-circle"></i>
+          </div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Init</strong>
+          <code>specify init</code>
+        </div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line"></div></div>
+
+      <div class="sdd-step">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle" style="animation-delay:0.35s">
+            <i data-lucide="shield"></i>
+          </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Constitution</strong>
+          <code>/constitution</code>
+        </div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line"></div></div>
+
+      <div class="sdd-step">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle" style="animation-delay:0.7s">
+            <i data-lucide="clipboard-list"></i>
+          </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Specification</strong>
+          <code>/specify</code>
+        </div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line"></div></div>
+
+      <div class="sdd-step">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle" style="animation-delay:1.05s">
+            <i data-lucide="file-text"></i>
+          </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Planning</strong>
+          <code>/plan</code>
+        </div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line sdd-line--gold"></div></div>
+
+      <div class="sdd-step sdd-step--human">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle sdd-circle--human" style="animation-delay:1.4s">
+            <i data-lucide="user-check"></i>
+          </div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>✅ Approval</strong>
+          <code>human gate</code>
+        </div>
+        <div class="sdd-loop-note">↩ rejected → /plan</div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line"></div></div>
+
+      <div class="sdd-step">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle" style="animation-delay:1.75s">
+            <i data-lucide="zap"></i>
+          </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Tasks</strong>
+          <code>/tasks</code>
+        </div>
+      </div>
+
+      <div class="sdd-connector"><div class="sdd-line sdd-line--purple"></div></div>
+
+      <div class="sdd-step sdd-step--deploy">
+        <div class="sdd-circle-wrap">
+          <div class="sdd-circle sdd-circle--deploy" style="animation-delay:2.1s">
+            <i data-lucide="upload-cloud"></i>
+          </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
+        </div>
+        <div class="sdd-step-label">
+          <strong>Implement</strong>
+          <code>/implement</code>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="highlight-box" style="margin-top:0.5em; font-size:0.75em;">
+    📌 <strong>Human-in-the-Loop:</strong> every artifact generated by spec-kit is reviewed before moving forward. AI executes, humans validate, correct, and approve.
+    </div>
+  </section>
+
+  <!-- spec-kit 5 — PRD.md: the core artifact -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="clipboard-list"></i></span>
+      <span class="section-label">02 / spec-kit — PRD.md</span>
+    </div>
+    <h2>PRD.md — <span class="accent">Starting Point</span></h2>
+    <div class="two-cols">
+      <div>
+        <div class="definition" style="margin-bottom:0.7em;">
+          <p>You <strong>shape</strong> the project and create the <strong>PRD.md</strong> via prompt. Then use a prompt with <code>/speckit.specify</code> so the agent reads that file and starts the cycle: <em>specify → plan → tasks → implement</em>.</p>
+        </div>
+        <pre><code class="language-markdown"># PRD: [Project Name]
+
+## 1. Overview
+Concise product description and goals.
+
+## 2. Functional Requirements
+- **FR01**: The system must...
+- **FR02**: The system must...
+
+## 3. Non-Functional Requirements
+Performance, security, accessibility.
+
+## 4. Acceptance Criteria
+- **AC01**: Testable and verifiable...
+
+## 5. Open Questions
+- Ambiguities to resolve...</code></pre>
+      </div>
+      <div>
+        <div class="highlight-box" style="margin-bottom:0.7em;">
+          <strong>Why does PRD.md matter for AI?</strong>
+          <ul style="font-size:0.85em; margin-top:0.4em;">
+            <li>Use unique IDs <code>FR01</code>, <code>AC01</code> for traceability</li>
+            <li>Objective, testable acceptance criteria</li>
+            <li>Versioned in Git — decision history</li>
+            <li>Readable by humans <em>and</em> machines</li>
+          </ul>
+        </div>
+        <table style="font-size:0.7em;">
+          <thead><tr><th>Without PRD.md</th><th>With PRD.md</th></tr></thead>
+          <tbody>
+            <tr><td>Vague, ephemeral context</td><td>Structured, persistent context</td></tr>
+            <tr><td>Frequent hallucinations</td><td>Drastically reduced hallucinations</td></tr>
+            <tr><td>No traceability</td><td>Automatic via IDs (FR, AC)</td></tr>
+            <tr><td>Slow onboarding</td><td>Fast via PRD.md + AGENTS.md</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- spec-kit 6 — Mini Quality Checklist -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 50% at 85% 20%, rgba(56,200,250,0.06) 0%, transparent 65%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="clipboard-check"></i></span>
+      <span class="section-label">02 / spec-kit — Operational Checklist</span>
+    </div>
+    <h2>Mini <span class="accent">Quality</span> Checklist (Spec → Plan → Tasks)</h2>
+    <div class="card-grid-3" style="gap:0.7em; margin-top:0.7em;">
+      <div class="card" style="border-color:var(--accent-green);">
+        <span class="card-icon"><i data-lucide="file-text"></i></span>
+        <h3 style="font-size:0.9em;">Spec</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Explicit goals + non-goals</li>
+          <li class="check">Testable acceptance criteria</li>
+          <li class="check">Relevant examples and edge cases</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--accent-blue);">
+        <span class="card-icon"><i data-lucide="git-branch"></i></span>
+        <h3 style="font-size:0.9em;">Plan</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Incremental staged decomposition</li>
+          <li class="check">Dependencies and risks mapped</li>
+          <li class="check">Human review gate before implementation</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--accent-purple);">
+        <span class="card-icon"><i data-lucide="circle-check"></i></span>
+        <h3 style="font-size:0.9em;">Tasks</h3>
+        <ul class="checklist" style="font-size:0.74em;">
+          <li class="check">Small batches (small changes)</li>
+          <li class="check">Verification per batch (test/lint/build)</li>
+          <li class="check">Completion evidence per task</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box blue" style="margin-top:0.65em; font-size:0.74em;">
+      ✅ If the checklist passes, the agent gains speed <em>without</em> losing reliability.
+    </div>
+  </section>
+
+  <!-- spec-kit 7 — Supported Agents -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="bot"></i></span>
+      <span class="section-label">02 / spec-kit — Supported Agents</span>
+    </div>
+    <h2><span class="accent">Supported</span> AI Agents</h2>
+    <p style="font-size:0.75em; text-align:center; margin-bottom:0.6em;">spec-kit is agent-agnostic. It works with the leading AI coding assistants.</p>
+    <div class="card-grid-3" style="gap:0.55em; margin-top:0.4em;">
+      <div class="card" style="border-color:rgba(124,92,252,0.5); text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="sparkles"></i></span>
+        <h3 style="color:var(--accent-copilot-light); font-size:0.88em;">GitHub Copilot</h3>
+        <span class="tag purple">✅ Full Support</span>
+      </div>
+      <div class="card fragment" style="text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="brain"></i></span>
+        <h3 style="font-size:0.88em;">Claude Code</h3>
+        <span class="tag">✅ Full Support</span>
+      </div>
+      <div class="card fragment" style="border-color:rgba(56,200,250,0.35); text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="mouse-pointer-2"></i></span>
+        <h3 style="color:var(--accent-blue); font-size:0.88em;">Cursor</h3>
+        <span class="tag blue">✅ Full Support</span>
+      </div>
+      <div class="card fragment" style="text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="globe"></i></span>
+        <h3 style="font-size:0.88em;">Gemini CLI</h3>
+        <span class="tag green">✅ Full Support</span>
+      </div>
+      <div class="card fragment" style="text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="wind"></i></span>
+        <h3 style="font-size:0.88em;">Windsurf</h3>
+        <span class="tag">✅ Full Support</span>
+      </div>
+      <div class="card fragment" style="text-align:center; padding:0.6em;">
+        <span class="card-icon"><i data-lucide="code-2"></i></span>
+        <h3 style="font-size:0.88em;">Codex CLI</h3>
+        <span class="tag">✅ Full Support</span>
+      </div>
+    </div>
+    <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.73em;">
+      🌍 <strong>+20 supported agents:</strong> Amp, Auggie CLI, Jules, Kilo Code, opencode, Qwen Code, Roo Code, SHAI (OVHcloud), IBM Bob, Amazon Q Developer CLI and more!
+    </div>
+  </section>
+
+</section><!-- /spec-kit -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  SLIDE 5 — GITHUB COPILOT CHAT  (vertical group)
+════════════════════════════════════════════════════════════════════════════ -->
