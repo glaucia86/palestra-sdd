@@ -1,10 +1,15 @@
-<section id="demo-talk-code" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,205,71,0.08) 0%, transparent 60%)">
+<section id="demo-talk-code" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,205,71,0.08) 0%, transparent 60%)" data-background-image="resources/images/darth-vader.gif" data-background-size="cover" data-background-position="center center" data-background-opacity="0.12">
   <div class="section-orb section-orb-1" style="--orb-color: rgba(214,0,0,0.22);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(255,84,84,0.16);"></div>
+  <div class="demo-lightsaber-three" data-lightsaber-three>
+    <div class="demo-lightsaber-three-canvas" data-lightsaber-three-canvas aria-hidden="true"></div>
+  </div>
   <div class="section-page-container">
     <div class="section-page-label" style="color:#ff6b6b;">Seção 06</div>
     <h2 class="section-page-title gradient-text">Demo</h2>
     <p class="section-page-desc">Talk is cheap! Show me the A.I Code!</p>
+    <button class="demo-lightsaber-toggle-btn" type="button" data-lightsaber-toggle aria-pressed="false">OFF</button>
+    <p class="demo-easter-hint" data-demo-easter-hint>Dica: alguns comandos respondem a cliques em sequencia.</p>
     <div class="demo-lightsaber" aria-hidden="true">
       <span class="demo-lightsaber-hilt"></span>
       <span class="demo-lightsaber-blade"></span>
@@ -60,6 +65,9 @@
       <ul>
         <li><a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Documentation — docs.github.com</a></li>
         <li><a href="https://docs.github.com/en/copilot/reference/ai-models/supported-models" target="_blank">Modelos suportados (Fev 2026) — GitHub Docs</a></li>
+        <li><a href="https://github.com/features/copilot/cli" target="_blank">Copilot CLI — página oficial do produto</a></li>
+        <li><a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli" target="_blank">How to use GitHub Copilot CLI — GitHub Docs</a></li>
+        <li><a href="https://github.blog/changelog/2025-09-25-github-copilot-cli-is-now-in-public-preview/" target="_blank">Copilot CLI in public preview (25/Sep/2025) — GitHub Changelog</a></li>
       </ul>
     </div>
     <div class="refs-category">
@@ -203,13 +211,21 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE: THE END
 ════════════════════════════════════════════════════════════════════════════ -->
-<section id="the-end" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.08) 0%, transparent 60%)">
+<section id="the-end" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.08) 0%, transparent 60%)" data-background-image="resources/images/star-wars.gif" data-background-size="cover" data-background-position="center center" data-background-opacity="0.14">
   <div class="section-orb section-orb-1" style="--orb-color: rgba(0,221,179,0.15);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-page-container">
     <div class="section-page-label" style="color:var(--accent-green);">Encerramento</div>
     <h2 class="section-page-title gradient-text">THE END</h2>
     <p class="section-page-desc">Obrigada pela atenção. Continue explorando Spec-Driven Development com GitHub Copilot.</p>
+    <div class="the-end-audio-portal">
+      <button class="the-end-audio-trigger" type="button" data-end-audio-toggle aria-pressed="false">
+        <span class="the-end-audio-trigger-halo" aria-hidden="true"></span>
+        <span class="the-end-audio-trigger-icon"><i data-lucide="music-4"></i></span>
+        <span class="the-end-audio-trigger-text" data-end-audio-text>Ativar trilha final</span>
+      </button>
+      <p class="the-end-audio-hint" data-end-audio-hint>Clique para iniciar o tema de encerramento</p>
+    </div>
     <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="flag"></i></div>
   </div>
 </section>

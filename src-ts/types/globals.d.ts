@@ -34,4 +34,13 @@ interface Window {
   nextQuestion: () => void;
   showFinalScore: () => void;
   restartQuiz: () => void;
+  createDemoLightsaberThree?: (container: HTMLElement) => DemoLightsaberThreeController;
+}
+
+interface DemoLightsaberThreeController {
+  setOn(nextOn: boolean): void;
+  setDuelMode(nextDuelMode: boolean): void;
+  setActive(nextActive: boolean): void;
+  resize(): void;
+  dispose(): void;
 }

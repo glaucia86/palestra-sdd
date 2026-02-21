@@ -1,12 +1,26 @@
 const DEMO_SLIDE_ID = 'demo-talk-code';
 const REAL_SABER_SOUND = 'resources/sounds/lightsaber-sound.mp3';
+const EASTER_TAP_WINDOW_MS = 1200;
+const EASTER_MODE_DURATION_MS = 6000;
+const EASTER_NUDGE_MS = 1200;
 
 let soundEl: HTMLAudioElement | null = null;
 let soundBurstEl: HTMLAudioElement | null = null;
 let soundUnlocked = false;
+let lightsaberEnabled = false;
+let duelModeEnabled = false;
 let humUserEnabled = false;
 let toggleBound = false;
+let toggleThreeBound = false;
 let loopStartTimer = 0;
+let shakeTimer = 0;
+let easterModeTimer = 0;
+let easterTapTimes: number[] = [];
+let easterNudgeTimer = 0;
+let demoEasterNudge = false;
+let threeSaber: DemoLightsaberThreeController | null = null;
+let threeToggleBtn: HTMLButtonElement | null = null;
+let demoHintEl: HTMLElement | null = null;
 
 let activeSlide: HTMLElement | null = null;
 let rafId = 0;
@@ -14,6 +28,7 @@ let targetX = 0;
 let targetY = 0;
 let currentX = 0;
 let currentY = 0;
+let wasDemoSlideVisible = false;
 
 function ensureRealSound(): void {
   if (soundEl) return;
@@ -32,8 +47,120 @@ function updateAudioStateClass(slide: HTMLElement): void {
   slide.classList.toggle('demo-audio-ready', soundUnlocked);
   slide.classList.toggle('demo-audio-locked', !soundUnlocked);
   slide.classList.toggle('demo-hum-muted', !humUserEnabled);
-  slide.classList.toggle('demo-hum-on', humUserEnabled);
+  slide.classList.toggle('demo-hum-on', lightsaberEnabled);
+  slide.classList.toggle('demo-duel-mode', duelModeEnabled);
+  slide.classList.toggle('demo-easter-nudge', demoEasterNudge);
   slide.classList.remove('demo-audio-fallback');
+}
+
+function updateDemoHintText(slide: HTMLElement): void {
+  if (!demoHintEl) return;
+  if (duelModeEnabled) {
+    demoHintEl.textContent = 'Easter egg ativado.';
+  } else if (demoEasterNudge) {
+    demoHintEl.textContent = 'Quase la... tente mais rapido.';
+  } else {
+    demoHintEl.textContent = 'Dica: alguns comandos respondem a cliques em sequencia.';
+  }
+  updateAudioStateClass(slide);
+}
+
+function syncThreeToggleButtonState(): void {
+  if (!threeToggleBtn) return;
+  threeToggleBtn.textContent = lightsaberEnabled ? 'ON' : 'OFF';
+  threeToggleBtn.setAttribute('aria-pressed', String(lightsaberEnabled));
+}
+
+function syncThreeSaberState(slide: HTMLElement): void {
+  syncThreeToggleButtonState();
+  if (!threeSaber) return;
+  slide.classList.add('demo-three-ready');
+  threeSaber.setOn(lightsaberEnabled);
+  threeSaber.setDuelMode(duelModeEnabled);
+}
+
+function ensureThreeSaber(slide: HTMLElement): void {
+  if (threeSaber) return;
+  const host = slide.querySelector<HTMLElement>('[data-lightsaber-three-canvas]');
+  const createThreeSaber = window.createDemoLightsaberThree;
+  if (!host || !createThreeSaber) return;
+  try {
+    threeSaber = createThreeSaber(host);
+    slide.classList.add('demo-three-ready');
+    syncThreeSaberState(slide);
+  } catch {
+    slide.classList.remove('demo-three-ready');
+    threeSaber = null;
+  }
+}
+
+function clearEasterTapWindow(): void {
+  easterTapTimes = [];
+  if (easterNudgeTimer) {
+    clearTimeout(easterNudgeTimer);
+    easterNudgeTimer = 0;
+  }
+  demoEasterNudge = false;
+}
+
+function setDuelMode(slide: HTMLElement, enabled: boolean): void {
+  duelModeEnabled = enabled;
+  if (enabled) demoEasterNudge = false;
+  if (easterModeTimer) {
+    clearTimeout(easterModeTimer);
+    easterModeTimer = 0;
+  }
+  if (enabled) {
+    easterModeTimer = window.setTimeout(() => {
+      duelModeEnabled = false;
+      updateAudioStateClass(slide);
+      syncThreeSaberState(slide);
+      updateDemoHintText(slide);
+      easterModeTimer = 0;
+    }, EASTER_MODE_DURATION_MS);
+  }
+  updateAudioStateClass(slide);
+  syncThreeSaberState(slide);
+  updateDemoHintText(slide);
+}
+
+function triggerIgniteShake(slide: HTMLElement): void {
+  const target =
+    slide.querySelector<HTMLElement>('.demo-lightsaber-three-canvas') ??
+    slide.querySelector<HTMLElement>('.demo-lightsaber');
+  if (!target) return;
+  if (shakeTimer) {
+    clearTimeout(shakeTimer);
+    shakeTimer = 0;
+  }
+  target.classList.remove('demo-ignite-shake');
+  // Force reflow to restart keyframe on repeated activations.
+  void target.offsetWidth;
+  target.classList.add('demo-ignite-shake');
+  shakeTimer = window.setTimeout(() => {
+    target.classList.remove('demo-ignite-shake');
+    shakeTimer = 0;
+  }, 180);
+}
+
+function registerEasterEggTap(slide: HTMLElement): boolean {
+  const now = Date.now();
+  easterTapTimes.push(now);
+  easterTapTimes = easterTapTimes.filter((time) => now - time <= EASTER_TAP_WINDOW_MS);
+  if (easterTapTimes.length === 2) {
+    demoEasterNudge = true;
+    updateDemoHintText(slide);
+    if (easterNudgeTimer) clearTimeout(easterNudgeTimer);
+    easterNudgeTimer = window.setTimeout(() => {
+      demoEasterNudge = false;
+      updateDemoHintText(slide);
+      easterNudgeTimer = 0;
+    }, EASTER_NUDGE_MS);
+  }
+  if (easterTapTimes.length < 3) return false;
+  clearEasterTapWindow();
+  setDuelMode(slide, true);
+  return true;
 }
 
 async function playRealSoundWithIgnition(): Promise<boolean> {
@@ -75,16 +202,25 @@ function stopRealSound(): void {
 }
 
 async function toggleHum(slide: HTMLElement, forceState: boolean | null = null): Promise<void> {
-  const shouldEnable = forceState === null ? !humUserEnabled : Boolean(forceState);
+  const previousState = lightsaberEnabled;
+  const shouldEnable = forceState === null ? !lightsaberEnabled : Boolean(forceState);
+  lightsaberEnabled = shouldEnable;
+
   if (shouldEnable) {
+    if (!previousState) triggerIgniteShake(slide);
     humUserEnabled = true;
+    updateAudioStateClass(slide);
+    syncThreeSaberState(slide);
     const ok = await playRealSoundWithIgnition();
     humUserEnabled = ok;
   } else {
     stopRealSound();
     humUserEnabled = false;
+    setDuelMode(slide, false);
   }
+
   updateAudioStateClass(slide);
+  syncThreeSaberState(slide);
 }
 
 function animateParallax(): void {
@@ -151,20 +287,63 @@ export function syncDemoExperience(currentSlide: HTMLElement | null): void {
       saber.addEventListener('click', async (event: MouseEvent) => {
         event.preventDefault();
         event.stopPropagation();
+        if (registerEasterEggTap(demoSlide)) {
+          await toggleHum(demoSlide, true);
+          return;
+        }
         await toggleHum(demoSlide);
       });
     }
   }
 
+  if (!toggleThreeBound) {
+    const threeCanvas = demoSlide.querySelector<HTMLElement>('[data-lightsaber-three-canvas]');
+    const toggleBtn = demoSlide.querySelector<HTMLButtonElement>('[data-lightsaber-toggle]');
+    demoHintEl = demoSlide.querySelector<HTMLElement>('[data-demo-easter-hint]');
+    if (threeCanvas && toggleBtn) {
+      toggleThreeBound = true;
+      threeToggleBtn = toggleBtn;
+      const onToggle = async (event: Event): Promise<void> => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (registerEasterEggTap(demoSlide)) {
+          await toggleHum(demoSlide, true);
+          return;
+        }
+        await toggleHum(demoSlide);
+      };
+      threeCanvas.addEventListener('click', onToggle);
+      toggleBtn.addEventListener('click', onToggle);
+      syncThreeToggleButtonState();
+      updateDemoHintText(demoSlide);
+    }
+  }
+
   const isDemoSlide = currentSlide?.id === DEMO_SLIDE_ID;
   if (isDemoSlide) {
+    if (!wasDemoSlideVisible) {
+      // Every time the user enters the demo slide, start from OFF + silent.
+      clearEasterTapWindow();
+      setDuelMode(demoSlide, false);
+      void toggleHum(demoSlide, false);
+      wasDemoSlideVisible = true;
+    }
+    ensureThreeSaber(demoSlide);
     demoSlide.classList.add('demo-effects-active');
     updateAudioStateClass(demoSlide);
+    syncThreeSaberState(demoSlide);
+    threeSaber?.setActive(true);
+    threeSaber?.resize();
     if (activeSlide !== demoSlide) startParallax(demoSlide);
     return;
   }
 
   demoSlide.classList.remove('demo-effects-active');
+  clearEasterTapWindow();
+  setDuelMode(demoSlide, false);
+  updateDemoHintText(demoSlide);
   void toggleHum(demoSlide, false);
+  threeSaber?.setActive(false);
+  wasDemoSlideVisible = false;
   if (activeSlide === demoSlide) stopParallax(demoSlide);
 }

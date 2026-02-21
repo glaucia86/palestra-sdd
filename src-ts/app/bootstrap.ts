@@ -5,6 +5,7 @@ import { createParticles } from './features/particles.js';
 import { createSectionCosmics } from './features/section-cosmos.js';
 import { syncSpecialSlideBackgrounds } from './features/special-backgrounds.js';
 import { syncDemoExperience } from './features/demo-experience.js';
+import { syncTheEndExperience } from './features/the-end-experience.js';
 import { quizData } from './quiz/data.js';
 import { QuizController } from './quiz/controller.js';
 
@@ -22,6 +23,7 @@ export function bootstrapPresentation(): void {
     createSectionCosmics();
     syncSpecialSlideBackgrounds(Reveal.getCurrentSlide());
     syncDemoExperience(Reveal.getCurrentSlide());
+    syncTheEndExperience(Reveal.getCurrentSlide());
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -42,6 +44,7 @@ export function bootstrapPresentation(): void {
   Reveal.on('slidechanged', (event: { currentSlide: HTMLElement }) => {
     syncSpecialSlideBackgrounds(event.currentSlide);
     syncDemoExperience(event.currentSlide);
+    syncTheEndExperience(event.currentSlide);
     const unrendered = event.currentSlide.querySelectorAll<Element>('.mermaid:not([data-processed])');
     if (unrendered.length) void mermaid.run({ nodes: Array.from(unrendered) });
   });

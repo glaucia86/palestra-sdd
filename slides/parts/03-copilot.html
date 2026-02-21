@@ -48,43 +48,81 @@
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="clock"></i></span>
-      <span class="section-label">03 / GitHub Copilot Chat — Timeline</span>
+      <span class="section-label">03 / GitHub Copilot — Timeline</span>
     </div>
     <h2>Linha do <span class="accent">Tempo</span></h2>
-    <div class="timeline-grid">
-      <div class="card fragment" style="border-color:rgba(0,221,179,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-green); margin-bottom:0.2em;">JUN 2021</div>
-        <p style="font-size:0.7em; margin:0;">Preview técnico do Copilot — apenas completions de código no VS Code</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(56,200,250,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-blue); margin-bottom:0.2em;">JUN 2022</div>
-        <p style="font-size:0.7em; margin:0;">Copilot GA — $10/mês (Individual), $19/mês (Business)</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(146,119,255,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-purple); margin-bottom:0.2em;">MAR 2023</div>
-        <p style="font-size:0.7em; margin:0;"><strong>Copilot X</strong> anunciado — Chat, voz, PRs e Docs integrados</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(255,120,73,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-orange); margin-bottom:0.2em;">NOV 2023</div>
-        <p style="font-size:0.7em; margin:0;">Copilot Chat <strong>GA</strong> — VS Code e Visual Studio</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(0,221,179,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-green); margin-bottom:0.2em;">FEV 2025</div>
-        <p style="font-size:0.7em; margin:0;">Claude 3.5 Sonnet e Gemini 1.5 Pro adicionados — multi-model disponível</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(124,92,252,0.55); box-shadow:0 0 20px rgba(124,92,252,0.2); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-copilot-light); margin-bottom:0.2em;">JUN 2025</div>
-        <p style="font-size:0.7em; margin:0;"><strong>Agent Mode GA</strong> — execução autônoma multi-arquivo disponível para todos</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(56,200,250,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-blue); margin-bottom:0.2em;">DEZ 2025</div>
-        <p style="font-size:0.7em; margin:0;"><strong>Agent Skills</strong> + plano Free (50 chats/mês) + <strong>Plan Mode</strong> preview lançados</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(255,205,71,0.35); padding:0.9em 0.8em;">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3em; letter-spacing:0.08em; color:var(--accent-gold); margin-bottom:0.2em;">FEV 2026</div>
-        <p style="font-size:0.7em; margin:0;"><strong>Gemini 3.1 Pro</strong> preview + Claude Sonnet 4.6 GA — era dos modelos especializados</p>
-      </div>
+    <div class="copilot-timeline">
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2021</div>
+          <p>Preview técnico do Copilot no VS Code.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2022</div>
+          <p>Copilot GA para devs e equipes.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">NOV 2023</div>
+          <p><strong>Copilot Chat GA</strong> em VS Code e Visual Studio.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">JUN 2025</div>
+          <p><strong>Agent Mode GA</strong> com execução multi-etapas.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment copilot-timeline-item-cli">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">SET 2025</div>
+          <p><strong>Copilot CLI</strong> entra em <strong>public preview</strong>.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment copilot-timeline-item-cli">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">OUT 2025</div>
+          <p><code>gh-copilot</code> é deprecado; migração para Copilot CLI.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item top fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">DEZ 2025</div>
+          <p><strong>Agent Skills</strong> + Free + <strong>Plan Mode</strong> preview.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
+      <article class="copilot-timeline-item bottom fragment">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">FEV 2026</div>
+          <p>Era multi-model consolidada para tarefas especializadas.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
     </div>
+    <div class="highlight-box" style="margin-top:0.45em; font-size:0.7em;">
+      <strong>Leitura SDD:</strong> a evolução saiu de “autocomplete” para uma experiência completa de engenharia em <strong>IDE + terminal</strong>, com mais autonomia e governança.
+    </div>
+    <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
+      Datas de CLI: public preview em 25/09/2025 e depreciação do <code>gh-copilot</code> em 25/10/2025.
+    </p>
   </section>
 
   <!-- 5.3 — Modos do Copilot Chat -->
@@ -234,6 +272,75 @@
         <p style="font-size:0.7em;"><code>Ctrl+I</code> diretamente no editor — edite código sem abrir o painel lateral. Refatore qualquer seleção com texto natural.</p>
       </div>
     </div>
+  </section>
+
+  <!-- 5.5a — Copilot CLI: visão estratégica -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 20%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="terminal-square"></i></span>
+      <span class="section-label">03 / GitHub Copilot CLI — Visão Geral</span>
+    </div>
+    <h2>GitHub <span class="accent">Copilot CLI</span></h2>
+    <div class="two-cols" style="align-items:center; gap:1.6em;">
+      <div style="text-align:center;">
+        <img src="resources/images/copilot-cli.png" alt="GitHub Copilot CLI no terminal" style="max-width:92%; border-radius:0.55em; border:1px solid rgba(124,92,252,0.35); box-shadow:0 0 28px rgba(124,92,252,0.16);" />
+        <div style="margin-top:0.55em;">
+          <span class="tag purple">Public Preview</span>
+          <span class="tag blue">Terminal-first</span>
+          <span class="tag">SDD-ready</span>
+        </div>
+      </div>
+      <div>
+        <div class="definition" style="margin-bottom:0.55em;">
+          <p>O <strong>Copilot CLI</strong> leva a experiência do GitHub Copilot para o terminal, complementando o Chat da IDE com execução orientada por linguagem natural no shell.</p>
+        </div>
+        <ul style="font-size:0.76em;">
+          <li class="fragment"><strong>Produto oficial GitHub</strong> para fluxo de engenharia no terminal</li>
+          <li class="fragment"><strong>Complementa o Copilot Chat</strong> (não substitui a IDE por completo)</li>
+          <li class="fragment"><strong>Útil em SDD</strong> para explorar, automatizar e iterar tarefas fora do editor</li>
+          <li class="fragment"><strong>Planos compatíveis:</strong> Pro, Pro+, Business e Enterprise</li>
+        </ul>
+        <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
+          <strong>IDE + Terminal = contexto contínuo:</strong> especifique no PRD, valide no plano, execute com rastreabilidade entre editor e shell.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5aa — Copilot CLI: prática e governança -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="workflow"></i></span>
+      <span class="section-label">03 / GitHub Copilot CLI — Prática</span>
+    </div>
+    <h2>Quando Usar no Fluxo <span class="accent">SDD</span></h2>
+    <div class="card-grid-2" style="gap:0.8em; margin-top:0.45em;">
+      <div class="card" style="padding:0.95em 1em;">
+        <span class="card-icon"><i data-lucide="list-checks"></i></span>
+        <h3>Cenários ideais</h3>
+        <ul style="font-size:0.7em; margin-top:0.25em;">
+          <li>Explorar e entender repositórios direto no terminal</li>
+          <li>Gerar comandos shell com linguagem natural</li>
+          <li>Acelerar automações locais e workflows repetitivos</li>
+          <li>Apoiar triagem de erros e ajustes rápidos fora da IDE</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="shield-check"></i></span>
+        <h3 style="color:var(--accent-blue);">Governança e segurança</h3>
+        <pre style="font-size:0.64em; margin-top:0.35em;"><code class="language-bash"># Exemplo de fluxo
+copilot --help
+# revisar sugestao
+# executar somente em diretorio confiavel
+# validar diff antes de commitar</code></pre>
+        <p style="font-size:0.66em; margin-top:0.35em; color:var(--text-secondary);">
+          Mantenha <strong>human-in-the-loop</strong>: revise comandos sugeridos, limite permissões e valide impacto antes de executar.
+        </p>
+      </div>
+    </div>
+    <p style="font-size:0.56em; color:var(--text-muted); text-align:center; margin-top:0.65em;">
+      Public preview: <strong>25 de setembro de 2025</strong>. Caminho antigo (<code>gh-copilot</code>) deprecado em <strong>25 de outubro de 2025</strong>.
+    </p>
   </section>
 
   <!-- 5.5b — Agent Skills (Dez 2025) -->
