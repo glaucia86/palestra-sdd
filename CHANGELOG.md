@@ -4,6 +4,29 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [2.2.0] - 2026-02-21
+
+### Added
+- Full multilingual slide runtime (PT-BR, EN-US, ES-ES) with locale-specific manifests:
+  - `slides/manifest.pt-BR.json`
+  - `slides/manifest.en-US.json`
+  - `slides/manifest.es-ES.json`
+- Dedicated localized slide-part trees:
+  - `slides/parts/pt-BR/*`
+  - `slides/parts/en-US/*`
+  - `slides/parts/es-ES/*`
+- Locale-aware quiz experience (questions, UI labels, validation messages).
+- Fixed language switcher in the presentation shell (`PT | EN | ES`) for on-the-fly locale changes via URL query.
+- Locale-aware dynamic UX copy for interactive effects:
+  - demo hints in `#/demo-talk-code`
+  - finale audio/hyperdrive hints in `#/the-end`
+
+### Changed
+- Replaced initial language gate flow with a top-right persistent language toggle in `index.html`.
+- Bootstrap/init now resolves locale from query (`?lang=`), defaults to `pt-BR`, and keeps URL/locale state synchronized.
+- Updated metadata and UI strings to load from locale dictionaries (`src-ts/app/i18n/*`).
+- Normalized EN/ES slide content to remove mixed Portuguese text in localized decks.
+
 ## [2.1.0] - 2026-02-21
 
 ### Added
