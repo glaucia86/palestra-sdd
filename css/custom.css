@@ -902,9 +902,18 @@ html, body {
 /* ============================================================================
    SLIDE: CAPA
    ============================================================================ */
+#capa {
+  position: relative;
+}
+
+#capa::before,
+#capa::after {
+  content: none;
+}
+
 .slide-capa {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  min-height: 100%; text-align: center; position: relative; z-index: 1;
+  min-height: 100%; text-align: center; position: relative; z-index: 2;
 }
 
 /* Hero orbs — ambient bioluminescent glow */
@@ -946,6 +955,45 @@ html, body {
   text-transform: uppercase;
   margin-bottom: 1em;
   backdrop-filter: blur(8px);
+}
+
+.capa-mission-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.85em;
+  padding: 0.34em 0.95em;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 205, 71, 0.58);
+  background: linear-gradient(90deg, rgba(41, 29, 6, 0.72), rgba(22, 17, 10, 0.72));
+  color: rgba(255, 227, 163, 0.96);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 0.62em rgba(255, 205, 71, 0.24),
+    inset 0 0 0.35em rgba(255, 205, 71, 0.14);
+  animation: capa-chip-glow 2.4s ease-in-out infinite alternate;
+}
+
+.capa-mission-chip-icon svg.lucide {
+  width: 0.95em;
+  height: 0.95em;
+  color: rgba(255, 218, 128, 0.96);
+}
+
+@keyframes capa-chip-glow {
+  from {
+    box-shadow:
+      0 0 0.52em rgba(255, 205, 71, 0.22),
+      inset 0 0 0.3em rgba(255, 205, 71, 0.12);
+  }
+  to {
+    box-shadow:
+      0 0 0.88em rgba(255, 205, 71, 0.34),
+      inset 0 0 0.42em rgba(255, 205, 71, 0.2);
+  }
 }
 
 .capa-title {
