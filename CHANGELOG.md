@@ -4,6 +4,37 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [2.1.0] - 2026-02-21
+
+### Added
+- Interactive Three.js lightsaber experience in `#demo-talk-code`:
+  - ON/OFF blade state with smooth horizontal extension/retraction.
+  - Real-time glow pipeline with post-processing bloom.
+  - Full-slide rendering layer with resilient fallback behavior.
+- Enhanced demo interactions:
+  - audio-coupled saber control with explicit reset on slide entry (`OFF + sem som`);
+  - staged visual effects (reactive background, ignite shake);
+  - easter egg mode (`duel mode`) with timed auto-reset.
+- New finale soundtrack experience in `#the-end`:
+  - click-to-play/click-to-pause CTA (`star-wars-final-song.mp3`);
+  - autoplay-safe interaction flow and per-slide reset behavior;
+  - dedicated final slide UX states (`on/off`, active effects).
+- New finale easter egg:
+  - `Hyperdrive` mode via multi-click gesture;
+  - progressive activation feedback;
+  - controlled duration with smooth fade-out exit.
+- New release notes file:
+  - `docs/releases/v2.1.0.md`
+
+### Changed
+- Final slide visual direction:
+  - full-screen `star-wars.gif` background with calibrated opacity.
+- Demo slide visual direction:
+  - full-screen `darth-vader.gif` background with calibrated opacity;
+  - improved hinting for discoverability of hidden interactions.
+- UI copy refinements:
+  - subtle progressive hints (“quase lá…”) for easter egg discovery on demo and final slides.
+
 ## [2.0.0] - 2026-02-20
 
 ### Added
