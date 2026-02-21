@@ -7,6 +7,10 @@
     <p class="section-page-desc">PRD.md, AGENTS.md, Rules e Skills — os quatro pilares do contexto estruturado</p>
     <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
   </div>
+  <aside class="notes">
+    <p>Agora entramos no ponto mais estrutural da palestra: arquitetura de contexto. É aqui que a qualidade da colaboração com IA realmente se sustenta.</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 <section id="arquitetura">
 
@@ -61,6 +65,11 @@
         <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Leiam este diagrama como pipeline de engenharia. Entradas bem definidas alimentam o agente e aumentam consistência de saída.</p>
+      <p>Quando uma entrada está fraca, a saída perde qualidade mesmo com modelo excelente. Por isso, contexto e arquitetura, não apenas prompt.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- 7.2 AGENTS.md -->
@@ -116,6 +125,11 @@ API REST de gerenciamento de tarefas.
 - Não altere o schema sem migração</code></pre>
       </div>
     </div>
+    <aside class="notes">
+      <p>AGENTS.md funciona como manual operacional da IA no repositório.</p>
+      <p>Eu recomendo manter na raiz, com linguagem objetiva, regras acionáveis e limites claros. Ele precisa ser útil para humano e para agente.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- 7.3 Rules -->
@@ -159,6 +173,11 @@ API REST de gerenciamento de tarefas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Uma forma simples de diferenciar: Rules são política global; AGENTS é contrato local do projeto.</p>
+      <p>Quando os dois estão alinhados, você ganha consistência sem perder adaptação ao contexto específico.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- 7.4 Skills.md -->
@@ -202,6 +221,11 @@ API REST de gerenciamento de tarefas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Skills são especialização modular de conhecimento. Em vez de carregar tudo sempre, o agente aprofunda só quando a tarefa pede.</p>
+      <p>Isso melhora foco, reduz custo de contexto e aumenta qualidade da resposta.</p>
+      <p>Seta 0 (antes de avançar): explicar por que Skills evitam sobrecarga de contexto. Seta 1: card Performance. Seta 2: card Portabilidade. Fechamento do slide: carregar contexto sob demanda melhora qualidade e custo.</p>
+    </aside>
   </section>
 
   <!-- 7.5 Context Architecture Mermaid + Resumo -->
@@ -249,6 +273,11 @@ API REST de gerenciamento de tarefas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Recapitulando: PRD, AGENTS, Rules e Skills. Esses quatro pilares formam o sistema de governança da IA no projeto.</p>
+      <p>Quanto mais autonomia você libera para o agente, mais importante fica essa arquitetura de contexto.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
 </section><!-- /arquitetura -->
@@ -265,6 +294,10 @@ API REST de gerenciamento de tarefas.
     <p class="section-page-desc">Revelar apenas o contexto necessário, no momento certo — o segredo para um agente eficiente</p>
     <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
   </div>
+  <aside class="notes">
+    <p>Agora vamos para o princípio que permite escalar isso com eficiência: progressive disclosure.</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 <section id="progressive-disclosure">
 
@@ -301,6 +334,12 @@ API REST de gerenciamento de tarefas.
     <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
       ↓ pressione ↓ para continuar nesta seção
     </p>
+    <aside class="notes">
+      <p>Progressive disclosure é sobre foco: carregar apenas o contexto necessário para a tarefa atual.</p>
+      <p>A estratégia prática é base global mínima mais especialização sob demanda. Isso reduz ruído e melhora assertividade.</p>
+      <p>Percentuais de economia devem ser tratados como referência e validados no seu próprio ambiente.</p>
+      <p>Seta 0 (antes de avançar): contextualize progressive disclosure como estratégia de foco. Seta 1: AGENTS raiz mínimo. Seta 2: Skills sob demanda. Seta 3: economia de contexto. Seta 4: ganho de qualidade. Fechamento do slide: menos ruído, respostas mais consistentes.</p>
+    </aside>
   </section>
 
   <!-- PD 2 — Estrutura em Camadas -->
@@ -354,6 +393,11 @@ API de gerenciamento de tarefas com JWT.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Esta estrutura em camadas é fácil de replicar: AGENTS enxuto na raiz, documentos especializados por domínio e rules globais separadas.</p>
+      <p>Assim você evita arquivo monolítico e ganha manutenção mais limpa no longo prazo.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- PD 3 — 6 Princípios -->
@@ -398,6 +442,11 @@ API de gerenciamento de tarefas com JWT.
     <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
       📚 Esses arquivos especializados também são chamados de <strong>"Skills"</strong> na comunidade de AI Agents (Claude Code, Cursor, etc.) — mesmo conceito, carregamento sob demanda.
     </div>
+    <aside class="notes">
+      <p>Esses seis princípios são higiene de contexto. Parecem simples, mas fazem enorme diferença na consistência da colaboração com IA.</p>
+      <p>Se eu resumir em uma frase: clareza estrutural reduz custo e aumenta confiabilidade.</p>
+      <p>Seta 0 (antes de avançar): avise que esses princípios são higiene operacional do contexto. Seta 1: Minimalismo. Seta 2: Separação. Seta 3: Delegação. Seta 4: Acionabilidade. Seta 5: Estabilidade. Seta 6: Economia. Fechamento do slide: clareza estrutural reduz custo e risco.</p>
+    </aside>
   </section>
 
 </section><!-- /progressive-disclosure -->
@@ -405,3 +454,5 @@ API de gerenciamento de tarefas com JWT.
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE 8 — REFERÊNCIAS
 ════════════════════════════════════════════════════════════════════════════ -->
+
+

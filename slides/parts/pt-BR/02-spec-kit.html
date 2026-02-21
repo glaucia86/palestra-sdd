@@ -7,6 +7,10 @@
     <p class="section-page-desc">O toolkit open source que operacionaliza SDD com CLI e slash commands para agentes IA</p>
     <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="package"></i></div>
   </div>
+  <aside class="notes">
+    <p>Agora a conversa sai do conceito e entra na operação. A pergunta aqui é: como transformar SDD em rotina real de equipe?</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 <section id="spec-kit">
 
@@ -24,7 +28,7 @@
         </div>
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank">github/spec-kit</a></li>
-          <li class="fragment"><strong>+70k estrelas</strong> no GitHub · 79 contribuidores</li>
+          <li class="fragment"><strong>+70k estrelas</strong> no GitHub · +80 contribuidores</li>
           <li class="fragment"><strong>Mantido pelo GitHub</strong>, inspirado na pesquisa de <em>John Lam</em></li>
           <li class="fragment"><strong>Specify CLI</strong> — installável via <code>uv tool install</code></li>
           <li class="fragment"><strong>Slash Commands</strong> via integração do agente (<code>/speckit.*</code>, quando suportado)</li>
@@ -47,6 +51,15 @@
     <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
       ↓ pressione ↓ para continuar nesta seção
     </p>
+    <aside class="notes">
+      <p>Seta 0 (antes de avançar): pessoal, agora saímos do conceito e entramos na ferramenta que operacionaliza SDD de verdade. A ideia é simples: trocar improviso por processo reproduzível.</p>
+      <p>Seta 1: quando aparece \"Open Source\", eu reforço confiança e transparência. O método e o código estão abertos para inspeção, evolução e auditoria.</p>
+      <p>Seta 2: no ponto de tração no GitHub, eu explico que números variam com o tempo, mas sinalizam adoção real da comunidade e uso prático em escala.</p>
+      <p>Seta 3: com \"mantido pelo GitHub\", eu conecto com governança do projeto e continuidade. Não é experimento isolado, é iniciativa com direção clara.</p>
+      <p>Seta 4: quando entra o Specify CLI, eu traduzo para a audiência: é a porta de entrada prática para colocar o fluxo no dia a dia do time.</p>
+      <p>Seta 5: em slash commands, eu fecho com produtividade operacional. Você transforma a especificação em plano e execução dentro do agente, com menos fricção.</p>
+      <p>Fechamento do slide: spec-kit não é sobre \"vibe coding\"; é sobre previsibilidade, rastreabilidade e velocidade com controle técnico.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 2 — Instalação e Setup -->
@@ -93,6 +106,12 @@ specify init meu-projeto --ai claude</code></pre>
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Eu apresento esta parte como receita: pré-requisito, instalação e inicialização. Simples, mas com padrão claro para todo o time.</p>
+      <p>Instalação permanente funciona melhor para quem usa todo dia. Uso com uvx é bom para testar sem acoplamento.</p>
+      <p>Também vale reforçar que os parâmetros mudam por agente e shell.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 3 — Slash Commands -->
@@ -149,6 +168,12 @@ specify init meu-projeto --ai claude</code></pre>
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>Aqui está o ciclo completo: definir, planejar, quebrar em tarefas e implementar. Isso reduz improviso porque cada etapa deixa evidência.</p>
+      <p>Se o slash command não aparecer no ambiente, sem problema: o CLI continua sendo caminho oficial.</p>
+      <p>Mensagem-chave para a audiência: processo consistente vence prompt brilhante isolado.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 4 — Fluxo SDD Pipeline -->
@@ -268,6 +293,11 @@ specify init meu-projeto --ai claude</code></pre>
     <div class="highlight-box" style="margin-top:0.5em; font-size:0.75em;">
     📌 <strong>Human-in-the-Loop:</strong> cada artefato gerado pelo spec-kit é revisado por você antes de avançar. A IA executa, o humano valida, corrige e aprova.
     </div>
+    <aside class="notes">
+      <p>Este slide é sobre controle de risco. O gate humano existe para impedir que plano ruim vire código em produção.</p>
+      <p>Se não aprovou, volta para plan. Esse loop parece lento no curto prazo, mas economiza muito custo de correção depois.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 5 — PRD.md: o artefato central -->
@@ -321,6 +351,11 @@ Performance, segurança, acessibilidade.
         </table>
       </div>
     </div>
+    <aside class="notes">
+      <p>PRD é contrato de produto legível por humano e por agente. Quando RF e CA estão claros e testáveis, a implementação fica muito menos ambígua.</p>
+      <p>IDs de requisito e aceite são essenciais para rastrear código, teste e decisão ao longo do tempo.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 6 — Mini Checklist de Qualidade -->
@@ -362,6 +397,11 @@ Performance, segurança, acessibilidade.
     <div class="highlight-box blue" style="margin-top:0.65em; font-size:0.74em;">
       ✅ Se o checklist passa, o agente ganha velocidade <em>sem</em> perder confiabilidade.
     </div>
+    <aside class="notes">
+      <p>Este e o checklist de \"pronto para executar\". Se spec, plan e tasks passam aqui, a chance de retrabalho cai bastante.</p>
+      <p>Eu gosto de vender este ritual como seguro barato: poucos minutos de revisão para evitar horas de correção.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 7 — Agentes Suportados -->
@@ -407,6 +447,11 @@ Performance, segurança, acessibilidade.
     <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.73em;">
       🌍 <strong>+20 agentes suportados:</strong> Amp, Auggie CLI, Jules, Kilo Code, opencode, Qwen Code, Roo Code, SHAI (OVHcloud), IBM Bob, Amazon Q Developer CLI e mais!
     </div>
+    <aside class="notes">
+      <p>Fecho com portabilidade: SDD é método, não dependência de uma única ferramenta.</p>
+      <p>Isso protege investimento do time. Mesmo trocando agente, os artefatos e o processo continuam valendo.</p>
+      <p>Seta 0 (antes de avançar): explique que método bom precisa ser portátil entre ferramentas. Seta 1: Claude Code. Seta 2: Cursor. Seta 3: Gemini CLI. Seta 4: Windsurf. Seta 5: Codex CLI. Fechamento do slide: processo e artefato valem mais que plataforma específica.</p>
+    </aside>
   </section>
 
 </section><!-- /spec-kit -->
@@ -414,3 +459,5 @@ Performance, segurança, acessibilidade.
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE 5 — GITHUB COPILOT CHAT  (vertical group)
 ════════════════════════════════════════════════════════════════════════════ -->
+
+

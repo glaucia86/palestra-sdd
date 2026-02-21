@@ -41,6 +41,12 @@
       ➡ use as setas do teclado · clique · swipe para navegar
     </p>
   </div>
+  <aside class="notes">
+    <p>Pessoal, sejam muito bem-vindos. Hoje eu quero mostrar uma mudança de mentalidade: sair de prompt solto e entrar em engenharia guiada por especificação.</p>
+    <p>Durante a palestra, guardem esta ideia: IA não substitui critério técnico, ela amplifica o que você entrega de contexto. Se o contexto é vago, o resultado será vago. Se o contexto é estruturado, o resultado tende a ser previsível.</p>
+    <p>Meu objetivo aqui é prático: reduzir retrabalho, aumentar rastreabilidade e manter velocidade com qualidade.</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
@@ -100,6 +106,11 @@
       <div class="num">09</div>
     </a>
   </div>
+  <aside class="notes">
+    <p>Este é o mapa da conversa. Primeiro eu fundamento o SDD, depois mostro como operacionalizar com spec-kit e Copilot, e fecho com arquitetura de contexto, demo e checklist de adoção.</p>
+    <p>Se o tempo ficar curto, a gente consegue priorizar os blocos mais relevantes para o cenário de vocês sem perder o fio da narrativa.</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
@@ -114,6 +125,10 @@
     <p class="section-page-desc">Spec-Driven Development: A evolução do TDD e BDD na era da IA generativa</p>
     <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="target"></i></div>
   </div>
+  <aside class="notes">
+    <p>Transição: agora começamos o bloco de fundamentos. Vou explicar o que é SDD, por que isso ficou tão relevante com agentes e onde ele se encaixa no ciclo de engenharia.</p>
+    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
@@ -157,6 +172,12 @@
     <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
       ↓ pressione ↓ para continuar nesta seção
     </p>
+    <aside class="notes">
+      <p>Quando eu falo em SDD, estou falando de tratar especificação como artefato executável de engenharia, não como documentação decorativa.</p>
+      <p>A analogia da planta ajuda: sem planta, a construção sai no improviso. Com IA é igual. O humano define intenção, limite e critério de aceite; o agente executa dentro desse contrato.</p>
+      <p>É importante reforçar: SDD complementa testes e revisão, não os substitui.</p>
+      <p>Seta 0 (antes de avançar): alinhe que estes quatro pontos são os pilares operacionais do SDD. Seta 1: Spec-First. Seta 2: Human-in-the-Loop. Seta 3: Contexto Estruturado. Seta 4: Rastreabilidade. Fechamento do slide: reforçar que previsibilidade vem da qualidade da especificação.</p>
+    </aside>
   </section>
 
   <!-- 3.2 Tabela Problemas / Soluções -->
@@ -203,6 +224,12 @@
     <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">
       💡 <strong>Estudos em Progressive Disclosure</strong> indicam redução de até <em>70%</em> no tempo de iteração ao usar SDD com AI assistants.
     </div>
+    <aside class="notes">
+      <p>Aqui eu gosto de fazer a leitura comparativa linha a linha. Sem SDD, cada iteração com IA vira quase uma renegociação do problema.</p>
+      <p>Com SDD, PRD e AGENTS viram memória persistente do projeto. Isso reduz variação entre sessões, pessoas e modelos.</p>
+      <p>Quando eu citar percentuais, tratem como referência de campo e validem com métricas do próprio time.</p>
+      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+  </aside>
   </section>
 
   <!-- 3.3 Benefícios -->
@@ -244,6 +271,11 @@
         <p>Specs alinham desenvolvedores, PMs e stakeholders em uma única fonte de verdade.</p>
       </div>
     </div>
+    <aside class="notes">
+      <p>Esses benefícios aparecem no dia a dia de engenharia: menos loop de correção tardia, menos perda de contexto e melhor alinhamento entre dev, produto e arquitetura.</p>
+      <p>Velocidade aqui não vem de "pular etapa". Vem de ter menos retrabalho porque a intenção ficou clara desde o início.</p>
+      <p>Seta 0 (antes de avançar): diga que cada card responde uma dor real do time. Seta 1: Previsibilidade. Seta 2: Reduz Alucinações. Seta 3: Documentação Viva. Seta 4: Rastreabilidade. Seta 5: Velocidade. Seta 6: Comunicação. Fechamento do slide: conectar benefício com redução de retrabalho.</p>
+    </aside>
   </section>
 
   <!-- 3.4 Limites e Riscos -->
@@ -276,6 +308,11 @@
     <div class="highlight-box orange" style="margin-top:0.7em; font-size:0.76em;">
       🎯 SDD aumenta previsibilidade. Qualidade final ainda depende de validação técnica contínua.
     </div>
+    <aside class="notes">
+      <p>Este slide é para manter o pé no chão: SDD não substitui disciplina de engenharia.</p>
+      <p>Testes, code review, segurança e evals continuam obrigatórios. Sem isso, você apenas acelera erro com mais eficiência.</p>
+      <p>Seta 0 (antes de avançar): avise que SDD não substitui práticas clássicas de qualidade. Seta 1: Testes automatizados. Seta 2: Code review. Seta 3: Segurança. Seta 4: Evals. Fechamento do slide: sem validação contínua, a IA só acelera erro.</p>
+    </aside>
   </section>
 
 </section><!-- /o-que-e-sdd -->
@@ -317,6 +354,12 @@
         </div>
       </div>
     </div>
+    <aside class="notes">
+      <p>O contexto atual é este: agentes estão muito mais capazes, mas continuam sensíveis a contexto mal definido.</p>
+      <p>Do ponto de vista técnico, quando o modelo não recebe restrição de produto e critério objetivo, ele tende a divergir do requisito real.</p>
+      <p>Isso se traduz em retrabalho, inconsistências e custo de revisão maior.</p>
+      <p>Seta 0 (antes de avançar): contextualize que velocidade sem contexto aumenta risco. Seta 1: código rápido sem contexto. Seta 2: risco de alucinação. Seta 3: custo de revisão. Seta 4: retrabalho do time. Fechamento do slide: SDD entra para estabilizar esse cenário.</p>
+    </aside>
   </section>
 
   <!-- 4.2 SDD como resposta -->
@@ -355,6 +398,12 @@
     <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
       💬 <em>"Não deixe a IA improvisar. Dê a ela uma spec bem escrita e ela entregará exatamente o que você precisa."</em>
     </div>
+    <aside class="notes">
+      <p>Fechando esta seção: spec-first, human-in-the-loop, architecture-first e rastreabilidade.</p>
+      <p>Esses pilares são importantes inclusive para compliance e auditoria, porque cada decisão passa a ter origem explícita.</p>
+      <p>No próximo bloco, eu mostro como transformar isso em fluxo prático com spec-kit.</p>
+      <p>Seta 0 (antes de avançar): anuncie que este é o resumo executivo da seção. Seta 1: Spec-First. Seta 2: Human-in-the-Loop. Seta 3: Architecture-First. Seta 4: Rastreabilidade. Fechamento do slide: fazer ponte para operacionalização com spec-kit.</p>
+    </aside>
   </section>
 
 </section><!-- /por-que-sdd -->
@@ -362,3 +411,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE — SPEC-KIT  (vertical group)
 ════════════════════════════════════════════════════════════════════════════ -->
+
+
