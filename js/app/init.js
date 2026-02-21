@@ -1,4 +1,5 @@
 import { bootstrapPresentation } from './bootstrap.js';
+import { resolveRuntimeOptions } from './config/runtime-options.js';
 import { getAppMessages } from './i18n/messages.js';
 import { DEFAULT_LOCALE, getSlidesManifestPath, resolveLocaleFromQuery, withLocaleQuery, } from './i18n/language.js';
 function escapeHtml(value) {
@@ -65,13 +66,13 @@ async function loadSlidesAndBootstrap(locale) {
         catch (error) {
             console.error('Failed to load slide manifest:', { manifestSrc, error });
             slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.manifestLoadTitle, messages.manifestLoadDetails, manifestSrc, 'load-error-manifest', messages.bootstrapErrorSection);
-            bootstrapPresentation(locale);
+            bootstrapPresentation(locale, resolveRuntimeOptions());
             return;
         }
         if (!parts.length) {
             console.error('Slide manifest has no parts:', { manifestSrc });
             slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.manifestEmptyTitle, messages.manifestEmptyDetails, manifestSrc, 'load-error-manifest-empty', messages.bootstrapErrorSection);
-            bootstrapPresentation(locale);
+            bootstrapPresentation(locale, resolveRuntimeOptions());
             return;
         }
         const partResults = await Promise.allSettled(parts.map(async (part) => {
@@ -115,7 +116,7 @@ async function loadSlidesAndBootstrap(locale) {
             slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.slidesLoadTitle, messages.slidesLoadDetails, slidesSrc, 'load-error-slides-src', messages.bootstrapErrorSection);
         }
     }
-    bootstrapPresentation(locale);
+    bootstrapPresentation(locale, resolveRuntimeOptions());
 }
 function showPresentation() {
     const revealRoot = document.querySelector('.reveal');
@@ -131,6 +132,8 @@ function syncLanguageSwitcher(locale) {
     });
 }
 function startPresentation(locale, pushHistory = false) {
+    const runtimeOptions = resolveRuntimeOptions();
+    document.body.classList.toggle('lite-mode', runtimeOptions.liteMode);
     applyDocumentLocale(locale);
     syncLanguageSwitcher(locale);
     showPresentation();

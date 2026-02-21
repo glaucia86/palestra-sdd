@@ -1,6 +1,7 @@
 import { DEFAULT_LOCALE, toLocale } from '../i18n/language.js';
 const DEMO_SLIDE_ID = 'demo-talk-code';
 const REAL_SABER_SOUND = 'resources/sounds/lightsaber-sound.mp3';
+const THREE_MODULE_PATH = '../../vendor/demo-lightsaber-three.js';
 const EASTER_TAP_WINDOW_MS = 1200;
 const EASTER_MODE_DURATION_MS = 6000;
 const EASTER_NUDGE_MS = 1200;
@@ -28,6 +29,7 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 let wasDemoSlideVisible = false;
+let threeModulePromise = null;
 const DEMO_HINT_MESSAGES = {
     'pt-BR': {
         easter: 'Easter egg ativado.',
@@ -98,9 +100,23 @@ function syncThreeSaberState(slide) {
     threeSaber.setOn(lightsaberEnabled);
     threeSaber.setDuelMode(duelModeEnabled);
 }
-function ensureThreeSaber(slide) {
+async function ensureThreeModuleLoaded() {
+    if (typeof window.createDemoLightsaberThree === 'function')
+        return true;
+    if (!threeModulePromise) {
+        threeModulePromise = import(THREE_MODULE_PATH).catch(() => null);
+    }
+    await threeModulePromise;
+    return typeof window.createDemoLightsaberThree === 'function';
+}
+async function ensureThreeSaber(slide) {
     if (threeSaber)
         return;
+    const hasThreeModule = await ensureThreeModuleLoaded();
+    if (!hasThreeModule) {
+        slide.classList.remove('demo-three-ready');
+        return;
+    }
     const host = slide.querySelector('[data-lightsaber-three-canvas]');
     const createThreeSaber = window.createDemoLightsaberThree;
     if (!host || !createThreeSaber)
@@ -294,10 +310,23 @@ function stopParallax(slide) {
         rafId = 0;
     }
 }
-export function syncDemoExperience(currentSlide) {
+export function syncDemoExperience(currentSlide, liteMode = false) {
     const demoSlide = document.getElementById(DEMO_SLIDE_ID);
     if (!demoSlide)
         return;
+    if (liteMode) {
+        demoSlide.classList.add('demo-lite-mode');
+        demoSlide.classList.remove('demo-effects-active');
+        clearEasterTapWindow();
+        setDuelMode(demoSlide, false);
+        void toggleHum(demoSlide, false);
+        threeSaber?.setActive(false);
+        if (activeSlide === demoSlide)
+            stopParallax(demoSlide);
+        wasDemoSlideVisible = false;
+        return;
+    }
+    demoSlide.classList.remove('demo-lite-mode');
     if (!toggleBound) {
         const saber = demoSlide.querySelector('.demo-lightsaber');
         if (saber) {
@@ -344,7 +373,7 @@ export function syncDemoExperience(currentSlide) {
             void toggleHum(demoSlide, false);
             wasDemoSlideVisible = true;
         }
-        ensureThreeSaber(demoSlide);
+        void ensureThreeSaber(demoSlide);
         demoSlide.classList.add('demo-effects-active');
         updateAudioStateClass(demoSlide);
         syncThreeSaberState(demoSlide);

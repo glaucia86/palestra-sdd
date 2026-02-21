@@ -1,6 +1,6 @@
 import { isReducedMotionPreferred } from './motion-preferences.js';
-export function createStarfield() {
-    if (isReducedMotionPreferred())
+export function createStarfield(liteMode = false) {
+    if (liteMode || isReducedMotionPreferred())
         return;
     const viewport = document.querySelector('.reveal-viewport');
     if (!viewport)

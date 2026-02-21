@@ -2,21 +2,21 @@
   <div class="section-orb section-orb-1" style="--orb-color: rgba(146,119,255,0.15);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-copilot-light);">Seccion 03</div>
+    <div class="section-page-label text-copilot-light">Seccion 03</div>
     <h2 class="section-page-title gradient-text-purple">GitHub Copilot</h2>
     <p class="section-page-desc">Modos, modelos, Agent Skills y como Copilot potencia SDD</p>
-    <div class="section-page-icon" style="color:var(--accent-copilot-light);"><i data-lucide="bot"></i></div>
+    <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
   </div>
 </section>
-<section id="copilot-chat">
+<section id="copilot-chat" data-auto-animate>
 
   <!-- 5.1 — Que es GitHub Copilot Chat -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+  <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="bot"></i></span>
       <span class="section-label">03 / GitHub Copilot Chat</span>
     </div>
-    <h2>GitHub <span class="accent">Copilot Chat</span></h2>
+    <h2 data-id="copilot-title">GitHub <span class="accent">Copilot Chat</span></h2>
     <div class="two-cols" style="align-items:center; gap:2.4em;">
       <div style="text-align:center;">
         <img src="resources/images/github-copilot-icon.png" alt="GitHub Copilot" style="max-width:160px; max-height:160px; filter:drop-shadow(0 0 32px rgba(124,92,252,0.55)); margin-bottom:0.7em;" />
@@ -52,7 +52,7 @@
     </div>
     <h2><span class="accent">Linea de tiempo</span></h2>
     <div class="copilot-timeline">
-      <article class="copilot-timeline-item top fragment">
+      <article class="copilot-timeline-item top fragment fade-up">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">JUN 2021</div>
           <p>Preview tecnico de Copilot en VS Code.</p>
@@ -60,7 +60,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item bottom fragment">
+      <article class="copilot-timeline-item bottom fragment fade-down">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">JUN 2022</div>
           <p>Copilot GA para desarrolladores y equipos.</p>
@@ -68,7 +68,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item top fragment">
+      <article class="copilot-timeline-item top fragment fade-up">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">NOV 2023</div>
           <p><strong>Copilot Chat GA</strong> en VS Code y Visual Studio.</p>
@@ -76,7 +76,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item bottom fragment">
+      <article class="copilot-timeline-item bottom fragment fade-down">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">JUN 2025</div>
           <p><strong>Agent Mode GA</strong> con ejecucion multi-etapa.</p>
@@ -84,7 +84,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item top fragment copilot-timeline-item-cli">
+      <article class="copilot-timeline-item top fragment fade-up copilot-timeline-item-cli">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">SEP 2025</div>
           <p><strong>Copilot CLI</strong> entra en <strong>public preview</strong>.</p>
@@ -92,7 +92,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item bottom fragment copilot-timeline-item-cli">
+      <article class="copilot-timeline-item bottom fragment fade-down copilot-timeline-item-cli">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">OCT 2025</div>
           <p><code>gh-copilot</code> queda deprecado; migracion a Copilot CLI.</p>
@@ -100,7 +100,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item top fragment">
+      <article class="copilot-timeline-item top fragment fade-up">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">DIC 2025</div>
           <p><strong>Agent Skills</strong> + Free + <strong>Plan Mode</strong> preview.</p>
@@ -108,7 +108,7 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
-      <article class="copilot-timeline-item bottom fragment">
+      <article class="copilot-timeline-item bottom fragment fade-down">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">FEB 2026</div>
           <p>Era multi-model consolidada para tareas especializadas.</p>
@@ -226,7 +226,7 @@
     </div>
     <h2>Features <span class="accent">Principales</span></h2>
     <div class="card-grid-3" style="font-size:0.88em; gap:0.5em; margin-top:0.35em;">
-      <div class="card" style="padding:0.9em 1em;">
+      <div class="card card--pad-md">
         <span class="card-icon"><i data-lucide="at-sign"></i></span>
         <h3>Participantes (@)</h3>
         <ul style="font-size:0.7em; margin-top:0.3em;">
@@ -236,7 +236,7 @@
           <li><code>@github</code> — PRs, issues, busqueda web</li>
         </ul>
       </div>
-      <div class="card" style="padding:0.9em 1em;">
+      <div class="card card--pad-md">
         <span class="card-icon"><i data-lucide="terminal"></i></span>
         <h3>Slash Commands (/)</h3>
         <ul style="font-size:0.7em; margin-top:0.3em;">
@@ -246,7 +246,7 @@
           <li><code>/doc</code> — documenta funciones y APIs</li>
         </ul>
       </div>
-      <div class="card" style="padding:0.9em 1em;">
+      <div class="card card--pad-md">
         <span class="card-icon"><i data-lucide="hash"></i></span>
         <h3>Chat Variables (#)</h3>
         <ul style="font-size:0.7em; margin-top:0.3em;">
@@ -256,17 +256,17 @@
           <li><code>#codebase</code> — indexa el workspace completo</li>
         </ul>
       </div>
-      <div class="card fragment" style="padding:0.9em 1em;">
+      <div class="card fragment card--pad-md">
         <span class="card-icon"><i data-lucide="plug"></i></span>
         <h3>MCP Integration</h3>
         <p style="font-size:0.7em;">Model Context Protocol — estandar abierto para conectar Copilot a herramientas externas: bases de datos, APIs y servicios cloud. GitHub MCP Server ya disponible.</p>
       </div>
-      <div class="card fragment" style="padding:0.9em 1em;">
+      <div class="card fragment card--pad-md">
         <span class="card-icon"><i data-lucide="image"></i></span>
         <h3>Soporte de Imagenes</h3>
         <p style="font-size:0.7em;">Adjunta screenshots (JPEG, PNG, GIF, WEBP) para describir UIs, explicar diagramas de arquitectura o analizar errores visuales con modelos multimodales.</p>
       </div>
-      <div class="card fragment" style="padding:0.9em 1em;">
+      <div class="card fragment card--pad-md">
         <span class="card-icon"><i data-lucide="keyboard"></i></span>
         <h3>Inline Chat</h3>
         <p style="font-size:0.7em;"><code>Ctrl+I</code> directamente en el editor — edita codigo sin abrir el panel lateral. Refactoriza cualquier seleccion con lenguaje natural.</p>
@@ -356,7 +356,7 @@ copilot --help
           <p style="font-size:0.9em;">GitHub Copilot soporta nativamente <strong>Agent Skills</strong> — directorios con un archivo <code>SKILL.md</code> como entrypoint, siguiendo el patron abierto <strong>agentskills.io</strong> introducido por Anthropic para Claude Code y adoptado por GitHub en dic/2025.</p>
         </div>
         <ul style="font-size:0.77em;">
-          <li class="fragment"><strong>Estandar abierto:</strong> <a href="https://agentskills.io" target="_blank">agentskills.io</a> — especificacion de directorios con SKILL.md</li>
+          <li class="fragment"><strong>Estandar abierto:</strong> <a href="https://agentskills.io" target="_blank" rel="noopener noreferrer">agentskills.io</a> — especificacion de directorios con SKILL.md</li>
           <li class="fragment"><strong>Auto-descubrimiento:</strong> Copilot escanea <code>.github/skills/</code> automaticamente</li>
           <li class="fragment"><strong>Progressive Disclosure:</strong> descripcion siempre en contexto; skill completa cargada bajo demanda</li>
           <li class="fragment"><strong>Portabilidad:</strong> el mismo patron funciona en Claude Code, Cursor, Gemini CLI y otros agentes</li>

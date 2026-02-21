@@ -66,7 +66,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
         '✅ Correto! O Plan Mode (public preview) cria um plano detalhado para revisão humana antes de qualquer alteração no código — perfeito para o fluxo SDD.',
     },
     {
-      question: '7. Quais modelos estão incluídos gratuitamente no plano Free do GitHub Copilot?',
+      question: '7. Em fevereiro de 2026, quais modelos estavam incluídos gratuitamente no plano Free do GitHub Copilot?',
       options: [
         'Claude Opus 4.6 e GPT-5.2',
         'GPT-4.1 e GPT-5 mini',
@@ -75,7 +75,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
       ],
       correct: 1,
       explanation:
-        '✅ Correto! O plano Free inclui GPT-4.1 e GPT-5 mini sem custo de créditos. Claude Haiku 4.5 é premium com multiplicador de 0.33x.',
+        '✅ Correto! Em fevereiro de 2026, o plano Free incluía GPT-4.1 e GPT-5 mini sem custo de créditos. Verifique sempre a tabela oficial de modelos suportados.',
     },
     {
       question: '8. Para que serve o padrão agentskills.io adotado pelo GitHub Copilot em Dezembro/2025?',
@@ -149,7 +149,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
         '✅ Correct! Plan Mode creates a detailed implementation plan for human review before any code changes.',
     },
     {
-      question: '7. Which models are included for free in GitHub Copilot Free?',
+      question: '7. As of February 2026, which models were included for free in GitHub Copilot Free?',
       options: [
         'Claude Opus 4.6 and GPT-5.2',
         'GPT-4.1 and GPT-5 mini',
@@ -158,7 +158,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
       ],
       correct: 1,
       explanation:
-        '✅ Correct! The Free plan includes GPT-4.1 and GPT-5 mini at no credit cost.',
+        '✅ Correct! As of February 2026, the Free plan included GPT-4.1 and GPT-5 mini at no credit cost. Always verify the official supported-models page.',
     },
     {
       question: '8. What is the purpose of the agentskills.io standard adopted by GitHub Copilot in December/2025?',
@@ -236,7 +236,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
         '✅ ¡Correcto! Plan Mode crea un plan detallado para revisión humana antes de realizar cambios en el código.',
     },
     {
-      question: '7. ¿Qué modelos están incluidos gratis en GitHub Copilot Free?',
+      question: '7. En febrero de 2026, ¿qué modelos estaban incluidos gratis en GitHub Copilot Free?',
       options: [
         'Claude Opus 4.6 y GPT-5.2',
         'GPT-4.1 y GPT-5 mini',
@@ -244,7 +244,8 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
         'Solo modelos internos sin nombre público',
       ],
       correct: 1,
-      explanation: '✅ ¡Correcto! El plan Free incluye GPT-4.1 y GPT-5 mini sin costo de créditos.',
+      explanation:
+        '✅ ¡Correcto! En febrero de 2026, el plan Free incluía GPT-4.1 y GPT-5 mini sin costo de créditos. Verifica siempre la tabla oficial de modelos soportados.',
     },
     {
       question: '8. ¿Para qué sirve el estándar agentskills.io adoptado por GitHub Copilot en diciembre/2025?',

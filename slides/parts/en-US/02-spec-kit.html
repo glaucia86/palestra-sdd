@@ -2,28 +2,28 @@
   <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(0,221,179,0.15);"></div>
   <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-green);">Section 02</div>
+    <div class="section-page-label text-green">Section 02</div>
     <h2 class="section-page-title gradient-text">spec-kit</h2>
     <p class="section-page-desc">The open-source toolkit that operationalizes SDD with CLI and slash commands for AI agents</p>
-    <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="package"></i></div>
+    <div class="section-page-icon text-green"><i data-lucide="package"></i></div>
   </div>
 </section>
-<section id="spec-kit">
+<section id="spec-kit" data-auto-animate>
 
   <!-- spec-kit 1 - What is spec-kit? -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.05) 0%, transparent 60%)">
+  <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="package"></i></span>
       <span class="section-label">02 / spec-kit</span>
     </div>
-    <h2><span class="accent">spec-kit</span> — The SDD Toolkit</h2>
-    <div class="two-cols" style="align-items:start; gap:2em;">
+    <h2 data-id="spec-kit-title"><span class="accent">spec-kit</span> — The SDD Toolkit</h2>
+    <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
           <p>The <strong>spec-kit</strong> is an open-source toolkit maintained by GitHub that helps teams focus on product scenarios and predictable outcomes, instead of vibe-coding every piece from scratch. It <em>operationalizes</em> SDD with a CLI and slash commands for AI agents.</p>
         </div>
         <ul style="font-size:0.82em;">
-          <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank">github/spec-kit</a></li>
+          <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">github/spec-kit</a></li>
           <li class="fragment"><strong>+70k stars</strong> on GitHub · 79 contributors</li>
           <li class="fragment"><strong>Maintained by GitHub</strong>, inspired by <em>John Lam</em>'s research</li>
           <li class="fragment"><strong>Specify CLI</strong> — installable via <code>uv tool install</code></li>
@@ -39,12 +39,12 @@
         <div class="highlight-box blue" style="margin-top:0.8em; font-size:0.78em;">
           💡 <strong>spec-kit ≠ vibe coding.</strong> Every line of code is traceable to a human-approved requirement.
         </div>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box callout-compact">
           🤖 Compatible with: GitHub Copilot, Claude Code, Cursor, Gemini CLI, Windsurf, Codex CLI, and <strong>20+ agents</strong>!
         </div>
       </div>
     </div>
-    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+    <p class="slide-nav-hint">
       ↓ press ↓ to continue in this section
     </p>
   </section>
@@ -68,7 +68,7 @@ specify check</code></pre>
         <h3 style="margin-top:0.8em; margin-bottom:0.5em; font-size:0.85em;">Option 2 - One-time use (no install)</h3>
         <pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git \
   specify init &lt;PROJECT_NAME&gt;</code></pre>
-        <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box blue callout-compact">
           📋 <strong>Prerequisites:</strong> Python 3.11+, <code>uv</code>, Git, and a supported AI agent.
         </div>
       </div>
@@ -88,7 +88,7 @@ specify init my-project --ai copilot --ai-skills
 
 # With Claude Code
 specify init my-project --ai claude</code></pre>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box callout-compact">
           🔧 <code>specify init</code> sets up templates, slash commands (<code>/speckit.*</code>), and folder structure automatically.
         </div>
       </div>
@@ -378,7 +378,7 @@ Performance, security, accessibility.
         <h3 style="color:var(--accent-copilot-light); font-size:0.88em;">GitHub Copilot</h3>
         <span class="tag purple">✅ Full Support</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="brain"></i></span>
         <h3 style="font-size:0.88em;">Claude Code</h3>
         <span class="tag">✅ Full Support</span>
@@ -388,17 +388,17 @@ Performance, security, accessibility.
         <h3 style="color:var(--accent-blue); font-size:0.88em;">Cursor</h3>
         <span class="tag blue">✅ Full Support</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="globe"></i></span>
         <h3 style="font-size:0.88em;">Gemini CLI</h3>
         <span class="tag green">✅ Full Support</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="wind"></i></span>
         <h3 style="font-size:0.88em;">Windsurf</h3>
         <span class="tag">✅ Full Support</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="code-2"></i></span>
         <h3 style="font-size:0.88em;">Codex CLI</h3>
         <span class="tag">✅ Full Support</span>

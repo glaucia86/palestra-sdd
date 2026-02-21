@@ -1,4 +1,5 @@
 import { bootstrapPresentation } from './bootstrap.js';
+import { resolveRuntimeOptions } from './config/runtime-options.js';
 import { getAppMessages } from './i18n/messages.js';
 import {
   DEFAULT_LOCALE,
@@ -96,7 +97,7 @@ async function loadSlidesAndBootstrap(locale: Locale): Promise<void> {
         'load-error-manifest',
         messages.bootstrapErrorSection,
       );
-      bootstrapPresentation(locale);
+      bootstrapPresentation(locale, resolveRuntimeOptions());
       return;
     }
 
@@ -110,7 +111,7 @@ async function loadSlidesAndBootstrap(locale: Locale): Promise<void> {
         'load-error-manifest-empty',
         messages.bootstrapErrorSection,
       );
-      bootstrapPresentation(locale);
+      bootstrapPresentation(locale, resolveRuntimeOptions());
       return;
     }
 
@@ -174,7 +175,7 @@ async function loadSlidesAndBootstrap(locale: Locale): Promise<void> {
     }
   }
 
-  bootstrapPresentation(locale);
+  bootstrapPresentation(locale, resolveRuntimeOptions());
 }
 
 function showPresentation(): void {
@@ -192,6 +193,9 @@ function syncLanguageSwitcher(locale: Locale): void {
 }
 
 function startPresentation(locale: Locale, pushHistory = false): void {
+  const runtimeOptions = resolveRuntimeOptions();
+  document.body.classList.toggle('lite-mode', runtimeOptions.liteMode);
+
   applyDocumentLocale(locale);
   syncLanguageSwitcher(locale);
   showPresentation();

@@ -120,10 +120,10 @@
   <div class="section-orb section-orb-1" style="--orb-color: rgba(0,221,179,0.15);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-green);">Seção 01</div>
+    <div class="section-page-label text-green">Seção 01</div>
     <h2 class="section-page-title gradient-text">SDD</h2>
     <p class="section-page-desc">Spec-Driven Development: A evolução do TDD e BDD na era da IA generativa</p>
-    <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="target"></i></div>
+    <div class="section-page-icon text-green"><i data-lucide="target"></i></div>
   </div>
   <aside class="notes">
     <p>Transição: agora começamos o bloco de fundamentos. Vou explicar o que é SDD, por que isso ficou tão relevante com agentes e onde ele se encaixa no ciclo de engenharia.</p>
@@ -134,16 +134,16 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE 3 — O QUE É SDD?  (vertical group)
 ════════════════════════════════════════════════════════════════════════════ -->
-<section id="o-que-e-sdd">
+<section id="o-que-e-sdd" data-auto-animate>
 
   <!-- 3.1 Definição -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.04) 0%, transparent 60%)">
+  <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.04) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="target"></i></span>
       <span class="section-label">01 / O que é SDD?</span>
     </div>
-    <h2><span class="accent">SDD</span> — Spec-Driven Development</h2>
-    <div class="two-cols" style="align-items:start; gap:2em;">
+    <h2 data-id="sdd-title"><span class="accent">SDD</span> — Spec-Driven Development</h2>
+    <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition">
           <p>Uma abordagem de desenvolvimento onde <strong>especificações estruturadas (specs)</strong> são o artefato primário, guiando AI agents para gerar código de forma consistente e reduz alucinações, com o humano no centro do processo.</p>
@@ -169,7 +169,7 @@
         </div>
       </div>
     </div>
-    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+    <p class="slide-nav-hint">
       ↓ pressione ↓ para continuar nesta seção
     </p>
     <aside class="notes">
@@ -181,12 +181,12 @@
   </section>
 
   <!-- 3.2 Tabela Problemas / Soluções -->
-  <section>
+  <section data-auto-animate data-transition="fade">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="zap"></i></span>
       <span class="section-label">01 / SDD — Por que importa</span>
     </div>
-    <h2>Problemas <span class="accent">vs.</span> Soluções</h2>
+    <h2 data-id="sdd-compare-title">Problemas <span class="accent">vs.</span> Soluções</h2>
     <table>
       <thead>
         <tr>
@@ -221,6 +221,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="r-stack" style="margin:0.25em auto 0.55em auto; width:fit-content;">
+      <span class="tag red fragment fade-out">Sem estrutura</span>
+      <span class="tag blue fragment fade-in-then-semi-out">Com specs estruturadas</span>
+    </div>
     <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">
       💡 <strong>Estudos em Progressive Disclosure</strong> indicam redução de até <em>70%</em> no tempo de iteração ao usar SDD com AI assistants.
     </div>

@@ -22,8 +22,8 @@ function createParticlesIn(containerId: string, count: number, color?: string): 
   container.appendChild(fragment);
 }
 
-export function createParticles(): void {
-  if (isReducedMotionPreferred()) return;
+export function createParticles(liteMode = false): void {
+  if (liteMode || isReducedMotionPreferred()) return;
   createParticlesIn('particles', 35);
   createParticlesIn('particles-the-end', 28, 'var(--accent-green)');
 }

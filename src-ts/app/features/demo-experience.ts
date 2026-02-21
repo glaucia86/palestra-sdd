@@ -2,6 +2,7 @@ import { DEFAULT_LOCALE, toLocale, type Locale } from '../i18n/language.js';
 
 const DEMO_SLIDE_ID = 'demo-talk-code';
 const REAL_SABER_SOUND = 'resources/sounds/lightsaber-sound.mp3';
+const THREE_MODULE_PATH = '../../vendor/demo-lightsaber-three.js';
 const EASTER_TAP_WINDOW_MS = 1200;
 const EASTER_MODE_DURATION_MS = 6000;
 const EASTER_NUDGE_MS = 1200;
@@ -31,6 +32,7 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 let wasDemoSlideVisible = false;
+let threeModulePromise: Promise<unknown> | null = null;
 
 const DEMO_HINT_MESSAGES: Record<Locale, { easter: string; nudge: string; default: string }> = {
   'pt-BR': {
@@ -104,8 +106,22 @@ function syncThreeSaberState(slide: HTMLElement): void {
   threeSaber.setDuelMode(duelModeEnabled);
 }
 
-function ensureThreeSaber(slide: HTMLElement): void {
+async function ensureThreeModuleLoaded(): Promise<boolean> {
+  if (typeof window.createDemoLightsaberThree === 'function') return true;
+  if (!threeModulePromise) {
+    threeModulePromise = import(THREE_MODULE_PATH).catch(() => null);
+  }
+  await threeModulePromise;
+  return typeof window.createDemoLightsaberThree === 'function';
+}
+
+async function ensureThreeSaber(slide: HTMLElement): Promise<void> {
   if (threeSaber) return;
+  const hasThreeModule = await ensureThreeModuleLoaded();
+  if (!hasThreeModule) {
+    slide.classList.remove('demo-three-ready');
+    return;
+  }
   const host = slide.querySelector<HTMLElement>('[data-lightsaber-three-canvas]');
   const createThreeSaber = window.createDemoLightsaberThree;
   if (!host || !createThreeSaber) return;
@@ -301,9 +317,23 @@ function stopParallax(slide: HTMLElement): void {
   }
 }
 
-export function syncDemoExperience(currentSlide: HTMLElement | null): void {
+export function syncDemoExperience(currentSlide: HTMLElement | null, liteMode = false): void {
   const demoSlide = document.getElementById(DEMO_SLIDE_ID);
   if (!demoSlide) return;
+
+  if (liteMode) {
+    demoSlide.classList.add('demo-lite-mode');
+    demoSlide.classList.remove('demo-effects-active');
+    clearEasterTapWindow();
+    setDuelMode(demoSlide, false);
+    void toggleHum(demoSlide, false);
+    threeSaber?.setActive(false);
+    if (activeSlide === demoSlide) stopParallax(demoSlide);
+    wasDemoSlideVisible = false;
+    return;
+  }
+
+  demoSlide.classList.remove('demo-lite-mode');
 
   if (!toggleBound) {
     const saber = demoSlide.querySelector<HTMLElement>('.demo-lightsaber');
@@ -353,7 +383,7 @@ export function syncDemoExperience(currentSlide: HTMLElement | null): void {
       void toggleHum(demoSlide, false);
       wasDemoSlideVisible = true;
     }
-    ensureThreeSaber(demoSlide);
+    void ensureThreeSaber(demoSlide);
     demoSlide.classList.add('demo-effects-active');
     updateAudioStateClass(demoSlide);
     syncThreeSaberState(demoSlide);

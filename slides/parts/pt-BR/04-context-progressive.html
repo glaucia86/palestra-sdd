@@ -211,10 +211,10 @@ API REST de gerenciamento de tarefas.
       <div>
         <div class="highlight-box blue" style="margin-top:0.45em; font-size:0.7em;">
           <strong>Exemplos reais (clicáveis):</strong><br />
-          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank">find-skills</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank">vercel-react-best-practices</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank">web-design-guidelines</a> ·
-          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank">frontend-design</a>
+          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank" rel="noopener noreferrer">find-skills</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank" rel="noopener noreferrer">vercel-react-best-practices</a> ·
+          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank" rel="noopener noreferrer">web-design-guidelines</a> ·
+          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank" rel="noopener noreferrer">frontend-design</a>
         </div>
         <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
           🎯 Carregue apenas a Skill da tarefa atual para reduzir ruído e tokens no contexto.
@@ -308,7 +308,7 @@ API REST de gerenciamento de tarefas.
       <span class="section-label">05 / Progressive Disclosure</span>
     </div>
     <h2><span class="accent">Progressive Disclosure</span></h2>
-    <div class="two-cols" style="align-items:start; gap:2em;">
+    <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
           <p><strong>Progressive Disclosure</strong> é o princípio de revelar apenas o contexto necessário para a tarefa atual. Em SDD, isso significa dividir o conhecimento do agente em camadas — carregando informação especializada <em>sob demanda</em>, economizando tokens e reduzindo ruído.</p>
@@ -331,7 +331,7 @@ API REST de gerenciamento de tarefas.
         </div>
       </div>
     </div>
-    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+    <p class="slide-nav-hint">
       ↓ pressione ↓ para continuar nesta seção
     </p>
     <aside class="notes">
@@ -364,7 +364,7 @@ API REST de gerenciamento de tarefas.
 └── skills/                ← Skills (spec-kit)
     ├── api-design.skill.md
     └── react-patterns.skill.md</code></pre>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box callout-compact">
           🎯 O AGENTS.md raiz aponta para os arquivos especializados via links. O agente os carrega <em>somente quando solicitado</em>.
         </div>
       </div>
@@ -408,32 +408,32 @@ API de gerenciamento de tarefas com JWT.
     </div>
     <h2>6 Princípios do <span class="accent">Progressive Disclosure</span></h2>
     <div class="card-grid-3" style="margin-top:0.35em; gap:0.4em;">
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="minimize-2"></i></span>
         <h3>1. Minimalismo</h3>
         <p style="font-size:0.7em;">AGENTS.md deve conter apenas regras necessárias para <em>todas</em> as tarefas do repositório. Regras específicas ficam em arquivos secundários.</p>
       </div>
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="split"></i></span>
         <h3>2. Separação</h3>
         <p style="font-size:0.7em;">Instrução especializada → arquivo secundário (<code>docs/agents/</code>). Nada de "documento gigante" com tudo dentro.</p>
       </div>
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="link"></i></span>
         <h3>3. Delegação</h3>
         <p style="font-size:0.7em;">AGENTS.md raiz declara <strong>onde encontrar</strong> instruções especializadas via links. O agente busca quando precisar.</p>
       </div>
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="zap"></i></span>
         <h3>4. Acionabilidade</h3>
         <p style="font-size:0.7em;">Prefira instruções diretas: <em>"Antes de alterar código, explique o motivo."</em> Evite textos genéricos como "siga boas práticas".</p>
       </div>
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="shield"></i></span>
         <h3>5. Estabilidade</h3>
         <p style="font-size:0.7em;">Estruturas de pastas e informações instáveis <strong>não</strong> devem ir ao AGENTS.md raiz — apenas a arquivos secundários.</p>
       </div>
-      <div class="card fragment" style="padding:0.65em 0.9em;">
+      <div class="card fragment card--pad-sm">
         <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="trending-down"></i></span>
         <h3>6. Economia</h3>
         <p style="font-size:0.7em;">Cada token economizado = respostas mais rápidas e baratas. AGENTS.md enxuto eleva qualidade e reduz custo por sessão.</p>

@@ -5,21 +5,23 @@ import { createParticles } from './features/particles.js';
 import { createSectionCosmics } from './features/section-cosmos.js';
 import { syncSpecialSlideBackgrounds } from './features/special-backgrounds.js';
 import { syncDemoExperience } from './features/demo-experience.js';
+import { ensureSpeakerNotesParity } from './features/speaker-notes.js';
 import { syncTheEndExperience } from './features/the-end-experience.js';
 import { getQuizData } from './quiz/data.js';
 import { QuizController } from './quiz/controller.js';
 import { getQuizUiMessages, getQuizValidationMessages } from './quiz/messages.js';
-export function bootstrapPresentation(locale) {
+export function bootstrapPresentation(locale, runtimeOptions) {
     initMermaid();
+    ensureSpeakerNotesParity(locale);
     const quiz = new QuizController(getQuizData(locale), getQuizUiMessages(locale), getQuizValidationMessages(locale));
     quiz.bindGlobals();
     Reveal.initialize(revealConfig);
     Reveal.on('ready', () => {
-        createStarfield();
-        createParticles();
-        createSectionCosmics();
-        syncSpecialSlideBackgrounds(Reveal.getCurrentSlide());
-        syncDemoExperience(Reveal.getCurrentSlide());
+        createStarfield(runtimeOptions.liteMode);
+        createParticles(runtimeOptions.liteMode);
+        createSectionCosmics(runtimeOptions.liteMode);
+        syncSpecialSlideBackgrounds(Reveal.getCurrentSlide(), runtimeOptions.liteMode);
+        syncDemoExperience(Reveal.getCurrentSlide(), runtimeOptions.liteMode);
         syncTheEndExperience(Reveal.getCurrentSlide());
         if (typeof lucide !== 'undefined')
             lucide.createIcons();
@@ -36,8 +38,8 @@ export function bootstrapPresentation(locale) {
         quiz.renderQuestion(0);
     });
     Reveal.on('slidechanged', (event) => {
-        syncSpecialSlideBackgrounds(event.currentSlide);
-        syncDemoExperience(event.currentSlide);
+        syncSpecialSlideBackgrounds(event.currentSlide, runtimeOptions.liteMode);
+        syncDemoExperience(event.currentSlide, runtimeOptions.liteMode);
         syncTheEndExperience(event.currentSlide);
         const unrendered = event.currentSlide.querySelectorAll('.mermaid:not([data-processed])');
         if (unrendered.length)

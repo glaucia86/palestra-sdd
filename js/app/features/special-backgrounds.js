@@ -1,6 +1,6 @@
 import { isReducedMotionPreferred } from './motion-preferences.js';
-function attachSobreMimBackgroundFx(backgroundEl) {
-    if (isReducedMotionPreferred())
+function attachSobreMimBackgroundFx(backgroundEl, liteMode) {
+    if (liteMode || isReducedMotionPreferred())
         return;
     const content = backgroundEl.querySelector('.slide-background-content');
     if (!content || content.querySelector('.sm-bg-cosmos'))
@@ -50,7 +50,7 @@ function attachSobreMimBackgroundFx(backgroundEl) {
     cosmos.appendChild(cometsFragment);
     content.appendChild(cosmos);
 }
-export function syncSpecialSlideBackgrounds(currentSlide) {
+export function syncSpecialSlideBackgrounds(currentSlide, liteMode = false) {
     const bgPresent = typeof Reveal.getSlideBackground === 'function' && currentSlide
         ? Reveal.getSlideBackground(currentSlide)
         : document.querySelector('.reveal .backgrounds .slide-background.present');
@@ -59,7 +59,7 @@ export function syncSpecialSlideBackgrounds(currentSlide) {
         .forEach((el) => el.classList.remove('bg-sobre-mim'));
     if (currentSlide && currentSlide.id === 'sobre-mim' && bgPresent) {
         bgPresent.classList.add('bg-sobre-mim');
-        attachSobreMimBackgroundFx(bgPresent);
+        attachSobreMimBackgroundFx(bgPresent, liteMode);
     }
 }
 //# sourceMappingURL=special-backgrounds.js.map

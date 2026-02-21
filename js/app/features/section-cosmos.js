@@ -1,6 +1,6 @@
 import { isReducedMotionPreferred } from './motion-preferences.js';
-export function createSectionCosmics() {
-    if (isReducedMotionPreferred())
+export function createSectionCosmics(liteMode = false) {
+    if (liteMode || isReducedMotionPreferred())
         return;
     const slides = Array.from(document.querySelectorAll('.reveal .slides section')).filter((section) => !Array.from(section.children).some((child) => child.tagName === 'SECTION'));
     slides.forEach((slide) => {

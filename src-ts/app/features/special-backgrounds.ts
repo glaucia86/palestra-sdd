@@ -1,7 +1,7 @@
 import { isReducedMotionPreferred } from './motion-preferences.js';
 
-function attachSobreMimBackgroundFx(backgroundEl: HTMLElement): void {
-  if (isReducedMotionPreferred()) return;
+function attachSobreMimBackgroundFx(backgroundEl: HTMLElement, liteMode: boolean): void {
+  if (liteMode || isReducedMotionPreferred()) return;
 
   const content = backgroundEl.querySelector<HTMLElement>('.slide-background-content');
   if (!content || content.querySelector('.sm-bg-cosmos')) return;
@@ -61,7 +61,7 @@ function attachSobreMimBackgroundFx(backgroundEl: HTMLElement): void {
   content.appendChild(cosmos);
 }
 
-export function syncSpecialSlideBackgrounds(currentSlide: HTMLElement | null): void {
+export function syncSpecialSlideBackgrounds(currentSlide: HTMLElement | null, liteMode = false): void {
   const bgPresent =
     typeof Reveal.getSlideBackground === 'function' && currentSlide
       ? Reveal.getSlideBackground(currentSlide)
@@ -73,6 +73,6 @@ export function syncSpecialSlideBackgrounds(currentSlide: HTMLElement | null): v
 
   if (currentSlide && currentSlide.id === 'sobre-mim' && bgPresent) {
     bgPresent.classList.add('bg-sobre-mim');
-    attachSobreMimBackgroundFx(bgPresent);
+    attachSobreMimBackgroundFx(bgPresent, liteMode);
   }
 }

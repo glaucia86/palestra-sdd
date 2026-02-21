@@ -2,33 +2,33 @@
   <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(0,221,179,0.15);"></div>
   <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-green);">Seção 02</div>
+    <div class="section-page-label text-green">Seção 02</div>
     <h2 class="section-page-title gradient-text">spec-kit</h2>
     <p class="section-page-desc">O toolkit open source que operacionaliza SDD com CLI e slash commands para agentes IA</p>
-    <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="package"></i></div>
+    <div class="section-page-icon text-green"><i data-lucide="package"></i></div>
   </div>
   <aside class="notes">
     <p>Agora a conversa sai do conceito e entra na operação. A pergunta aqui é: como transformar SDD em rotina real de equipe?</p>
     <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
   </aside>
 </section>
-<section id="spec-kit">
+<section id="spec-kit" data-auto-animate>
 
   <!-- spec-kit 1 — O que é spec-kit? -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.05) 0%, transparent 60%)">
+  <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="package"></i></span>
       <span class="section-label">02 / spec-kit</span>
     </div>
-    <h2><span class="accent">spec-kit</span> — O Toolkit do SDD</h2>
-    <div class="two-cols" style="align-items:start; gap:2em;">
+    <h2 data-id="spec-kit-title"><span class="accent">spec-kit</span> — O Toolkit do SDD</h2>
+    <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
           <p>O <strong>spec-kit</strong> é um toolkit open source mantido pelo GitHub que permite focar em cenários de produto e resultados previsíveis, em vez de "vibe coding" cada pedaço do zero. Ele <em>operacionaliza</em> o SDD com um CLI e slash commands para agentes IA.</p>
         </div>
         <ul style="font-size:0.82em;">
-          <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank">github/spec-kit</a></li>
-          <li class="fragment"><strong>+70k estrelas</strong> no GitHub · +80 contribuidores</li>
+          <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">github/spec-kit</a></li>
+          <li class="fragment"><strong>+70k estrelas</strong> no GitHub · comunidade ativa (números variam ao longo do tempo)</li>
           <li class="fragment"><strong>Mantido pelo GitHub</strong>, inspirado na pesquisa de <em>John Lam</em></li>
           <li class="fragment"><strong>Specify CLI</strong> — installável via <code>uv tool install</code></li>
           <li class="fragment"><strong>Slash Commands</strong> via integração do agente (<code>/speckit.*</code>, quando suportado)</li>
@@ -43,12 +43,12 @@
         <div class="highlight-box blue" style="margin-top:0.8em; font-size:0.78em;">
           💡 <strong>spec-kit ≠ vibe coding.</strong> Cada linha de código é rastreada até um requisito aprovado pelo humano.
         </div>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box callout-compact">
           🤖 Compatível com: GitHub Copilot, Claude Code, Cursor, Gemini CLI, Windsurf, Codex CLI e <strong>+20 agentes</strong>!
         </div>
       </div>
     </div>
-    <p style="font-size:0.5em; color:var(--text-muted); text-align:center; margin-top:0.8em;">
+    <p class="slide-nav-hint">
       ↓ pressione ↓ para continuar nesta seção
     </p>
     <aside class="notes">
@@ -81,7 +81,7 @@ specify check</code></pre>
         <h3 style="margin-top:0.8em; margin-bottom:0.5em; font-size:0.85em;">Opção 2 — Uso Único (sem instalar)</h3>
         <pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git \
   specify init &lt;PROJECT_NAME&gt;</code></pre>
-        <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box blue callout-compact">
           📋 <strong>Pré-requisitos:</strong> Python 3.11+, <code>uv</code>, Git e um agente IA suportado.
         </div>
       </div>
@@ -101,7 +101,7 @@ specify init meu-projeto --ai copilot --ai-skills
 
 # Com Claude Code
 specify init meu-projeto --ai claude</code></pre>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.78em;">
+        <div class="highlight-box callout-compact">
           🔧 O <code>specify init</code> configura: templates, slash commands (<code>/speckit.*</code>) e estrutura de pastas automaticamente.
         </div>
       </div>
@@ -418,7 +418,7 @@ Performance, segurança, acessibilidade.
         <h3 style="color:var(--accent-copilot-light); font-size:0.88em;">GitHub Copilot</h3>
         <span class="tag purple">✅ Suporte Completo</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="brain"></i></span>
         <h3 style="font-size:0.88em;">Claude Code</h3>
         <span class="tag">✅ Suporte Completo</span>
@@ -428,17 +428,17 @@ Performance, segurança, acessibilidade.
         <h3 style="color:var(--accent-blue); font-size:0.88em;">Cursor</h3>
         <span class="tag blue">✅ Suporte Completo</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="globe"></i></span>
         <h3 style="font-size:0.88em;">Gemini CLI</h3>
         <span class="tag green">✅ Suporte Completo</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="wind"></i></span>
         <h3 style="font-size:0.88em;">Windsurf</h3>
         <span class="tag">✅ Suporte Completo</span>
       </div>
-      <div class="card fragment" style="text-align:center; padding:0.6em;">
+      <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="code-2"></i></span>
         <h3 style="font-size:0.88em;">Codex CLI</h3>
         <span class="tag">✅ Suporte Completo</span>
