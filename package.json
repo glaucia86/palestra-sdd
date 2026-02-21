@@ -1,7 +1,7 @@
 {
   "name": "palestra-sdd",
   "version": "2.2.0",
-  "description": "Palestra sobre Software Driven Development",
+  "description": "Palestra sobre SDD",
   "scripts": {
     "start": "node server/dev-server.js",
     "typecheck": "tsc -p tsconfig.json --noEmit --pretty",
