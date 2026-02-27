@@ -87,7 +87,7 @@
       <article class="copilot-timeline-item top fragment fade-up copilot-timeline-item-cli">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">SEP 2025</div>
-          <p><strong>Copilot CLI</strong> enters <strong>public preview</strong>.</p>
+          <p><strong>Copilot CLI</strong> enters <strong>public preview</strong> (09/25).</p>
         </div>
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
@@ -111,7 +111,7 @@
       <article class="copilot-timeline-item bottom fragment fade-down">
         <div class="copilot-timeline-content">
           <div class="copilot-timeline-date">FEB 2026</div>
-          <p>Multi-model era consolidated for specialized tasks.</p>
+          <p><strong>Copilot CLI GA</strong> (02/25) + multi-model era consolidated.</p>
         </div>
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
@@ -121,7 +121,7 @@
       <strong>SDD reading:</strong> evolution moved from "autocomplete" to a full engineering experience in <strong>IDE + terminal</strong>, with more autonomy and governance.
     </div>
     <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
-      CLI dates: public preview on 09/25/2025 and <code>gh-copilot</code> deprecation on 10/25/2025.
+      CLI dates: public preview on 09/25/2025, <code>gh-copilot</code> deprecation on 10/25/2025, and GA on 02/25/2026.
     </p>
   </section>
 
@@ -151,7 +151,7 @@
       <div class="card fragment" style="border-color:rgba(255,205,71,0.35);">
         <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="clipboard-check"></i></span>
         <h3 style="color:var(--accent-gold);">Plan Mode</h3>
-        <p><em>(Public preview)</em> — Copilot creates a detailed implementation plan for human review <strong>before</strong> any code change. Perfect for SDD.</p>
+        <p>Copilot creates a detailed implementation plan for human review <strong>before</strong> any code change. Perfect for SDD.</p>
       </div>
     </div>
     <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
@@ -274,18 +274,32 @@
     </div>
   </section>
 
+ </section><!-- /copilot-chat -->
+
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.16);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(124,92,252,0.14);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label text-copilot-light">Section 03-B</div>
+    <h2 class="section-page-title gradient-text-purple">GitHub Copilot CLI</h2>
+    <p class="section-page-desc">Terminal-first workflows, governance, and SDD execution in practice</p>
+    <div class="section-page-icon text-copilot-light"><i data-lucide="terminal-square"></i></div>
+  </div>
+</section>
+<section id="copilot-cli" data-auto-animate>
+
   <!-- 5.5a — Copilot CLI: strategic view -->
   <section data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 20%, rgba(124,92,252,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="terminal-square"></i></span>
-      <span class="section-label">03 / GitHub Copilot CLI - Overview</span>
+      <span class="section-label">03-B / GitHub Copilot CLI - Overview</span>
     </div>
     <h2>GitHub <span class="accent">Copilot CLI</span></h2>
     <div class="two-cols" style="align-items:center; gap:1.6em;">
       <div style="text-align:center;">
         <img src="resources/images/copilot-cli.png" alt="GitHub Copilot CLI no terminal" style="max-width:92%; border-radius:0.55em; border:1px solid rgba(124,92,252,0.35); box-shadow:0 0 28px rgba(124,92,252,0.16);" />
         <div style="margin-top:0.55em;">
-          <span class="tag purple">Public Preview</span>
+          <span class="tag purple">GA (02/25/2026)</span>
           <span class="tag blue">Terminal-first</span>
           <span class="tag">SDD-ready</span>
         </div>
@@ -296,9 +310,11 @@
         </div>
         <ul style="font-size:0.76em;">
           <li class="fragment"><strong>Official GitHub product</strong> for terminal engineering workflow</li>
+          <li class="fragment"><strong>Current status:</strong> GA since 02/25/2026</li>
+          <li class="fragment"><strong>Available to Copilot subscribers</strong> (Pro, Pro+, Business, Enterprise)</li>
+          <li class="fragment"><strong>Business/Enterprise:</strong> admins can enable and govern via policy</li>
           <li class="fragment"><strong>Complements Copilot Chat</strong> (does not fully replace the IDE)</li>
           <li class="fragment"><strong>Useful in SDD</strong> to explore, automate, and iterate tasks outside the editor</li>
-          <li class="fragment"><strong>Supported plans:</strong> Pro, Pro+, Business, and Enterprise</li>
         </ul>
         <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
           <strong>IDE + Terminal = continuous context:</strong> specify in PRD, validate in plan, execute with traceability between editor and shell.
@@ -311,7 +327,7 @@
   <section data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="workflow"></i></span>
-      <span class="section-label">03 / GitHub Copilot CLI — Practice</span>
+      <span class="section-label">03-B / GitHub Copilot CLI — Practice</span>
     </div>
     <h2>When to Use It in the <span class="accent">SDD</span> Flow</h2>
     <div class="card-grid-2" style="gap:0.8em; margin-top:0.45em;">
@@ -328,19 +344,94 @@
       <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
         <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="shield-check"></i></span>
         <h3 style="color:var(--accent-blue);">Governance and security</h3>
-        <pre style="font-size:0.64em; margin-top:0.35em;"><code class="language-bash"># Example flow
-copilot --help
-# review suggestion
-# run only in trusted directory
-# validate diff before commit</code></pre>
+        <pre style="font-size:0.64em; margin-top:0.35em;"><code class="language-bash"># SDD terminal flow
+/init
+# review and approve plan
+# run implementation
+/diff
+/review
+# commit only after validation</code></pre>
         <p style="font-size:0.66em; margin-top:0.35em; color:var(--text-secondary);">
-          Keep <strong>human-in-the-loop</strong>: review suggested commands, limit permissions, and validate impact before running.
+          Keep <strong>human-in-the-loop</strong>: use approvals, policies, and hooks to block unsafe commands or arguments before execution.
         </p>
       </div>
     </div>
     <p style="font-size:0.56em; color:var(--text-muted); text-align:center; margin-top:0.65em;">
-      Public preview: <strong>September 25, 2025</strong>. Legacy path (<code>gh-copilot</code>) deprecated on <strong>October 25, 2025</strong>.
+      Public preview: <strong>September 25, 2025</strong>. Legacy path (<code>gh-copilot</code>) deprecated on <strong>October 25, 2025</strong>. GA on <strong>February 25, 2026</strong>.
     </p>
+  </section>
+
+  <!-- 5.5ab — Copilot CLI: Preview -> GA -->
+  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 78%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="arrow-up-right"></i></span>
+      <span class="section-label">03-B / GitHub Copilot CLI — Preview to GA</span>
+    </div>
+    <h2>Preview <span class="accent">→ GA</span>: what matured</h2>
+    <div class="card-grid-2" style="gap:0.75em; margin-top:0.45em;">
+      <div class="card fragment">
+        <span class="card-icon"><i data-lucide="route"></i></span>
+        <h3>Plan + Autopilot</h3>
+        <p>Clear flow to plan, approve, and execute end-to-end with less context switching.</p>
+      </div>
+      <div class="card fragment">
+        <span class="card-icon"><i data-lucide="git-compare"></i></span>
+        <h3>/diff + /review + rewind</h3>
+        <p>Operational review in terminal with checkpoints and snapshot undo to preserve human control.</p>
+      </div>
+      <div class="card fragment">
+        <span class="card-icon"><i data-lucide="puzzle"></i></span>
+        <h3>Plugins, Skills, and Hooks</h3>
+        <p>Mature extensibility to adapt the agent to team context with built-in governance.</p>
+      </div>
+      <div class="card fragment">
+        <span class="card-icon"><i data-lucide="database"></i></span>
+        <h3>Memory and long sessions</h3>
+        <p>Repository memory and better continuity in long sessions for multi-step execution.</p>
+      </div>
+      <div class="card fragment" style="border-color:rgba(56,200,250,0.35);">
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></span>
+        <h3 style="color:var(--accent-blue);">Enterprise readiness</h3>
+        <p>Policies and admin controls strengthen secure adoption at scale.</p>
+      </div>
+    </div>
+    <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
+      <strong>SDD reading:</strong> CLI evolves from experiment into a stable agentic engineering layer in terminal workflows.
+    </div>
+  </section>
+
+  <!-- 5.5ac — Copilot CLI: Enterprise metrics -->
+  <section data-background-gradient="radial-gradient(ellipse 74% 52% at 80% 25%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="bar-chart-3"></i></span>
+      <span class="section-label">03-B / GitHub Copilot CLI — Metrics</span>
+    </div>
+    <h2>How to Prove <span class="accent">Value</span> in Enterprise</h2>
+    <div class="two-cols" style="gap:1.4em; align-items:start;">
+      <div class="card" style="padding:0.95em 1em;">
+        <span class="card-icon"><i data-lucide="activity"></i></span>
+        <h3>CLI adoption KPIs</h3>
+        <ul style="font-size:0.7em; margin-top:0.25em;">
+          <li>CLI active users (DAU/WAU)</li>
+          <li>Sessions and requests per team</li>
+          <li>Token trend per workflow</li>
+          <li>IDE vs CLI adoption by team</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="line-chart"></i></span>
+        <h3 style="color:var(--accent-blue);">Use in rollout</h3>
+        <ul style="font-size:0.7em; margin-top:0.25em;">
+          <li>Identify squads with low adoption</li>
+          <li>Guide training with real usage data</li>
+          <li>Prioritize highest-return workflows</li>
+          <li>Measure improvement after policy and process changes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.7em;">
+      Copilot and CLI enterprise metrics were announced on <strong>02/27/2026</strong>; use this data to prove adoption and impact.
+    </div>
   </section>
 
   <!-- 5.5b — Agent Skills (Dec 2025) -->
@@ -428,7 +519,7 @@ cover both described scenarios.</code></pre>
     </div>
   </section>
 
-</section><!-- /copilot-chat -->
+</section><!-- /copilot-cli -->
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE — ARQUITETURA DE CONTEXTO  (vertical group)

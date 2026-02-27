@@ -54,7 +54,7 @@ const quizDataByLocale = {
             question: '6. Qual modo do GitHub Copilot cria um plano de implementação SEM modificar código?',
             options: ['Agent Mode', 'Ask Mode', 'Explore Mode', 'Plan Mode'],
             correct: 3,
-            explanation: '✅ Correto! O Plan Mode (public preview) cria um plano detalhado para revisão humana antes de qualquer alteração no código — perfeito para o fluxo SDD.',
+            explanation: '✅ Correto! O Plan Mode cria um plano detalhado para revisão humana antes de qualquer alteração no código — perfeito para o fluxo SDD.',
         },
         {
             question: '7. Em fevereiro de 2026, quais modelos estavam incluídos gratuitamente no plano Free do GitHub Copilot?',
