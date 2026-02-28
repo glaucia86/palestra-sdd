@@ -8,8 +8,8 @@
     <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
   </div>
   <aside class="notes">
-    <p>Agora eu conecto SDD com a ferramenta que muita gente usa todos os dias: GitHub Copilot.</p>
-    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+    <p>Agora conecto SDD com a ferramenta que muita gente usa todos os dias: GitHub Copilot.</p>
+    <p>A pergunta aqui é como usar Copilot de forma estruturada em vez de ad-hoc. A resposta passa pelos modos de interação, pela arquitetura de contexto que já discutimos, e agora pelo fluxo instrucional com spec-kit.</p>
   </aside>
 </section>
 <section id="copilot-chat" data-auto-animate>
@@ -47,10 +47,9 @@
       </div>
     </div>
     <aside class="notes">
-      <p>Copilot Chat aqui deve ser entendido como interface de colaboração técnica, não apenas autocomplete.</p>
-      <p>A diferença prática está em três níveis: conversar para entender, editar inline para iterar, e agent mode para executar fluxo mais complexo.</p>
-      <p>Também vale lembrar: lista de modelos é dinâmica, então sempre tratar como fotografia temporal.</p>
-      <p>Seta 0 (antes de avançar): enquadrar Copilot como interface de engenharia, não só autocomplete. Seta 1: completions. Seta 2: chat panel. Seta 3: inline chat. Seta 4: agent mode. Seta 5: multimodal. Fechamento do slide: lembrar que capacidade sem contexto ainda gera variabilidade.</p>
+      <p>Copilot Chat precisa ser entendido como interface de colaboração técnica — não apenas autocomplete. A diferença prática está em três níveis de uso: conversar para entender (Ask Mode), editar inline para iterar rapidamente (Edit Mode e Inline Chat), e executar fluxos complexos com autonomia crescente (Agent Mode + Plan Mode).</p>
+      <p>Nota sobre modelos: a lista mostrada no slide de modelos é uma fotografia de 27/02/2026. Modelos são adicionados, ajustados e retirados com frequência — para trabalho de produção, sempre valide em docs.github.com/en/copilot/reference/ai-models/supported-models antes de definir estratégia.</p>
+      <p>Setas 1 a 5: Completions → Chat Panel → Inline Chat (Ctrl+I) → Agent Mode → Multimodal com imagens. Fechamento: capacidade sem contexto estruturado ainda gera variabilidade — é aí que SDD entra.</p>
     </aside>
   </section>
 
@@ -134,10 +133,10 @@
       Datas de CLI: public preview em 25/09/2025, depreciação do <code>gh-copilot</code> em 25/10/2025 e GA em 25/02/2026.
     </p>
     <aside class="notes">
-      <p>Esta timeline mostra uma evolução de maturidade: de sugestão de código para execução de fluxo com autonomia crescente.</p>
-      <p>Eu gosto de destacar as datas da CLI para mostrar que a experiência de engenharia saiu do \"só IDE\" e passou a ser contínuo entre editor e terminal.</p>
-      <p>Quanto maior autonomia do agente, maior a importância da especificação.</p>
-      <p>Seta 0 (antes de avançar): explique que a timeline mostra ganho de autonomia ao longo dos anos. Seta 1: Jun/2021. Seta 2: Jun/2022. Seta 3: Nov/2023. Seta 4: Jun/2025. Seta 5: Set/2025. Seta 6: Out/2025. Seta 7: Dez/2025. Seta 8: Fev/2026. Fechamento do slide: maior autonomia exige melhor governança.</p>
+      <p>Essa timeline mostra uma evolução de maturidade técnica clara: de sugestão de código linear para execução multi-etapas com planos, memória e governança.</p>
+      <p>Dois marcos que merecem destaque: a CLI entrou em GA em 25/02/2026 — está estável para adoção em produção agora. Agent Skills entrou em GA em 18/12/2025 — tornando a modularização de contexto um recurso oficial. Ambas as datas foram validadas no GitHub Changelog.</p>
+      <p>A leitura de SDD nessa linha do tempo: quanto mais capacidade de execução autônoma, mais crítica fica a qualidade da especificação de entrada.</p>
+      <p>Setas 1 a 8: percorra cada marco cronologicamente. Fechamento: maior autonomia exige melhor governança — e SDD é exatamente isso.</p>
     </aside>
   </section>
 
@@ -155,9 +154,9 @@
         <p>Modo conversacional — faça perguntas, obtenha explicações, debata arquitetura. O Copilot responde mas <strong>não altera arquivos</strong>. Ideal para exploração.</p>
       </div>
       <div class="card fragment" style="border-color:rgba(56,200,250,0.35);">
-        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="search"></i></span>
-        <h3 style="color:var(--accent-blue);">Explore Mode</h3>
-        <p>Exploração read-only — navega o codebase com ferramentas de leitura (Grep, Glob, Read). Ideal para entender uma base desconhecida sem fazer modificações.</p>
+        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="pencil"></i></span>
+        <h3 style="color:var(--accent-blue);">Edit Mode</h3>
+        <p>Edições diretas e focadas no editor — inline, multi-file, ou via <kbd>Ctrl+I</kbd>. Ideal para iterações rápidas sem sair do contexto de código.</p>
       </div>
       <div class="card fragment" style="border-color:rgba(124,92,252,0.6); box-shadow:0 0 28px rgba(124,92,252,0.15);">
         <span class="card-icon" style="color:var(--accent-copilot-light);"><i data-lucide="bot"></i></span>
@@ -171,23 +170,24 @@
       </div>
     </div>
     <div class="highlight-box" style="margin-top:0.42em; font-size:0.66em; line-height:1.25;">
-      <strong>Explore → Plan → Agent:</strong> explore o codebase, crie o plano, execute com contexto estruturado. O fluxo completo do SDD.
+      <strong>Ask → Plan → Agent:</strong> entenda o codebase, crie o plano, execute com contexto estruturado. O fluxo completo do SDD.
     </div>
     <aside class="notes">
-      <p>O fluxo recomendado é simples: primeiro entender, depois planejar, depois executar.</p>
-      <p>Ask e Explore ajudam a reduzir suposição. Plan reduz risco antes de mexer em arquivo. Agent acelera execução quando o caminho já está claro.</p>
-      <p>Se nomes de modo variarem por versão, vale avisar a audiência no momento da demo.</p>
-      <p>Seta 0 (antes de avançar): diga que os modos são complementares, não concorrentes. Seta 1: Ask. Seta 2: Explore. Seta 3: Agent. Seta 4: Plan. Fechamento do slide: reforçar o fluxo Explore → Plan → Agent.</p>
+      <p>Atenção crítica para audiência técnica: os modos oficiais do Copilot Chat na IDE, conforme documentado em docs.github.com, são quatro — Ask, Edit, Agent e Plan. O slide apresenta "Explore Mode" no lugar de "Edit Mode", o que merece esclarecimento direto.</p>
+      <p>"Explore" funciona bem como estratégia de trabalho — usar o agente para navegar e entender o codebase com ferramentas de leitura antes de qualquer edição. Mas não é um modo oficial no dropdown da IDE. O modo para edições diretas e focadas é o Edit Mode. Para exploração read-only estruturada, você pode usar Ask Mode ou Agent Mode com ferramentas de leitura.</p>
+      <p>Nomenclatura oficial para reforçar: Ask (conversacional, sem alterar arquivos) → Edit (edições diretas no editor) → Plan (plano detalhado para revisão humana antes de qualquer mudança) → Agent (execução autônoma ponta a ponta, modo central para SDD).</p>
+      <p>O fluxo recomendado para SDD: Ask (entenda) → Plan (planeje, com revisão humana obrigatória) → Agent (execute com contexto estruturado). Para edits pontuais, Edit Mode ou Inline Chat (Ctrl+I) são mais eficientes.</p>
+      <p>Seta 1 — Ask. Seta 2 — [Explore como estratégia, não modo oficial; veja nota]. Seta 3 — Agent, o modo central para SDD. Seta 4 — Plan, essential para human-in-the-loop. Fechamento: o fluxo Plan → Agent é o coração do SDD com Copilot Chat.</p>
     </aside>
   </section>
 
-  <!-- 5.4 — Modelos disponíveis (Fevereiro 2026) -->
+  <!-- 5.4 — Modelos disponíveis (Março 2026) -->
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="cpu"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Modelos (Fev 2026)</span>
+      <span class="section-label">03 / GitHub Copilot — Modelos (Mar 2026)</span>
     </div>
-    <h2>Modelos <span class="accent">Disponíveis</span> — Fev/2026</h2>
+    <h2>Modelos <span class="accent">Disponíveis</span> — Mar/2026</h2>
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; align-items:start; margin-top:0.4em;">
       <div>
         <table style="font-size:0.65em;">
@@ -239,10 +239,9 @@
       </div>
     </div>
     <aside class="notes">
-      <p>Este slide é fotografia de momento. Modelos, custo e multiplicadores mudam com frequência.</p>
-      <p>Na prática, recomendo começar em Auto e trocar modelo quando a tarefa exigir mais profundidade de raciocínio ou mais velocidade de resposta.</p>
-      <p>Para ambientes de produção, sempre validar no doc oficial no dia da execução.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Este slide é uma fotografia de 27/02/2026 — modelos, multiplicadores de custo e status (preview/GA) mudam com frequência. Não arquitetem soluções com base na lista desse slide; validem em docs.github.com/en/copilot/reference/ai-models/supported-models no momento de uso.</p>
+      <p>Na prática: comece com o modo Auto — ele escolhe o modelo mais adequado à tarefa. Troque para modelo específico quando precisar de raciocínio mais profundo (Claude Sonnet/Opus, GPT-5.3-Codex) ou de velocidade maior (Haiku, GPT-5 mini).</p>
+      <p>Para Agent Mode com SDD, Claude Sonnet 4.6 e GPT-5.3-Codex têm apresentado bom equilíbrio entre raciocínio e execução. Mas novamente — valide no dia da execução, pois o lineup evolui rápido.</p>
   </aside>
   </section>
 
@@ -301,10 +300,10 @@
       </div>
     </div>
     <aside class="notes">
-      <p>Aqui eu organizo por categoria para facilitar memorização: participantes, comandos, variáveis e integrações.</p>
-      <p>Mostro um exemplo curto combinando contexto de workspace com arquivo específico, para deixar claro que qualidade de resposta depende da qualidade de contexto.</p>
-      <p>Também reforço que disponibilidade de recurso pode variar conforme interface.</p>
-      <p>Seta 0 (antes de avançar): primeiro percorra rapidamente as três colunas base do slide. Seta 1: MCP Integration. Seta 2: Suporte a Imagens. Seta 3: Inline Chat. Fechamento do slide: qualidade de resposta depende de contexto bem selecionado.</p>
+      <p>Organizo por categoria para facilitar memorização: participantes com @, slash commands com /, variáveis de chat com # e integrações (MCP, multimodal, inline).</p>
+      <p>Qualidade de resposta depende diretamente de qualidade de contexto. Usar @workspace + #file:PRD.md é significativamente mais eficaz do que abrir o chat sem contexto explícito. A combinação de contexto de workspace com arquivo específico é o padrão recomendado para SDD.</p>
+      <p>Disponibilidade de cada recurso pode variar por interface — IDE, github.com, mobile. Verifiquem no ambiente de uso.</p>
+      <p>Setas 1 a 3: percorrer colunas base (participantes, slash commands, variáveis). Seta 4 — MCP Integration. Seta 5 — Suporte a Imagens. Seta 6 — Inline Chat. Fechamento: contexto bem selecionado é a diferença entre resposta genérica e resposta precisa.</p>
     </aside>
   </section>
 
@@ -355,9 +354,9 @@
       </div>
     </div>
     <aside class="notes">
-      <p>Copilot CLI deve ser visto como extensão do fluxo da IDE para tarefas de shell e automação local.</p>
-      <p>Não é sobre trocar editor por terminal, é sobre reduzir troca de contexto mantendo rastreabilidade entre ambientes.</p>
-      <p>Seta 0 (antes de avançar): posicionar CLI como extensão do fluxo IDE, não substituição. Seta 1: produto oficial. Seta 2: complemento da IDE. Seta 3: uso em SDD. Seta 4: planos compatíveis. Fechamento do slide: editor + terminal com o mesmo contrato de contexto.</p>
+      <p>O posicionamento central: a CLI não concorre com a IDE — ela complementa. Em SDD, você especifica no PRD (IDE), planeja no agente, e pode executar partes do ciclo diretamente no terminal sem perder rastreabilidade.</p>
+      <p>A CLI está em GA desde 25/02/2026, disponível para todos os planos Copilot — incluindo Free. Para Business e Enterprise, admins habilitam por política, o que abre métricas de uso no nível da organização, anunciadas em 27/02/2026.</p>
+      <p>Seta 1 — produto oficial GitHub em GA, data confirmada. Seta 2 — disponível em todos os planos. Seta 3 — governança enterprise-ready com políticas. Seta 4 — complementa IDE, não substitui. Seta 5 — uso em SDD para fluxos fora do editor. Fechamento: IDE + terminal = contexto contínuo com o mesmo contrato de especificação.</p>
     </aside>
   </section>
 
@@ -398,10 +397,9 @@
       Public preview: <strong>25 de setembro de 2025</strong>. Caminho antigo (<code>gh-copilot</code>) deprecado em <strong>25 de outubro de 2025</strong>. GA em <strong>25 de fevereiro de 2026</strong>.
     </p>
     <aside class="notes">
-      <p>Este é o ponto de governança operacional: autonomia com responsabilidade.</p>
-      <p>Regra prática: revisar comando, executar em ambiente confiável e inspecionar diff antes de qualquer commit.</p>
-      <p>Human-in-the-loop no terminal é tão importante quanto na IDE.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Governança operacional: autonomia com responsabilidade. A sequência no terminal segue a mesma lógica do spec-kit — plan → aprovar → executar → revisar diff → commit. Nunca commitar sem inspecionar o que foi gerado.</p>
+      <p>Human-in-the-loop no terminal é tão importante quanto na IDE. Use aprovações, políticas e hooks para bloquear comandos inseguros antes da execução. O modelo pode sugerir comandos tecnicamente corretos que são contextualmente errados para o seu ambiente.</p>
+      <p>Nota sobre migração: quem ainda usa <code>gh copilot suggest</code> (extensão gh-copilot, descontinuada em outubro/2025) deve migrar para a CLI nativa — <code>npm install -g @github/copilot</code>. A experiência é substancialmente mais rica e o caminho antigo não recebe mais atualizações.</p>
   </aside>
   </section>
 
@@ -440,6 +438,12 @@
     <div class="highlight-box blue fragment" style="margin:0.34em auto 0 auto; max-width:78%; font-size:0.58em; line-height:1.16; text-align:center; padding:0.55em 0.75em;">
       <strong>Prontidão enterprise:</strong> políticas e controles administrativos reforçam adoção em escala com segurança operacional.
     </div>
+    <aside class="notes">
+      <p>Esse slide mostra a maturação da CLI do preview (set/2025) para GA (fev/2026): quatro capacidades que solidificam o produto como camada estável de engenharia agêntica no terminal.</p>
+      <p>Plan + Autopilot é o mais relevante para SDD: você define o plano, aprova, e a CLI executa sem precisar voltar ao editor. /diff e /review trazem revisão contextualizada no próprio terminal. Plugins e Skills adicionam extensibilidade com governança. Memória de sessão suporta tarefas verdadeiramente longas sem perda de contexto entre comandos.</p>
+      <p>Mensagem central: a CLI passou de "útil para scripts isolados" para "plataforma de execução agêntica no terminal". Isso muda o design dos fluxos de automação de engenharia.</p>
+      <p>Setas 1 a 4: Plan + Autopilot → /diff + /review + rewind → Plugins, Skills e Hooks → Memória e sessões longas. Fechamento: enterprise-ready com políticas e controles administrativos.</p>
+    </aside>
   </section>
 
   <!-- 5.5ac — Copilot CLI: Métricas enterprise -->
@@ -474,6 +478,11 @@
     <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.7em;">
       Métricas de Copilot/CLI no nível enterprise foram anunciadas em <strong>27/02/2026</strong>; use esses dados para comprovar adoção e impacto.
     </div>
+    <aside class="notes">
+      <p>Métricas de Copilot/CLI no nível enterprise entraram em GA em 27/02/2026. Isso resolve um problema real que times enfrentavam: dificuldade de comprovar ROI de adoção de IA sem dados objetivos por squad ou organização.</p>
+      <p>Com DAU/WAU de CLI, comparativo IDE vs terminal e tendência de tokens por fluxo, o engineering manager tem dados concretos para priorizar treinamentos e guiar rollout em squads com menor adoção.</p>
+      <p>Recomendo usar as métricas de forma iterativa: baseline inicial → intervenção (treinamento, processo, squad champion) → nova medição. O ciclo de melhoria precisa de dados para ter direção — e agora esses dados existem no nível da organização.</p>
+    </aside>
   </section>
 
   <!-- 5.5b — Agent Skills (Dez 2025) -->
@@ -521,9 +530,10 @@ hooks, Context, memo, lazy.</code></pre>
       </div>
     </div>
     <aside class="notes">
-      <p>Agent Skills são modularização de conhecimento: você não injeta tudo no contexto de uma vez.</p>
-      <p>Com SKILL.md como entrypoint, o agente carrega aprofundamento sob demanda e evita ruído desnecessário.</p>
-      <p>Seta 0 (antes de avançar): introduza Agent Skills como modularização de conhecimento. Seta 1: padrão aberto. Seta 2: auto-descoberta. Seta 3: progressive disclosure. Seta 4: portabilidade. Seta 5: criação via VS Code. Seta 6: card SKILL.md. Fechamento do slide: menos ruído, mais foco por tarefa.</p>
+      <p>Agent Skills são modularização de conhecimento especializado: você não injeta todo o contexto de uma vez, injeta o que é relevante para a tarefa atual.</p>
+      <p>Com SKILL.md como entrypoint e carregamento sob demanda, o agente mantém foco e não gasta tokens em contexto que não contribui para a tarefa presente. Isso se alinha diretamente com Progressive Disclosure — que veremos na seção seguinte.</p>
+      <p>Ponto importante: Agent Skills entrou em GA no GitHub Copilot em 18/12/2025. O mesmo padrão agentskills.io funciona em Claude Code, Cursor e Gemini CLI — o investimento em criar Skills é portável entre ferramentas.</p>
+      <p>Seta 1 — padrão aberto agentskills.io. Seta 2 — auto-descoberta em .github/skills/. Seta 3 — carregamento sob demanda (Progressive Disclosure). Seta 4 — portabilidade entre agentes. Seta 5 — criação via VS Code Chat. Seta 6 — estrutura do SKILL.md. Fechamento: Skills como unidade de especialização modular — menos ruído, mais foco por tarefa.</p>
     </aside>
   </section>
 
@@ -565,10 +575,9 @@ cobrir os dois cenários descritos.</code></pre>
       </div>
     </div>
     <aside class="notes">
-      <p>Fecho esta seção com um prompt orientado por artefato, porque ele traduz bem o espírito de SDD.</p>
-      <p>Com PRD e AGENTS no contexto, o pedido pode ser curto e objetivo: implementar um RF específico com CAs explicitamente testados.</p>
-      <p>A saída esperada deixa de ser \"qualquer código\" e passa a ser entrega verificável.</p>
-      <p>Seta 0 (antes de avançar): diga que este é o prompt canônico de trabalho com SDD. Seta 1: PRD como contexto principal. Seta 2: AGENTS carregado. Seta 3: Agent por RF. Seta 4: Plan para revisão humana. Seta 5: iteração por CAs. Fechamento do slide: resultado esperado é entrega verificável, não só código.</p>
+      <p>Fecho essa seção com um prompt orientado por artefato — porque ele traduz bem o espírito de SDD na prática. Com PRD e AGENTS no contexto, o pedido pode ser curto e objetivo: implementar um RF específico com critérios de aceite explicitamente testados.</p>
+      <p>A saída esperada deixa de ser "qualquer código" e passa a ser entrega verificável. A combinação de @workspace + #file:PRD.md + #file:AGENTS.md é o padrão canônico de trabalho com SDD no Copilot.</p>
+      <p>Seta 1 — PRD como contexto principal via #file. Seta 2 — AGENTS carregado automaticamente ou via #file. Seta 3 — Agent Mode executa RF por RF com rastreabilidade. Seta 4 — Plan Mode cria plano para revisão humana. Seta 5 — iteração pelos CAs como critério objetivo de conclusão. Fechamento: resultado esperado é entrega verificável, não só código.</p>
     </aside>
   </section>
 

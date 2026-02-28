@@ -8,8 +8,8 @@
     <div class="section-page-icon text-green"><i data-lucide="package"></i></div>
   </div>
   <aside class="notes">
-    <p>Agora a conversa sai do conceito e entra na operação. A pergunta aqui é: como transformar SDD em rotina real de equipe?</p>
-    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+    <p>Agora a conversa sai do conceito e entra na operação. A pergunta concreta é: como transformar SDD em rotina real de equipe com ferramentas que já existem hoje?</p>
+    <p>spec-kit é a resposta prática para isso — um toolkit open source mantido pelo GitHub que formaliza o fluxo em CLI e slash commands para agentes IA.</p>
   </aside>
 </section>
 <section id="spec-kit" data-auto-animate>
@@ -107,11 +107,10 @@ specify init meu-projeto --ai claude</code></pre>
       </div>
     </div>
     <aside class="notes">
-      <p>Eu apresento esta parte como receita: pré-requisito, instalação e inicialização. Simples, mas com padrão claro para todo o time.</p>
-      <p>Instalação permanente funciona melhor para quem usa todo dia. Uso com uvx é bom para testar sem acoplamento.</p>
-      <p>Também vale reforçar que os parâmetros mudam por agente e shell.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
-  </aside>
+      <p>Instalação permanente com `uv tool install` é a abordagem recomendada para uso no dia a dia: instala uma vez, fica disponível em qualquer projeto. O `uvx` é ideal para avaliar sem comprometer o ambiente global.</p>
+      <p>Pré-requisito essencial: Python 3.11+, `uv` instalado e um agente suportado. Para GitHub Copilot, nenhuma configuração adicional é necessária após o `specify init`.</p>
+      <p>Os parâmetros do `specify init` variam por agente e por shell (Unix vs PowerShell), então a documentação oficial do repositório é sempre a referência mais confiável para detalhes atualizados.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 3 — Slash Commands -->
@@ -169,11 +168,10 @@ specify init meu-projeto --ai claude</code></pre>
       </div>
     </div>
     <aside class="notes">
-      <p>Aqui está o ciclo completo: definir, planejar, quebrar em tarefas e implementar. Isso reduz improviso porque cada etapa deixa evidência.</p>
-      <p>Se o slash command não aparecer no ambiente, sem problema: o CLI continua sendo caminho oficial.</p>
-      <p>Mensagem-chave para a audiência: processo consistente vence prompt brilhante isolado.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
-  </aside>
+      <p>Aqui está o ciclo completo: constituição → especificação → plano → tarefas → implementação. Cada etapa deixa evidência rastreável e tem gate humano antes de avançar.</p>
+      <p>Se o slash command não aparecer no painel do agente — o que pode acontecer dependendo da versão do Copilot — o CLI funciona igualmente. Processo consistente vence prompt brilhante isolado.</p>
+      <p>Para a audiência: o `/speckit.clarify` é especialmente útil antes de planejar — clarifica áreas sub-especificadas antes que virem código errado.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 4 — Fluxo SDD Pipeline -->
@@ -294,10 +292,10 @@ specify init meu-projeto --ai claude</code></pre>
     📌 <strong>Human-in-the-Loop:</strong> cada artefato gerado pelo spec-kit é revisado por você antes de avançar. A IA executa, o humano valida, corrige e aprova.
     </div>
     <aside class="notes">
-      <p>Este slide é sobre controle de risco. O gate humano existe para impedir que plano ruim vire código em produção.</p>
-      <p>Se não aprovou, volta para plan. Esse loop parece lento no curto prazo, mas economiza muito custo de correção depois.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
-  </aside>
+      <p>O ponto central deste diagrama é o gate humano antes de chegar às tarefas. Esse checkpoint impede que um plano mal calibrado vire código em produção.</p>
+      <p>Se não passou no gate, volta para `/plan` com feedback específico. Esse loop disciplinado parece overhead no curto prazo, mas economiza horas de refactoring depois. Custo de correção na spec é ordens de magnitude menor que custo de correção no código em produção.</p>
+      <p>O ícone de humano em cada etapa não é decorativo — cada artefato gerado pelo spec-kit é intencionalmente um objeto para revisão, não output automático final.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 5 — PRD.md: o artefato central -->
@@ -352,10 +350,10 @@ Performance, segurança, acessibilidade.
       </div>
     </div>
     <aside class="notes">
-      <p>PRD é contrato de produto legível por humano e por agente. Quando RF e CA estão claros e testáveis, a implementação fica muito menos ambígua.</p>
-      <p>IDs de requisito e aceite são essenciais para rastrear código, teste e decisão ao longo do tempo.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
-  </aside>
+      <p>O PRD.md é o contrato de produto — lido por humano e por agente. Quando requisitos funcionais e critérios de aceite estão objetivos e rastreáveis via ID, a implementação fica muito menos ambígua.</p>
+      <p>Os IDs (RF01, CA01) são essenciais não só para rastrear código e testes, mas também para vincular decisões de arquitetura a necessidades de produto ao longo do tempo.</p>
+      <p>Detalhe importante no fluxo: você cria o PRD.md com sua ideia inicial. O `/speckit.specify` lê esse arquivo e dispara o ciclo completo — spec → plan → tasks → implement. O ponto de partida é sempre a intenção humana.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 6 — Mini Checklist de Qualidade -->
@@ -398,10 +396,10 @@ Performance, segurança, acessibilidade.
       ✅ Se o checklist passa, o agente ganha velocidade <em>sem</em> perder confiabilidade.
     </div>
     <aside class="notes">
-      <p>Este e o checklist de \"pronto para executar\". Se spec, plan e tasks passam aqui, a chance de retrabalho cai bastante.</p>
-      <p>Eu gosto de vender este ritual como seguro barato: poucos minutos de revisão para evitar horas de correção.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
-  </aside>
+      <p>Este é o critério de prontidão antes de executar. Se spec, plan e tasks passam aqui, a chance de retrabalho cai bastante.</p>
+      <p>Trato esse ritual como seguro barato: alguns minutos de revisão estruturada evitam horas de correção posterior. O custo de contexto mal definido na implementação é sempre maior que o custo de clarificá-lo na spec.</p>
+      <p>Small batches nas tarefas merece destaque especial: mudanças pequenas são mais fáceis de revisar, testar e reverter. Cada tarefa deve ter evidência de conclusão — teste ou verificação — antes de avançar para a próxima.</p>
+    </aside>
   </section>
 
   <!-- spec-kit 7 — Agentes Suportados -->
@@ -448,9 +446,9 @@ Performance, segurança, acessibilidade.
       🌍 <strong>+20 agentes suportados:</strong> Amp, Auggie CLI, Jules, Kilo Code, opencode, Qwen Code, Roo Code, SHAI (OVHcloud), IBM Bob, Amazon Q Developer CLI e mais!
     </div>
     <aside class="notes">
-      <p>Fecho com portabilidade: SDD é método, não dependência de uma única ferramenta.</p>
-      <p>Isso protege investimento do time. Mesmo trocando agente, os artefatos e o processo continuam valendo.</p>
-      <p>Seta 0 (antes de avançar): explique que método bom precisa ser portátil entre ferramentas. Seta 1: Claude Code. Seta 2: Cursor. Seta 3: Gemini CLI. Seta 4: Windsurf. Seta 5: Codex CLI. Fechamento do slide: processo e artefato valem mais que plataforma específica.</p>
+      <p>Fecho com portabilidade: SDD é método, não dependência de uma única ferramenta. Isso protege o investimento do time — troquem de agente amanhã, os artefatos e o processo continuam valendo.</p>
+      <p>O spec-kit suporta mais de 20 agentes: GitHub Copilot, Claude Code, Cursor, Gemini CLI, Windsurf, Codex CLI e muitos outros. A lista cresce com novos agentes que surgem no ecossistema.</p>
+      <p>Setas 1 a 5: Claude Code → Cursor → Gemini CLI → Windsurf → Codex CLI. Fechamento: processo e artefato valem mais que plataforma específica — e essa portabilidade é valor estratégico real.</p>
     </aside>
   </section>
 

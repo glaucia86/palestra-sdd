@@ -7,6 +7,9 @@
     <p class="section-page-desc">PRD.md, AGENTS.md, Rules y Skills — los cuatro pilares del contexto estructurado</p>
     <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
   </div>
+  <aside class="notes">
+    Esta sección cubre los cuatro artefactos que estructuran el contexto en SDD: PRD.md (qué y por qué), AGENTS.md (comportamiento del agente), Rules (lineamientos globales) y Skills (conocimiento especializado bajo demanda). Cada capa tiene un propósito específico y se cargan de forma incremental.
+  </aside>
 </section>
 <section id="arquitetura">
 
@@ -61,6 +64,10 @@
         <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
       </div>
     </div>
+    <aside class="notes">
+      La arquitectura de contexto es la diferencia entre Copilot como "asistente de autocompletado" y Copilot como "colaborador de ingeniería". Los tres inputs (PRD, AGENTS, Skills) llevan la información correcta al agente en el momento correcto.
+      El flujo visual importa: el desarrollador escribe la spec, el agente genera los artefactos, el contexto es enriquecido por Rules y Skills, y el output es código + pruebas + docs — el ciclo completo de SDD.
+    </aside>
   </section>
 
   <!-- 7.2 AGENTS.md -->
@@ -116,6 +123,10 @@ API REST de gestion de tareas.
 - No alteres el schema sin migracion</code></pre>
       </div>
     </div>
+    <aside class="notes">
+      AGENTS.md es el "contrato vivo" del proyecto con los agentes de IA. Define el contexto del proyecto, las reglas de comportamiento y dónde encontrar información especializada. Lo importante: es un estándar abierto, no propietario de GitHub.
+      El ejemplo muestra el patrón "README for agents": stack tech, convenciones de código, DO/DON'T explícitos. Cuanto más específico, menor la tasa de alucinación.
+    </aside>
   </section>
 
   <!-- 7.3 Rules -->
@@ -159,6 +170,10 @@ API REST de gestion de tareas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      Las Rules son el nivel más transversal del contexto: aplican a todos los proyectos del workspace, no a uno específico. En Copilot, .github/copilot-instructions.md es el archivo principal de Rules.
+      DO/DON'T estructura importante: reglas en positivo ("usa TypeScript strict") son más efectivas que reglas solo en negativo. El "never" se reserva para restricciones de seguridad.
+    </aside>
   </section>
 
   <!-- 7.4 Skills.md -->
@@ -202,6 +217,10 @@ API REST de gestion de tareas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      Las Skills son el mecanismo de Progressive Disclosure aplicado al conocimiento especializado. En lugar de cargar todo el contexto de arquitectura React en cada prompt, se carga solo cuando la tarea lo requiere.
+      Skills.io / agentskills.io es el registro público de habilidades reutilizables — mismos principios que npm para dependencias de código, pero para conocimiento de agentes.
+    </aside>
   </section>
 
   <!-- 7.5 Context Architecture Mermaid + Resumo -->
@@ -249,6 +268,10 @@ API REST de gestion de tareas.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      Esta diapositiva conecta todo el ciclo SDD en un solo visual: spec → artefactos → contexto enriquecido → implementación. El pipeline aquí no es solo conceptual — cada paso tiene un artefacto concreto en el repositorio.
+      Principio central: el contexto no es estático. Evoluciona con el proyecto. PRD.md se actualiza, AGENTS.md crece, nuevas Skills se agregan — el sistema mejora con el tiempo.
+    </aside>
   </section>
 
 </section><!-- /arquitetura -->
@@ -265,6 +288,9 @@ API REST de gestion de tareas.
     <p class="section-page-desc">Revelar solo el contexto necesario, en el momento correcto — el secreto para un agente eficiente</p>
     <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
   </div>
+  <aside class="notes">
+    Progressive Disclosure es el principio arquitectónico que unifica todo lo que vimos en la sección anterior. La sección 05 profundiza en cómo implementarlo: estructura en capas, 6 principios y el patrón AGENTS.md minimalista + Skills bajo demanda.
+  </aside>
 </section>
 <section id="progressive-disclosure">
 
@@ -283,7 +309,7 @@ API REST de gestion de tareas.
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>AGENTS.md raiz:</strong> minimo, global y estable — reglas validas para <em>todas</em> las tareas</li>
           <li class="fragment"><strong>Skills especializadas:</strong> cargadas bajo demanda, solo cuando hace falta</li>
-          <li class="fragment"><strong>Context Window:</strong> hasta 70% de ahorro de tokens</li>
+          <li class="fragment"><strong>Context Window:</strong> hasta 70% de ahorro de tokens <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></li>
           <li class="fragment"><strong>Calidad:</strong> menos ruido = respuestas mas precisas y consistentes</li>
         </ul>
       </div>
@@ -294,16 +320,20 @@ API REST de gestion de tareas.
           <p style="font-size:0.75em;">Como en medicina: el medico general atiende lo basico; el especialista se llama solo cuando el problema lo exige. El contexto funciona igual.</p>
         </div>
         <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          📊 AGENTS.md <strong>minimalista + Skills bajo demanda</strong> puede reducir hasta 70% el uso de context window por sesion.
+          📊 AGENTS.md <strong>minimalista + Skills bajo demanda</strong> puede reducir hasta 70% el uso de context window por sesion. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span>
         </div>
       </div>
     </div>
     <p class="slide-nav-hint">
       ↓ presiona ↓ para continuar en esta seccion
     </p>
+    <aside class="notes">
+      El 70% de reducción en tokens no es un número mágico — es la consecuencia lógica de cargar solo lo que se necesita. Un AGENTS.md de 50 líneas más Skills especializadas es más eficiente que un AGENTS.md monolítico de 500 líneas.
+      La analogía médica funciona en presentaciones: el médico general / especialista ayuda a audiencias no técnicas a entender la jerarquía de contexto inmediatamente.
+    </aside>
   </section>
 
-  <!-- PD 2 — Estructura en Capas -->
+  <!-- PD 2 — Estructura en Capas --> — Estructura en Capas -->
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="folder-tree"></i></span>
@@ -354,6 +384,10 @@ API de gestion de tareas con JWT.
         </div>
       </div>
     </div>
+    <aside class="notes">
+      La estructura de carpetas en este ejemplo es el "spec-kit" estándar que recomendamos. docs/agents/ para instrucciones especializadas, .github/copilot-instructions.md para Rules globales, skills/ para habilidades.
+      El comentario "💡 La IA genera archivos especializados automáticamente" es importante: esto no es trabajo manual adicional — es parte del flujo SDD donde el primer prompt genera la arquitectura completa.
+    </aside>
   </section>
 
   <!-- PD 3 — 6 Principios -->
@@ -398,6 +432,10 @@ API de gestion de tareas con JWT.
     <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
       📚 Estos archivos especializados tambien se conocen como <strong>"Skills"</strong> en la comunidad de agentes de IA (Claude Code, Cursor, etc.) — mismo concepto, carga bajo demanda.
     </div>
+    <aside class="notes">
+      Los 6 principios son el marco prescriptivo para implementar Progressive Disclosure correctamente. Son accionables: después de esta diapositiva, el equipo puede auditar su AGENTS.md actual contra cada principio.
+      Punto de enganche para la audiencia: ¿cuántos de estos principios viola el AGENTS.md (o copilot-instructions.md) que tienen hoy? Los más comunes: falta de separación y exceso de información volátil en el archivo raíz.
+    </aside>
   </section>
 
 </section><!-- /progressive-disclosure -->

@@ -8,8 +8,8 @@
     <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
   </div>
   <aside class="notes">
-    <p>Agora entramos no ponto mais estrutural da palestra: arquitetura de contexto. É aqui que a qualidade da colaboração com IA realmente se sustenta.</p>
-    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+    <p>Agora chegamos ao ponto mais estrutural da palestra — e possivelmente o com maior impacto prático no dia a dia do time: como organizar artefatos de contexto para que o agente trabalhe de forma consistente.</p>
+    <p>A pergunta prática que esse bloco responde: por que duas sessões com o mesmo agente, mesmo modelo e mesma tarefa produzem resultados tão diferentes? Geralmente a resposta está na qualidade do contexto de entrada, não na escolha do modelo.</p>
   </aside>
 </section>
 <section id="arquitetura">
@@ -66,9 +66,8 @@
       </div>
     </div>
     <aside class="notes">
-      <p>Leiam este diagrama como pipeline de engenharia. Entradas bem definidas alimentam o agente e aumentam consistência de saída.</p>
-      <p>Quando uma entrada está fraca, a saída perde qualidade mesmo com modelo excelente. Por isso, contexto e arquitetura, não apenas prompt.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Leiam este diagrama como pipeline de engenharia: entradas bem definidas produzem saídas consistentes. A qualidade da saída — código, testes, documentação — é diretamente proporcional à qualidade das entradas.</p>
+      <p>Quando uma camada está fraca (PRD vago, AGENTS genérico, Skills mal definidas), o agente preenche a incerteza com inferência própria. Isso pode ser bom ou muito ruim, dependendo do contexto. É preferível especificar do que confiar em inferência.</p>
   </aside>
   </section>
 
@@ -126,9 +125,9 @@ API REST de gerenciamento de tarefas.
       </div>
     </div>
     <aside class="notes">
-      <p>AGENTS.md funciona como manual operacional da IA no repositório.</p>
-      <p>Eu recomendo manter na raiz, com linguagem objetiva, regras acionáveis e limites claros. Ele precisa ser útil para humano e para agente.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>AGENTS.md funciona como manual operacional da IA para aquele repositório específico. Linguagem objetiva, regras acionáveis e limites claros — útil para humano e para agente.</p>
+      <p>Mais de 60 mil repositórios open source já têm um AGENTS.md na raiz. O padrão é stewarded pela Agentic AI Foundation (Linux Foundation), e compatível com a maioria dos agentes de código do mercado.</p>
+      <p>Dica prática: comece com 20-30 linhas. AGENTS.md de 500 linhas que ninguém mantém é pior do que um de 30 linhas sempre atualizado. Tamanho não é qualidade — clareza é.</p>
   </aside>
   </section>
 
@@ -174,9 +173,9 @@ API REST de gerenciamento de tarefas.
       </div>
     </div>
     <aside class="notes">
-      <p>Uma forma simples de diferenciar: Rules são política global; AGENTS é contrato local do projeto.</p>
-      <p>Quando os dois estão alinhados, você ganha consistência sem perder adaptação ao contexto específico.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Diferenciação simples: Rules são política global do workspace; AGENTS.md é contrato local do projeto. Rules valem sempre; AGENTS.md pode sobrescrever para um contexto específico.</p>
+      <p>No GitHub Copilot, <code>copilot-instructions.md</code> é o ponto principal de Rules globais. Arquivos em <code>.github/instructions/</code> permitem instrução por tipo de arquivo ou contexto — útil para times com múltiplas linguagens no mesmo repositório.</p>
+      <p>Quando os dois estão alinhados, você ganha consistência sem perder adaptação contextual. E isso por si só já reduz variação entre sessões e entre membros do time.</p>
   </aside>
   </section>
 
@@ -222,9 +221,9 @@ API REST de gerenciamento de tarefas.
       </div>
     </div>
     <aside class="notes">
-      <p>Skills são especialização modular de conhecimento. Em vez de carregar tudo sempre, o agente aprofunda só quando a tarefa pede.</p>
-      <p>Isso melhora foco, reduz custo de contexto e aumenta qualidade da resposta.</p>
-      <p>Seta 0 (antes de avançar): explicar por que Skills evitam sobrecarga de contexto. Seta 1: card Performance. Seta 2: card Portabilidade. Fechamento do slide: carregar contexto sob demanda melhora qualidade e custo.</p>
+      <p>Skills são especialização modular de conhecimento. Em vez de carregar tudo sempre, o agente aprofunda só quando a tarefa exige — isso melhora foco, reduz custo de contexto e aumenta qualidade da resposta.</p>
+      <p>O padrão agentskills.io é aberto e portável. Uma Skill criada para Copilot funciona em Claude Code, Cursor e outros agentes compatíveis — sem reescrita.</p>
+      <p>Seta 1 — card Performance: menos tokens = sessões mais eficientes. Seta 2 — card Portabilidade: mesma Skill em múltiplos agentes. Fechamento: carregar contexto sob demanda é a prática de Progressive Disclosure que exploramos em detalhes na próxima seção.</p>
     </aside>
   </section>
 
@@ -274,9 +273,9 @@ API REST de gerenciamento de tarefas.
       </div>
     </div>
     <aside class="notes">
-      <p>Recapitulando: PRD, AGENTS, Rules e Skills. Esses quatro pilares formam o sistema de governança da IA no projeto.</p>
-      <p>Quanto mais autonomia você libera para o agente, mais importante fica essa arquitetura de contexto.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Os quatro pilares: PRD define o que e por que — intenção de produto. AGENTS.md define como e em qual contexto — contrato de comportamento. Rules são as diretrizes globais independentes de projeto. Skills trazem especialização modular sob demanda.</p>
+      <p>Com maior autonomia do agente — Agent Mode, execuções longas, tarefas multi-arquivo — mais crítica fica essa arquitetura de contexto. É ela que permite ao agente tomar decisões corretas de forma autônoma sem perguntar a cada passo.</p>
+      <p>Princípio fundamental: contexto certo, no momento certo, para a tarefa certa. Esse princípio não envelhecerá independente de qual modelo ou agente usar.</p>
   </aside>
   </section>
 
@@ -295,8 +294,7 @@ API REST de gerenciamento de tarefas.
     <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
   </div>
   <aside class="notes">
-    <p>Agora vamos para o princípio que permite escalar isso com eficiência: progressive disclosure.</p>
-    <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+    <p>Agora vamos para o princípio que permite escalar arquitetura de contexto com eficiência — progressive disclosure. É sobre como revelar só o que é necessário na hora certa.</p>
   </aside>
 </section>
 <section id="progressive-disclosure">
@@ -316,7 +314,7 @@ API REST de gerenciamento de tarefas.
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>AGENTS.md raiz:</strong> mínimo, global, estável — regras que valem para <em>todas</em> as tarefas</li>
           <li class="fragment"><strong>Skills especializadas:</strong> carregadas sob demanda, apenas quando necessário</li>
-          <li class="fragment"><strong>Context Window:</strong> até 70% de economia de tokens</li>
+          <li class="fragment"><strong>Context Window:</strong> até 70% de economia de tokens <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></li>
           <li class="fragment"><strong>Qualidade:</strong> menos ruído = respostas mais precisas e consistentes</li>
         </ul>
       </div>
@@ -327,7 +325,7 @@ API REST de gerenciamento de tarefas.
           <p style="font-size:0.75em;">Como um médico especialista — o clinico geral cuida do básico; o especialista é chamado apenas quando o problema exige. O contexto funciona igual: carregue o especialista só quando precisar.</p>
         </div>
         <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          📊 AGENTS.md <strong>minimalista + Skills sob demanda</strong> pode reduzir em até 70% o uso de context window por sessão.
+          📊 AGENTS.md <strong>minimalista + Skills sob demanda</strong> pode reduzir em até 70% o uso de context window por sessão. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span>
         </div>
       </div>
     </div>
@@ -335,10 +333,10 @@ API REST de gerenciamento de tarefas.
       ↓ pressione ↓ para continuar nesta seção
     </p>
     <aside class="notes">
-      <p>Progressive disclosure é sobre foco: carregar apenas o contexto necessário para a tarefa atual.</p>
-      <p>A estratégia prática é base global mínima mais especialização sob demanda. Isso reduz ruído e melhora assertividade.</p>
-      <p>Percentuais de economia devem ser tratados como referência e validados no seu próprio ambiente.</p>
-      <p>Seta 0 (antes de avançar): contextualize progressive disclosure como estratégia de foco. Seta 1: AGENTS raiz mínimo. Seta 2: Skills sob demanda. Seta 3: economia de contexto. Seta 4: ganho de qualidade. Fechamento do slide: menos ruído, respostas mais consistentes.</p>
+      <p>Progressive Disclosure é sobre foco: carregar apenas o contexto necessário para a tarefa atual. Estratégia prática: base global mínima mais especialização sob demanda.</p>
+      <p>Isso reduz ruído, melhora assertividade da resposta e reduz custo de tokens por sessão. Menos ruído no contexto significa menos inferência necessária por parte do modelo, o que tende a resultar em output mais próximo da intenção.</p>
+      <p>Sobre os "até 70% de economia": é uma referência do meu próprio fluxo de trabalho documentado no artigo no LinkedIn (link na seção de referências). Não é pesquisa universal de mercado — é um resultado que vale como referência de campo. Cada time terá seu número; o ponto correto é: otimizar contexto de entrada é prática de engenharia mensurável, não intuição.</p>
+      <p>Seta 1 — AGENTS raiz mínimo e estável. Seta 2 — Skills sob demanda. Seta 3 — economia de tokens como resultado. Seta 4 — ganho de qualidade de resposta. Fechamento: menos ruído = respostas mais consistentes e previsíveis.</p>
     </aside>
   </section>
 
@@ -394,9 +392,9 @@ API de gerenciamento de tarefas com JWT.
       </div>
     </div>
     <aside class="notes">
-      <p>Esta estrutura em camadas é fácil de replicar: AGENTS enxuto na raiz, documentos especializados por domínio e rules globais separadas.</p>
-      <p>Assim você evita arquivo monolítico e ganha manutenção mais limpa no longo prazo.</p>
-      <p>Seta 0 (antes de avançar): abra o contexto deste slide e diga por que este ponto importa. Fechamento do slide: resuma em uma frase a ideia principal antes de seguir.</p>
+      <p>Estrutura em camadas é simples de replicar e, mais importante, de manter. AGENTS enxuto na raiz com links para especialização por domínio — testing, arquitetura, segurança, convenções. Rules globais separadas. Skills como unidades de especialização carregadas sob demanda.</p>
+      <p>O resultado é um arquivo de contexto que ninguém vai se recusar a manter atualizado, porque é pequeno e objetivo. Arquivos monolíticos tendem a ficar desatualizados; arquivos curtos com links são mais fáceis de cuidar.</p>
+      <p>Detalhe útil: a IA pode gerar os arquivos especializados automaticamente quando você inicializa o projeto. Você fornece o contexto, ela estrutura os arquivos — você revisa e ajusta.</p>
   </aside>
   </section>
 
@@ -443,9 +441,10 @@ API de gerenciamento de tarefas com JWT.
       📚 Esses arquivos especializados também são chamados de <strong>"Skills"</strong> na comunidade de AI Agents (Claude Code, Cursor, etc.) — mesmo conceito, carregamento sob demanda.
     </div>
     <aside class="notes">
-      <p>Esses seis princípios são higiene de contexto. Parecem simples, mas fazem enorme diferença na consistência da colaboração com IA.</p>
-      <p>Se eu resumir em uma frase: clareza estrutural reduz custo e aumenta confiabilidade.</p>
-      <p>Seta 0 (antes de avançar): avise que esses princípios são higiene operacional do contexto. Seta 1: Minimalismo. Seta 2: Separação. Seta 3: Delegação. Seta 4: Acionabilidade. Seta 5: Estabilidade. Seta 6: Economia. Fechamento do slide: clareza estrutural reduz custo e risco.</p>
+      <p>Esses seis princípios são higiene de contexto. Parecem óbvios quando estão escritos, mas violamos cada um deles regularmente quando construímos AGENTS.md no improviso.</p>
+      <p>Se eu resumir em uma frase: clareza estrutural reduz custo e aumenta confiabilidade. Instrução genérica como "siga boas práticas" contribui zero para o agente. Instrução específica como "antes de alterar código de autenticação, explique por que a mudança é necessária" tem efeito real e verificável.</p>
+      <p>Esses princípios se aplicam também a prompts isolados — contexto bom sempre supera prompt elaborado sem contexto adequado.</p>
+      <p>Setas 1 a 6: Minimalismo → Separação → Delegação → Acionabilidade → Estabilidade → Economia. Fechamento: clareza estrutural é a prioridade — não volume de instrução.</p>
     </aside>
   </section>
 

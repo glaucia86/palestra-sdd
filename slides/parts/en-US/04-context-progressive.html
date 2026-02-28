@@ -7,6 +7,10 @@
     <p class="section-page-desc">PRD.md, AGENTS.md, Rules, and Skills — the four pillars of structured context</p>
     <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
   </div>
+  <aside class="notes">
+    <p>Context architecture is the structural foundation that makes SDD work at scale. Without a clear architecture for how context flows to the agent, even good specs get diluted.</p>
+    <p>The four pillars — PRD.md, AGENTS.md, Rules, and Skills — each serve a distinct role: what and why, how and context, global guardrails, and specialized knowledge. Together they give the agent exactly what it needs, no more and no less.</p>
+  </aside>
 </section>
 <section id="arquitetura">
 
@@ -61,6 +65,11 @@
         <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
       </div>
     </div>
+  <aside class="notes">
+    <p>The architecture diagram shows the four input layers flowing into the AI agent, which then produces code, tests, and docs. This isn't just organization — it's a token economy: every layer costs context window space.</p>
+    <p>The key insight: the agent's quality is bounded by the quality of its context. Better structured context → fewer hallucinations → more predictable output. The architecture exists to optimize that input.</p>
+    <p>Arrow: inputs (PRD, AGENTS, Rules, Skills) → AI Agent → outputs (Code, Tests, Docs). Closing: architecture controls what enters the agent's context window — that control is what makes SDD different from vibe coding.</p>
+  </aside>
   </section>
 
   <!-- 7.2 AGENTS.md -->
@@ -116,6 +125,12 @@ Task management REST API.
 - Do not change schema without migration</code></pre>
       </div>
     </div>
+  <aside class="notes">
+    <p>AGENTS.md is the "README for agents" — it's the first thing an AI agent reads to understand the project. Location at the root is intentional: it's always discoverable, regardless of which file or directory the agent is working in.</p>
+    <p>"Living document" is the key phrase: AGENTS.md should be updated alongside the code, not written once and forgotten. When the tech stack changes, when conventions evolve, AGENTS.md changes too.</p>
+    <p>The example in the slide is a real minimal template. Note the explicit DO/DON'T structure: these are the clearest format for agent instructions. Avoid abstract guidelines like "follow best practices" — be specific and testable.</p>
+    <p>Closing: AGENTS.md is the persistent context that survives across sessions, team members, and model changes. Invest in it like you invest in tests.</p>
+  </aside>
   </section>
 
   <!-- 7.3 Rules -->
@@ -159,6 +174,12 @@ Task management REST API.
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>Rules are the workspace-level guardrails that apply regardless of project or task. In Copilot, copilot-instructions.md is the primary vehicle. The distinction from AGENTS.md is scope: AGENTS.md is project-specific, Rules are workspace/organization-wide.</p>
+    <p>The DO/DON'T format is intentional: it maps directly to how agents parse instructions. Positive rules (always do X) and negative rules (never do Y) are processed differently — both are needed.</p>
+    <p>The security-focused DON'Ts (no hardcoded credentials, no silent errors) are non-negotiable. These are OWASP-aligned guardrails that the agent should enforce by default in every session.</p>
+    <p>Closing: Rules are the safety net. AGENTS.md provides project context. Together they ensure the agent operates within defined boundaries at all times.</p>
+  </aside>
   </section>
 
   <!-- 7.4 Skills.md -->
@@ -202,6 +223,12 @@ Task management REST API.
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>Skills are the most powerful and underused layer of the context architecture. They solve a fundamental token economy problem: you can't load all domain knowledge into every prompt, so you load only what's relevant to the current task.</p>
+    <p>The agentskills.io pattern is open and portable: the same skills work across Copilot, Claude, Cursor, and other tools. This avoids tool lock-in on your domain knowledge investment.</p>
+    <p>Practical workflow: when starting a React task, instruct the agent to load `skills/react-patterns.skill.md`. When working on API design, load `skills/api-design.skill.md`. Each skill is focused, maintained, and reusable.</p>
+    <p>Closing: skills are the mechanism that makes Progressive Disclosure concrete — which is exactly what section 05 covers next.</p>
+  </aside>
   </section>
 
   <!-- 7.5 Context Architecture Mermaid + Resumo -->
@@ -249,6 +276,11 @@ Task management REST API.
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>This is the synthesis slide: the pipeline shows how all four pillars work together in sequence. Developer writes spec → Copilot generates artifacts → context enriched by Rules + Skills → implementation with traceability.</p>
+    <p>The core principle bears repeating: "Right context, at the right time, for the right task." This is not just a tagline — it's the operational definition of SDD context management. Too much context is as harmful as too little.</p>
+    <p>Closing: the architecture is the "how" behind the SDD promise. In the next section, Progressive Disclosure shows the depth of this principle in practice.</p>
+  </aside>
   </section>
 
 </section><!-- /arquitetura -->
@@ -265,6 +297,10 @@ Task management REST API.
     <p class="section-page-desc">Reveal only the necessary context, at the right time — the secret to an efficient agent</p>
     <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
   </div>
+  <aside class="notes">
+    <p>Progressive Disclosure is the advanced context strategy that turns context architecture into a token-efficient, high-quality operational system. This section goes deeper than "load an AGENTS.md" — it explains how to structure context across multiple layers.</p>
+    <p>The doctor analogy in the slide is helpful: a general practitioner handles basics; a specialist is called only when needed. Context works the same way — load specialized knowledge only when the current task requires it.</p>
+  </aside>
 </section>
 <section id="progressive-disclosure">
 
@@ -283,7 +319,7 @@ Task management REST API.
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>Root AGENTS.md:</strong> minimal, global, stable — rules that apply to <em>all</em> tasks</li>
           <li class="fragment"><strong>Specialized Skills:</strong> loaded on demand, only when needed</li>
-          <li class="fragment"><strong>Context Window:</strong> up to 70% token savings</li>
+          <li class="fragment"><strong>Context Window:</strong> up to 70% token savings <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></li>
           <li class="fragment"><strong>Quality:</strong> less noise = more precise and consistent responses</li>
         </ul>
       </div>
@@ -294,13 +330,19 @@ Task management REST API.
           <p style="font-size:0.75em;">Like in medicine: a general practitioner handles basics; a specialist is called only when needed. Context works the same way.</p>
         </div>
         <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          📊 A <strong>minimal AGENTS.md + on-demand Skills</strong> approach can reduce context-window usage by up to 70% per session.
+          📊 A <strong>minimal AGENTS.md + on-demand Skills</strong> approach can reduce context-window usage by up to 70% per session. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span>
         </div>
       </div>
     </div>
     <p class="slide-nav-hint">
       ↓ press ↓ to continue in this section
     </p>
+  <aside class="notes">
+    <p>Progressive Disclosure in practice: the root AGENTS.md stays minimal and stable — only rules that apply to all tasks all the time. Everything specialized lives in secondary files, loaded on demand.</p>
+    <p>The "up to 70% token savings" figure comes from my own structured workflow measurements — documented in my LinkedIn article. Your mileage will vary, but the direction is consistent: leaner context = faster responses, lower cost, less noise.</p>
+    <p>The quality point is crucial: it's not just about tokens. Less context noise means the agent focuses on what matters for the current task, producing more precise and consistent outputs.</p>
+    <p>Arrows 1–4: Root AGENTS.md (global) → Specialized Skills (on-demand) → Context Window efficiency → Quality improvement. Closing: Progressive Disclosure is the operational implementation of "right context, right time, right task."</p>
+  </aside>
   </section>
 
   <!-- PD 2 — Layered Structure -->
@@ -354,6 +396,12 @@ Task management API with JWT.
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>The layered folder structure is the practical implementation of Progressive Disclosure. The root AGENTS.md points to specialized files but doesn't load them — they're fetched only when explicitly requested for a task.</p>
+    <p>The "AI generates specialized files" point is important for adoption: you don't need to write every docs/agents/*.md file from scratch. Use spec-kit or Copilot to generate the initial versions from your AGENTS.md. Then refine iteratively.</p>
+    <p>The AGENTS.md minimal example in the slide shows the delegation pattern: each section points to where the agent can find more detail, without loading all that detail upfront.</p>
+    <p>Closing: the layered structure is a one-time investment that pays compound interest — every future session benefits from cleaner, faster context loading.</p>
+  </aside>
   </section>
 
   <!-- PD 3 — 6 Principles -->
@@ -398,6 +446,12 @@ Task management API with JWT.
     <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
       📚 These specialized files are also called <strong>"Skills"</strong> in the AI agent community (Claude Code, Cursor, etc.) — same concept, on-demand loading.
     </div>
+  <aside class="notes">
+    <p>The six principles are the actionable checklist for implementing Progressive Disclosure: Minimalism, Separation, Delegation, Actionability, Stability, Efficiency. Each principle directly addresses a failure mode of naive context management.</p>
+    <p>"Actionability" deserves special attention: specific instructions like "before changing code, explain why" are infinitely more useful than "follow best practices." The agent can act on specific instructions; it interprets abstract ones unpredictably.</p>
+    <p>The community convergence point — Claude Code, Cursor, and others all using similar "Skills" patterns — validates that this approach is emerging as an industry standard, not a one-off technique.</p>
+    <p>Closing: these six principles are the implementation guide for the context architecture. Follow them and the architecture becomes self-maintaining as the project evolves.</p>
+  </aside>
   </section>
 
 </section><!-- /progressive-disclosure -->

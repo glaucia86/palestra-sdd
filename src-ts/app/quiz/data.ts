@@ -60,7 +60,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
     },
     {
       question: '6. Qual modo do GitHub Copilot cria um plano de implementação SEM modificar código?',
-      options: ['Agent Mode', 'Ask Mode', 'Explore Mode', 'Plan Mode'],
+      options: ['Agent Mode', 'Ask Mode', 'Edit Mode', 'Plan Mode'],
       correct: 3,
       explanation:
         '✅ Correto! O Plan Mode cria um plano detalhado para revisão humana antes de qualquer alteração no código — perfeito para o fluxo SDD.',
@@ -143,7 +143,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
     },
     {
       question: '6. Which GitHub Copilot mode creates an implementation plan without changing code?',
-      options: ['Agent Mode', 'Ask Mode', 'Explore Mode', 'Plan Mode'],
+      options: ['Agent Mode', 'Ask Mode', 'Edit Mode', 'Plan Mode'],
       correct: 3,
       explanation:
         '✅ Correct! Plan Mode creates a detailed implementation plan for human review before any code changes.',
@@ -230,7 +230,7 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
     },
     {
       question: '6. ¿Qué modo de GitHub Copilot crea un plan de implementación sin modificar código?',
-      options: ['Agent Mode', 'Ask Mode', 'Explore Mode', 'Plan Mode'],
+      options: ['Agent Mode', 'Ask Mode', 'Edit Mode', 'Plan Mode'],
       correct: 3,
       explanation:
         '✅ ¡Correcto! Plan Mode crea un plan detallado para revisión humana antes de realizar cambios en el código.',

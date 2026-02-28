@@ -6,7 +6,8 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="slide-capa">
-    <div class="capa-eyebrow">◈ Technical Talk &nbsp;•&nbsp; February 2026</div>
+    <!-- MONTHLY UPDATE: update the month in this line -->
+    <div class="capa-eyebrow">◈ Technical Talk &nbsp;•&nbsp; March 2026</div>
     <div class="capa-mission-chip">
       <span class="capa-mission-chip-icon"><i data-lucide="swords"></i></span>
       Mission started: master SDD with AI
@@ -41,6 +42,11 @@
       -> use keyboard arrows · click · swipe to navigate
     </p>
   </div>
+  <aside class="notes">
+    <p>Welcome everyone. This content was prepared and reviewed with current information — what you'll see here reflects the state of the GitHub Copilot ecosystem as of late February and early March 2026.</p>
+    <p>My goal in this presentation is practical: to show how to move from ad-hoc AI interactions to structured specification-driven engineering. The core idea is simple — an agent delivers better when given better context. If the context is vague, the result will be vague. If it's structured, the result tends to be predictable.</p>
+    <p>I'll show real tools, real workflows, and reflections that emerged from daily use. Let's get started.</p>
+  </aside>
 </section>
 
 <!-- ===========================================================================
@@ -65,6 +71,10 @@
     <a class="sumario-card" href="#/conclusao"><span class="icon"><i data-lucide="rocket"></i></span><div class="title">Conclusion</div><div class="num">08</div></a>
     <a class="sumario-card" href="#/quiz"><span class="icon"><i data-lucide="help-circle"></i></span><div class="title">Quiz / Q&amp;A</div><div class="num">09</div></a>
   </div>
+  <aside class="notes">
+    <p>Here's the conversation map. The progression is intentional: SDD concept, then operationalization with spec-kit and Copilot, and then context architecture and live demo.</p>
+    <p>If time gets tight, we can go directly to the most relevant block for your scenario — the summary cards are interactive. But the full flow has a logical progression: each block makes more sense because of the previous one.</p>
+  </aside>
 </section>
 
 <!-- ===========================================================================
@@ -79,6 +89,10 @@
     <p class="section-page-desc">Spec-Driven Development: the evolution of TDD and BDD in the generative AI era</p>
     <div class="section-page-icon text-green"><i data-lucide="target"></i></div>
   </div>
+  <aside class="notes">
+    <p>Let's start with the foundation: what SDD is and why it became so relevant now that we have agents with multi-step execution.</p>
+    <p>The central question is no longer "can AI do this?" — that's already clear. The question now is: "how do I make AI do this in a predictable and repeatable way?" SDD answers that second question.</p>
+  </aside>
 </section>
 
 <section id="o-que-e-sdd" data-auto-animate>
@@ -101,6 +115,12 @@
       </div>
     </div>
     <p class="slide-nav-hint">↓ press ↓ to continue in this section</p>
+  <aside class="notes">
+    <p>When I talk about SDD, I'm talking about treating specification as an executable engineering artifact — not as decorative documentation that ages in a folder.</p>
+    <p>The blueprint analogy is still the most direct: without a blueprint, construction happens by improvisation. With AI it's the same — the human defines intent, limits, and acceptance criteria; the agent executes within that contract. Without that contract, each session starts almost from scratch.</p>
+    <p>To reinforce: SDD complements tests, code review, and security — it doesn't replace them. That becomes clear in the next slide.</p>
+    <p>Arrow 1 — Spec-First: the spec exists before the code. Arrow 2 — Human-in-the-Loop: human validation at each critical step. Arrow 3 — Structured Context: the four layers we'll see in detail. Arrow 4 — Traceability: every decision traceable back to an approved spec. Closing: predictability is a direct consequence of specification quality.</p>
+  </aside>
   </section>
 
   <section data-auto-animate data-transition="fade">
@@ -121,7 +141,12 @@
       <span class="tag red fragment fade-out">Without structure</span>
       <span class="tag blue fragment fade-in-then-semi-out">With structured specs</span>
     </div>
-    <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">💡 Progressive Disclosure studies indicate up to <em>70%</em> faster iteration with SDD + AI assistants.</div>
+    <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">💡 Progressive Disclosure studies indicate up to <em>70%</em> faster iteration with SDD + AI assistants. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></div>
+  <aside class="notes">
+    <p>I'll read this comparison line by line because it translates real pain points. Without SDD, each AI session is almost a full renegotiation of the problem. With SDD, PRD and AGENTS become the project's persistent memory — reducing variation between sessions, between different people on the team, and even between different models.</p>
+    <p>A note on the "70% faster iteration" data point in the slide: it's a result I observed and documented in my own workflow with structured context — published in my LinkedIn article. It's not a universal market research benchmark. Each team will have its own number; the point of the message is that measuring is part of the process, and the gain is real when context is well structured.</p>
+    <p>Arrow 1 — transition from the tag "Without structure" to "With structured specs". Closing: invest in the spec before crafting prompts. The return is disproportionately greater.</p>
+  </aside>
   </section>
 
   <section>
@@ -135,6 +160,11 @@
       <div class="card fragment"><span class="card-icon"><i data-lucide="rocket"></i></span><h3>Speed</h3><p>Fewer review cycles mean faster delivery and lower change cost.</p></div>
       <div class="card fragment"><span class="card-icon"><i data-lucide="users"></i></span><h3>Communication</h3><p>Specs align developers, PMs, and stakeholders around one source of truth.</p></div>
     </div>
+  <aside class="notes">
+    <p>These benefits show up in day-to-day engineering: fewer late correction loops, less context loss between sessions, and better alignment between dev, product, and architecture.</p>
+    <p>Speed here doesn't come from "skipping steps." It comes from less rework because intent was clear from the start. Each card answers a real team pain — ask the audience which one resonates most in their context.</p>
+    <p>Arrows 1 to 6: Predictability → Fewer Hallucinations → Living Documentation → Traceability → Speed → Communication. Closing: connect speed with reduced rework, not reckless haste.</p>
+  </aside>
   </section>
 
   <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 20%, rgba(255,120,73,0.06) 0%, transparent 60%)">
@@ -142,6 +172,11 @@
     <h2><span class="accent">SDD</span> reduces ambiguity, but it does not replace:</h2>
     <div class="card" style="margin-top:0.8em;"><ul class="icon-list" style="font-size:0.82em;"><li class="fragment"><span class="icon"><i data-lucide="flask-conical"></i></span><div><strong>Automated testing</strong></div></li><li class="fragment"><span class="icon"><i data-lucide="git-pull-request"></i></span><div><strong>Code review</strong></div></li><li class="fragment"><span class="icon"><i data-lucide="shield-check"></i></span><div><strong>Threat modeling / security review</strong></div></li><li class="fragment"><span class="icon"><i data-lucide="clipboard-check"></i></span><div><strong>Evals</strong> (even qualitative)</div></li></ul></div>
     <div class="highlight-box orange" style="margin-top:0.7em; font-size:0.76em;">🎯 SDD increases predictability. Final quality still depends on continuous technical validation.</div>
+  <aside class="notes">
+    <p>This slide exists to keep us grounded: SDD doesn't replace engineering discipline. Automated tests, code review, security, and evals remain mandatory.</p>
+    <p>Without these practices, SDD only accelerates mistakes more efficiently. The metaphor I use: you can build faster with better blueprints, but you still need a building inspector.</p>
+    <p>Arrows 1 to 4: Tests → Code Review → Threat modeling/security → Evals. Closing: without continuous validation, AI only accelerates errors — with validation, AI amplifies quality.</p>
+  </aside>
   </section>
 </section>
 
@@ -152,13 +187,18 @@
     <div class="two-cols">
       <div>
         <div class="highlight-box" style="margin-bottom:0.8em;"><strong>We are in the era of AI coding assistants.</strong> Development has never been faster - or more unpredictable.</div>
-        <ul style="font-size:0.82em;"><li class="fragment">Models generate code in seconds, often without structured context</li><li class="fragment">Larger context increases hallucination risk</li><li class="fragment">Review loops multiply engineering cost</li><li class="fragment">Rework can consume 30-40% of team time</li></ul>
+        <ul style="font-size:0.82em;"><li class="fragment">Models generate code in seconds, often without structured context</li><li class="fragment">Larger context increases hallucination risk</li><li class="fragment">Review loops multiply engineering cost</li><li class="fragment">Rework can consume 30-40% of team time <span style="font-size:0.85em; opacity:0.7;">(ref. software engineering productivity surveys)</span></li></ul>
       </div>
       <div>
         <div class="card" style="text-align:center; border-color:var(--accent-blue);"><div style="font-size:2.5em; margin-bottom:0.3em;"><i data-lucide="bar-chart-2" style="width:1em;height:1em;color:var(--accent-blue);"></i></div><h3 class="text-blue">Core Problem</h3><p style="font-size:0.75em;">AI agents are powerful, but they need structured context for consistent outcomes.</p></div>
         <div class="card" style="margin-top:0.7em; text-align:center; border-color:var(--accent-green);"><div style="font-size:2.5em; margin-bottom:0.3em;"><i data-lucide="target" style="width:1em;height:1em;color:var(--accent-green);"></i></div><h3 class="text-green">SDD is the Answer</h3><p style="font-size:0.75em;">Specs act as a contract between developer and AI.</p></div>
       </div>
     </div>
+  <aside class="notes">
+    <p>The current scenario is this: agents like GitHub Copilot, Cursor, and Claude Code are much more capable — multi-step execution, terminal access, files, and external tools. But this expanded capability doesn't resolve poorly defined context. In fact, more autonomy with poor context amplifies the cost of errors.</p>
+    <p>On the "30-40% rework" data point in the slide: this is an estimate that circulates in software engineering productivity surveys, but without a single universal primary source. Use it as an order-of-magnitude reference — the correct point is that rework from poorly defined context is expensive and measurable. Measure it in your own team.</p>
+    <p>Arrow 1 — fast code without structured context. Arrow 2 — more capability with poor context amplifies hallucination. Arrow 3 — review cycles have growing cost. Arrow 4 — rework as an economic fact for the team. Closing: SDD enters specifically to resolve this context gap — it's not extra complexity, it's variability reduction.</p>
+  </aside>
   </section>
 
   <section>
@@ -169,5 +209,11 @@
       <div><div class="card fragment" style="border-color:var(--accent-purple); margin-bottom:0.7em;"><span class="card-icon"><i data-lucide="building-2"></i></span><h3>Architecture-First</h3><p>Structure guides the build.</p></div><div class="card fragment" style="border-color:var(--accent-orange);"><span class="card-icon"><i data-lucide="link"></i></span><h3>Traceability</h3><p>Each line can be traced back to an approved requirement.</p></div></div>
     </div>
     <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">💬 <em>Do not let AI improvise. Give it a well-written spec.</em></div>
+  <aside class="notes">
+    <p>Closing the fundamentals section: spec-first, human-in-the-loop, architecture-first, and traceability. These four pillars matter especially in contexts with compliance and audit requirements, because every decision has an explicit and verifiable origin.</p>
+    <p>The quote in the highlight-box sums up the practice well: "Don't let the AI improvise. Give it a well-written spec and it will deliver exactly what you need."</p>
+    <p>In the next block, I'll show how to operationalize this with spec-kit — moving from concept to practical team workflow.</p>
+    <p>Arrows 1 to 4: Spec-First → Human-in-the-Loop → Architecture-First → Traceability. Closing: bridge to operationalization with spec-kit in the next section.</p>
+  </aside>
   </section>
 </section>

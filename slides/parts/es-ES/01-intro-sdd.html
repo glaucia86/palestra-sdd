@@ -6,7 +6,8 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="slide-capa">
-    <div class="capa-eyebrow">◈ Charla Tecnica &nbsp;•&nbsp; Febrero 2026</div>
+    <!-- MONTHLY UPDATE: actualizar el mes en esta línea -->
+    <div class="capa-eyebrow">◈ Charla Tecnica &nbsp;•&nbsp; Marzo 2026</div>
     <div class="capa-mission-chip">
       <span class="capa-mission-chip-icon"><i data-lucide="swords"></i></span>
       Mision iniciada: dominar SDD con IA
@@ -39,6 +40,11 @@
       -> usa flechas del teclado · clic · swipe para navegar
     </p>
   </div>
+  <aside class="notes">
+    <p>Bienvenidos a todos. Este contenido fue preparado y revisado con informacion actualizada — lo que verán aquí refleja el estado del ecosistema de GitHub Copilot a finales de febrero y principios de marzo de 2026.</p>
+    <p>Mi objetivo en esta presentacion es práctico: mostrar cómo pasar de interacciones ad-hoc con IA a ingeniería estructurada guiada por especificaciones. La idea central es simple — un agente entrega mejores resultados cuando recibe mejor contexto. Si el contexto es vago, el resultado será vago. Si está estructurado, el resultado tiende a ser predecible.</p>
+    <p>Les mostraré herramientas reales, flujos de trabajo reales y reflexiones que surgieron del uso diario. Comencemos.</p>
+  </aside>
 </section>
 
 <section id="sumario">
@@ -57,6 +63,10 @@
     <a class="sumario-card" href="#/conclusao"><span class="icon"><i data-lucide="rocket"></i></span><div class="title">Conclusion</div><div class="num">08</div></a>
     <a class="sumario-card" href="#/quiz"><span class="icon"><i data-lucide="help-circle"></i></span><div class="title">Quiz / Q&amp;A</div><div class="num">09</div></a>
   </div>
+  <aside class="notes">
+    <p>Aquí está el mapa de la conversacion. La progresion es intencional: concepto de SDD, luego operacionalizacion con spec-kit y Copilot, y después arquitectura de contexto y demo en vivo.</p>
+    <p>Si el tiempo se ajusta, podemos ir directamente al bloque más relevante para su escenario — las tarjetas del resumen son interactivas. Pero el flujo completo tiene una progresion lógica: cada bloque tiene más sentido gracias al anterior.</p>
+  </aside>
 </section>
 
 <section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.08) 0%, transparent 60%)">
@@ -68,6 +78,10 @@
     <p class="section-page-desc">Spec-Driven Development: la evolucion de TDD y BDD en la era de la IA generativa</p>
     <div class="section-page-icon text-green"><i data-lucide="target"></i></div>
   </div>
+  <aside class="notes">
+    <p>Comenzamos con la base: qué es SDD y por qué se volvio tan relevante ahora que tenemos agentes con ejecucion multi-paso.</p>
+    <p>La pregunta central ya no es "¿puede la IA hacer esto?" — eso ya quedó claro. La pregunta ahora es: "¿cómo hago que la IA haga esto de forma predecible y repetible?" SDD responde esa segunda pregunta.</p>
+  </aside>
 </section>
 
 <section id="o-que-e-sdd" data-auto-animate>
@@ -85,6 +99,12 @@
       </div>
     </div>
     <p class="slide-nav-hint">↓ presiona ↓ para continuar en esta seccion</p>
+  <aside class="notes">
+    <p>Cuando hablo de SDD, hablo de tratar la especificacion como un artefacto de ingeniería ejecutable — no como documentacion decorativa que envejece en una carpeta.</p>
+    <p>La analogía del plano sigue siendo la más directa: sin un plano, la construccion ocurre por improvisacion. Con IA es lo mismo — el humano define el intent, los límites y los criterios de aceptacion; el agente ejecuta dentro de ese contrato. Sin ese contrato, cada sesion empieza casi desde cero.</p>
+    <p>Para reforzar: SDD complementa pruebas, code review y seguridad — no los reemplaza. Eso queda claro en la próxima diapositiva.</p>
+    <p>Flecha 1 — Spec-First: la spec existe antes del código. Flecha 2 — Human-in-the-Loop: validacion humana en cada paso crítico. Flecha 3 — Contexto Estructurado: las cuatro capas que veremos en detalle. Flecha 4 — Trazabilidad: cada decision trazable hasta una spec aprobada. Cierre: la predictibilidad es consecuencia directa de la calidad de la especificacion.</p>
+  </aside>
   </section>
 
   <section data-auto-animate data-transition="fade">
@@ -105,6 +125,11 @@
       <span class="tag red fragment fade-out">Sin estructura</span>
       <span class="tag blue fragment fade-in-then-semi-out">Con specs estructuradas</span>
     </div>
-    <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">💡 Estudios de Progressive Disclosure muestran hasta 70% menos tiempo de iteracion con SDD + IA.</div>
+    <div class="highlight-box blue" style="margin-top:0.6em; font-size:0.75em;">💡 Estudios de Progressive Disclosure muestran hasta 70% menos tiempo de iteracion con SDD + IA. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></div>
+  <aside class="notes">
+    <p>Leeré esta comparacion línea a línea porque traduce dolores reales. Sin SDD, cada sesión de IA es casi una renegociacion completa del problema. Con SDD, PRD y AGENTS se convierten en la memoria persistente del proyecto — reduciendo variacion entre sesiones, entre diferentes personas del equipo, e incluso entre diferentes modelos.</p>
+    <p>Una nota sobre el dato "70% menos tiempo de iteración" que aparece en la diapositiva: es un resultado que observé y documenté en mi propio flujo de trabajo con contexto estructurado — publicado en mi artículo de LinkedIn. No es un benchmark de investigacion de mercado universal. Cada equipo tendrá su propio número; el punto del mensaje es que medir es parte del proceso, y la ganancia es real cuando el contexto está bien estructurado.</p>
+    <p>Flecha 1 — transicion de la etiqueta "Sin estructura" a "Con specs estructuradas". Cierre: invierte en la spec antes de elaborar los prompts. El retorno es desproporcionadamente mayor.</p>
+  </aside>
   </section>
 </section>

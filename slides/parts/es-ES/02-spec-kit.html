@@ -7,6 +7,11 @@
     <p class="section-page-desc">El toolkit open source que operacionaliza SDD con CLI y slash commands para agentes de IA</p>
     <div class="section-page-icon text-green"><i data-lucide="package"></i></div>
   </div>
+  <aside class="notes">
+    <p>Ahora el bloque operacional: cómo spec-kit transforma el SDD en flujos de trabajo de ingeniería reales.</p>
+    <p>No creamos especificaciones sofisticadas solo para decir que tenemos documentación. Las creamos para dar al agente suficiente contexto para ejecutar de forma predecible.</p>
+    <p>En esta sección: instalar spec-kit, los slash commands, el pipeline y cómo se integra en la rutina diaria del equipo.</p>
+  </aside>
 </section>
 <section id="spec-kit" data-auto-animate>
 
@@ -47,6 +52,11 @@
     <p class="slide-nav-hint">
       ↓ presiona ↓ para continuar en esta seccion
     </p>
+  <aside class="notes">
+    <p>spec-kit operacionaliza el SDD: en lugar de hacer prompts por impulso, el ciclo comienza con la especificación. La CLI y los slash commands garantizan que el flujo sea repetible — cualquier miembro del equipo trabaja del mismo modo.</p>
+    <p>Enfatizar que esto no es un framework teórico: es código instalable que el equipo puede adoptar ahora mismo.</p>
+    <p>Flecha 1 — spec-kit en GitHub. Flecha 2 — CLI (specify). Flecha 3 — Slash commands. Flecha 4 — +20 agentes. Cierre: spec-kit es un puente entre la intención humana y la ejecución del agente.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 2 - Instalacion y setup -->
@@ -93,6 +103,12 @@ specify init mi-proyecto --ai claude</code></pre>
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>La parte práctica: dos modos de instalación. Se recomienda usar <code>uv tool install</code> para instalación permanente.</p>
+    <p><code>specify init</code> prepara todo lo que el agente necesita: instrucciones, plantillas, estructura de carpetas. Después de eso, el agente ya tiene el contexto mínimo para comenzar el ciclo.</p>
+    <p>Mencionar que la opción <code>--ai-skills</code> instala skills especializadas (cubiertas en la sección de contexto más adelante).</p>
+    <p>Flechas: instalar → inicializar → validar con <code>specify check</code>. Cierre: configuracion en 5 minutos; ganancias de predictibilidad instantaneas.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 3 — Slash Commands -->
@@ -149,6 +165,11 @@ specify init mi-proyecto --ai claude</code></pre>
         </div>
       </div>
     </div>
+  <aside class="notes">
+    <p>Los slash commands son la interfaz operacional de spec-kit dentro del agente. La secuencia lógica es: constitution → specify → plan → tasks → implement.</p>
+    <p>En la práctica, no todos los entornos de agente soportan slash commands. La alternativa es usar la CLI y las plantillas manualmente — el resultado es el mismo, el flujo es equivalente.</p>
+    <p>Flecha 1 — Comandos esenciales (core): constitution, specify, plan, tasks, implement. Flecha 2 — Comandos opcionales: clarify, analyze, checklist. Cierre: el comando solo funciona bien si el contexto (PRD, constitution) viene antes.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 4 — Flujo SDD Pipeline -->
@@ -268,6 +289,11 @@ specify init mi-proyecto --ai claude</code></pre>
     <div class="highlight-box" style="margin-top:0.5em; font-size:0.75em;">
     📌 <strong>Human-in-the-Loop:</strong> cada artefacto generado por spec-kit se revisa antes de avanzar. La IA ejecuta; el humano valida, corrige y aprueba.
     </div>
+  <aside class="notes">
+    <p>El pipeline muestra el flujo completo de punta a punta — es el "contrato" que el equipo firma con el proceso SDD.</p>
+    <p>Cada etapa tiene una puerta humana real: no es solo un rubber-stamp. El bucle de rechazo (rechazado → /plan) es intencional — ahí es donde se preserva la calidad.</p>
+    <p>Flecha 1 — init. Flecha 2 — constitution (puerta humana). Flecha 3 — specify (puerta humana). Flecha 4 — plan (puerta humana). Flecha 5 — aprobación (puerta humana). Flecha 6 — tasks (puerta humana). Flecha 7 — implement (puerta humana). Cierre: cada flecha dorada es un punto donde un humano dice "ok, adelante."</p>
+  </aside>
   </section>
 
   <!-- spec-kit 5 — PRD.md: artefacto central -->
@@ -321,6 +347,11 @@ Rendimiento, seguridad, accesibilidad.
         </table>
       </div>
     </div>
+  <aside class="notes">
+    <p>El PRD.md es el artefacto central: una especificación estructurada que el agente lee para ejecutar. La clave es que debe ser legible tanto por humanos como por máquinas — sin ambigüedad.</p>
+    <p>Los IDs de trazabilidad (RF01, CA01) parecen exceso de ingeniería hasta el momento en que necesitamos auditar por qué el agente generó ese código. Entonces se vuelven esenciales.</p>
+    <p>Flechas 1–3: objetivos, requisitos, criterios. Flecha 4 — tabla "sin PRD vs con PRD". Cierre: el PRD.md es el punto de entrada del agente — a mejor PRD, más predecible la salida.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 6 — Mini Checklist de Calidad -->
@@ -362,6 +393,11 @@ Rendimiento, seguridad, accesibilidad.
     <div class="highlight-box blue" style="margin-top:0.65em; font-size:0.74em;">
       ✅ Si el checklist pasa, el agente gana velocidad <em>sin</em> perder confiabilidad.
     </div>
+  <aside class="notes">
+    <p>El checklist opera en tres capas: spec, plan, tasks. Cada una tiene un conjunto mínimo de criterios que, al verificarse, reducen drásticamente el riesgo de retrabajo.</p>
+    <p>Los "small batches" en tasks no son opcionales — es el mecanismo que evita que el agente realice cambios grandes y difíciles de revertir.</p>
+    <p>Flechas 1–3: Spec → Plan → Tasks. Cierre: si el checklist pasa, el agente gana velocidad SIN perder confiabilidad.</p>
+  </aside>
   </section>
 
   <!-- spec-kit 7 — Agentes Soportados -->
@@ -407,6 +443,11 @@ Rendimiento, seguridad, accesibilidad.
     <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.73em;">
       🌍 <strong>+20 agentes soportados:</strong> Amp, Auggie CLI, Jules, Kilo Code, opencode, Qwen Code, Roo Code, SHAI (OVHcloud), IBM Bob, Amazon Q Developer CLI y mas!
     </div>
+  <aside class="notes">
+    <p>spec-kit fue diseñado para ser agnóstico al agente desde el principio. El mismo flujo — constitution, specify, plan, tasks, implement — funciona independientemente del agente que elija el equipo.</p>
+    <p>Esto es estratégicamente intencional: evita el vendor lock-in con cualquier agente específico. El equipo puede cambiar de Copilot a Claude Code a Cursor sin reescribir el proceso.</p>
+    <p>Flecha 1 — soporte completo (Copilot, Claude, Cursor). Flecha 2 — soporte completo (Gemini CLI, Windsurf, Codex CLI). Flecha 3 — +20 agentes adicionales. Cierre: el proceso es más duradero que cualquier herramienta específica.</p>
+  </aside>
   </section>
 
 </section><!-- /spec-kit -->
