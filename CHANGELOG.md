@@ -4,6 +4,18 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [2.3.0] - 2026-04-01
+
+### Added
+- **GPT-5.4** (OpenAI, 5 Mar 2026) to available models slide — variants: GPT-5.4 Thinking and GPT-5.4 Pro; 33% fewer factual errors than GPT-5.2; focused on professional workflows; Pro+ plan only.
+
+### Changed
+- Updated presentation month from Março/March/Marzo 2026 → Abril/April/Abril 2026 across all three locales (PT-BR, EN-US, ES-ES).
+- Updated model snapshot date reference from 27/02/2026 → 05/03/2026.
+- Updated speaker notes to reflect GPT-5.4 as recommended Agent Mode model alongside Claude Sonnet 4.6.
+- Updated contextual intro text in all locales to reflect "late March and early April 2026" ecosystem state.
+- Bumped version to `2.3.0`.
+
 ## [2.2.0] - 2026-02-21
 
 ### Added
