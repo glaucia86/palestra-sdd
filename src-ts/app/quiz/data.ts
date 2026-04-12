@@ -89,6 +89,18 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
       explanation:
         '✅ Correto! O agentskills.io define o padrão de diretórios com SKILL.md como entrypoint — habilidades que os agentes carregam sob demanda, implementando Progressive Disclosure na prática.',
     },
+    {
+      question: '9. Qual papel o Harness Engineering cumpre no ciclo SDD?',
+      options: [
+        'Substituir os testes unitários por validações automáticas de IA',
+        'Definir a estrutura da spec e do PRD antes da codificação',
+        'Operacionalizar gates de qualidade e segurança que verificam se a entrega corresponde à spec',
+        'Configurar o agente para gerar código sem intervenção humana',
+      ],
+      correct: 2,
+      explanation:
+        '✅ Correto! O Harness Engineering fecha o loop: enquanto SDD define "o quê" através de specs e critérios de aceite, o Harness transforma esses critérios em gates operacionais reais que bloqueiam, alertam ou exigem revisão quando a entrega não corresponde ao especificado.',
+    },
   ],
   'en-US': [
     {
@@ -171,6 +183,18 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
       correct: 1,
       explanation:
         '✅ Correct! agentskills.io defines folder conventions with SKILL.md as an entrypoint to load skills on demand.',
+    },
+    {
+      question: '9. What role does Harness Engineering play in the SDD cycle?',
+      options: [
+        'Replace unit tests with AI-based automatic validations',
+        'Define the spec and PRD structure before coding',
+        'Operationalize quality and safety gates that verify delivery matches the spec',
+        'Configure the agent to generate code without human intervention',
+      ],
+      correct: 2,
+      explanation:
+        '✅ Correct! Harness Engineering closes the loop: while SDD defines "what" through specs and acceptance criteria, the Harness transforms those criteria into real operational gates that block, alert, or require review when the delivery does not match the spec.',
     },
   ],
   'es-ES': [
@@ -258,6 +282,18 @@ const quizDataByLocale: Record<Locale, QuizQuestion[]> = {
       correct: 1,
       explanation:
         '✅ ¡Correcto! agentskills.io define carpetas con SKILL.md como punto de entrada para cargar skills bajo demanda.',
+    },
+    {
+      question: '9. ¿Qué papel cumple el Harness Engineering en el ciclo SDD?',
+      options: [
+        'Reemplazar las pruebas unitarias por validaciones automáticas de IA',
+        'Definir la estructura de la spec y el PRD antes de codificar',
+        'Operacionalizar gates de calidad y seguridad que verifican si la entrega corresponde a la spec',
+        'Configurar el agente para generar código sin intervención humana',
+      ],
+      correct: 2,
+      explanation:
+        '✅ ¡Correcto! El Harness Engineering cierra el ciclo: mientras SDD define "qué" a través de specs y criterios de aceptación, el Harness convierte esos criterios en gates operacionales reales que bloquean, alertan o exigen revisión cuando la entrega no corresponde a lo especificado.',
     },
   ],
 };

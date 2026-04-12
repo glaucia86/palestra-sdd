@@ -181,13 +181,13 @@
     </aside>
   </section>
 
-  <!-- 5.4 — Modelos disponíveis (Março 2026) -->
+  <!-- 5.4 — Modelos disponíveis (Abril 2026) -->
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="cpu"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Modelos (Mar 2026)</span>
+      <span class="section-label">03 / GitHub Copilot — Modelos (Abr 2026)</span>
     </div>
-    <h2>Modelos <span class="accent">Disponíveis</span> — Mar/2026</h2>
+    <h2>Modelos <span class="accent">Disponíveis</span> — Abr/2026</h2>
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; align-items:start; margin-top:0.4em;">
       <div>
         <table style="font-size:0.65em;">
@@ -198,6 +198,9 @@
             <tr><td><strong>GPT-5.2</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
             <tr><td><strong>GPT-5.2-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
             <tr><td><strong>GPT-5.3-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>GPT-5.4 mini</strong> <span class="tag green" style="font-size:0.75em;">Novo!</span></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>GPT-5-Codex</strong> <span class="tag green" style="font-size:0.75em;">Novo!</span></td><td><span class="tag blue">GA · 1×</span></td></tr>
+            <tr><td><strong>GPT-5.4</strong> <span class="tag green" style="font-size:0.75em;">Novo!</span></td><td><span class="tag orange">GA · Low–Xhigh</span></td></tr>
           </tbody>
         </table>
         <table style="font-size:0.65em; margin-top:0.5em;">
@@ -234,76 +237,87 @@
           <strong>Auto</strong> — seleciona o melhor modelo automaticamente. Recomendado no Agent Mode.
         </div>
         <div class="highlight-box blue" style="margin-top:0.3em; font-size:0.65em;">
-          Planos: <span class="tag">Free $0</span> <span class="tag blue">Pro $10</span> <span class="tag purple">Pro+ $39</span> <span class="tag orange">Business $19/seat</span>
+          Planos: <span class="tag">Free $0</span> <span class="tag green">Student (grátis)</span> <span class="tag blue">Pro $10</span> <span class="tag purple">Pro+ $39</span> <span class="tag orange">Business $19/seat</span>
         </div>
       </div>
     </div>
     <aside class="notes">
-      <p>Este slide é uma fotografia de 27/02/2026 — modelos, multiplicadores de custo e status (preview/GA) mudam com frequência. Não arquitetem soluções com base na lista desse slide; validem em docs.github.com/en/copilot/reference/ai-models/supported-models no momento de uso.</p>
-      <p>Na prática: comece com o modo Auto — ele escolhe o modelo mais adequado à tarefa. Troque para modelo específico quando precisar de raciocínio mais profundo (Claude Sonnet/Opus, GPT-5.3-Codex) ou de velocidade maior (Haiku, GPT-5 mini).</p>
+      <p>Este slide é uma fotografia de Abril de 2026 — modelos, multiplicadores de custo e status (preview/GA) mudam com frequência. Não arquitetem soluções com base na lista desse slide; validem em docs.github.com/en/copilot/reference/ai-models/supported-models no momento de uso.</p>
+      <p>Novos modelos OpenAI em Abr/2026: GPT-5.4 mini (GA), GPT-5-Codex (GA, requer VS Code v1.104.1+) e GPT-5.4 (GA, com opções de multiplicador Low/Medium/High/Xhigh — ideal para tarefas que exigem raciocínio mais profundo). Plano Student (gratuito para estudantes verificados via GitHub Education) anunciado em GA em 13/03/2026.</p>
+      <p>Na prática: comece com o modo Auto — ele escolhe o modelo mais adequado à tarefa. Troque para modelo específico quando precisar de raciocínio mais profundo (Claude Sonnet/Opus, GPT-5.4 High/Xhigh, GPT-5.3-Codex) ou de velocidade maior (Haiku, GPT-5 mini).</p>
       <p>Para Agent Mode com SDD, Claude Sonnet 4.6 e GPT-5.3-Codex têm apresentado bom equilíbrio entre raciocínio e execução. Mas novamente — valide no dia da execução, pois o lineup evolui rápido.</p>
   </aside>
   </section>
 
   <!-- 5.5 — Features: participantes, comandos, MCP -->
   <section>
-    <div class="section-header">
+    <div class="section-header" style="margin-bottom:0.1em;">
       <span class="section-icon"><i data-lucide="puzzle"></i></span>
       <span class="section-label">03 / GitHub Copilot Chat — Features</span>
     </div>
-    <h2>Features <span class="accent">Principais</span></h2>
-    <div class="card-grid-3" style="font-size:0.88em; gap:0.5em; margin-top:0.35em;">
-      <div class="card card--pad-md">
-        <span class="card-icon"><i data-lucide="at-sign"></i></span>
-        <h3>Participantes (@)</h3>
-        <ul style="font-size:0.7em; margin-top:0.3em;">
+    <h2 style="font-size:1.4em; margin-bottom:0.1em;">Features <span class="accent">Principais</span></h2>
+    <div class="card-grid-3" style="font-size:0.68em; gap:0.26em; margin-top:0.05em;">
+      <div class="card card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="at-sign"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Participantes (@)</h3>
+        <ul style="font-size:0.7em; margin-top:0;">
           <li><code>@workspace</code> — contexto do projeto inteiro</li>
           <li><code>@vscode</code> — comandos e settings do editor</li>
           <li><code>@terminal</code> — ajuda no terminal</li>
           <li><code>@github</code> — PRs, issues, busca web</li>
         </ul>
       </div>
-      <div class="card card--pad-md">
-        <span class="card-icon"><i data-lucide="terminal"></i></span>
-        <h3>Slash Commands (/)</h3>
-        <ul style="font-size:0.7em; margin-top:0.3em;">
+      <div class="card card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="terminal"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Slash Commands (/)</h3>
+        <ul style="font-size:0.7em; margin-top:0;">
           <li><code>/explain</code> — explica o código selecionado</li>
           <li><code>/fix</code> — corrige bugs automaticamente</li>
           <li><code>/tests</code> — gera testes unitários</li>
           <li><code>/doc</code> — documenta funções e APIs</li>
         </ul>
       </div>
-      <div class="card card--pad-md">
-        <span class="card-icon"><i data-lucide="hash"></i></span>
-        <h3>Chat Variables (#)</h3>
-        <ul style="font-size:0.7em; margin-top:0.3em;">
+      <div class="card card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="hash"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Chat Variables (#)</h3>
+        <ul style="font-size:0.7em; margin-top:0;">
           <li><code>#file</code> — anexa arquivo como contexto</li>
           <li><code>#web</code> — busca na web em tempo real</li>
           <li><code>#selection</code> — foca no trecho selecionado</li>
           <li><code>#codebase</code> — indexa o workspace inteiro</li>
         </ul>
       </div>
-      <div class="card fragment card--pad-md">
-        <span class="card-icon"><i data-lucide="plug"></i></span>
-        <h3>MCP Integration</h3>
+      <div class="card fragment card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="plug"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">MCP Integration</h3>
         <p style="font-size:0.7em;">Model Context Protocol — padrão aberto para conectar Copilot a ferramentas externas: bancos de dados, APIs, serviços cloud. GitHub MCP Server já disponível.</p>
       </div>
-      <div class="card fragment card--pad-md">
-        <span class="card-icon"><i data-lucide="image"></i></span>
-        <h3>Suporte a Imagens</h3>
+      <div class="card fragment card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="image"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Suporte a Imagens</h3>
         <p style="font-size:0.7em;">Anexe screenshots (JPEG, PNG, GIF, WEBP) — descreva UIs, explique diagramas de arquitetura ou analise erros visuais com modelos multimodais.</p>
       </div>
-      <div class="card fragment card--pad-md">
-        <span class="card-icon"><i data-lucide="keyboard"></i></span>
-        <h3>Inline Chat</h3>
+      <div class="card fragment card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="keyboard"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Inline Chat</h3>
         <p style="font-size:0.7em;"><code>Ctrl+I</code> diretamente no editor — edite código sem abrir o painel lateral. Refatore qualquer seleção com texto natural.</p>
+      </div>
+      <div class="card fragment card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="brain"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Copilot Memory</h3>
+        <p style="font-size:0.7em;">Memória persistente entre sessões — o Copilot lembra preferências, padrões de código e contexto do projeto. Enquanto AGENTS.md é contexto estático, Memory é contexto dinâmico aprendido. (Public Preview, GitHub.com)</p>
+      </div>
+      <div class="card fragment card--pad-sm">
+        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="folder-open"></i></span>
+        <h3 style="margin:0.1em 0 0.25em;">Copilot Spaces</h3>
+        <p style="font-size:0.7em;">Espaços temáticos de conhecimento — concentre docs, PRDs, specs e guias em um repositório curado de contexto para o agente. Diretamente alinhado com SDD: um Copilot Space pode ser o "repositório de specs" do time.</p>
       </div>
     </div>
     <aside class="notes">
       <p>Organizo por categoria para facilitar memorização: participantes com @, slash commands com /, variáveis de chat com # e integrações (MCP, multimodal, inline).</p>
       <p>Qualidade de resposta depende diretamente de qualidade de contexto. Usar @workspace + #file:PRD.md é significativamente mais eficaz do que abrir o chat sem contexto explícito. A combinação de contexto de workspace com arquivo específico é o padrão recomendado para SDD.</p>
       <p>Disponibilidade de cada recurso pode variar por interface — IDE, github.com, mobile. Verifiquem no ambiente de uso.</p>
-      <p>Setas 1 a 3: percorrer colunas base (participantes, slash commands, variáveis). Seta 4 — MCP Integration. Seta 5 — Suporte a Imagens. Seta 6 — Inline Chat. Fechamento: contexto bem selecionado é a diferença entre resposta genérica e resposta precisa.</p>
+      <p>Setas 1 a 3: percorrer colunas base (participantes, slash commands, variáveis). Seta 4 — MCP Integration. Seta 5 — Suporte a Imagens. Seta 6 — Inline Chat. Seta 7 — Copilot Memory. Seta 8 — Copilot Spaces. Fechamento: contexto bem selecionado é a diferença entre resposta genérica e resposta precisa.</p>
     </aside>
   </section>
 
@@ -400,6 +414,7 @@
       <p>Governança operacional: autonomia com responsabilidade. A sequência no terminal segue a mesma lógica do spec-kit — plan → aprovar → executar → revisar diff → commit. Nunca commitar sem inspecionar o que foi gerado.</p>
       <p>Human-in-the-loop no terminal é tão importante quanto na IDE. Use aprovações, políticas e hooks para bloquear comandos inseguros antes da execução. O modelo pode sugerir comandos tecnicamente corretos que são contextualmente errados para o seu ambiente.</p>
       <p>Nota sobre migração: quem ainda usa <code>gh copilot suggest</code> (extensão gh-copilot, descontinuada em outubro/2025) deve migrar para a CLI nativa — <code>npm install -g @github/copilot</code>. A experiência é substancialmente mais rica e o caminho antigo não recebe mais atualizações.</p>
+      <p>Novidades de navegação (Abr/2026): <strong>Plan Mode</strong> (Shift+Tab) — alterna entre modo de planejamento e modo de execução sem iniciar nova sessão; flag <code>-p</code> / <code>--prompt</code> — permite passar o prompt diretamente na linha de comando, ideal para scripts e automações CI/CD (<code>copilot -p "explain this error"</code>).</p>
   </aside>
   </section>
 
