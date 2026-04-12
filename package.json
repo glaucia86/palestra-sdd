@@ -1,6 +1,6 @@
 {
   "name": "palestra-sdd",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Palestra sobre SDD",
   "scripts": {
     "start": "node server/dev-server.js",
