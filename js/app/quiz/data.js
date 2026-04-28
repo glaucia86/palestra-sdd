@@ -12,7 +12,18 @@ const quizDataByLocale = {
             explanation: '✅ Correto! No SDD as Especificações (Specs) são o artefato primário — elas guiam tudo o mais: código, testes e documentação.',
         },
         {
-            question: '2. Qual é a principal função do arquivo AGENTS.md?',
+            question: '2. Por que SDD combina tão bem com AI Coding Agents?',
+            options: [
+                'Porque elimina a necessidade de revisão humana',
+                'Porque transforma intenção, restrições e critérios de aceite em contexto verificável',
+                'Porque força o uso de uma única ferramenta de IA',
+                'Porque substitui testes automatizados por prompts longos',
+            ],
+            correct: 1,
+            explanation: '✅ Correto! SDD reduz ambiguidade antes da implementação. Para agentes, isso significa menos inferência, menos retrabalho e entregas mais alinhadas à intenção humana.',
+        },
+        {
+            question: '3. Qual é a principal função do arquivo AGENTS.md?',
             options: [
                 'Configurar plugins do VS Code',
                 'Definir schemas de banco de dados',
@@ -23,7 +34,18 @@ const quizDataByLocale = {
             explanation: '✅ Correto! AGENTS.md é um "contrato vivo" que guia o comportamento dos AI agents com contexto, regras e restrições do projeto.',
         },
         {
-            question: '3. O que é Progressive Disclosure no contexto do Skills.md?',
+            question: '4. O que a combinação Codex App/CLI adiciona ao fluxo SDD?',
+            options: [
+                'Um substituto para PRD, specs e revisão humana',
+                'Um command center que conecta App, editor, terminal, worktrees e tarefas automatizadas',
+                'Uma tabela fixa de preços para todos os modelos',
+                'Um formato obrigatório de slides e documentação',
+            ],
+            correct: 1,
+            explanation: '✅ Correto! Codex pode atuar no App, editor e terminal, conectando tarefas, revisões, automações e execução local/nuvem sem mudar o princípio central: contexto estruturado primeiro.',
+        },
+        {
+            question: '5. O que é Progressive Disclosure no contexto de Skills.md?',
             options: [
                 'Exibir animações progressivas nos slides',
                 'Mostrar toda a documentação de uma só vez',
@@ -34,13 +56,7 @@ const quizDataByLocale = {
             explanation: '✅ Correto! Progressive Disclosure é carregar apenas as Skills necessárias para cada tarefa, evitando sobrecarga de contexto no agente.',
         },
         {
-            question: '4. Qual comando do spec-kit gera o plano técnico de implementação (PRD.md)?',
-            options: ['/speckit.specify', '/speckit.tasks', '/speckit.plan', '/speckit.implement'],
-            correct: 2,
-            explanation: '✅ Correto! O /speckit.plan gera o PRD.md — documento vivo que serve como fonte única de verdade para o AI agent durante a implementação.',
-        },
-        {
-            question: '5. O que o specify init configura automaticamente no projeto?',
+            question: '6. O que o specify init configura automaticamente no projeto?',
             options: [
                 'Apenas o arquivo AGENTS.md',
                 'Templates, slash commands (/speckit.*) e estrutura de pastas',
@@ -51,35 +67,40 @@ const quizDataByLocale = {
             explanation: '✅ Correto! O specify init baixa os templates do spec-kit, instala os slash commands (/speckit.*) e cria a estrutura de pastas do projeto. AGENTS.md não é gerado automaticamente.',
         },
         {
-            question: '6. Qual modo do GitHub Copilot cria um plano de implementação SEM modificar código?',
-            options: ['Agent Mode', 'Ask Mode', 'Edit Mode', 'Plan Mode'],
-            correct: 3,
-            explanation: '✅ Correto! O Plan Mode cria um plano detalhado para revisão humana antes de qualquer alteração no código — perfeito para o fluxo SDD.',
-        },
-        {
-            question: '7. Em fevereiro de 2026, quais modelos estavam incluídos gratuitamente no plano Free do GitHub Copilot?',
+            question: '7. No billing por uso, quais elementos afetam o consumo de créditos em interações com agentes?',
             options: [
-                'Claude Opus 4.6 e GPT-5.2',
-                'GPT-4.1 e GPT-5 mini',
-                'Gemini 3.1 Pro e Claude Sonnet 4.6',
-                'Apenas modelos internos sem nome público',
+                'Apenas o número de arquivos no repositório',
+                'Input tokens, output tokens, cached tokens e o modelo utilizado',
+                'Somente o tempo que o editor fica aberto',
+                'A quantidade de slides da apresentação',
             ],
             correct: 1,
-            explanation: '✅ Correto! Em fevereiro de 2026, o plano Free incluía GPT-4.1 e GPT-5 mini sem custo de créditos. Verifique sempre a tabela oficial de modelos suportados.',
+            explanation: '✅ Correto! Em billing por uso, custo depende da quantidade de tokens processados, do tipo de token e do modelo. Por isso contexto enxuto virou também uma disciplina econômica.',
         },
         {
-            question: '8. Para que serve o padrão agentskills.io adotado pelo GitHub Copilot em Dezembro/2025?',
+            question: '8. Por que não devemos copiar tabelas completas de pricing/multipliers para os slides?',
             options: [
-                'Definir schemas de banco de dados para agentes IA',
-                'Padronizar diretórios com SKILL.md para carregar conhecimento especializado sob demanda',
-                'Configurar pipelines de CI/CD automatizados com IA',
-                'Criar extensões para o VS Code Marketplace',
+                'Porque tabelas deixam os slides menos coloridos',
+                'Porque preços, modelos, allowances e multiplicadores mudam e devem apontar para fonte oficial',
+                'Porque billing não tem relação com contexto',
+                'Porque slides não podem ter links externos',
             ],
             correct: 1,
-            explanation: '✅ Correto! O agentskills.io define o padrão de diretórios com SKILL.md como entrypoint — habilidades que os agentes carregam sob demanda, implementando Progressive Disclosure na prática.',
+            explanation: '✅ Correto! A palestra deve explicar conceitos estáveis e linkar a documentação oficial. Tabelas de preço completas ficam obsoletas rápido.',
         },
         {
-            question: '9. Qual papel o Harness Engineering cumpre no ciclo SDD?',
+            question: '9. Para que serve o comando codex exec em um fluxo SDD?',
+            options: [
+                'Executar o Codex de forma não interativa em automações, scripts ou CI/CD',
+                'Abrir a página pública do Codex no navegador',
+                'Gerar imagens estáticas para a capa da palestra',
+                'Criar automaticamente uma conta de billing no GitHub',
+            ],
+            correct: 0,
+            explanation: '✅ Correto! codex exec permite usar Codex em modo não interativo, útil para tarefas repetíveis como revisão de spec, geração de plano, checks e automações controladas.',
+        },
+        {
+            question: '10. Qual papel o Harness Engineering cumpre no ciclo SDD?',
             options: [
                 'Substituir os testes unitários por validações automáticas de IA',
                 'Definir a estrutura da spec e do PRD antes da codificação',

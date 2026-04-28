@@ -22,9 +22,9 @@ export interface AppMessages {
 
 const APP_MESSAGES: Record<Locale, AppMessages> = {
   'pt-BR': {
-    documentTitle: 'Spec-Driven Development com GitHub Copilot | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development com AI Coding Agents | Glaucia Lemos',
     description:
-      'Apresentação técnica sobre Spec-Driven Development (SDD) com GitHub Copilot Agent Mode: specs estruturadas + IA = código previsível e reduzindo alucinações.',
+      'Apresentação técnica sobre Spec-Driven Development (SDD) com AI Coding Agents: specs estruturadas, Codex/Copilot, economia de contexto e código previsível.',
     backToSummaryTitle: 'Voltar ao Sumário',
     languageSwitcherLabel: 'Idioma',
     gateTitle: 'Escolha o idioma da apresentação',
@@ -43,9 +43,9 @@ const APP_MESSAGES: Record<Locale, AppMessages> = {
     sourceLabel: 'Origem',
   },
   'en-US': {
-    documentTitle: 'Spec-Driven Development with GitHub Copilot | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development with AI Coding Agents | Glaucia Lemos',
     description:
-      'Technical talk about Spec-Driven Development (SDD) with GitHub Copilot Agent Mode: structured specs + AI = predictable code and fewer hallucinations.',
+      'Technical talk about Spec-Driven Development (SDD) with AI Coding Agents: structured specs, Codex/Copilot, context economy, and predictable code.',
     backToSummaryTitle: 'Back to Agenda',
     languageSwitcherLabel: 'Language',
     gateTitle: 'Choose the presentation language',
@@ -64,9 +64,9 @@ const APP_MESSAGES: Record<Locale, AppMessages> = {
     sourceLabel: 'Source',
   },
   'es-ES': {
-    documentTitle: 'Spec-Driven Development con GitHub Copilot | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development con AI Coding Agents | Glaucia Lemos',
     description:
-      'Presentación técnica sobre Spec-Driven Development (SDD) con GitHub Copilot Agent Mode: especificaciones estructuradas + IA = código predecible y menos alucinaciones.',
+      'Presentación técnica sobre Spec-Driven Development (SDD) con AI Coding Agents: specs estructuradas, Codex/Copilot, economía de contexto y código predecible.',
     backToSummaryTitle: 'Volver al Resumen',
     languageSwitcherLabel: 'Idioma',
     gateTitle: 'Elige el idioma de la presentación',

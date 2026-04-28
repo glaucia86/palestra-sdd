@@ -7,23 +7,23 @@
   <div class="hero-orb hero-orb-2"></div>
   <div class="slide-capa">
     <!-- MONTHLY UPDATE: alterar o mês nesta linha -->
-    <div class="capa-eyebrow">◈ Palestra Técnica &nbsp;•&nbsp; Abril 2026</div>
+    <div class="capa-eyebrow">◈ Palestra Técnica &nbsp;•&nbsp; Maio 2026</div>
     <div class="capa-mission-chip">
       <span class="capa-mission-chip-icon"><i data-lucide="swords"></i></span>
       Missão iniciada: dominar SDD com IA
     </div>
-    <h1 class="capa-title">Spec-Driven<br />Development<br /><span style="color:var(--accent-copilot-light)">com GitHub Copilot</span></h1>
+    <h1 class="capa-title">Spec-Driven<br />Development<br /><span style="color:var(--accent-copilot-light)">com AI Coding Agents</span></h1>
     <div class="capa-tagline-main">
       Software Guiado por Specs na Era da IA<br />
-      <span style="color:var(--text-muted)">specs estruturadas + Agent Mode = código previsível</span>
+      <span style="color:var(--text-muted)">specs estruturadas + agentes = código previsível</span>
     </div>
     <div class="copilot-badge">
       <span class="copilot-icon"><i data-lucide="sparkles"></i></span>
-      com GitHub Copilot
+      Copilot · Codex · Claude Code · Cursor · Gemini CLI
     </div>
     <div class="capa-divider"></div>
     <p class="capa-desc">
-      Do <code>spec.md</code> ao deploy — specs estruturadas + Agent Mode =<br />código previsível e reduz alucinações.
+      Do <code>spec.md</code> ao deploy — specs estruturadas + contexto enxuto =<br />código previsível, menos retrabalho e menor desperdício de tokens.
     </p>
     <div class="author-badge">
       <div class="author-avatar"><i data-lucide="waves"></i></div>
@@ -33,8 +33,8 @@
     </div>
     <div class="capa-tags">
       <span class="tag">SDD</span>
-      <span class="tag blue">GitHub Copilot</span>
-      <span class="tag purple">Agent Mode</span>
+      <span class="tag blue">AI Coding Agents</span>
+      <span class="tag purple">Codex</span>
       <span class="tag orange">Spec-First</span>
       <span class="tag">Arquitetura de Contexto</span>
     </div>
@@ -43,9 +43,9 @@
     </p>
   </div>
   <aside class="notes">
-    <p>Pessoal, sejam muito bem-vindos. Este conteúdo foi preparado e revisado com informações atuais — o que vocês verão aqui reflete o estado do ecossistema GitHub Copilot ao final de março e início de abril de 2026.</p>
-    <p>Meu objetivo nesta apresentação é prático: mostrar como sair de interações ad-hoc com IA e entrar em engenharia orientada por especificação estruturada. A ideia central é simples — um agente entrega melhor quando recebe contexto melhor. Se o contexto é vago, o resultado será vago. Se é estruturado, o resultado tende a ser previsível.</p>
-    <p>Vou mostrar ferramentas reais, fluxos reais e reflexões que emergiram do uso no dia a dia. Vamos nessa.</p>
+    <p>Pessoal, sejam muito bem-vindos. Esta versão reposiciona a conversa: SDD não é sobre uma ferramenta específica, é sobre como trabalhar melhor com AI Coding Agents.</p>
+    <p>O contexto mudou: agentes ficaram mais autônomos, executam tarefas multi-etapas e o mercado está caminhando para billing baseado em uso e tokens. Isso torna contexto estruturado uma prática técnica e econômica.</p>
+    <p>Meu objetivo é prático: mostrar como sair de interações ad-hoc com IA e entrar em engenharia orientada por especificação, com GitHub Copilot, Codex, da OpenAI, e outros agentes como exemplos possíveis.</p>
   </aside>
 </section>
 
@@ -70,20 +70,35 @@
       <div class="title">spec-kit</div>
       <div class="num">02</div>
     </a>
-    <a class="sumario-card" href="#/copilot-chat">
+    <a class="sumario-card" href="#/ai-coding-agents">
       <span class="icon"><i data-lucide="bot"></i></span>
-      <div class="title">Copilot Chat</div>
+      <div class="title">AI Coding Agents</div>
       <div class="num">03</div>
     </a>
-    <a class="sumario-card" href="#/copilot-cli">
-      <span class="icon"><i data-lucide="terminal-square"></i></span>
-      <div class="title">Copilot CLI</div>
+    <a class="sumario-card" href="#/github-copilot">
+      <span class="icon"><i data-lucide="message-square"></i></span>
+      <div class="title">GitHub Copilot</div>
       <div class="num">03-B</div>
+    </a>
+    <a class="sumario-card" href="#/copilot-cli">
+      <span class="icon"><i data-lucide="terminal"></i></span>
+      <div class="title">Copilot CLI</div>
+      <div class="num">03-C</div>
+    </a>
+    <a class="sumario-card" href="#/codex-app-cli">
+      <span class="icon"><i data-lucide="terminal-square"></i></span>
+      <div class="title">Codex App/CLI</div>
+      <div class="num">03-D</div>
     </a>
     <a class="sumario-card" href="#/arquitetura">
       <span class="icon"><i data-lucide="building-2"></i></span>
       <div class="title">Arquitetura de Contexto</div>
       <div class="num">04</div>
+    </a>
+    <a class="sumario-card" href="#/economia-contexto">
+      <span class="icon"><i data-lucide="coins"></i></span>
+      <div class="title">Economia de Contexto</div>
+      <div class="num">04-B</div>
     </a>
     <a class="sumario-card" href="#/progressive-disclosure">
       <span class="icon"><i data-lucide="layers"></i></span>
@@ -117,8 +132,8 @@
     </a>
   </div>
   <aside class="notes">
-    <p>Aqui está o mapa da conversa. A progressão é intencional: conceito de SDD, depois operacionalização com spec-kit e Copilot, e depois arquitetura de contexto, Harness Engineering e demo ao vivo.</p>
-    <p>Se o tempo apertar, podemos ir direto para o bloco mais relevante para o cenário de vocês — os cards do sumário são interativos. Mas o fluxo completo tem lógica de progressão: cada bloco faz mais sentido pelo anterior.</p>
+    <p>Aqui está o mapa da conversa. A progressão é intencional: conceito de SDD, operacionalização com spec-kit, agentes de código, arquitetura de contexto, economia de tokens, Harness Engineering e demo.</p>
+    <p>Se o tempo apertar, podemos ir direto para o bloco mais relevante. Mas o fluxo completo tem uma tese: processo e contexto importam mais do que a ferramenta específica escolhida.</p>
   </aside>
 </section>
 
@@ -344,7 +359,7 @@
     <div class="two-cols">
       <div>
         <div class="highlight-box" style="margin-bottom:0.8em;">
-          <strong>Vivemos a era dos AI Coding Assistants.</strong> GitHub Copilot, Cursor, Gemini CLI, Claude Code, Codex... Enfim, o desenvolvimento nunca foi tão rápido… e tão imprevisível.
+          <strong>Vivemos a era dos AI Coding Agents.</strong> GitHub Copilot, Codex, Cursor, Gemini CLI, Claude Code... Enfim, o desenvolvimento nunca foi tão rápido, tão autônomo e tão sensível à qualidade do contexto.
         </div>
         <ul style="font-size:0.82em;">
           <li class="fragment">Modelos geram código em segundos, mas sem contexto estruturado</li>
@@ -367,7 +382,7 @@
       </div>
     </div>
     <aside class="notes">
-      <p>O cenário atual é este: agentes como GitHub Copilot, Cursor e Claude Code estão muito mais capazes — execução multi-etapas, acesso a terminal, arquivos e ferramentas externas. Mas essa capacidade ampliada não resolve contexto mal definido. Na verdade, mais autonomia com contexto ruim amplifica o custo do erro.</p>
+      <p>O cenário atual é este: agentes como GitHub Copilot, Codex, Cursor e Claude Code estão muito mais capazes — execução multi-etapas, acesso a terminal, arquivos e ferramentas externas. Mas essa capacidade ampliada não resolve contexto mal definido. Na verdade, mais autonomia com contexto ruim amplifica o custo do erro.</p>
       <p>Sobre o dado "30-40% de retrabalho" no slide: é uma estimativa que circula em surveys de produtividade de engenharia de software, mas sem uma fonte primária universal única. Use como referência de ordem de magnitude — o ponto correto é que retrabalho por contexto mal definido é caro e mensurável. Meçam no próprio time.</p>
       <p>Seta 1 — código rápido sem contexto estruturado. Seta 2 — mais capacidade com contexto ruim amplifica alucinação. Seta 3 — ciclos de revisão têm custo crescente. Seta 4 — retrabalho como fato econômico do time. Fechamento: SDD entra para resolver especificamente esse gap de contexto — não é complexidade extra, é redução de variabilidade.</p>
     </aside>

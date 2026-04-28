@@ -90,6 +90,9 @@ specify check</code></pre>
         <pre><code class="language-bash"># Novo projeto com GitHub Copilot
 specify init meu-projeto --ai copilot
 
+# Novo projeto com Codex CLI
+specify init meu-projeto --ai codex
+
 # Em projeto existente
 specify init --here --ai copilot
 
@@ -108,7 +111,7 @@ specify init meu-projeto --ai claude</code></pre>
     </div>
     <aside class="notes">
       <p>Instalação permanente com `uv tool install` é a abordagem recomendada para uso no dia a dia: instala uma vez, fica disponível em qualquer projeto. O `uvx` é ideal para avaliar sem comprometer o ambiente global.</p>
-      <p>Pré-requisito essencial: Python 3.11+, `uv` instalado e um agente suportado. Para GitHub Copilot, nenhuma configuração adicional é necessária após o `specify init`.</p>
+      <p>Pré-requisito essencial: Python 3.11+, `uv` instalado e um agente suportado. A configuração fina varia por agente; por isso a documentação oficial do spec-kit deve ser a referência antes de uma demo ao vivo.</p>
       <p>Os parâmetros do `specify init` variam por agente e por shell (Unix vs PowerShell), então a documentação oficial do repositório é sempre a referência mais confiável para detalhes atualizados.</p>
     </aside>
   </section>
@@ -145,13 +148,13 @@ specify init meu-projeto --ai claude</code></pre>
       </div>
       <div>
         <div class="highlight-box purple" style="margin-bottom:0.45em; font-size:0.72em;">
-          🎯 <strong>Trabalham no contexto do agente:</strong> Após <code>specify init</code>, esses comandos ficam disponíveis diretamente no GitHub Copilot Chat, Claude Code, Cursor etc.
+          🎯 <strong>Trabalham no contexto do agente:</strong> Após <code>specify init</code>, esses comandos ficam disponíveis diretamente no GitHub Copilot, Codex, Claude Code, Cursor etc.
         </div>
         <div class="highlight-box" style="margin-bottom:0.45em; font-size:0.68em;">
           <strong>Nota:</strong> em alguns ambientes, os slash commands podem não aparecer; fallback: rodar via CLI e/ou usar templates manualmente.
         </div>
         <div class="card" style="border-color:var(--accent-green); padding:0.8em 0.9em;">
-          <h3 style="font-size:0.82em; margin-bottom:0.3em;">Exemplo — Copilot + spec-kit</h3>
+          <h3 style="font-size:0.82em; margin-bottom:0.3em;">Exemplo — Agente + spec-kit</h3>
           <pre style="font-size:0.62em; margin-top:0.2em; line-height:1.25;"><code class="language-text">/speckit.constitution
   Focar em qualidade de código,
   padrões de testes e consistência
@@ -169,13 +172,13 @@ specify init meu-projeto --ai claude</code></pre>
     </div>
     <aside class="notes">
       <p>Aqui está o ciclo completo: constituição → especificação → plano → tarefas → implementação. Cada etapa deixa evidência rastreável e tem gate humano antes de avançar.</p>
-      <p>Se o slash command não aparecer no painel do agente — o que pode acontecer dependendo da versão do Copilot — o CLI funciona igualmente. Processo consistente vence prompt brilhante isolado.</p>
+      <p>Se o slash command não aparecer no painel do agente — o que pode acontecer dependendo da ferramenta, integração ou versão — o CLI funciona igualmente. Processo consistente vence prompt brilhante isolado.</p>
       <p>Para a audiência: o `/speckit.clarify` é especialmente útil antes de planejar — clarifica áreas sub-especificadas antes que virem código errado.</p>
     </aside>
   </section>
 
   <!-- spec-kit 4 — Fluxo SDD Pipeline -->
-  <section data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,255,157,0.04) 0%, transparent 70%)">
+  <section id="fluxo-sdd-spec-kit" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,255,157,0.04) 0%, transparent 70%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="refresh-cw"></i></span>
       <span class="section-label">02 / spec-kit — Fluxo SDD</span>

@@ -11,6 +11,7 @@ import {
 
 interface SlidesManifest {
   parts?: string[];
+  slides?: Array<{ path?: string }>;
 }
 
 function escapeHtml(value: unknown): string {
@@ -86,7 +87,11 @@ async function loadSlidesAndBootstrap(locale: Locale): Promise<void> {
       const manifestResponse = await fetch(manifestSrc, { cache: 'no-store' });
       if (!manifestResponse.ok) throw new Error(`HTTP ${manifestResponse.status} while loading manifest`);
       const manifest = (await manifestResponse.json()) as SlidesManifest;
-      parts = Array.isArray(manifest.parts) ? manifest.parts : [];
+      parts = Array.isArray(manifest.parts)
+        ? manifest.parts
+        : Array.isArray(manifest.slides)
+          ? manifest.slides.map((slide) => slide.path).filter((path): path is string => typeof path === 'string')
+          : [];
     } catch (error) {
       console.error('Failed to load slide manifest:', { manifestSrc, error });
       slidesRoot.innerHTML = buildLoadErrorSlide(

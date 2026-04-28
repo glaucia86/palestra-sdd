@@ -7,23 +7,23 @@
   <div class="hero-orb hero-orb-2"></div>
   <div class="slide-capa">
     <!-- MONTHLY UPDATE: update the month in this line -->
-    <div class="capa-eyebrow">◈ Technical Talk &nbsp;•&nbsp; April 2026</div>
+    <div class="capa-eyebrow">◈ Technical Talk &nbsp;•&nbsp; May 2026</div>
     <div class="capa-mission-chip">
       <span class="capa-mission-chip-icon"><i data-lucide="swords"></i></span>
       Mission started: master SDD with AI
     </div>
-    <h1 class="capa-title">Spec-Driven<br />Development<br /><span style="color:var(--accent-copilot-light)">with GitHub Copilot</span></h1>
+    <h1 class="capa-title">Spec-Driven<br />Development<br /><span style="color:var(--accent-copilot-light)">with AI Coding Agents</span></h1>
     <div class="capa-tagline-main">
       Spec-Guided Software in the AI Era<br />
-      <span style="color:var(--text-muted)">structured specs + Agent Mode = predictable code</span>
+      <span style="color:var(--text-muted)">structured specs + AI agents = predictable code</span>
     </div>
     <div class="copilot-badge">
       <span class="copilot-icon"><i data-lucide="sparkles"></i></span>
-      with GitHub Copilot
+      Copilot · Codex · Claude Code · Cursor · Gemini CLI
     </div>
     <div class="capa-divider"></div>
     <p class="capa-desc">
-      From <code>spec.md</code> to deploy - structured specs + Agent Mode =<br />predictable code with fewer hallucinations.
+      From <code>spec.md</code> to deploy - structured specs + human-in-the-loop =<br />predictable code with fewer hallucinations.
     </p>
     <div class="author-badge">
       <div class="author-avatar"><i data-lucide="waves"></i></div>
@@ -33,8 +33,8 @@
     </div>
     <div class="capa-tags">
       <span class="tag">SDD</span>
-      <span class="tag blue">GitHub Copilot</span>
-      <span class="tag purple">Agent Mode</span>
+      <span class="tag blue">AI Coding Agents</span>
+      <span class="tag purple">Codex</span>
       <span class="tag orange">Spec-First</span>
       <span class="tag">Context Architecture</span>
     </div>
@@ -43,8 +43,8 @@
     </p>
   </div>
   <aside class="notes">
-    <p>Welcome everyone. This content was prepared and reviewed with current information — what you'll see here reflects the state of the GitHub Copilot ecosystem as of late March and early April 2026.</p>
-    <p>My goal in this presentation is practical: to show how to move from ad-hoc AI interactions to structured specification-driven engineering. The core idea is simple — an agent delivers better when given better context. If the context is vague, the result will be vague. If it's structured, the result tends to be predictable.</p>
+    <p>Welcome everyone. This content was prepared and reviewed for the May 2026 edition, now positioned around AI Coding Agents rather than a single tool.</p>
+    <p>My goal is practical: to show how to move from ad-hoc AI interactions to specification-driven engineering, using GitHub Copilot, OpenAI Codex, and other agents as possible execution surfaces.</p>
     <p>I'll show real tools, real workflows, and reflections that emerged from daily use. Let's get started.</p>
   </aside>
 </section>
@@ -62,17 +62,21 @@
   <div class="sumario-grid">
     <a class="sumario-card" href="#/o-que-e-sdd"><span class="icon"><i data-lucide="target"></i></span><div class="title">What is SDD?</div><div class="num">01</div></a>
     <a class="sumario-card" href="#/spec-kit"><span class="icon"><i data-lucide="package"></i></span><div class="title">spec-kit</div><div class="num">02</div></a>
-    <a class="sumario-card" href="#/copilot-chat"><span class="icon"><i data-lucide="bot"></i></span><div class="title">Copilot Chat</div><div class="num">03</div></a>
-    <a class="sumario-card" href="#/copilot-cli"><span class="icon"><i data-lucide="terminal-square"></i></span><div class="title">Copilot CLI</div><div class="num">03-B</div></a>
+    <a class="sumario-card" href="#/ai-coding-agents"><span class="icon"><i data-lucide="bot"></i></span><div class="title">AI Coding Agents</div><div class="num">03</div></a>
+    <a class="sumario-card" href="#/github-copilot"><span class="icon"><i data-lucide="square"></i></span><div class="title">GitHub Copilot</div><div class="num">03-B</div></a>
+    <a class="sumario-card" href="#/copilot-cli"><span class="icon"><i data-lucide="terminal-square"></i></span><div class="title">Copilot CLI</div><div class="num">03-C</div></a>
+    <a class="sumario-card" href="#/codex-app-cli"><span class="icon"><i data-lucide="terminal"></i></span><div class="title">Codex App/CLI</div><div class="num">03-D</div></a>
     <a class="sumario-card" href="#/arquitetura"><span class="icon"><i data-lucide="building-2"></i></span><div class="title">Context Architecture</div><div class="num">04</div></a>
+    <a class="sumario-card" href="#/economia-contexto"><span class="icon"><i data-lucide="coins"></i></span><div class="title">Context Economy</div><div class="num">05-A</div></a>
     <a class="sumario-card" href="#/progressive-disclosure"><span class="icon"><i data-lucide="layers"></i></span><div class="title">Progressive Disclosure</div><div class="num">05</div></a>
-    <a class="sumario-card" href="#/demo-talk-code"><span class="icon"><i data-lucide="terminal-square"></i></span><div class="title">Live demo</div><div class="num">06</div></a>
-    <a class="sumario-card" href="#/referencias"><span class="icon"><i data-lucide="book-open"></i></span><div class="title">References</div><div class="num">07</div></a>
-    <a class="sumario-card" href="#/conclusao"><span class="icon"><i data-lucide="rocket"></i></span><div class="title">Conclusion</div><div class="num">08</div></a>
-    <a class="sumario-card" href="#/quiz"><span class="icon"><i data-lucide="help-circle"></i></span><div class="title">Quiz / Q&amp;A</div><div class="num">09</div></a>
+    <a class="sumario-card" href="#/harness-engineering"><span class="icon"><i data-lucide="shield-check"></i></span><div class="title">Harness Engineering</div><div class="num">06</div></a>
+    <a class="sumario-card" href="#/demo-talk-code"><span class="icon"><i data-lucide="terminal-square"></i></span><div class="title">Live demo</div><div class="num">07</div></a>
+    <a class="sumario-card" href="#/referencias"><span class="icon"><i data-lucide="book-open"></i></span><div class="title">References</div><div class="num">08</div></a>
+    <a class="sumario-card" href="#/conclusao"><span class="icon"><i data-lucide="rocket"></i></span><div class="title">Conclusion</div><div class="num">09</div></a>
+    <a class="sumario-card" href="#/quiz"><span class="icon"><i data-lucide="help-circle"></i></span><div class="title">Quiz / Q&amp;A</div><div class="num">10</div></a>
   </div>
   <aside class="notes">
-    <p>Here's the conversation map. The progression is intentional: SDD concept, then operationalization with spec-kit and Copilot, and then context architecture and live demo.</p>
+    <p>Here's the conversation map. The progression is intentional: SDD concept, spec-kit operationalization, coding agents, context architecture, token economy, Harness Engineering, and demo.</p>
     <p>If time gets tight, we can go directly to the most relevant block for your scenario — the summary cards are interactive. But the full flow has a logical progression: each block makes more sense because of the previous one.</p>
   </aside>
 </section>

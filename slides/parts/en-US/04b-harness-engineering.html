@@ -13,7 +13,8 @@
   <div class="section-page-container">
     <div class="section-page-label" style="color:var(--accent-green);">Section 06</div>
     <h2 class="section-page-title gradient-text-green">Harness<br>Engineering</h2>
-    <p class="section-page-desc">Agent = Model + Harness — closing the loop between spec and production gate</p>
+    <p class="section-page-desc">Agent = Model + Harness</p>
+    <p class="section-page-desc">Closing the loop between spec and production gate</p>
     <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="shield-check"></i></div>
   </div>
   <aside class="notes">
@@ -40,10 +41,10 @@
           <p style="font-size:0.85em; color:var(--text-secondary);">system prompt · tools/MCPs · context · sub-agents · hooks</p>
         </div>
         <div class="definition" style="font-size:0.77em; line-height:1.4;">
-          <p><strong>Harness Engineering</strong> is the practice of configuring the agent's context surface to improve the quality and reliability of its outputs.</p>
+          <p><strong>Harness Engineering</strong> is the practice of designing instructions, tools, environment, state, and feedback to make agent work reliable.</p>
         </div>
         <ul style="font-size:0.72em; margin-top:0.5em;">
-          <li class="fragment"><strong>A subset of Context Engineering</strong> — focused on the configuration layer, not just content</li>
+          <li class="fragment"><strong>A subset of Context Engineering</strong>: focused on the agent operating system, not just the prompt</li>
           <li class="fragment"><strong>The problem it solves:</strong> two agents with the same model and same task produce radically different results — the difference is in the harness</li>
           <li class="fragment"><strong>Coined by Viv</strong> (HumanLayer) · documented by Martin Fowler · popularized by OpenAI's Codex scale experiment</li>
         </ul>
@@ -62,7 +63,9 @@
     </div>
     <aside class="notes">
       <p>The "Agent = Model + Harness" equation comes from the HumanLayer blog (Viv, 2025) and is the most compact way to explain why switching the model is rarely the right answer to agent quality issues. In most cases, the problem is the harness — the quality of instructions, the context provided, the feedback mechanisms.</p>
-      <p>Seta 1 — subset of Context Engineering. Seta 2 — the problem it solves. Seta 3 — origin of the term (Viv, Fowler, OpenAI). Closing: focus on the harness, not just the model.</p>
+      <p>The Walking Labs learning material reinforces the operational view: a harness is not a prompt file. It is the set of instructions, tools, environment, persistent state, and feedback that determines how much model capability becomes reliable execution.</p>
+      <p>Context Engineering is the broader term — Harness Engineering is a subset focused on the system around the agent: what it receives before acting (guides), what it may execute, how it preserves state, and what checks it after acting (sensors).</p>
+      <p>Arrow 1 — subset of Context Engineering. Arrow 2 — the problem it solves. Arrow 3 — origin of the term (Viv, Fowler, OpenAI). Closing: focus on the harness, not just the model.</p>
     </aside>
   </section>
 
@@ -122,7 +125,54 @@
     </aside>
   </section>
 
-  <!-- 6.3 — SDD + Harness Engineering = Closed Loop -->
+  <!-- 6.3 — Harness that scales -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 55% at 50% 30%, rgba(56,200,250,0.05) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layout-dashboard"></i></span>
+      <span class="section-label">06 / Harness Engineering: Operationalization</span>
+    </div>
+    <h2>The Harness that <span class="accent">Scales</span></h2>
+    <p style="font-size:0.74em; text-align:center; color:var(--text-secondary); margin-bottom:0.7em;">It is not “a better prompt”. It is a lean operating system for agents to work with evidence.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.55em; margin-top:0.3em;">
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="map"></i> Repo as source</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Critical knowledge must live in the repository: architecture, commands, constraints, and decisions.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="route"></i> Routing files</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);"><code>AGENTS.md</code> points the way. Details live in docs/skills on demand.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="play-circle"></i> Initialization</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Before coding: environment runs, tests execute, and the task is split into verifiable steps.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="list-checks"></i> WIP = 1</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">One active unit at a time, with acceptance criteria and executable completion evidence.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="activity"></i> Observability</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Logs, traces, checks, rubrics, and history make “looks right” auditable.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="door-closed"></i> Clean exit</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">A session only ends with build/tests, progress, artifacts, and next step in a clear state.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box green fragment" style="margin-top:0.65em; font-size:0.67em; text-align:center; line-height:1.35;">
+      <strong>Practical rule:</strong> when the agent fails, inspect the harness first: vague task, invisible context, broken environment, missing feedback, or lost state.
+    </div>
+    <aside class="notes">
+      <p>This slide synthesizes the Walking Labs learning material. The key idea: Harness Engineering is not just prompt writing or AGENTS.md. It is the agent's operating system.</p>
+      <p>Repo as source: for an agent, what is not in the repository practically does not exist. Routing files: AGENTS.md should be short and point to specialized documentation according to the task — this connects directly to Progressive Disclosure.</p>
+      <p>Initialization separates setup from implementation. WIP=1 reduces overreach: the agent stops opening five fronts and finishes one verifiable unit.</p>
+      <p>Observability turns subjective review into evidence: logs, traces, tests, rubrics, and acceptance criteria. Clean exit closes the loop: build/tests/progress/artifacts must be in order so the next session does not start from zero.</p>
+    </aside>
+  </section>
+
+  <!-- 6.4 — SDD + Harness Engineering = Closed Loop -->
   <section data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 80%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="infinity"></i></span>
@@ -192,13 +242,13 @@
           </div>
         </div>
         <div class="highlight-box blue fragment" style="margin-top:0.5em; font-size:0.64em; line-height:1.3;">
-          <strong>OpenAI Codex (2025):</strong> "Our biggest challenges now center on designing environments, feedback loops, and control systems" — 1 million lines of code with <strong>zero</strong> manually written lines.
+          <strong>Codex, by OpenAI (2025):</strong> "Our biggest challenges now center on designing environments, feedback loops, and control systems" — 1 million lines of code with <strong>zero</strong> manually written lines.
         </div>
       </div>
     </div>
     <aside class="notes">
       <p>The table bridges what the audience already knows (SDD artifacts) with the new vocabulary (Guides/Sensors). There's nothing new to learn — it's about recognizing what they already do with the right name and an explicit framework.</p>
-      <p>The OpenAI Codex quote is powerful: in 2025, the Codex team reported 1 million lines of code with zero manual intervention — and they described their biggest challenge not as the model, but as "designing environments, feedback loops, and control systems". That is the operational definition of Harness Engineering.</p>
+      <p>The Codex quote is powerful: in 2025, the Codex team reported 1 million lines of code with zero manual intervention — and they described their biggest challenge not as the model, but as "designing environments, feedback loops, and control systems". That is the operational definition of Harness Engineering.</p>
     </aside>
   </section>
 

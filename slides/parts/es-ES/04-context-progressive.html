@@ -52,7 +52,7 @@
         <div class="ctx-core">
           <i data-lucide="cpu"></i>
           <strong>AI Agent</strong>
-          <small>GitHub Copilot</small>
+          <small>Copilot · Codex · otros</small>
         </div>
       </div>
 
@@ -142,7 +142,7 @@ API REST de gestion de tareas.
           <strong>Rules</strong> son lineamientos globales que definen el comportamiento por defecto del agente para todo el workspace, sin depender del proyecto o de la tarea.
         </p>
         <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 En GitHub Copilot, las Rules usan <code>.github/copilot-instructions.md</code> como principal y tambien <code>.github/instructions/**</code> (cuando esta soportado).
+          📌 Cada agente expone Rules de forma diferente: Copilot usa <code>.github/copilot-instructions.md</code>; Codex prioriza <code>AGENTS.md</code>; otros agentes pueden usar archivos propios.
         </div>
         <div class="highlight-box">
           Las Rules son el <em>"modo por defecto"</em> del agente. AGENTS.md puede sobrescribir Rules para un proyecto especifico.
@@ -197,7 +197,7 @@ API REST de gestion de tareas.
           <div class="card fragment">
             <span class="card-icon"><i data-lucide="plug"></i></span>
             <h3>Portabilidad</h3>
-            <p style="font-size:0.72em;">Las Skills funcionan en VS Code, Claude y otras herramientas de IA.</p>
+            <p style="font-size:0.72em;">Las Skills funcionan en Codex, Claude Code, Cursor, Gemini CLI y otras herramientas compatibles.</p>
           </div>
         </div>
         <div class="highlight-box blue" style="margin-top:0.35em; font-size:0.75em;">
@@ -241,7 +241,7 @@ API REST de gestion de tareas.
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
             <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
-            <div class="ctx-pipe-body"><strong>Copilot genera artefactos</strong><small>PRD.md + AGENTS.md</small></div>
+            <div class="ctx-pipe-body"><strong>Agente organiza artefactos</strong><small>PRD.md + AGENTS.md</small></div>
           </div>
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
@@ -293,6 +293,89 @@ API REST de gestion de tareas.
   </aside>
 </section>
 <section id="progressive-disclosure">
+
+  <!-- PD 0 — Economía de Contexto -->
+  <section id="economia-contexto" data-background-gradient="radial-gradient(ellipse 72% 52% at 25% 78%, rgba(255,205,71,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="coins"></i></span>
+      <span class="section-label">05 / Economía de Contexto</span>
+    </div>
+    <h2>El contexto ahora tiene <span class="accent">costo</span></h2>
+    <div class="two-cols" style="gap:1.3em; align-items:start;">
+      <div>
+        <div class="highlight-box orange" style="margin-bottom:0.65em;">
+          <strong>Usage-based billing cambia la conversación.</strong> El contexto ya no es solo calidad: también es costo, latencia y gobernanza.
+        </div>
+        <ul class="icon-list" style="font-size:0.76em;">
+          <li class="fragment"><span class="icon"><i data-lucide="arrow-down-to-line"></i></span><div><strong>Input tokens</strong><br><span class="text-muted">Todo lo que el modelo recibe: prompts, specs, archivos e instrucciones.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="message-square-reply"></i></span><div><strong>Output tokens</strong><br><span class="text-muted">Todo lo que el modelo devuelve: planes, código, explicaciones y diffs.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="archive"></i></span><div><strong>Cached tokens</strong><br><span class="text-muted">Contexto reutilizado con pricing propio, según la documentación oficial.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:rgba(255,205,71,0.45);">
+          <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="badge-dollar-sign"></i></span>
+          <h3 style="color:var(--accent-gold);">GitHub AI Credits</h3>
+          <p style="font-size:0.74em;">A partir del <strong>01/06/2026</strong>, las interacciones de Copilot migran hacia billing por consumo. La documentación define <strong>1 GitHub AI Credit = US$0.01</strong>.</p>
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.72em;">
+          No copies tablas de precios en slides: modelos, multiplicadores y allowances cambian. Enlaza la fuente oficial y revisa antes de presentar.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PD 0.1 — Economía de Tokens -->
+  <section id="economia-tokens" data-background-gradient="radial-gradient(ellipse 72% 52% at 75% 78%, rgba(0,221,179,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="gauge"></i></span>
+      <span class="section-label">05 / Economía de Contexto — Prácticas</span>
+    </div>
+    <h2>Economía de tokens: <span class="accent">qué funciona</span></h2>
+    <div class="card-grid-3" style="gap:0.38em; margin-top:0.55em;">
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="folder-open"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Contexto bajo demanda</h3><p style="font-size:0.57em; line-height:1.32;">PRD, AGENTS.md y Skills cargan la información correcta cuando la tarea la necesita.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="archive"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Cache y prefijos estables</h3><p style="font-size:0.57em; line-height:1.32;">Instrucciones estables al inicio del contexto aumentan la posibilidad de reaprovechar prompt caching.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="route"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Modelo correcto</h3><p style="font-size:0.57em; line-height:1.32;">No toda tarea necesita el modelo más caro: clasifica riesgo, complejidad y necesidad de razonamiento.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="scissors"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Salida corta</h3><p style="font-size:0.57em; line-height:1.32;">La concisión reduce output tokens. Caveman es un ejemplo útil, pero no elimina costo de reasoning y herramientas.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="clock"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Batch y flex</h3><p style="font-size:0.57em; line-height:1.32;">Tareas asíncronas pueden usar procesamiento más económico cuando la latencia no es crítica.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="bar-chart-3"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Observabilidad</h3><p style="font-size:0.57em; line-height:1.32;">Mide input, output, cached tokens, modelo usado, retrabajo y costo por ejecución.</p></div>
+    </div>
+    <div class="highlight-box blue" style="font-size:0.58em; line-height:1.28; margin-top:0.4em; padding:0.55em 0.9em;">
+      Regla práctica: ahorrar tokens no es solo escribir menos. Es reducir ambigüedad, repetición, loops largos y contexto irrelevante.
+    </div>
+  </section>
+
+  <!-- PD 0.2 — SDD como FinOps de Agentes -->
+  <section id="sdd-finops-agentes" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(56,200,250,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="wallet"></i></span>
+      <span class="section-label">05 / Economía de Contexto — SDD</span>
+    </div>
+    <h2>SDD como <span class="accent">FinOps de agentes</span></h2>
+    <div class="two-cols" style="gap:1em; align-items:start;">
+      <div class="card" style="border-color:rgba(0,221,179,0.35);">
+        <span class="card-icon"><i data-lucide="file-check-2"></i></span>
+        <h3>Spec clara reduce desperdicio</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos prompts repetidos para explicar la misma intención.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos iteraciones largas para corregir requisitos implícitos.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos tool calls exploratorias porque el criterio ya está definido.</div></li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(255,205,71,0.42);">
+        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="ban"></i></span>
+        <h3 style="color:var(--accent-gold);">Anti-patterns caros</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Prompt gigante copiado en toda sesión.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Logs completos y outputs de herramientas sin filtrar.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Modelo caro para triage simple o tarea mecánica.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box" style="font-size:0.74em; margin-top:0.75em;">
+      SDD no es solo calidad de entrega. En agentes, una buena spec también controla costo, latencia, riesgo y previsibilidad.
+    </div>
+  </section>
 
   <!-- PD 1 — Que es Progressive Disclosure -->
   <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">

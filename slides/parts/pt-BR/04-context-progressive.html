@@ -53,7 +53,7 @@
         <div class="ctx-core">
           <i data-lucide="cpu"></i>
           <strong>AI Agent</strong>
-          <small>GitHub Copilot</small>
+          <small>Copilot · Codex · outros</small>
         </div>
       </div>
 
@@ -144,7 +144,7 @@ API REST de gerenciamento de tarefas.
           <strong>Rules</strong> são diretrizes globais que definem o comportamento padrão do agente para todo o workspace, independente do projeto ou tarefa específica.
         </p>
         <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 No GitHub Copilot, as Rules usam <code>.github/copilot-instructions.md</code> como principal e também <code>.github/instructions/**</code> (quando suportado).
+          📌 Cada agente expõe Rules de um jeito: Copilot usa <code>.github/copilot-instructions.md</code>; Codex prioriza <code>AGENTS.md</code>; outros agentes podem usar arquivos próprios.
         </div>
         <div class="highlight-box">
           As Rules são o <em>"modo padrão"</em> do agente. AGENTS.md pode sobrescrever Rules para um projeto específico.
@@ -174,7 +174,7 @@ API REST de gerenciamento de tarefas.
     </div>
     <aside class="notes">
       <p>Diferenciação simples: Rules são política global do workspace; AGENTS.md é contrato local do projeto. Rules valem sempre; AGENTS.md pode sobrescrever para um contexto específico.</p>
-      <p>No GitHub Copilot, <code>copilot-instructions.md</code> é o ponto principal de Rules globais. Arquivos em <code>.github/instructions/</code> permitem instrução por tipo de arquivo ou contexto — útil para times com múltiplas linguagens no mesmo repositório.</p>
+      <p>No GitHub Copilot, <code>copilot-instructions.md</code> é o ponto principal de Rules globais. No Codex, <code>AGENTS.md</code> funciona como contrato operacional do repositório. Em outros agentes, o nome muda, mas o princípio continua: instruções globais e locais precisam estar alinhadas.</p>
       <p>Quando os dois estão alinhados, você ganha consistência sem perder adaptação contextual. E isso por si só já reduz variação entre sessões e entre membros do time.</p>
   </aside>
   </section>
@@ -186,43 +186,43 @@ API REST de gerenciamento de tarefas.
       <span class="section-label">04 / Arquitetura — Skills.md</span>
     </div>
     <h2><span class="accent">Skills.md</span> — Conhecimento Especializado</h2>
-    <div class="two-cols-60">
+    <div class="two-cols-60" style="gap:1em; align-items:start;">
       <div>
-        <div class="definition" style="margin-bottom:0.4em;">
-          <p><strong>Skills</strong> são <em>diretórios</em> com um arquivo <code>SKILL.md</code> como entrypoint — padrão aberto <strong>agentskills.io</strong> adotado pelo GitHub Copilot em Dez/2025. O agente mantém a descrição sempre no contexto, mas carrega o conteúdo completo da skill apenas quando necessário: <strong>Progressive Disclosure</strong> na prática.</p>
+        <div class="definition" style="margin-bottom:0.32em; padding:0.82em 1.05em 0.82em 2.25em;">
+          <p style="font-size:0.72em; line-height:1.42;"><strong>Skills</strong> são unidades de conhecimento especializado, normalmente organizadas como diretórios com um arquivo <code>SKILL.md</code> como entrypoint. O agente mantém uma descrição curta no contexto e carrega o conteúdo completo apenas quando necessário: <strong>Progressive Disclosure</strong> na prática.</p>
         </div>
-        <div class="card-grid-2" style="gap:0.5em;">
-          <div class="card fragment">
+        <div class="card-grid-2" style="gap:0.42em;">
+          <div class="card fragment card--pad-sm">
             <span class="card-icon"><i data-lucide="zap"></i></span>
             <h3>Performance</h3>
-            <p style="font-size:0.72em;">Menos tokens consumidos = sessões mais eficientes e baratas.</p>
+            <p style="font-size:0.66em; line-height:1.38;">Menos tokens consumidos = sessões mais eficientes e baratas.</p>
           </div>
-          <div class="card fragment">
+          <div class="card fragment card--pad-sm">
             <span class="card-icon"><i data-lucide="plug"></i></span>
             <h3>Portabilidade</h3>
-            <p style="font-size:0.72em;">Skills funcionam em VS Code, Claude, e outros AI tools.</p>
+            <p style="font-size:0.66em; line-height:1.38;">Skills funcionam em Codex, Claude Code, Cursor, Gemini CLI e outros AI tools compatíveis.</p>
           </div>
         </div>
-        <div class="highlight-box blue" style="margin-top:0.35em; font-size:0.75em;">
+        <div class="highlight-box blue" style="margin-top:0.3em; font-size:0.66em; line-height:1.34; padding:0.58em 0.85em;">
           📖 <strong>Ver seção 05</strong> para o aprofundamento em <em>Progressive Disclosure</em> — princípios, estrutura em camadas e boas práticas.
         </div>
       </div>
       <div>
-        <div class="highlight-box blue" style="margin-top:0.45em; font-size:0.7em;">
+        <div class="highlight-box blue" style="margin-top:0.18em; font-size:0.62em; line-height:1.38; padding:0.62em 0.86em;">
           <strong>Exemplos reais (clicáveis):</strong><br />
           <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank" rel="noopener noreferrer">find-skills</a> ·
           <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank" rel="noopener noreferrer">vercel-react-best-practices</a> ·
           <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank" rel="noopener noreferrer">web-design-guidelines</a> ·
           <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank" rel="noopener noreferrer">frontend-design</a>
         </div>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
+        <div class="highlight-box" style="margin-top:0.4em; font-size:0.68em; line-height:1.36; padding:0.62em 0.86em;">
           🎯 Carregue apenas a Skill da tarefa atual para reduzir ruído e tokens no contexto.
         </div>
       </div>
     </div>
     <aside class="notes">
       <p>Skills são especialização modular de conhecimento. Em vez de carregar tudo sempre, o agente aprofunda só quando a tarefa exige — isso melhora foco, reduz custo de contexto e aumenta qualidade da resposta.</p>
-      <p>O padrão agentskills.io é aberto e portável. Uma Skill criada para Copilot funciona em Claude Code, Cursor e outros agentes compatíveis — sem reescrita.</p>
+      <p>O padrão agentskills.io é aberto e portável. Uma Skill bem escrita pode funcionar em Codex, Claude Code, Cursor, Gemini CLI e outros agentes compatíveis — sem reescrita conceitual.</p>
       <p>Seta 1 — card Performance: menos tokens = sessões mais eficientes. Seta 2 — card Portabilidade: mesma Skill em múltiplos agentes. Fechamento: carregar contexto sob demanda é a prática de Progressive Disclosure que exploramos em detalhes na próxima seção.</p>
     </aside>
   </section>
@@ -245,7 +245,7 @@ API REST de gerenciamento de tarefas.
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
             <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
-            <div class="ctx-pipe-body"><strong>Copilot gera artefatos</strong><small>PRD.md + AGENTS.md</small></div>
+            <div class="ctx-pipe-body"><strong>Agente organiza artefatos</strong><small>PRD.md + AGENTS.md</small></div>
           </div>
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
@@ -299,6 +299,128 @@ API REST de gerenciamento de tarefas.
 </section>
 <section id="progressive-disclosure">
 
+  <!-- PD 0 — Economia de Contexto -->
+  <section id="economia-contexto" data-background-gradient="radial-gradient(ellipse 72% 52% at 25% 78%, rgba(255,205,71,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="coins"></i></span>
+      <span class="section-label">05 / Economia de Contexto</span>
+    </div>
+    <h2>Contexto agora tem <span class="accent">custo</span></h2>
+    <div class="two-cols" style="gap:1.3em; align-items:start;">
+      <div>
+        <div class="highlight-box orange" style="margin-bottom:0.65em;">
+          <strong>Usage-based billing muda a conversa:</strong> contexto repetido, prompt longo e retrabalho deixam de ser apenas incômodo técnico — viram custo operacional.
+        </div>
+        <ul class="icon-list" style="font-size:0.76em;">
+          <li class="fragment"><span class="icon"><i data-lucide="arrow-down-up"></i></span><div><strong>Input tokens</strong><br><span class="text-muted">Tudo que você envia: prompt, contexto, arquivos e instruções.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="message-square-reply"></i></span><div><strong>Output tokens</strong><br><span class="text-muted">Tudo que o modelo devolve: planos, código, explicações e diffs.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="archive"></i></span><div><strong>Cached tokens</strong><br><span class="text-muted">Contexto reaproveitado com precificação própria, conforme documentação oficial.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:rgba(255,205,71,0.45);">
+          <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="badge-dollar-sign"></i></span>
+          <h3 style="color:var(--accent-gold);">GitHub AI Credits</h3>
+          <p style="font-size:0.74em;">A partir de <strong>01/06/2026</strong>, interações do Copilot passam a usar billing por consumo. A documentação define <strong>1 GitHub AI Credit = US$0.01</strong>.</p>
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.72em;">
+          Não copie tabela de preços para slide: modelos, multiplicadores e allowances mudam. Linke a fonte oficial e revise antes da palestra.
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>Dados verificados para a edição Maio/2026 na documentação oficial de GitHub Copilot models and pricing. Antes de apresentar, revise a página porque preços, modelos e multiplicadores podem mudar.</p>
+      <p>A mensagem não é "não use Copilot" nem "use Codex". A mensagem é: quando agentes são cobrados por uso, contexto vira orçamento. Progressive Disclosure passa a ser disciplina técnica e econômica.</p>
+      <p>Conecte com SDD: PRD claro reduz prompt repetido; AGENTS enxuto reduz ruído; Skills carregadas sob demanda reduzem contexto irrelevante; checks evitam ciclos caros de retrabalho.</p>
+    </aside>
+  </section>
+
+  <!-- PD 0.1 — Economia de Tokens -->
+  <section id="economia-tokens" data-background-gradient="radial-gradient(ellipse 72% 52% at 75% 78%, rgba(0,221,179,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="gauge"></i></span>
+      <span class="section-label">05 / Economia de Contexto — Práticas</span>
+    </div>
+    <h2>Economia de tokens: <span class="accent">o que funciona</span></h2>
+    <div class="card-grid-3" style="gap:0.38em; margin-top:0.55em;">
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="folder-open"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Contexto sob demanda</h3>
+        <p style="font-size:0.57em; line-height:1.32;">PRD, AGENTS.md e Skills carregam a informação certa quando a tarefa precisa dela.</p>
+      </div>
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="archive"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Cache e prefixos estáveis</h3>
+        <p style="font-size:0.57em; line-height:1.32;">Instruções estáveis no começo do contexto aumentam chance de reaproveitamento por prompt caching.</p>
+      </div>
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="route"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Modelo certo</h3>
+        <p style="font-size:0.57em; line-height:1.32;">Nem toda tarefa precisa do modelo mais caro: classifique risco, complexidade e necessidade de raciocínio.</p>
+      </div>
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="scissors"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Saída curta</h3>
+        <p style="font-size:0.57em; line-height:1.32;">Concisão reduz output tokens. Caveman é um exemplo prático, mas não elimina custo de reasoning e ferramentas.</p>
+      </div>
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="clock"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Batch e flex</h3>
+        <p style="font-size:0.57em; line-height:1.32;">Tarefas assíncronas podem usar processamento mais econômico quando a latência não é crítica.</p>
+      </div>
+      <div class="card" style="padding:0.46em;">
+        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="bar-chart-3"></i></span>
+        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Observabilidade</h3>
+        <p style="font-size:0.57em; line-height:1.32;">Meça input, output, cached tokens, modelo usado, retrabalho e custo por execução.</p>
+      </div>
+    </div>
+    <div class="highlight-box blue" style="font-size:0.58em; line-height:1.28; margin-top:0.4em; padding:0.55em 0.9em;">
+      Regra prática: economizar tokens não é apenas escrever menos. É reduzir ambiguidade, repetição, loops longos e contexto irrelevante.
+    </div>
+    <aside class="notes">
+      <p>Este slide amplia a conversa além do billing de uma ferramenta. Economizar tokens envolve arquitetura de contexto, cache, roteamento de modelo, concisão de saída, processamento assíncrono e medição.</p>
+      <p>Sobre Caveman: apresente como exemplo de output discipline e compressão de linguagem. O cuidado é explicar que respostas mais curtas não garantem redução total quando o maior custo vem de reasoning tokens, tool calls, leitura de arquivos e geração de código.</p>
+      <p>Conecte com fontes oficiais: OpenAI cost optimization e prompt caching; Anthropic prompt caching e token-efficient tool use; GitHub billing para o contexto de Copilot; Caveman como referência comunitária experimental.</p>
+    </aside>
+  </section>
+
+  <!-- PD 0.2 — SDD como FinOps de Agentes -->
+  <section id="sdd-finops-agentes" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(56,200,250,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="wallet"></i></span>
+      <span class="section-label">05 / Economia de Contexto — SDD</span>
+    </div>
+    <h2>SDD como <span class="accent">FinOps de agentes</span></h2>
+    <div class="two-cols" style="gap:1em; align-items:start;">
+      <div class="card" style="border-color:rgba(0,221,179,0.35);">
+        <span class="card-icon"><i data-lucide="file-check-2"></i></span>
+        <h3>Spec clara reduz desperdício</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos prompts repetidos para explicar a mesma intenção.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos iterações longas para corrigir requisito implícito.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos tool calls exploratórias porque o critério já está definido.</div></li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(255,205,71,0.42);">
+        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="ban"></i></span>
+        <h3 style="color:var(--accent-gold);">Anti-patterns caros</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Prompt gigante copiado em toda sessão.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Logs inteiros e outputs de ferramentas sem filtragem.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Modelo caro para triagem simples ou tarefa mecânica.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box" style="font-size:0.74em; margin-top:0.75em;">
+      SDD não é só qualidade de entrega. Em agentes, spec boa também é controle de custo, latência, risco e previsibilidade.
+    </div>
+    <aside class="notes">
+      <p>FinOps aqui é uma metáfora prática: não transformar a palestra em orçamento, mas mostrar que cada decisão de contexto tem impacto econômico quando agentes passam a consumir tokens, ferramentas e tempo de execução.</p>
+      <p>A spec atua como contrato e como mecanismo de redução de desperdício. Se o agente sabe objetivo, limites, critérios de aceitação e validação, ele explora menos e corrige menos.</p>
+      <p>Feche preparando o próximo slide: Progressive Disclosure é a técnica que operacionaliza essa economia sem empobrecer o contexto.</p>
+    </aside>
+  </section>
+
   <!-- PD 1 — O que é Progressive Disclosure -->
   <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">
     <div class="section-header">
@@ -309,7 +431,7 @@ API REST de gerenciamento de tarefas.
     <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
-          <p><strong>Progressive Disclosure</strong> é o princípio de revelar apenas o contexto necessário para a tarefa atual. Em SDD, isso significa dividir o conhecimento do agente em camadas — carregando informação especializada <em>sob demanda</em>, economizando tokens e reduzindo ruído.</p>
+          <p><strong>Progressive Disclosure</strong> é o princípio de revelar apenas o contexto necessário para a tarefa atual. Em SDD, isso significa dividir o conhecimento do agente em camadas — carregando informação especializada <em>sob demanda</em>, economizando tokens, reduzindo ruído e diminuindo retrabalho.</p>
         </div>
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>AGENTS.md raiz:</strong> mínimo, global, estável — regras que valem para <em>todas</em> as tarefas</li>

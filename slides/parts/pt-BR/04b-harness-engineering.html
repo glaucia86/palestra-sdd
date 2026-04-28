@@ -4,6 +4,7 @@
     • Martin Fowler — martinfowler.com/articles/harness-engineering.html
     • HumanLayer — humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents
     • OpenAI — openai.com/index/harness-engineering/
+    • Walking Labs — walkinglabs.github.io/learn-harness-engineering/en/
 ════════════════════════════════════════════════════════════════════════════ -->
 
 <!-- Section page -->
@@ -41,10 +42,10 @@
           <p style="font-size:0.85em; color:var(--text-secondary);">system prompt · tools/MCPs · context · sub-agents · hooks</p>
         </div>
         <div class="definition" style="font-size:0.77em; line-height:1.4;">
-          <p><strong>Harness Engineering</strong> é a prática de configurar a superfície de contexto do agente para melhorar a qualidade e confiabilidade dos outputs.</p>
+          <p><strong>Harness Engineering</strong> é a prática de projetar instruções, ferramentas, ambiente, estado e feedback para tornar o trabalho do agente confiável.</p>
         </div>
         <ul style="font-size:0.72em; margin-top:0.5em;">
-          <li class="fragment"><strong>É um subconjunto de Context Engineering</strong>: foco na camada de configuração, não só no conteúdo</li>
+          <li class="fragment"><strong>É um subconjunto de Context Engineering</strong>: foco no sistema operacional do agente, não só no prompt</li>
           <li class="fragment"><strong>O problema que resolve:</strong> dois agentes com o mesmo modelo e mesma tarefa produzem resultados radicalmente diferentes. A diferença está no harness</li>
           <li class="fragment"><strong>Proposto por Viv</strong> (HumanLayer) · documentado por Martin Fowler · popularizado pelo experimento de escala da OpenAI</li>
         </ul>
@@ -63,7 +64,8 @@
     </div>
     <aside class="notes">
       <p>A equação "Agent = Model + Harness" vem do blog da HumanLayer (Viv, 2025) e é a forma mais compacta de explicar por que trocar o modelo raramente é a resposta certa para problemas de qualidade do agente. Na maioria dos casos, o problema está no harness — na qualidade das instruções, no contexto fornecido, nos mecanismos de feedback.</p>
-      <p>Context Engineering (proposto por Sharifddin Amir, 2025) é o termo mais amplo — Harness Engineering é um subconjunto com foco específico na camada de configuração do agente: o que ele recebe antes de agir (guides) e o que verifica depois (sensors).</p>
+      <p>O learning da Walking Labs reforça uma visão mais operacional: Harness não é um arquivo de prompt. É o conjunto de instruções, ferramentas, ambiente, estado persistente e feedback que determina quanto da capacidade do modelo vira execução confiável.</p>
+      <p>Context Engineering é o termo mais amplo — Harness Engineering é um subconjunto com foco específico no sistema que rodeia o agente: o que ele recebe antes de agir (guides), o que pode executar, como preserva estado e o que verifica depois (sensors).</p>
       <p>Analogia da Fórmula 1: funciona bem para públicos gerais. Piloto = modelo. Pista/pit crew/telemetria = harness. Trocar o piloto por Hamilton não adianta se o carro não está calibrado. O trabalho real é no harness.</p>
       <p>Seta 1 — subconjunto de Context Engineering. Seta 2 — o problema que resolve (dois agentes, mesmo modelo, resultado diferente). Seta 3 — origem do termo (Viv, Fowler, OpenAI). Fechamento: atenção no harness, não só no modelo.</p>
     </aside>
@@ -128,7 +130,55 @@
     </aside>
   </section>
 
-  <!-- 6.3 — SDD + Harness Engineering = Ciclo Fechado -->
+  <!-- 6.3 — Harness que escala -->
+  <section data-background-gradient="radial-gradient(ellipse 75% 55% at 50% 30%, rgba(56,200,250,0.05) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layout-dashboard"></i></span>
+      <span class="section-label">06 / Harness Engineering: Operacionalização</span>
+    </div>
+    <h2>O Harness que <span class="accent">Escala</span></h2>
+    <p style="font-size:0.74em; text-align:center; color:var(--text-secondary); margin-bottom:0.7em;">Não é “um prompt melhor”. É um sistema operacional enxuto para agentes trabalharem com evidência.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.55em; margin-top:0.3em;">
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="map"></i> Repo como fonte</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Conhecimento crítico precisa estar no repositório: arquitetura, comandos, restrições e decisões.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="route"></i> Arquivos roteadores</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);"><code>AGENTS.md</code> aponta o caminho. Detalhes vivem em docs/skills sob demanda.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="play-circle"></i> Inicialização</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Antes de codar: ambiente roda, testes executam, tarefa está quebrada em passos verificáveis.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="list-checks"></i> WIP = 1</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Uma unidade ativa por vez, com critério de aceite e evidência executável de conclusão.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="activity"></i> Observabilidade</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Logs, traces, checks, rubricas e histórico tornam o “parece certo” auditável.</p>
+      </div>
+      <div class="card" style="padding:0.75em 0.7em;">
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="door-closed"></i> Saída limpa</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Sessão só termina com build/testes, progresso, artefatos e próximo passo em estado claro.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box green fragment" style="margin-top:0.65em; font-size:0.67em; text-align:center; line-height:1.35;">
+      <strong>Regra prática:</strong> quando o agente falhar, investigue primeiro o harness: tarefa vaga, contexto invisível, ambiente quebrado, falta de feedback ou estado perdido.
+    </div>
+    <aside class="notes">
+      <p>Este slide sintetiza o learning da Walking Labs. A ideia importante: Harness Engineering não é só prompt ou AGENTS.md. É o sistema operacional do agente.</p>
+      <p>Repo como fonte: para o agente, o que não está no repositório praticamente não existe. Arquivos roteadores: AGENTS.md deve ser curto, apontando para documentação especializada conforme a tarefa — isso conversa diretamente com Progressive Disclosure.</p>
+      <p>Inicialização: separar setup de implementação evita que a primeira sessão misture fundação e feature. WIP=1 reduz overreach: o agente para de abrir cinco frentes e passa a terminar uma unidade verificável.</p>
+      <p>Observabilidade transforma revisão subjetiva em evidência: logs, traces, testes, rubricas e critérios de aceite. Saída limpa fecha o ciclo: build/testes/progresso/artefatos precisam estar em ordem para a próxima sessão não recomeçar do zero.</p>
+      <p>Fechamento: quando o agente falha, não troque de modelo como primeira reação. Atribua a falha a uma camada do harness e corrija essa camada.</p>
+    </aside>
+  </section>
+
+  <!-- 6.4 — SDD + Harness Engineering = Ciclo Fechado -->
   <section data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 80%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="infinity"></i></span>
@@ -198,7 +248,7 @@
           </div>
         </div>
         <div class="highlight-box blue fragment" style="margin-top:0.5em; font-size:0.64em; line-height:1.3;">
-          <strong>OpenAI Codex (2025):</strong> "Our biggest challenges now center on designing environments, feedback loops, and control systems". Resultado: 1 milhão de linhas de código com <strong>zero</strong> linhas escritas manualmente.
+          <strong>Codex, da OpenAI (2025):</strong> "Our biggest challenges now center on designing environments, feedback loops, and control systems". Resultado: 1 milhão de linhas de código com <strong>zero</strong> linhas escritas manualmente.
         </div>
       </div>
     </div>

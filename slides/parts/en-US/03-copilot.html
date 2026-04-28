@@ -3,16 +3,66 @@
   <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
   <div class="section-page-container">
     <div class="section-page-label text-copilot-light">Section 03</div>
-    <h2 class="section-page-title gradient-text-purple">GitHub Copilot</h2>
-    <p class="section-page-desc">Modes, models, Agent Skills, and how Copilot powers SDD</p>
+    <h2 class="section-page-title gradient-text-purple">AI Coding<br>Agents</h2>
+    <p class="section-page-desc">Copilot, Codex, and other agents as different surfaces for the same SDD flow</p>
     <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
   </div>
   <aside class="notes">
-    <p>GitHub Copilot is the AI that we'll use to put SDD into practice. In this section: what Copilot can do today (far more than autocomplete), the current model landscape, and how to use each mode — Ask, Edit, Plan, and Agent.</p>
-    <p>Context matters here: Copilot in 2026 is a substantially different tool from 2021. The jump from "inline suggestion" to "multi-step agent with terminal access and MCP" changes how we work with it.</p>
+    <p>This section shifts the talk away from one product as the destination and toward a broader working category: AI Coding Agents.</p>
+    <p>The core point is portability. If the method depends on one product, it ages with that product. If it depends on specs, context, and validation, it works across Copilot, Codex, Claude Code, Cursor, and whatever comes next.</p>
   </aside>
 </section>
-<section id="copilot-chat" data-auto-animate>
+<section id="ai-coding-agents" data-auto-animate>
+
+  <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="network"></i></span>
+      <span class="section-label">03 / AI Coding Agents</span>
+    </div>
+    <h2 data-id="agents-title">From Assistant to <span class="accent">Agent</span></h2>
+    <div class="two-cols" style="gap:1.5em; align-items:start;">
+      <div>
+        <div class="definition" style="margin-bottom:0.75em;">
+          <p>An <strong>AI Coding Agent</strong> understands requirements, navigates the repository, edits files, runs commands, reviews diffs, and learns from feedback. The difference is not only the model: it is the <strong>harness</strong> around it.</p>
+        </div>
+        <ul class="icon-list" style="font-size:0.78em;">
+          <li class="fragment"><span class="icon"><i data-lucide="message-square"></i></span><div><strong>IDE agents</strong><br><span class="text-muted">Copilot Chat, Cursor, extensions, and editor context.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="terminal-square"></i></span><div><strong>CLI agents</strong><br><span class="text-muted">Codex CLI, Copilot CLI, Gemini CLI, and local automations.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="monitor"></i></span><div><strong>App/Cloud agents</strong><br><span class="text-muted">Codex App, worktrees, cloud environments, and parallel tasks.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-grid-2" style="gap:0.55em;">
+          <div class="card fragment"><span class="card-icon"><i data-lucide="file-text"></i></span><h3>Spec</h3><p>Defines intent, scope, and criteria.</p></div>
+          <div class="card fragment"><span class="card-icon"><i data-lucide="folder"></i></span><h3>AGENTS</h3><p>Defines repository rules and behavior.</p></div>
+          <div class="card fragment"><span class="card-icon"><i data-lucide="wrench"></i></span><h3>Skills</h3><p>Load specialized knowledge on demand.</p></div>
+          <div class="card fragment"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Checks</h3><p>Validate delivery against the spec.</p></div>
+        </div>
+        <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
+          <strong>Thesis:</strong> the model changes, the product changes, the price changes. The SDD contract remains.
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>Use this slide to separate method from tooling. GitHub Copilot, Codex, Cursor, and Claude Code have different interfaces, but they share the same failure mode: weak context creates unstable delivery.</p>
+      <p>SDD responds by building reusable context surfaces: spec, AGENTS, Skills, and checks. That reduces product dependency and increases predictability.</p>
+    </aside>
+  </section>
+
+  <section id="github-copilot" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.08) 0%, transparent 60%)">
+    <div class="section-orb section-orb-1" style="--orb-color: rgba(146,119,255,0.15);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label text-copilot-light">Section 03-B</div>
+      <h2 class="section-page-title gradient-text-purple">GitHub<br>Copilot</h2>
+      <p class="section-page-desc">Chat, models, billing, timeline, Skills, and Agent Mode in the SDD flow</p>
+      <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
+    </div>
+    <aside class="notes">
+      <p>This separator lets you jump directly to GitHub Copilot when that is the focus of a specific talk.</p>
+      <p>The narrative stays the same: the tool is an execution surface; the work contract is SDD.</p>
+    </aside>
+  </section>
 
   <!-- 5.1 — What is GitHub Copilot Chat -->
   <section data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
@@ -54,7 +104,7 @@
   </section>
 
   <!-- 5.2 — Timeline 2021–2026 -->
-  <section>
+  <section id="copilot-timeline">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="clock"></i></span>
       <span class="section-label">03 / GitHub Copilot — Timeline</span>
@@ -125,17 +175,26 @@
         <span class="copilot-timeline-connector"></span>
         <span class="copilot-timeline-dot"></span>
       </article>
+      <article class="copilot-timeline-item top copilot-timeline-item-pricing">
+        <div class="copilot-timeline-content">
+          <div class="copilot-timeline-date">APR-JUN 2026</div>
+          <p><strong>Pricing:</strong> AI Credits + Actions minutes on 06/01.</p>
+        </div>
+        <span class="copilot-timeline-connector"></span>
+        <span class="copilot-timeline-dot"></span>
+      </article>
     </div>
-    <div class="highlight-box" style="margin-top:0.45em; font-size:0.7em;">
-      <strong>SDD reading:</strong> evolution moved from "autocomplete" to a full engineering experience in <strong>IDE + terminal</strong>, with more autonomy and governance.
+    <div class="highlight-box" style="margin-top:0.45em; font-size:0.66em; line-height:1.34;">
+      <strong>SDD reading:</strong> evolution moved from "autocomplete" to a full engineering experience in <strong>IDE + terminal</strong>, with more autonomy and governance.<br />
+      <strong>Pricing 06/01/2026:</strong> Copilot usage moves to AI Credits; Code Review also starts consuming GitHub Actions minutes in private repositories.
     </div>
     <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
       CLI dates: public preview on 09/25/2025, <code>gh-copilot</code> deprecation on 10/25/2025, and GA on 02/25/2026.
     </p>
   <aside class="notes">
     <p>The timeline matters for context: in 5 years, Copilot went from a preview code completion tool to an agentic engineering platform. Each major milestone represents a change in interaction model, not just capability.</p>
-    <p>CLI GA in February 2026 is the most recent milestone. This means everything we discuss here about terminal-first workflows is already in production, not experimental.</p>
-    <p>SDD reading for the timeline: more autonomy at each stage requires more structured context. Autocomplete was forgiving of vague prompts. Agent Mode is not.</p>
+    <p>On April 27, 2026, GitHub announced that starting June 1, 2026, Copilot Code Review will be billed through Copilot usage in AI Credits and will also consume GitHub Actions minutes when reviews run on GitHub-hosted runners for private repositories.</p>
+    <p>SDD reading for the timeline: more autonomy and usage-based pricing both demand better scope, criteria, and context governance.</p>
   </aside>
   </section>
 
@@ -178,69 +237,70 @@
   </aside>
   </section>
 
-  <!-- 5.4 — Available models (April 2026) -->
-  <section>
+  <!-- 5.4 — Models and plans (May 2026) -->
+  <section id="copilot-modelos-pricing">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="cpu"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Models (Apr 2026)</span>
+      <span class="section-label">03 / GitHub Copilot — Models &amp; Pricing (May 2026)</span>
     </div>
-    <h2><span class="accent">Available</span> Models — Apr/2026</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; align-items:start; margin-top:0.4em;">
+    <h2>Models, Plans, and <span class="accent">Pricing</span> — May/2026</h2>
+    <div style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:0.72em; align-items:start; margin-top:0.34em;">
       <div>
-        <table style="font-size:0.65em;">
-          <thead><tr><th colspan="2"><i data-lucide="zap"></i> OpenAI</th></tr></thead>
-          <tbody>
-            <tr><td><strong>GPT-4.1</strong></td><td><span class="tag">Free · 0×</span></td></tr>
-            <tr><td><strong>GPT-5 mini</strong></td><td><span class="tag">Free · 0×</span></td></tr>
-            <tr><td><strong>GPT-5.2</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
-            <tr><td><strong>GPT-5.2-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
-            <tr><td><strong>GPT-5.3-Codex</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
-            <tr><td><strong>GPT-5.4</strong> <span class="tag green" style="font-size:0.75em;">New!</span></td><td><span class="tag orange">Pro+ · 3×</span></td></tr>
-            <tr><td style="padding-left:1.2em; font-size:0.92em;">↳ Thinking / Pro</td><td><span class="tag orange">Pro+ · 3×</span></td></tr>
-          </tbody>
-        </table>
-        <table style="font-size:0.65em; margin-top:0.5em;">
-          <thead><tr><th colspan="2"><i data-lucide="cpu"></i> xAI</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Grok Code Fast 1</strong></td><td><span class="tag">GA · 0.25×</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <table style="font-size:0.65em;">
-          <thead><tr><th colspan="2"><i data-lucide="sparkles"></i> Anthropic Claude</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Claude Haiku 4.5</strong></td><td><span class="tag">Free · 0.33×</span></td></tr>
-            <tr><td><strong>Claude Sonnet 4</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
-            <tr><td><strong>Claude Sonnet 4.5</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
-            <tr><td><strong>Claude Sonnet 4.6</strong></td><td><span class="tag purple">GA · 1×</span></td></tr>
-            <tr><td><strong>Claude Opus 4.5</strong></td><td><span class="tag orange">GA · 3×</span></td></tr>
-            <tr><td><strong>Claude Opus 4.6</strong></td><td><span class="tag orange">GA · 3×</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <table style="font-size:0.65em;">
-          <thead><tr><th colspan="2"><i data-lucide="globe"></i> Google Gemini</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Gemini 2.5 Pro</strong></td><td><span class="tag blue">GA · 1×</span></td></tr>
-            <tr><td><strong>Gemini 3 Flash</strong></td><td><span class="tag">Preview · 0.33×</span></td></tr>
-            <tr><td><strong>Gemini 3 Pro</strong></td><td><span class="tag blue">Preview · 1×</span></td></tr>
-            <tr><td><strong>Gemini 3.1 Pro</strong> <span class="tag green" style="font-size:0.75em;">New!</span></td><td><span class="tag blue">Preview · 1×</span></td></tr>
-          </tbody>
-        </table>
-        <div class="highlight-box" style="margin-top:0.5em; font-size:0.68em;">
-          <strong>Auto</strong> — selects the best model automatically. Recommended in Agent Mode.
+        <h3 style="font-size:0.9em; margin-bottom:0.38em;">Plans and access</h3>
+        <div class="card-grid-2" style="gap:0.42em;">
+          <div class="card card--pad-sm" style="border-color:rgba(0,221,179,0.34);">
+            <span class="card-icon"><i data-lucide="sparkles"></i></span>
+            <h3>Free</h3>
+            <p style="font-size:0.64em;">US$0 · <strong>50</strong> premium requests/month · <strong>2,000</strong> completions/month.</p>
+          </div>
+          <div class="card card--pad-sm" style="border-color:rgba(255,205,71,0.38);">
+            <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="graduation-cap"></i></span>
+            <h3 style="color:var(--accent-gold);">Student</h3>
+            <p style="font-size:0.64em;">Free for verified students · <strong>300</strong> premium requests/month.</p>
+          </div>
+          <div class="card card--pad-sm" style="border-color:rgba(124,92,252,0.45);">
+            <span class="card-icon" style="color:var(--accent-copilot-light);"><i data-lucide="user"></i></span>
+            <h3 style="color:var(--accent-copilot-light);">Pro / Pro+</h3>
+            <p style="font-size:0.64em;">Pro: US$10 · <strong>300</strong> requests. Pro+: US$39 · <strong>1,500</strong> requests and full model access.</p>
+          </div>
+          <div class="card card--pad-sm" style="border-color:rgba(56,200,250,0.42);">
+            <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></span>
+            <h3 style="color:var(--accent-blue);">Business / Enterprise</h3>
+            <p style="font-size:0.64em;">Business: US$19/seat · <strong>300</strong>/user. Enterprise: US$39/seat · <strong>1,000</strong>/user.</p>
+          </div>
         </div>
-        <div class="highlight-box blue" style="margin-top:0.3em; font-size:0.65em;">
-          Planos: <span class="tag">Free $0</span> <span class="tag blue">Pro $10</span> <span class="tag purple">Pro+ $39</span> <span class="tag orange">Business $19/seat</span>
+        <div class="highlight-box orange" style="margin-top:0.42em; font-size:0.63em; line-height:1.28; padding:0.55em 0.8em;">
+          <strong>Heads up:</strong> new sign-ups for Pro, Pro+, and Student are temporarily paused since <strong>04/20/2026</strong>. Organizations can still restrict models through admin policy.
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:0.9em; margin-bottom:0.38em;">Models and multipliers</h3>
+        <div style="display:grid; gap:0.32em;">
+          <div class="highlight-box" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
+            <strong>0× / lightweight:</strong> GPT-4.1, GPT-5 mini, Raptor mini, and nano/mini models. In paid plans, some lightweight models do not consume premium requests.
+          </div>
+          <div class="highlight-box blue" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
+            <strong>0.25×-0.33×:</strong> Claude Haiku 4.5, Gemini 3 Flash, GPT-5.4 mini, Grok Code Fast 1.
+          </div>
+          <div class="highlight-box purple" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
+            <strong>1×:</strong> GPT-5.2, GPT-5.2-Codex, GPT-5.3-Codex, GPT-5.4, Claude Sonnet 4/4.5/4.6, Gemini 2.5 Pro, Gemini 3.1 Pro.
+          </div>
+          <div class="highlight-box orange" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
+            <strong>3×+ / advanced:</strong> Claude Opus 4.5/4.6/4.7, GPT-5.5, and advanced variants. More power, more cost: use when the task justifies it.
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:0.42em; font-size:0.62em; line-height:1.28; padding:0.52em 0.78em;">
+          <strong>06/01/2026:</strong> premium request units are replaced by GitHub AI Credits. Cost starts considering <strong>input</strong>, <strong>output</strong>, and <strong>cached tokens</strong>. <strong>1 AI Credit = US$0.01</strong>. Completions remain outside AI credits in paid plans.
         </div>
       </div>
     </div>
+    <p style="font-size:0.48em; color:var(--text-muted); text-align:center; margin-top:0.28em;">
+      Official snapshot for May/2026. Do not copy the full table: models, multipliers, and availability change often.
+    </p>
   <aside class="notes">
-    <p>Model choice directly impacts the quality of SDD execution. Claude Sonnet 4.6 and GPT-5.4 are the current leading choices for Agent Mode on complex tasks. The "Auto" model is recommended when you're unsure — it adapts to the task type. Snapshot: 28/03/2026.</p>
-    <p>An important SDD principle: the model is a variable, but the context (PRD, AGENTS, specs) remains constant. A well-structured spec produces better results on any model than a vague prompt on the best model.</p>
-    <p>Arrow 1 — frontier models. Arrow 2 — reasoning models. Arrow 3 — plans and access. Closing: "Auto" is the recommended default — the context you provide matters more than the choice of model.</p>
+    <p>Data verified for the May/2026 edition in the official GitHub Copilot plans, supported models, and models and pricing pages. Review before every presentation.</p>
+    <p>Cost reading: until 06/01/2026 the operational unit is still premium requests; after that, Copilot moves to GitHub AI Credits calculated from input tokens, output tokens, and cached tokens. Code completions and next edit suggestions are not charged in AI credits in paid plans.</p>
+    <p>SDD message: a powerful model with a vague prompt only accelerates expensive rework. Clear specs, lean context, on-demand Skills, and objective criteria help choose the right model and reduce unnecessary loops.</p>
   </aside>
   </section>
 
@@ -586,6 +646,213 @@ cover both described scenarios.</code></pre>
   </section>
 
 </section><!-- /copilot-cli -->
+
+<section id="codex-app-cli" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color: rgba(0,221,179,0.15);"></div>
+  <div class="section-page-container">
+    <div class="section-page-label text-blue">Section 03-D</div>
+    <h2 class="section-page-title gradient-text">Codex<br>App/CLI</h2>
+    <p class="section-page-desc">App, editor, terminal, Skills, sandbox, and automation in the SDD flow</p>
+    <div class="section-page-icon text-blue"><i data-lucide="terminal-square"></i></div>
+  </div>
+  <aside class="notes">
+    <p>This separator lets you jump directly to Codex when that is the focus of a specific talk.</p>
+    <p>The reading stays tool-agnostic: Codex is the current focus, but SDD artifacts remain the center of the workflow.</p>
+  </aside>
+</section>
+
+<section id="codex-fluxo-sdd" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(86,130,255,0.09) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="terminal-square"></i></span>
+    <span class="section-label">03-D / Codex</span>
+  </div>
+  <h2><span class="accent">Codex</span> in the SDD Flow</h2>
+  <div class="two-cols" style="align-items:center; gap:1.6em;">
+    <div style="text-align:center;">
+      <img src="resources/images/codex-color.png" alt="Codex" style="width:154px; max-width:42%; filter:drop-shadow(0 0 30px rgba(86,130,255,0.58)) drop-shadow(0 0 18px rgba(0,221,179,0.22)); margin-bottom:0.62em;" />
+      <div style="display:flex; flex-wrap:wrap; gap:0.35em; justify-content:center;">
+        <span class="tag blue">App</span>
+        <span class="tag purple">Editor</span>
+        <span class="tag">CLI</span>
+        <span class="tag orange">Skills</span>
+        <span class="tag blue">Automations</span>
+      </div>
+    </div>
+    <div>
+      <div class="definition" style="margin-bottom:0.65em; border-color:rgba(86,130,255,0.45); box-shadow:0 0 28px rgba(86,130,255,0.12);">
+        <p>Codex can operate as a <strong>command center</strong>, editor extension, and terminal agent. In SDD, value appears when it receives <strong>spec, AGENTS.md, Skills, and validation criteria</strong> before execution.</p>
+      </div>
+      <ul class="icon-list" style="font-size:0.74em;">
+        <li class="fragment"><span class="icon"><i data-lucide="panel-left"></i></span><div><strong>Codex App</strong><br><span class="text-muted">Threads, worktrees, cloud environments, terminal, and Git.</span></div></li>
+        <li class="fragment"><span class="icon"><i data-lucide="code-2"></i></span><div><strong>Editor</strong><br><span class="text-muted">File context, selection, and review close to the code.</span></div></li>
+        <li class="fragment"><span class="icon"><i data-lucide="terminal"></i></span><div><strong>Codex CLI</strong><br><span class="text-muted">Local execution, automation, and non-interactive mode with <code>codex exec</code>.</span></div></li>
+        <li class="fragment"><span class="icon"><i data-lucide="shield-check"></i></span><div><strong>Sandbox and approvals</strong><br><span class="text-muted">Explicit permissions to keep human control.</span></div></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>This slide mirrors the GitHub Copilot visual entry point: logo, tags, and a compact message.</p>
+    <p>Codex makes the context flow explicit: instructions, Skills, sandbox, commands, diff, review, and PR. Use it as the opening for the Codex block before workflows and automation.</p>
+  </aside>
+</section>
+
+<section data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(0,221,179,0.07) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="workflow"></i></span>
+    <span class="section-label">03-E / Codex — Workflows</span>
+  </div>
+  <h2><span class="accent">Codex</span> as an Engineering Workflow</h2>
+  <div class="card-grid-3" style="gap:0.48em; margin-top:0.35em;">
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="git-pull-request"></i></span><h3>End-to-end engineering</h3><p>Features, refactors, migrations, bugs, and PRs as product work.</p></div>
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="split"></i></span><h3>Multi-agent work</h3><p>Threads and worktrees enable parallel workstreams.</p></div>
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="wrench"></i></span><h3>Skills</h3><p>Team-aligned knowledge loaded on demand.</p></div>
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="calendar-clock"></i></span><h3>Automations</h3><p>Triage, alerts, and CI/CD routines as recurring tasks.</p></div>
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Quality</h3><p>Tests, review, commits, and pull requests as part of the flow.</p></div>
+    <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="repeat-2"></i></span><h3>Continuity</h3><p>The same agent across app, editor, and terminal.</p></div>
+  </div>
+  <div class="highlight-box blue" style="margin-top:0.38em; font-size:0.66em; line-height:1.32; padding:0.58em 0.9em;">
+    <strong>SDD reading:</strong> Codex shows that value is not only generating code. It is controlling the full cycle: requirement → execution → validation → PR.<br />
+    <span class="text-muted">Source: <a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">Codex — official OpenAI page</a></span>
+  </div>
+</section>
+
+<section data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 78%, rgba(255,120,73,0.07) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="lock"></i></span>
+    <span class="section-label">03-F / Codex — Security</span>
+  </div>
+  <h2>Sandbox, <span class="accent">Approvals</span>, and Trust</h2>
+  <div class="two-cols" style="gap:1.1em;">
+    <div>
+      <div class="card" style="border-color:rgba(255,120,73,0.4);">
+        <h3 class="text-orange">Sandbox</h3>
+        <ul style="font-size:0.72em;">
+          <li><code>read-only</code>: inspection without mutation.</li>
+          <li><code>workspace-write</code>: edits inside the workspace.</li>
+          <li><code>danger-full-access</code>: only in isolated environments.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:0.55em; border-color:rgba(56,200,250,0.4);">
+        <h3 class="text-blue">Approvals</h3>
+        <ul style="font-size:0.72em;">
+          <li><code>on-request</code>: asks before leaving the sandbox.</li>
+          <li><code>never</code>: does not pause for approval.</li>
+          <li><code>untrusted</code>: requires approval for mutations.</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="highlight-box orange">
+        <strong>Autonomy without limits becomes risk.</strong> The right harness defines where the agent can read, write, and execute.
+      </div>
+      <pre style="font-size:0.68em; margin-top:0.65em;"><code class="language-bash"># Practical preset for local work
+codex --full-auto
+
+# Equivalent to:
+# --sandbox workspace-write
+# --ask-for-approval on-request</code></pre>
+      <div class="highlight-box blue" style="margin-top:0.42em; font-size:0.58em; line-height:1.28; padding:0.55em 0.8em;">
+        <strong>Update note:</strong> Codex evolves quickly. Review this talk monthly and verify sandbox/approval details in official docs before each presentation.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.06) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="list-checks"></i></span>
+    <span class="section-label">03-G / Codex — Commands</span>
+  </div>
+  <h2><span class="accent">Codex</span> Commands in the SDD Flow</h2>
+  <div class="two-cols" style="gap:1.1em; align-items:start;">
+    <div class="card" style="border-color:rgba(56,200,250,0.45); padding:0.82em 0.95em;">
+      <h3 class="text-blue">Prepare context</h3>
+      <ul style="font-size:0.68em; line-height:1.34;">
+        <li><code>/init</code>: creates an <code>AGENTS.md</code> base.</li>
+        <li><code>/mention</code>: highlights specs, PRDs, and key files.</li>
+        <li><code>/status</code>: checks model, policy, writable roots, and tokens.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(0,221,179,0.45); padding:0.82em 0.95em;">
+      <h3 class="text-green">Control delivery</h3>
+      <ul style="font-size:0.68em; line-height:1.34;">
+        <li><code>/permissions</code>: adjusts autonomy and approvals.</li>
+        <li><code>/compact</code>: summarizes history and frees context.</li>
+        <li><code>/diff</code> + <code>/review</code>: reviews changes before PR.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.66em; line-height:1.32; padding:0.58em 0.9em;">
+    <strong>SDD reading:</strong> commands do not replace specification. They point context, limit autonomy, review evidence, and keep the transcript lean.
+  </div>
+</section>
+
+<section data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.06) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="play-square"></i></span>
+    <span class="section-label">03-H / Codex — Automation</span>
+  </div>
+  <h2><code>codex exec</code> and <span class="accent">SDD Automation</span></h2>
+  <div class="two-cols" style="gap:1.2em;">
+    <div>
+      <div class="definition">
+        <p><code>codex exec</code> is Codex non-interactive mode for scripts, CI/CD, and repeatable tasks. In SDD, use it only when the spec, limits, and validation are clear.</p>
+      </div>
+      <ul style="font-size:0.7em; margin-top:0.72em; line-height:1.35;">
+        <li class="fragment"><code>--full-auto</code>: allows low-friction workspace edits.</li>
+        <li class="fragment"><code>--json</code>: emits JSONL events for automation.</li>
+        <li class="fragment"><code>--output-last-message</code>: saves the final answer.</li>
+        <li class="fragment"><code>--output-schema</code>: validates structured output.</li>
+        <li class="fragment">Prompts, logs, and tool output can contain sensitive data.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card" style="border-color:var(--accent-green);">
+        <h3>Safe example</h3>
+        <pre style="font-size:0.62em;"><code class="language-bash">codex exec --full-auto \
+  --json \
+  --output-last-message summary.md \
+  "Read PRD.md, implement only
+   FR01, run tests, then stop."</code></pre>
+      </div>
+      <div class="highlight-box orange" style="margin-top:0.55em; font-size:0.66em; line-height:1.32;">
+        Avoid <code>danger-full-access</code> outside isolated runners. Good automation starts with small scope and objective checks.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-background-gradient="radial-gradient(ellipse 74% 52% at 80% 25%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+  <div class="section-header">
+    <span class="section-icon"><i data-lucide="link-2"></i></span>
+    <span class="section-label">03-I / Portable SDD</span>
+  </div>
+  <h2>SDD + Agents = <span class="accent">Portable Contract</span></h2>
+  <div class="two-cols" style="gap:1.4em; align-items:start;">
+    <div class="card" style="padding:0.95em 1em;">
+      <span class="card-icon"><i data-lucide="route"></i></span>
+      <h3>Lean request</h3>
+      <pre style="font-size:0.66em;"><code class="language-markdown">Based on:
+- PRD.md
+- AGENTS.md
+- Testing Skill
+
+Implement FR01 and validate
+acceptance criteria AC01 and AC02.</code></pre>
+    </div>
+    <div>
+      <ul class="icon-list" style="font-size:0.78em;">
+        <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Less prompt</strong><br><span class="text-muted">The spec already carries intent and scope.</span></div></li>
+        <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Less rework</strong><br><span class="text-muted">Acceptance criteria become explicit.</span></div></li>
+        <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Less lock-in</strong><br><span class="text-muted">Artifacts work for Copilot, Codex, and other agents.</span></div></li>
+      </ul>
+      <div class="highlight-box" style="margin-top:0.6em; font-size:0.72em;">
+        SDD turns the agent into the executor of a contract, not a guesser of intent.
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
   SLIDE — ARQUITETURA DE CONTEXTO  (vertical group)

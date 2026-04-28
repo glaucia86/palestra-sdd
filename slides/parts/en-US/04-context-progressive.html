@@ -53,7 +53,7 @@
         <div class="ctx-core">
           <i data-lucide="cpu"></i>
           <strong>AI Agent</strong>
-          <small>GitHub Copilot</small>
+          <small>Copilot · Codex · others</small>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ Task management REST API.
           <strong>Rules</strong> are global guidelines that define the default agent behavior across the whole workspace, regardless of project or task.
         </p>
         <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 In GitHub Copilot, Rules use <code>.github/copilot-instructions.md</code> as primary and also <code>.github/instructions/**</code> (when supported).
+          📌 Each agent exposes Rules differently: Copilot uses <code>.github/copilot-instructions.md</code>; Codex prioritizes <code>AGENTS.md</code>; other agents may use their own files.
         </div>
         <div class="highlight-box">
           Rules are the agent <em>"default mode"</em>. AGENTS.md can override Rules for a specific project.
@@ -203,7 +203,7 @@ Task management REST API.
           <div class="card fragment">
             <span class="card-icon"><i data-lucide="plug"></i></span>
             <h3>Portability</h3>
-            <p style="font-size:0.72em;">Skills work in VS Code, Claude, and other AI tools.</p>
+            <p style="font-size:0.72em;">Skills work in Codex, Claude Code, Cursor, Gemini CLI, and other compatible AI tools.</p>
           </div>
         </div>
         <div class="highlight-box blue" style="margin-top:0.35em; font-size:0.75em;">
@@ -249,7 +249,7 @@ Task management REST API.
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
             <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
-            <div class="ctx-pipe-body"><strong>Copilot generates artifacts</strong><small>PRD.md + AGENTS.md</small></div>
+            <div class="ctx-pipe-body"><strong>Agent organizes artifacts</strong><small>PRD.md + AGENTS.md</small></div>
           </div>
           <div class="ctx-pipe-connector"></div>
           <div class="ctx-pipe-step">
@@ -303,6 +303,93 @@ Task management REST API.
   </aside>
 </section>
 <section id="progressive-disclosure">
+
+  <!-- PD 0 — Context Economy -->
+  <section id="economia-contexto" data-background-gradient="radial-gradient(ellipse 72% 52% at 25% 78%, rgba(255,205,71,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="coins"></i></span>
+      <span class="section-label">05 / Context Economy</span>
+    </div>
+    <h2>Context now has <span class="accent">cost</span></h2>
+    <div class="two-cols" style="gap:1.3em; align-items:start;">
+      <div>
+        <div class="highlight-box orange" style="margin-bottom:0.65em;">
+          <strong>Usage-based billing changes the conversation.</strong> Context is no longer only a quality concern: it also becomes cost, latency, and governance.
+        </div>
+        <ul class="icon-list" style="font-size:0.76em;">
+          <li class="fragment"><span class="icon"><i data-lucide="arrow-down-to-line"></i></span><div><strong>Input tokens</strong><br><span class="text-muted">Everything the model receives: prompts, specs, files, and instructions.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="message-square-reply"></i></span><div><strong>Output tokens</strong><br><span class="text-muted">Everything the model returns: plans, code, explanations, and diffs.</span></div></li>
+          <li class="fragment"><span class="icon"><i data-lucide="archive"></i></span><div><strong>Cached tokens</strong><br><span class="text-muted">Reused context with its own pricing rules, according to official docs.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="border-color:rgba(255,205,71,0.45);">
+          <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="badge-dollar-sign"></i></span>
+          <h3 style="color:var(--accent-gold);">GitHub AI Credits</h3>
+          <p style="font-size:0.74em;">Starting <strong>06/01/2026</strong>, Copilot interactions move toward consumption-based billing. GitHub docs define <strong>1 GitHub AI Credit = US$0.01</strong>.</p>
+        </div>
+        <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.72em;">
+          Do not copy pricing tables into slides: models, multipliers, and allowances change. Link the official source and review before presenting.
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>Data verified for the May/2026 edition in the official GitHub Copilot models and pricing documentation. Review the page before presenting because prices, models, and multipliers may change.</p>
+      <p>The message is not "do not use Copilot" or "use Codex". The message is: when agents are billed by usage, context becomes budget. Progressive Disclosure becomes both a technical and economic discipline.</p>
+    </aside>
+  </section>
+
+  <!-- PD 0.1 — Token Economy -->
+  <section id="economia-tokens" data-background-gradient="radial-gradient(ellipse 72% 52% at 75% 78%, rgba(0,221,179,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="gauge"></i></span>
+      <span class="section-label">05 / Context Economy — Practices</span>
+    </div>
+    <h2>Token economy: <span class="accent">what works</span></h2>
+    <div class="card-grid-3" style="gap:0.38em; margin-top:0.55em;">
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="folder-open"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">On-demand context</h3><p style="font-size:0.57em; line-height:1.32;">PRD, AGENTS.md, and Skills load the right information only when the task needs it.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="archive"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Cache and stable prefixes</h3><p style="font-size:0.57em; line-height:1.32;">Stable instructions at the beginning of context increase the chance of prompt caching reuse.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="route"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Right model</h3><p style="font-size:0.57em; line-height:1.32;">Not every task needs the most expensive model: classify risk, complexity, and reasoning needs.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="scissors"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Short output</h3><p style="font-size:0.57em; line-height:1.32;">Concise responses reduce output tokens. Caveman is a useful example, but it does not eliminate reasoning and tool costs.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="clock"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Batch and flex</h3><p style="font-size:0.57em; line-height:1.32;">Async tasks can use more economical processing when latency is not critical.</p></div>
+      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="bar-chart-3"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Observability</h3><p style="font-size:0.57em; line-height:1.32;">Measure input, output, cached tokens, model, rework, and cost per execution.</p></div>
+    </div>
+    <div class="highlight-box blue" style="font-size:0.58em; line-height:1.28; margin-top:0.4em; padding:0.55em 0.9em;">
+      Rule of thumb: saving tokens is not only writing less. It is reducing ambiguity, repetition, long loops, and irrelevant context.
+    </div>
+  </section>
+
+  <!-- PD 0.2 — SDD as Agent FinOps -->
+  <section id="sdd-finops-agentes" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(56,200,250,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="wallet"></i></span>
+      <span class="section-label">05 / Context Economy — SDD</span>
+    </div>
+    <h2>SDD as <span class="accent">Agent FinOps</span></h2>
+    <div class="two-cols" style="gap:1em; align-items:start;">
+      <div class="card" style="border-color:rgba(0,221,179,0.35);">
+        <span class="card-icon"><i data-lucide="file-check-2"></i></span>
+        <h3>Clear specs reduce waste</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer repeated prompts explaining the same intent.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer long iterations to fix implicit requirements.</div></li>
+          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer exploratory tool calls because criteria are already defined.</div></li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(255,205,71,0.42);">
+        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="ban"></i></span>
+        <h3 style="color:var(--accent-gold);">Expensive anti-patterns</h3>
+        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Huge prompt copied into every session.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Full logs and unfiltered tool outputs.</div></li>
+          <li><span class="icon"><i data-lucide="x"></i></span><div>Expensive model for simple triage or mechanical work.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box" style="font-size:0.74em; margin-top:0.75em;">
+      SDD is not only delivery quality. With agents, a good spec is also cost, latency, risk, and predictability control.
+    </div>
+  </section>
 
   <!-- PD 1 — What is Progressive Disclosure -->
   <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">
