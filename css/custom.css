@@ -223,9 +223,6 @@ html, body {
 .reveal {
   position: relative;
   z-index: 1;
-}
-
-.reveal {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.55rem;
   color: var(--text-primary);
@@ -322,64 +319,6 @@ html, body {
   border-radius: 5px;
   font-size: 0.82em;
   border: 1px solid rgba(0,221,179,0.15);
-}
-
-/* ============================================================================
-   Lists
-   ============================================================================ */
-.reveal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.reveal ul li {
-  padding: 0.3em 0 0.3em 1.9em;
-  position: relative;
-  color: var(--text-secondary);
-  line-height: 1.52;
-}
-
-.reveal ul li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent-green);
-  font-size: 0.65em;
-  top: 0.62em;
-}
-
-.reveal ul li strong { color: var(--text-primary); }
-
-.reveal ol {
-  counter-reset: item;
-  list-style: none;
-  padding: 0;
-}
-
-.reveal ol li {
-  counter-increment: item;
-  padding: 0.32em 0 0.32em 2.6em;
-  position: relative;
-  color: var(--text-secondary);
-  line-height: 1.52;
-}
-
-.reveal ol li::before {
-  content: counter(item);
-  position: absolute;
-  left: 0;
-  width: 1.8em;
-  height: 1.8em;
-  background: var(--gradient-main);
-  color: var(--bg-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.68em;
-  font-weight: 700;
-  top: 0.37em;
 }
 
 /* ============================================================================
@@ -504,7 +443,7 @@ html, body {
   color: var(--text-primary) !important;
   font-size: 0.88em !important;
   margin: 0.3em 0 0.5em 0 !important;
-  letter-spacing: -0.01em !important;
+  letter-spacing: 0;
 }
 .card p { font-size: 0.72em; margin: 0; line-height: 1.55; color: var(--text-secondary); }
 .card-icon { font-size: 1.7em; display: block; margin-bottom: 0.25em; }
@@ -842,13 +781,12 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.52em;
-  background: rgba(0,221,179,0.07);
+  background: rgba(4,9,27,0.78);
   border: 1px solid rgba(0,221,179,0.26);
   border-right: 3px solid var(--accent-green);
   border-radius: 0.42em;
   padding: 0.42em 0.68em;
   font-size: 0.78em;
-  color: #edf2ff;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 .ctx-output-node:hover {
@@ -1199,7 +1137,7 @@ html, body {
   font-size: 2.5em !important;
   margin-bottom: 0.15em !important;
   line-height: 1.0 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.08em;
 }
 
 .capa-tagline-main {
@@ -1530,7 +1468,7 @@ html, body {
   margin: 0 !important;
   line-height: 1.0 !important;
   font-family: 'Bebas Neue', sans-serif !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.06em;
   opacity: 0;
 }
 .present .section-page-title {
@@ -2944,7 +2882,7 @@ svg.lucide {
   z-index: 2;
   width: 100%;
   max-width: 1000px;
-  margin: 0.2em auto 0;
+  margin: 1.0em auto 0;
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 1.2em;
@@ -3065,26 +3003,22 @@ svg.lucide {
 
 #sobre-mim .sm-modern-link--project {
   border-color: rgba(0,221,179,0.38);
-  background: linear-gradient(140deg, rgba(0,221,179,0.12), rgba(56,200,250,0.1));
-  color: #b7fff2 !important;
+  background: linear-gradient(140deg, rgba(4,9,27,0.88), rgba(0,221,179,0.18));
 }
 
 #sobre-mim .sm-modern-link--project:hover {
-  color: #d6fff7 !important;
   border-color: rgba(0,221,179,0.62);
-  background: linear-gradient(140deg, rgba(0,221,179,0.2), rgba(56,200,250,0.16));
+  background: linear-gradient(140deg, rgba(4,9,27,0.82), rgba(0,221,179,0.26));
 }
 
 #sobre-mim .sm-modern-link--social {
   border-color: rgba(146,119,255,0.36);
-  background: linear-gradient(140deg, rgba(146,119,255,0.14), rgba(9,16,42,0.58));
-  color: #ddd8ff !important;
+  background: linear-gradient(140deg, rgba(4,9,27,0.88), rgba(146,119,255,0.18));
 }
 
 #sobre-mim .sm-modern-link--social:hover {
-  color: #f0ecff !important;
   border-color: rgba(184,164,255,0.62);
-  background: linear-gradient(140deg, rgba(146,119,255,0.24), rgba(56,200,250,0.14));
+  background: linear-gradient(140deg, rgba(4,9,27,0.82), rgba(146,119,255,0.28));
 }
 
 /* Social brand hover accents */
@@ -3141,10 +3075,6 @@ svg.lucide {
 #sobre-mim::before,
 #sobre-mim::after {
   content: none !important;
-}
-
-#sobre-mim .sm-modern {
-  margin-top: 1.0em;
 }
 
 /* Move #sobre-mim visual FX to Reveal background layer (full slide) */

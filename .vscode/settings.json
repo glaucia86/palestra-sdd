@@ -1,0 +1,5 @@
+{
+  "sonarlint.analyzerProperties": {
+    "sonar.exclusions": "js/app/**"
+  }
+}
