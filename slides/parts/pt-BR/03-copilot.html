@@ -5,9 +5,9 @@
     <div class="section-page-label text-copilot-light">Seção 03</div>
     <h2 class="section-page-title gradient-text-purple">AI Coding<br>Agents</h2>
     <p class="section-page-desc">Copilot, Codex e outros agentes como superfícies diferentes para o mesmo fluxo SDD</p>
-    <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
+    <div class="section-page-icon text-copilot-light" aria-label="Ícone de agente de IA"><i data-lucide="bot"></i></div>
   </div>
-  <aside class="notes">
+  <aside class="notes" aria-label="Notas da seção">
     <p>Agora a palestra muda de eixo: não vamos falar de uma ferramenta como destino final, e sim de uma categoria de trabalho — AI Coding Agents.</p>
     <p>O ponto central é portabilidade. Se a metodologia depende de um produto, ela envelhece junto com o produto. Se depende de specs, contexto e validação, ela atravessa Copilot, Codex, Claude Code, Cursor e qualquer agente que venha depois.</p>
   </aside>
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Use este slide para separar ferramenta de método. GitHub Copilot, Codex, Cursor e Claude Code têm interfaces diferentes, mas todos sofrem com o mesmo problema: se o contexto é ruim, a entrega fica instável.</p>
       <p>A resposta do SDD é construir uma superfície de contexto reutilizável: spec, AGENTS, Skills e checks. Isso reduz dependência de produto e aumenta previsibilidade.</p>
     </aside>
@@ -59,7 +59,7 @@
       <p class="section-page-desc">Chat, modelos, billing, linha do tempo, Skills e Agent Mode no fluxo SDD</p>
       <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Esse separador permite pular diretamente para GitHub Copilot quando esse for o foco da apresentação.</p>
       <p>A narrativa continua a mesma: a ferramenta é uma superfície de execução; o contrato de trabalho é o SDD.</p>
     </aside>
@@ -97,7 +97,7 @@
         </ul>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do orador">
       <p>Copilot Chat precisa ser entendido como interface de colaboração técnica — não apenas autocomplete. A diferença prática está em três níveis de uso: conversar para entender (Ask Mode), editar inline para iterar rapidamente (Edit Mode e Inline Chat), e executar fluxos complexos com autonomia crescente (Agent Mode + Plan Mode).</p>
       <p>Nota sobre modelos: a lista mostrada no slide de modelos é uma fotografia de 27/02/2026. Modelos são adicionados, ajustados e retirados com frequência — para trabalho de produção, sempre valide em docs.github.com/en/copilot/reference/ai-models/supported-models antes de definir estratégia.</p>
       <p>Setas 1 a 5: Completions → Chat Panel → Inline Chat (Ctrl+I) → Agent Mode → Multimodal com imagens. Fechamento: capacidade sem contexto estruturado ainda gera variabilidade — é aí que SDD entra.</p>
@@ -192,7 +192,7 @@
     <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
       Datas de CLI: public preview em 25/09/2025, depreciação do <code>gh-copilot</code> em 25/10/2025 e GA em 25/02/2026.
     </p>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas sobre a evolução do Copilot">
       <p>Essa timeline mostra uma evolução de maturidade técnica clara: de sugestão de código linear para execução multi-etapas com planos, memória e governança.</p>
       <p>Dois marcos que merecem destaque: a CLI entrou em GA em 25/02/2026 — está estável para adoção em produção agora. Agent Skills entrou em GA em 18/12/2025 — tornando a modularização de contexto um recurso oficial. Ambas as datas foram validadas no GitHub Changelog.</p>
       <p>Em março e abril de 2026, a velocidade de mudança ficou evidente: GPT-5.3-Codex virou LTS/base model para Business/Enterprise, GPT-5.5 e Claude Opus 4.7 chegaram ao Copilot, modelos antigos foram depreciados, Autopilot/agent permissions avançaram no VS Code e o billing caminhou para GitHub AI Credits.</p>
@@ -234,7 +234,7 @@
     <div class="highlight-box" style="margin-top:0.42em; font-size:0.66em; line-height:1.25;">
       <strong>Ask → Plan → Agent:</strong> entenda o codebase, crie o plano, execute com contexto estruturado. O fluxo completo do SDD.
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do speaker sobre os modos do Copilot">
       <p>Atenção crítica para audiência técnica: os modos oficiais do Copilot Chat na IDE, conforme documentado em docs.github.com, são quatro — Ask, Edit, Agent e Plan. O slide apresenta "Explore Mode" no lugar de "Edit Mode", o que merece esclarecimento direto.</p>
       <p>"Explore" funciona bem como estratégia de trabalho — usar o agente para navegar e entender o codebase com ferramentas de leitura antes de qualquer edição. Mas não é um modo oficial no dropdown da IDE. O modo para edições diretas e focadas é o Edit Mode. Para exploração read-only estruturada, você pode usar Ask Mode ou Agent Mode com ferramentas de leitura.</p>
       <p>Nomenclatura oficial para reforçar: Ask (conversacional, sem alterar arquivos) → Edit (edições diretas no editor) → Plan (plano detalhado para revisão humana antes de qualquer mudança) → Agent (execução autônoma ponta a ponta, modo central para SDD).</p>
@@ -303,7 +303,7 @@
     <p style="font-size:0.48em; color:var(--text-muted); text-align:center; margin-top:0.28em;">
       Snapshot oficial para Maio/2026. Não copie a tabela completa: modelos, multiplicadores e disponibilidade mudam com frequência.
     </p>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Dados verificados para a edição Maio/2026 nas páginas oficiais de GitHub Copilot plans, supported models e models and pricing. Revisar antes de cada apresentação.</p>
       <p>Leitura de planos: Free é bom para experimentar, mas tem limites claros; Student/Pro têm 300 premium requests; Pro+ sobe para 1.500 e acesso completo aos modelos; Business e Enterprise trazem controle centralizado, políticas e allowances por usuário.</p>
       <p>Importante: desde 20/04/2026, novos sign-ups para Pro, Pro+ e Student estão temporariamente pausados. Existing subscribers continuam; organizações/enterprises seguem com fluxo comercial e controles administrativos.</p>
@@ -377,7 +377,7 @@
         <p style="font-size:0.7em;">Espaços temáticos de conhecimento — concentre docs, PRDs, specs e guias em um repositório curado de contexto para o agente. Diretamente alinhado com SDD: um Copilot Space pode ser o "repositório de specs" do time.</p>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Organizo por categoria para facilitar memorização: participantes com @, slash commands com /, variáveis de chat com # e integrações (MCP, multimodal, inline).</p>
       <p>Qualidade de resposta depende diretamente de qualidade de contexto. Usar @workspace + #file:PRD.md é significativamente mais eficaz do que abrir o chat sem contexto explícito. A combinação de contexto de workspace com arquivo específico é o padrão recomendado para SDD.</p>
       <p>Disponibilidade de cada recurso pode variar por interface — IDE, github.com, mobile. Verifiquem no ambiente de uso.</p>
@@ -429,7 +429,7 @@
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>O posicionamento central: a CLI não concorre com a IDE — ela complementa. Em SDD, você especifica no PRD (IDE), planeja no agente, e pode executar partes do ciclo diretamente no terminal sem perder rastreabilidade.</p>
       <p>A CLI está em GA desde 25/02/2026, disponível para todos os planos Copilot — incluindo Free. Para Business e Enterprise, admins habilitam por política, o que abre métricas de uso no nível da organização, anunciadas em 27/02/2026.</p>
       <p>Seta 1 — produto oficial GitHub em GA, data confirmada. Seta 2 — disponível em todos os planos. Seta 3 — governança enterprise-ready com políticas. Seta 4 — complementa IDE, não substitui. Seta 5 — uso em SDD para fluxos fora do editor. Fechamento: IDE + terminal = contexto contínuo com o mesmo contrato de especificação.</p>
@@ -472,7 +472,7 @@
     <p style="font-size:0.56em; color:var(--text-muted); text-align:center; margin-top:0.65em;">
       Public preview: <strong>25 de setembro de 2025</strong>. Caminho antigo (<code>gh-copilot</code>) deprecado em <strong>25 de outubro de 2025</strong>. GA em <strong>25 de fevereiro de 2026</strong>.
     </p>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Governança operacional: autonomia com responsabilidade. A sequência no terminal segue a mesma lógica do spec-kit — plan → aprovar → executar → revisar diff → commit. Nunca commitar sem inspecionar o que foi gerado.</p>
       <p>Human-in-the-loop no terminal é tão importante quanto na IDE. Use aprovações, políticas e hooks para bloquear comandos inseguros antes da execução. O modelo pode sugerir comandos tecnicamente corretos que são contextualmente errados para o seu ambiente.</p>
       <p>Nota sobre migração: quem ainda usa <code>gh copilot suggest</code> (extensão gh-copilot, descontinuada em outubro/2025) deve migrar para a CLI nativa — <code>npm install -g @github/copilot</code>. A experiência é substancialmente mais rica e o caminho antigo não recebe mais atualizações.</p>
@@ -515,7 +515,7 @@
     <div class="highlight-box blue fragment" style="margin:0.34em auto 0 auto; max-width:78%; font-size:0.58em; line-height:1.16; text-align:center; padding:0.55em 0.75em;">
       <strong>Prontidão enterprise:</strong> políticas e controles administrativos reforçam adoção em escala com segurança operacional.
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador sobre evolução do Copilot CLI">
       <p>Esse slide mostra a maturação da CLI do preview (set/2025) para GA (fev/2026): quatro capacidades que solidificam o produto como camada estável de engenharia agêntica no terminal.</p>
       <p>Plan + Autopilot é o mais relevante para SDD: você define o plano, aprova, e a CLI executa sem precisar voltar ao editor. /diff e /review trazem revisão contextualizada no próprio terminal. Plugins e Skills adicionam extensibilidade com governança. Memória de sessão suporta tarefas verdadeiramente longas sem perda de contexto entre comandos.</p>
       <p>Mensagem central: a CLI passou de "útil para scripts isolados" para "plataforma de execução agêntica no terminal". Isso muda o design dos fluxos de automação de engenharia.</p>
@@ -555,7 +555,7 @@
     <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.7em;">
       Métricas de Copilot/CLI no nível enterprise foram anunciadas em <strong>27/02/2026</strong>; use esses dados para comprovar adoção e impacto.
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Speaker notes about Copilot/CLI metrics">
       <p>Métricas de Copilot/CLI no nível enterprise entraram em GA em 27/02/2026. Isso resolve um problema real que times enfrentavam: dificuldade de comprovar ROI de adoção de IA sem dados objetivos por squad ou organização.</p>
       <p>Com DAU/WAU de CLI, comparativo IDE vs terminal e tendência de tokens por fluxo, o engineering manager tem dados concretos para priorizar treinamentos e guiar rollout em squads com menor adoção.</p>
       <p>Recomendo usar as métricas de forma iterativa: baseline inicial → intervenção (treinamento, processo, squad champion) → nova medição. O ciclo de melhoria precisa de dados para ter direção — e agora esses dados existem no nível da organização.</p>
@@ -606,7 +606,7 @@ hooks, Context, memo, lazy.</code></pre>
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Speaker notes for Agent Skills section">
       <p>Agent Skills são modularização de conhecimento especializado: você não injeta todo o contexto de uma vez, injeta o que é relevante para a tarefa atual.</p>
       <p>Com SKILL.md como entrypoint e carregamento sob demanda, o agente mantém foco e não gasta tokens em contexto que não contribui para a tarefa presente. Isso se alinha diretamente com Progressive Disclosure — que veremos na seção seguinte.</p>
       <p>Ponto importante: Agent Skills entrou em GA no GitHub Copilot em 18/12/2025. O mesmo padrão agentskills.io funciona em Claude Code, Cursor e Gemini CLI — o investimento em criar Skills é portável entre ferramentas.</p>
@@ -651,7 +651,7 @@ cobrir os dois cenários descritos.</code></pre>
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Speaker notes">
       <p>Fecho essa seção com um prompt orientado por artefato — porque ele traduz bem o espírito de SDD na prática. Com PRD e AGENTS no contexto, o pedido pode ser curto e objetivo: implementar um RF específico com critérios de aceite explicitamente testados.</p>
       <p>A saída esperada deixa de ser "qualquer código" e passa a ser entrega verificável. A combinação de @workspace + #file:PRD.md + #file:AGENTS.md é o padrão canônico de trabalho com SDD no Copilot.</p>
       <p>Seta 1 — PRD como contexto principal via #file. Seta 2 — AGENTS carregado automaticamente ou via #file. Seta 3 — Agent Mode executa RF por RF com rastreabilidade. Seta 4 — Plan Mode cria plano para revisão humana. Seta 5 — iteração pelos CAs como critério objetivo de conclusão. Fechamento: resultado esperado é entrega verificável, não só código.</p>
@@ -668,7 +668,7 @@ cobrir os dois cenários descritos.</code></pre>
       <p class="section-page-desc">App, editor, terminal, Skills, sandbox e automação no fluxo SDD</p>
       <div class="section-page-icon text-blue"><i data-lucide="terminal-square"></i></div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Speaker notes">
       <p>Esse separador permite pular diretamente para Codex quando esse for o foco da apresentação.</p>
       <p>A leitura continua agnóstica: Codex é a ferramenta da vez, mas os artefatos SDD continuam sendo o centro do fluxo.</p>
     </aside>
@@ -703,7 +703,7 @@ cobrir os dois cenários descritos.</code></pre>
         </ul>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Este slide faz o mesmo papel visual do bloco GitHub Copilot: cria uma entrada de ferramenta com logo, tags e uma mensagem objetiva.</p>
       <p>A página pública apresenta Codex como App, editor e terminal trabalhando como superfícies da mesma experiência. Para SDD, o ponto importante é que Codex torna explícito o fluxo de contexto: instruções, Skills, sandbox, comandos, diff, review e PR.</p>
       <p>Use este slide como abertura do bloco Codex antes de entrar nos workflows, comandos e automação.</p>
@@ -728,7 +728,7 @@ cobrir os dois cenários descritos.</code></pre>
       <strong>Leitura SDD:</strong> Codex mostra que o valor não está só em gerar código, mas em controlar ciclo completo: requisito → execução → validação → PR.<br />
       <span class="text-muted">Fonte: <a href="https://openai.com/pt-BR/codex/" target="_blank" rel="noopener noreferrer">Codex — página oficial da OpenAI</a></span>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Este slide posiciona Codex como fluxo de engenharia, não como autocomplete. Isso conversa diretamente com SDD porque conecta requisito, contexto, execução, validação e entrega.</p>
       <p>A fonte oficial está linkada no card de leitura SDD. Não vamos copiar imagens nem fazer clone visual da página; usamos a narrativa como referência para explicar como o agente trabalha quando recebe bons artefatos.</p>
     </aside>
@@ -774,7 +774,7 @@ codex --full-auto
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Sandbox e approvals são parte do harness. Eles não substituem testes e revisão, mas definem limites operacionais para a autonomia do agente.</p>
       <p>Em ambientes governados, a pergunta não é "o agente consegue?". A pergunta é: "o agente consegue dentro de um perímetro seguro, auditável e reversível?".</p>
       <p>Como Codex recebe atualizações frequentes, trate este slide como snapshot operacional. Antes de cada palestra, valide comandos, presets, nomes de policies e comportamento atual de approvals na documentação oficial. A proposta é revisar esta palestra mensalmente para acompanhar esse ritmo.</p>
@@ -808,7 +808,7 @@ codex --full-auto
     <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.66em; line-height:1.32; padding:0.58em 0.9em;">
       <strong>Leitura SDD:</strong> comandos não substituem especificação. Eles ajudam a apontar contexto, limitar autonomia, revisar evidências e manter a conversa enxuta.
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do instrutor">
       <p>Não vale transformar este ponto em manual de CLI. A curadoria é intencional: só entram comandos que ajudam o fluxo SDD.</p>
       <p>Dados verificados para a edição Maio/2026 na documentação oficial de slash commands do Codex CLI. Antes de reapresentar, conferir se nomes e comportamento continuam iguais.</p>
       <p>Conexão pedagógica: /init ajuda a criar instruções persistentes, /mention reduz ambiguidade, /permissions controla risco, /compact conversa com economia de contexto, /diff e /review fecham o ciclo de validação.</p>
@@ -848,7 +848,7 @@ codex --full-auto
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Esse é o ponto onde SDD encontra automação de verdade. Se o requisito está claro e o harness valida o resultado, uma tarefa pode ser executada de forma não interativa.</p>
       <p>Mas a condição é importante: não automatize ambiguidade. Automatize tarefas pequenas, bem especificadas e com critérios de aceite objetivos.</p>
       <p>Dados verificados para a edição Maio/2026 na documentação oficial de non-interactive mode e command line options do Codex CLI.</p>
@@ -884,7 +884,7 @@ os critérios CA01 e CA02.</code></pre>
         </div>
       </div>
     </div>
-    <aside class="notes">
+    <aside class="notes" aria-label="Notas do apresentador">
       <p>Fechamento da seção: a spec vira o prompt perfeito porque ela reduz a quantidade de coisa que você precisa explicar toda vez.</p>
       <p>Quando o time documenta intenção, limites e validação em artefatos versionados, a ferramenta vira detalhe de execução. Esse é o ganho estratégico.</p>
     </aside>
