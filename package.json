@@ -4,6 +4,7 @@
   "description": "Palestra sobre SDD",
   "scripts": {
     "start": "node server/dev-server.js",
+    "audit:baseline": "node .harness/s00-validation-baseline/scripts/audit-baseline.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit --pretty",
     "build:ts": "tsc -p tsconfig.json --pretty",
     "build:ts:watch": "tsc -p tsconfig.json --watch --pretty"
