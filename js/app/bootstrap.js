@@ -7,16 +7,18 @@ import { syncSpecialSlideBackgrounds } from './features/special-backgrounds.js';
 import { syncDemoExperience } from './features/demo-experience.js';
 import { ensureSpeakerNotesParity } from './features/speaker-notes.js';
 import { syncTheEndExperience } from './features/the-end-experience.js';
+import { bindSummaryNavigation } from './features/summary-navigation.js';
 import { getQuizData } from './quiz/data.js';
 import { QuizController } from './quiz/controller.js';
 import { getQuizUiMessages, getQuizValidationMessages } from './quiz/messages.js';
 export function bootstrapPresentation(locale, runtimeOptions) {
     initMermaid();
-    ensureSpeakerNotesParity(locale);
+    ensureSpeakerNotesParity(locale, runtimeOptions.validationMode);
     const quiz = new QuizController(getQuizData(locale), getQuizUiMessages(locale), getQuizValidationMessages(locale));
     quiz.bindGlobals();
     Reveal.initialize(revealConfig);
     Reveal.on('ready', () => {
+        bindSummaryNavigation();
         createStarfield(runtimeOptions.liteMode);
         createParticles(runtimeOptions.liteMode);
         createSectionCosmics(runtimeOptions.liteMode);

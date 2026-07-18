@@ -137,6 +137,10 @@ Reveal.js controla a ordem. Cada `fragment` = 1 pressão de tecla.
 | Arquivo                          | Uso                       |
 |----------------------------------|---------------------------|
 | `resources/images/foto_perfil.png`      | Foto da palestrante       |
-| `resources/images/github-copilot-icon.png` | Ícone do GitHub Copilot |
+| `resources/images/github-copilot-icon.png` | Ícone usado no bloco dedicado ao GitHub Copilot |
+| `resources/images/codex-color.png` | Logo usado na capa da ferramenta Codex |
+| `resources/images/harness-engineering-five-subsystems.png` | Diagrama dos cinco subsistemas de Harness Engineering no deck pt-BR |
 
-> Não há trilhas de áudio em uso no `index.html`/`custom.js` atualmente.
+> A experiência final usa `resources/sounds/star-wars-final-song.mp3` somente após ação explícita
+> no botão do slide `#the-end`. `resources/sounds/lightsaber-sound.mp3` pertence ao easter egg da demo.
+> A lógica fica em `src-ts/app/features/the-end-experience.ts` e `demo-experience.ts`.

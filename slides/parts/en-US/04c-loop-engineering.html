@@ -1,0 +1,315 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  SECTION 07 — LOOP ENGINEERING
+  Primary sources consulted in July 2026:
+    • LangChain — langchain.com/blog/the-art-of-loop-engineering
+    • Anthropic — claude.com/blog/ai-code-migration
+    • OpenAI — openai.com/index/harness-engineering/
+    • Karpathy — github.com/karpathy/autoresearch
+    • GitHub — docs.github.com/.../cloud-agent/risks-and-mitigations
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section aria-label="Loop Engineering">
+
+  <!-- 7.1 — Opening -->
+  <section id="loop-engineering" data-idea-count="3" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 55% at 50% 50%, rgba(0,255,157,0.09) 0%, transparent 62%)">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(0,255,157,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.12);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-green);">Section 07 · emerging term</div>
+      <h2 class="section-page-title gradient-text-green">Loop<br>Engineering</h2>
+      <p class="section-page-desc">From manual prompting to a system that observes, acts, verifies, and reconciles</p>
+      <div class="loop-opening-contract" role="list" aria-label="Minimum contract for a loop">
+        <span role="listitem"><i data-lucide="radio"></i> triggers</span>
+        <span role="listitem"><i data-lucide="eye"></i> observes</span>
+        <span role="listitem"><i data-lucide="wrench"></i> acts</span>
+        <span role="listitem"><i data-lucide="badge-check"></i> verifies</span>
+        <span role="listitem"><i data-lucide="octagon-x"></i> stops</span>
+      </div>
+    </div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> Loop Engineering designs the temporal system around the agent: trigger, observation, action, verification, state, and stopping.</p>
+      <p><strong>Executive impact:</strong> humans stop operating every retry and instead define goals, limits, and accountability gates.</p>
+      <p><strong>Control and KPI:</strong> the useful economic result is an accepted outcome with evidence, not the volume of attempts.</p>
+      <p><strong>Source/caveat:</strong> LangChain, “The Art of Loop Engineering,” consulted in July 2026. The term is emerging, not a consolidated formal standard.</p>
+      <p><strong>Transition:</strong> first, let us compare manual repetition with a bounded loop.</p>
+    </aside>
+  </section>
+
+  <!-- 7.2 — Prompt vs Loop -->
+  <section id="loop-evolution" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 50% at 25% 70%, rgba(56,200,250,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="repeat-2"></i></span>
+      <span class="section-label">07 / Loop Engineering: Evolution</span>
+    </div>
+    <h2>The prompt remains. <span class="accent">The operation changes.</span></h2>
+    <div class="loop-evolution-grid">
+      <article class="loop-panel loop-panel--before">
+        <span class="tag red">Before · human scheduler</span>
+        <h3>Manual Prompt Engineering</h3>
+        <div class="loop-manual-chain" role="img" aria-label="A human writes a prompt, the agent responds, and the human repeats manually">
+          <span><i data-lucide="user-round"></i> human writes</span>
+          <i data-lucide="arrow-right"></i>
+          <span><i data-lucide="bot"></i> agent responds</span>
+          <i data-lucide="rotate-ccw"></i>
+        </div>
+        <p>The human schedules retries, rebuilds context, and integrates every response.</p>
+      </article>
+      <article class="loop-panel loop-panel--after">
+        <span class="tag green">After · bounded loop</span>
+        <h3>Goal + state + feedback</h3>
+        <div class="loop-bounded-chain" role="img" aria-label="A goal and specification enter a bounded loop that produces evidence and a terminal state">
+          <span><i data-lucide="target"></i> goal / spec</span>
+          <i data-lucide="arrow-right"></i>
+          <span><i data-lucide="infinity"></i> bounded loop</span>
+          <i data-lucide="arrow-right"></i>
+          <span><i data-lucide="flag"></i> terminal state</span>
+        </div>
+        <p>The system observes, acts, and verifies; humans define direction, budget, and gates.</p>
+      </article>
+    </div>
+    <div class="highlight-box green loop-takeaway"><strong>This does not mean “the prompt is dead.”</strong> The prompt becomes one piece inside a system with memory, feedback, and a stop condition.</div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> the loop keeps prompts but automates progression, observation, and retry within explicit limits.</p>
+      <p><strong>Executive impact:</strong> human attention moves from mechanical coordination to product, risk, and acceptance.</p>
+      <p><strong>Control and KPI:</strong> compare human operating time, retries, and accepted outcomes before and after.</p>
+      <p><strong>Source/caveat:</strong> editorial synthesis based on LangChain and OpenAI Harness Engineering, consulted in July 2026; not every task justifies recurring automation.</p>
+      <p><strong>Transition:</strong> to automate without losing control, we need to name the system's blocks.</p>
+    </aside>
+  </section>
+
+  <!-- 7.3 — Blocks + state -->
+  <section id="loop-blocks" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 75% 50% at 70% 30%, rgba(0,255,157,0.06) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="blocks"></i></span>
+      <span class="section-label">07 / Loop Engineering: Blocks</span>
+    </div>
+    <h2>Five blocks in execution. <span class="accent">State across runs.</span></h2>
+    <div class="loop-block-grid" role="list" aria-label="Five operational blocks of the loop">
+      <article role="listitem"><span>1</span><i data-lucide="alarm-clock"></i><h3>Trigger</h3><p>event, schedule, or authorized command</p></article>
+      <article role="listitem"><span>2</span><i data-lucide="scan-search"></i><h3>Observer</h3><p>repo and signals in an isolated worktree</p></article>
+      <article role="listitem"><span>3</span><i data-lucide="book-open-check"></i><h3>Skills</h3><p>specialized context on demand</p></article>
+      <article role="listitem"><span>4</span><i data-lucide="plug-zap"></i><h3>Tools</h3><p>actions allowed by scope</p></article>
+      <article role="listitem"><span>5</span><i data-lucide="users-round"></i><h3>Verifier</h3><p>checks, maker/checker, and review</p></article>
+    </div>
+    <div class="loop-state-band" role="note">
+      <i data-lucide="database"></i>
+      <div><strong>State / operational memory</strong><span>goal · decisions · evidence · budget spent · next action · terminal state</span></div>
+      <span class="tag orange">survives the session</span>
+    </div>
+    <p class="loop-caption">Without reliable state, every run starts over — and “autonomy” becomes expensive rediscovery.</p>
+    <aside class="notes">
+      <p><strong>Technical:</strong> trigger starts; observer reads signals; skills provide context; tools execute; verifier judges evidence; state preserves continuity.</p>
+      <p><strong>Executive impact:</strong> separated components make it possible to locate cost, failure, and responsibility without generically blaming the model.</p>
+      <p><strong>Control and KPI:</strong> record run ID, owner, budget spent, checks, decision, and next state.</p>
+      <p><strong>Source/caveat:</strong> editorial synthesis based on LangChain, OpenAI Harness Engineering, and agent patterns; the concrete composition varies by product.</p>
+      <p><strong>Transition:</strong> this design resembles a control plane — with one decisive difference.</p>
+    </aside>
+  </section>
+
+  <!-- 7.4 — Kubernetes analogy -->
+  <section id="loop-control-plane" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 30% 75%, rgba(91,95,255,0.07) 0%, transparent 62%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="container"></i></span>
+      <span class="section-label">07 / Loop Engineering: Control plane</span>
+    </div>
+    <h2>Think <span class="accent">reconciliation</span>, not autopilot</h2>
+    <div class="loop-control-grid" role="table" aria-label="Comparison between Kubernetes reconciliation and Loop Engineering">
+      <div class="loop-control-head" role="row"><span role="columnheader">Control loop</span><span role="columnheader">Loop Engineering</span></div>
+      <div role="row"><strong role="cell">desired state</strong><span role="cell">goal + spec + criteria</span></div>
+      <div role="row"><strong role="cell">observe</strong><span role="cell">repo + CI + traces + state</span></div>
+      <div role="row"><strong role="cell">diff</strong><span role="cell">gap between goal and evidence</span></div>
+      <div role="row"><strong role="cell">act</strong><span role="cell">agent + authorized tools</span></div>
+      <div role="row"><strong role="cell">verify</strong><span role="cell">checks + review + evals</span></div>
+      <div role="row"><strong role="cell">reconcile</strong><span role="cell">bounded retry or terminal state</span></div>
+    </div>
+    <div class="loop-caveat"><i data-lucide="triangle-alert"></i><p><strong>The analogy stops here:</strong> traditional controllers run predictable logic; models are probabilistic and non-deterministic. That is why the loop requires verification, budgets, and human gates.</p></div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> both begin from desired state, observe the current state, calculate a gap, and reconcile until a stop condition.</p>
+      <p><strong>Executive impact:</strong> the metaphor shifts focus from “giving commands” to governing state, evidence, and exceptions.</p>
+      <p><strong>Control and KPI:</strong> measure convergence, regressions per retry, and escalations to human review.</p>
+      <p><strong>Source/caveat:</strong> editorial analogy to control loops; LLMs are probabilistic, so the equivalence with Kubernetes is neither operational nor deterministic.</p>
+      <p><strong>Transition:</strong> now let us open the cycle and show exactly where limits and states enter.</p>
+    </aside>
+  </section>
+
+  <!-- 7.5 — Anatomy -->
+  <section id="loop-anatomy" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 80% 55% at 50% 40%, rgba(0,255,157,0.05) 0%, transparent 65%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="workflow"></i></span>
+      <span class="section-label">07 / Loop Engineering: Anatomy</span>
+    </div>
+    <h2>Every loop must know <span class="accent">how to continue and how to stop</span></h2>
+    <div class="loop-anatomy" role="img" aria-label="Trigger leads to Observe, Execute, Verify, and Decide; the decision ends in a state or returns with a bounded retry">
+      <div class="loop-anatomy-track">
+        <span><i data-lucide="radio"></i><b>Trigger</b><small>authorized event</small></span>
+        <i data-lucide="chevron-right"></i>
+        <span><i data-lucide="eye"></i><b>Observe</b><small>state + gap</small></span>
+        <i data-lucide="chevron-right"></i>
+        <span><i data-lucide="wrench"></i><b>Execute</b><small>isolated worktree</small></span>
+        <i data-lucide="chevron-right"></i>
+        <span><i data-lucide="badge-check"></i><b>Verify</b><small>tests + review</small></span>
+        <i data-lucide="chevron-right"></i>
+        <span><i data-lucide="git-branch"></i><b>Decide</b><small>retry or stop</small></span>
+      </div>
+      <div class="loop-budget-rail" role="list" aria-label="Execution limits">
+        <span role="listitem"><i data-lucide="repeat"></i> iterations ≤ 5</span>
+        <span role="listitem"><i data-lucide="timer"></i> time ≤ 30 min</span>
+        <span role="listitem"><i data-lucide="circle-dollar-sign"></i> cost ≤ budget</span>
+        <span role="listitem"><i data-lucide="waypoints"></i> parallelism ≤ 2</span>
+      </div>
+    </div>
+    <div class="loop-terminal-grid" role="list" aria-label="Loop terminal states">
+      <span role="listitem" class="loop-terminal--success">DONE_VERIFIED</span>
+      <span role="listitem" class="loop-terminal--review">NEEDS_HUMAN_REVIEW</span>
+      <span role="listitem" class="loop-terminal--block">BLOCKED</span>
+      <span role="listitem" class="loop-terminal--budget">BUDGET_EXHAUSTED</span>
+      <span role="listitem">NO_SAFE_CHANGE</span>
+      <span role="listitem">FAILED_VERIFICATION</span>
+    </div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> trigger, observer, executor, verifier, state, and stop condition form the minimum contract; retries respect budgets.</p>
+      <p><strong>Executive impact:</strong> terminal states make cost and responsibility legible, including when the system should not act.</p>
+      <p><strong>Control and KPI:</strong> the limits shown are teaching examples; each operation defines iterations, time, cost, and parallelism proportional to risk.</p>
+      <p><strong>Source/caveat:</strong> editorial synthesis of control loops and agentic systems; the slide's numbers are illustrative limits, not a benchmark.</p>
+      <p><strong>Transition:</strong> with the anatomy fixed, we can distinguish loops by mechanism and feedback speed.</p>
+    </aside>
+  </section>
+
+  <!-- 7.6 — Taxonomies -->
+  <section id="loop-levels" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 75% 55% at 75% 65%, rgba(56,200,250,0.06) 0%, transparent 62%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layers-3"></i></span>
+      <span class="section-label">07 / Loop Engineering: Levels</span>
+    </div>
+    <h2>Loops differ by <span class="accent">mechanism</span> and <span style="color:var(--accent-green);">cadence</span></h2>
+    <div class="loop-levels-grid">
+      <article>
+        <h3><i data-lucide="cog"></i> Mechanism · LangChain</h3>
+        <ul>
+          <li><strong>Agent loop:</strong> plan → act → observe</li>
+          <li><strong>Verification loop:</strong> produce → evaluate → correct</li>
+          <li><strong>Event-driven:</strong> event → run → updated system</li>
+          <li><strong>Hill-climbing:</strong> traces → analysis → improved harness</li>
+        </ul>
+      </article>
+      <article>
+        <h3><i data-lucide="waves"></i> Cadence · product</h3>
+        <div class="loop-cadence">
+          <span><b>fast</b> agent codes, tests, and fixes</span>
+          <span><b>medium</b> developer reviews product and direction</span>
+          <span><b>slow</b> external feedback recalibrates the spec</span>
+        </div>
+      </article>
+    </div>
+    <div class="highlight-box loop-takeaway"><strong>Responsibility does not scale at the same speed.</strong> The agent dominates the fast loop; people and the organization govern value, feedback, and risk.</div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> the taxonomy separates what advances the loop from the time at which each feedback signal arrives.</p>
+      <p><strong>Executive impact:</strong> automating the inner cycle does not remove discovery, product direction, or accountability.</p>
+      <p><strong>Control and KPI:</strong> choose metrics by level: checks in the fast loop, acceptance in the developer loop, and outcomes in external feedback.</p>
+      <p><strong>Source/caveat:</strong> mechanisms published by LangChain in 2026; the three cadences are an editorial reading for this talk, not a normative taxonomy.</p>
+      <p><strong>Transition:</strong> the cases show different combinations of these mechanisms — and their costs.</p>
+    </aside>
+  </section>
+
+  <!-- 7.7 — Cases -->
+  <section id="loop-cases" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 75% 55% at 25% 30%, rgba(0,255,157,0.05) 0%, transparent 62%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="briefcase-business"></i></span>
+      <span class="section-label">07 / Loop Engineering: Cases</span>
+    </div>
+    <h2>Published results. <span class="accent">Editorial reading kept separate.</span></h2>
+    <div class="loop-case-grid">
+      <article class="loop-case loop-case--bun">
+        <h3><i data-lucide="rabbit"></i> Bun · Zig → Rust migration</h3>
+        <p><span class="loop-evidence-label">Published</span> 1 million lines in under 2 weeks; the existing suite passed before merge.</p>
+        <p><span class="loop-risk-label">Cost / risk</span> ~US$165K at API pricing; regressions were found and corrected during verification.</p>
+        <p><span class="loop-editorial-label">Editorial reading</span> parallelism creates value only when the verifier integrates evidence.</p>
+      </article>
+      <article class="loop-case">
+        <h3><i data-lucide="link-2"></i> LangChain · composed loops</h3>
+        <p><span class="loop-evidence-label">Published</span> four mechanisms: agent, verification, event-driven, and hill-climbing.</p>
+        <p><span class="loop-editorial-label">Editorial reading</span> the outer loop improves the harness; it does not prove every improvement is automatic.</p>
+      </article>
+      <article class="loop-case">
+        <h3><i data-lucide="flask-conical"></i> AutoResearch · experiment</h3>
+        <p><span class="loop-evidence-label">Published</span> the agent changes <code>train.py</code>, measures <code>val_bpb</code>, and records results.</p>
+        <p><span class="loop-editorial-label">Editorial reading</span> a measurable goal and narrow scope make retries verifiable.</p>
+      </article>
+      <article class="loop-case">
+        <h3><i data-lucide="git-pull-request-draft"></i> Coding agents · PR</h3>
+        <p><span class="loop-evidence-label">Published</span> OpenAI describes review loops; GitHub limits cloud agents to a draft PR and human review.</p>
+        <p><span class="loop-editorial-label">Editorial reading</span> a PR is a handoff envelope, not authorization to publish.</p>
+      </article>
+    </div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> each case makes the published data and the narrative inference explicit, avoiding presenting a pattern as causality.</p>
+      <p><strong>Executive impact:</strong> the Bun case shows speed, token/API spending, and verification cost together.</p>
+      <p><strong>Control and KPI:</strong> case results are not transferable targets; measure cost and accepted outcomes in your own context.</p>
+      <p><strong>Source/caveat:</strong> Anthropic, Jul. 16, 2026; LangChain, 2026; karpathy/autoresearch; OpenAI Harness Engineering; GitHub Docs, consulted in July 2026. The numbers belong to the Bun case.</p>
+      <p><strong>Transition:</strong> high-throughput cases make operating limits even more important.</p>
+    </aside>
+  </section>
+
+  <!-- 7.8 — Guardrails -->
+  <section id="loop-guardrails" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 75% 55% at 70% 35%, rgba(255,92,122,0.06) 0%, transparent 62%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="shield-check"></i></span>
+      <span class="section-label">07 / Loop Engineering: Guardrails</span>
+    </div>
+    <h2>Useful autonomy comes from <span class="accent">observable limits</span></h2>
+    <div class="loop-guardrail-grid" role="list" aria-label="Guardrails for agentic loops">
+      <article role="listitem"><i data-lucide="radar"></i><h3>Smart Zone</h3><p>automate only where context and verification sustain the decision</p></article>
+      <article role="listitem"><i data-lucide="gauge"></i><h3>Context budget</h3><p>budget for context, time, cost, iterations, and parallelism</p></article>
+      <article role="listitem"><i data-lucide="box"></i><h3>Isolation</h3><p>worktree, sandbox, and least-privilege permissions</p></article>
+      <article role="listitem"><i data-lucide="list-checks"></i><h3>WIP = 1</h3><p>one active unit per agent, with owner and evidence</p></article>
+      <article role="listitem"><i data-lucide="users-round"></i><h3>Maker / Checker</h3><p>independent production and verification when risk requires it</p></article>
+      <article role="listitem"><i data-lucide="hand"></i><h3>Human gate</h3><p>narrative, design, risk, and publishing remain human</p></article>
+    </div>
+    <div class="loop-stop-rule"><i data-lucide="octagon-x"></i><strong>No infinite retry:</strong> verification failed, budget ended, or authorization is missing → record state and stop.</div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> Smart Zone, context budget, isolation, WIP, maker/checker, and a human gate limit blast radius and correlated error.</p>
+      <p><strong>Executive impact:</strong> stopping legibly is a valid result when continuing would be expensive, unsafe, or unauthorized.</p>
+      <p><strong>Control and KPI:</strong> monitor budget exhaustion, blocked runs, unsafe actions avoided, regressions, and time to review.</p>
+      <p><strong>Source/caveat:</strong> synthesis of repository, Anthropic, OpenAI, and GitHub practices; a sandbox limits action but does not prove correctness.</p>
+      <p><strong>Transition:</strong> let us apply these guardrails to a real loop for the talk itself.</p>
+    </aside>
+  </section>
+
+  <!-- 7.9 — content-refresh demo -->
+  <section id="loop-talk-refresh" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 80% 55% at 50% 75%, rgba(0,255,157,0.06) 0%, transparent 64%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="refresh-cw"></i></span>
+      <span class="section-label">07 / Loop Engineering: content-refresh demo</span>
+    </div>
+    <h2>The loop proposes. <span class="accent">The author publishes.</span></h2>
+    <div class="loop-refresh-flow" role="list" aria-label="content-refresh flow through draft pull request and human review">
+      <article role="listitem"><span>01</span><i data-lucide="calendar-clock"></i><h3>Trigger</h3><p>monthly or manual</p></article>
+      <i data-lucide="chevron-right"></i>
+      <article role="listitem"><span>02</span><i data-lucide="scan-search"></i><h3>Observe</h3><p>volatile claims and links</p></article>
+      <i data-lucide="chevron-right"></i>
+      <article role="listitem"><span>03</span><i data-lucide="file-search"></i><h3>Research</h3><p>primary sources + date</p></article>
+      <i data-lucide="chevron-right"></i>
+      <article role="listitem"><span>04</span><i data-lucide="test-tube-diagonal"></i><h3>Verify</h3><p>sources · locales · typecheck</p></article>
+      <i data-lucide="chevron-right"></i>
+      <article role="listitem" class="loop-refresh-result"><span>05</span><i data-lucide="git-pull-request-draft"></i><h3>Draft PR</h3><p>evidence + handoff</p></article>
+    </div>
+    <div class="loop-human-gate">
+      <i data-lucide="user-round-check"></i>
+      <div><strong>NEEDS_HUMAN_REVIEW</strong><span>author reviews narrative · visual · risk · publishing</span></div>
+      <span class="tag red">no auto-merge · release · deploy</span>
+    </div>
+    <div class="loop-refresh-outcomes" role="list" aria-label="Possible content-refresh outcomes">
+      <span role="listitem">PASS → draft PR</span>
+      <span role="listitem">FAIL → state + handoff</span>
+      <span role="listitem">BUDGET → BUDGET_EXHAUSTED</span>
+    </div>
+    <aside class="notes">
+      <p><strong>Technical:</strong> content-refresh detects volatile claims, researches primary sources, proposes slices, runs checks, and ends in a draft PR or explicit failure state.</p>
+      <p><strong>Executive impact:</strong> recurring updates become auditable without delegating editorial or publishing responsibility to automation.</p>
+      <p><strong>Control and KPI:</strong> verify source/date, context budget, main route, PT/EN/ES parity, typecheck, and build; failure produces a handoff.</p>
+      <p><strong>Source/caveat:</strong> conceptual demo with no executable automation. GitHub documents draft PR and human review as cloud-agent limits.</p>
+      <p><strong>Transition:</strong> the loop ends where responsible decision-making begins: human review before any merge, release, or deploy.</p>
+    </aside>
+  </section>
+
+</section><!-- /Loop Engineering -->

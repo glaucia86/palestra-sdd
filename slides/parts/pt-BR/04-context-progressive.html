@@ -1,432 +1,133 @@
-<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)" data-idea-count="2" aria-label="Abertura da seção Context Engineering">
+  <div class="section-orb section-orb-1" style="--orb-color:rgba(56,200,250,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color:rgba(146,119,255,0.15);"></div>
   <div class="section-page-container">
     <div class="section-page-label" style="color:var(--accent-blue);">Seção 04</div>
-    <h2 class="section-page-title gradient-text-purple">Arquitetura<br>de Contexto</h2>
-    <p class="section-page-desc">PRD.md, AGENTS.md, Rules e Skills — os quatro pilares do contexto estruturado</p>
-    <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
+    <h2 class="section-page-title gradient-text-purple">Context<br />Engineering</h2>
+    <p class="section-page-desc">Selecione o conhecimento necessário e revele profundidade somente quando a tarefa pedir.</p>
+    <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="map"></i></div>
   </div>
-  <aside class="notes">
-    <p>Agora chegamos ao ponto mais estrutural da palestra — e possivelmente o com maior impacto prático no dia a dia do time: como organizar artefatos de contexto para que o agente trabalhe de forma consistente.</p>
-    <p>A pergunta prática que esse bloco responde: por que duas sessões com o mesmo agente, mesmo modelo e mesma tarefa produzem resultados tão diferentes? Geralmente a resposta está na qualidade do contexto de entrada, não na escolha do modelo.</p>
+  <aside class="notes" aria-label="Notas do apresentador">
+    <p>Context Engineering responde o que o agente precisa saber agora. A escolha do modelo não compensa contrato ausente, fonte errada ou instrução contraditória.</p>
+    <p>Este bloco separa seleção e carregamento de contexto da economia desse contexto, que vem na próxima seção.</p>
   </aside>
 </section>
-<section id="arquitetura">
 
-  <!-- 7.1 Overview -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 30% 70%, rgba(179,157,219,0.05) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="building-2"></i></span>
-      <span class="section-label">04 / Arquitetura de Contexto</span>
+<section id="arquitetura" aria-label="Context Engineering e Progressive Disclosure">
+  <section id="context-engineering" data-idea-count="3" data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(56,200,250,0.07) 0%, transparent 60%)" aria-label="Seleção do contexto ativo">
+    <div class="section-header"><span class="section-icon"><i data-lucide="map"></i></span><span class="section-label">04 / Context Engineering</span></div>
+    <h2>Contexto é uma <span class="accent">Decisão de Arquitetura</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="target"></i></span><h3>Intenção</h3><p>Spec, outcome, escopo e critérios definem a decisão atual.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Restrições</h3><p>Instruções, segurança, arquitetura e limites reduzem ambiguidade.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="badge-check"></i></span><h3>Evidência</h3><p>Código, testes, decisões e fontes de verdade sustentam a resposta.</p></article>
     </div>
-    <h2>Context <span class="accent">Architecture</span></h2>
-    <p style="font-size:0.8em; text-align:center; max-width:700px; margin:0 auto 0.8em;">
-      A <strong>Arquitetura de Contexto</strong> define como os artefatos SDD se organizam para fornecer ao AI agent exatamente o contexto que ele precisa. Nem mais, nem menos.
-    </p>
-    <!-- Context Architecture — diagrama HTML/CSS (sem Mermaid) -->
-    <div class="ctx-arch">
-      <div class="ctx-inputs">
-        <div class="ctx-input-node" style="--clr:var(--accent-green)">
-          <span class="ctx-inp-icon"><i data-lucide="clipboard-list"></i></span>
-          <div class="ctx-inp-text"><strong>PRD.md</strong><small>Requisitos do Produto</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-blue)">
-          <span class="ctx-inp-icon"><i data-lucide="folder"></i></span>
-          <div class="ctx-inp-text"><strong>AGENTS.md</strong><small>Contexto e Regras</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-purple)">
-          <span class="ctx-inp-icon"><i data-lucide="settings-2"></i></span>
-          <div class="ctx-inp-text"><strong>Rules</strong><small>Diretrizes Globais</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-orange)">
-          <span class="ctx-inp-icon"><i data-lucide="wrench"></i></span>
-          <div class="ctx-inp-text"><strong>Skills</strong><small>Habilidades Especializadas</small></div>
-        </div>
-      </div>
-
-      <div class="ctx-beam ctx-beam-l" aria-hidden="true"></div>
-
-      <div class="ctx-center-node">
-        <div class="ctx-ring ctx-ring-2"></div>
-        <div class="ctx-ring ctx-ring-1"></div>
-        <div class="ctx-core">
-          <i data-lucide="cpu"></i>
-          <strong>AI Agent</strong>
-          <small>Copilot · Codex · outros</small>
-        </div>
-      </div>
-
-      <div class="ctx-beam ctx-beam-r" aria-hidden="true"></div>
-
-      <div class="ctx-outputs">
-        <div class="ctx-output-node"><i data-lucide="code-2"></i><span>Código</span></div>
-        <div class="ctx-output-node"><i data-lucide="flask-conical"></i><span>Testes</span></div>
-        <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Leiam este diagrama como pipeline de engenharia: entradas bem definidas produzem saídas consistentes. A qualidade da saída — código, testes, documentação — é diretamente proporcional à qualidade das entradas.</p>
-      <p>Quando uma camada está fraca (PRD vago, AGENTS genérico, Skills mal definidas), o agente preenche a incerteza com inferência própria. Isso pode ser bom ou muito ruim, dependendo do contexto. É preferível especificar do que confiar em inferência.</p>
-  </aside>
+    <div class="highlight-box blue">Mesmo modelo + mesma tarefa podem produzir resultados diferentes quando o <strong>contexto selecionado</strong> muda.</div>
+    <p style="font-size:0.5em; color:var(--text-muted); text-align:center;">↓ pressione ↓ para continuar nesta seção</p>
+    <aside class="notes" aria-label="Notas do apresentador"><p>A pergunta não é quanto cabe na janela, mas quais artefatos reduzem incerteza para esta decisão.</p><p>Comece por intenção, restrições e evidência. Detalhes especializados entram depois, sob demanda.</p></aside>
   </section>
 
-  <!-- 7.2 AGENTS.md -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="folder"></i></span>
-      <span class="section-label">04 / Arquitetura — AGENTS.md</span>
+  <section id="context-architecture-flow" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 74% 55% at 50% 80%, rgba(56,200,250,0.08) 0%, transparent 62%)" aria-label="Fluxo da arquitetura de contexto">
+    <div class="section-header"><span class="section-icon"><i data-lucide="workflow"></i></span><span class="section-label">04 / Arquitetura de Contexto</span></div>
+    <h2>Como o Contexto <span class="accent">Chega ao Agente</span></h2>
+    <div class="context-architecture-diagram">
+      <div class="context-architecture-actor"><i data-lucide="user-round"></i><strong>Desenvolvedor</strong><span>define intenção e limites</span></div>
+      <div class="context-architecture-entry"><i data-lucide="arrow-down"></i><span>inicia uma tarefa ou invoca um comando</span></div>
+      <div class="context-source-grid">
+        <article class="context-source context-source--persistent">
+          <header><i data-lucide="file-lock-2"></i><h3>Contexto persistente</h3></header>
+          <div class="context-source-tags"><span>AGENTS.md</span><span>regras do projeto</span><span>convenções locais</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>sempre disponível</small></div>
+        </article>
+        <article class="context-source context-source--skills">
+          <header><i data-lucide="package-open"></i><h3>Skills sob demanda</h3></header>
+          <div class="context-source-tags"><span>testes</span><span>domínio</span><span>deploy</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>quando relevante</small></div>
+        </article>
+        <article class="context-source context-source--commands">
+          <header><i data-lucide="terminal-square"></i><h3>Comandos explícitos</h3></header>
+          <div class="context-source-tags"><span>/tdd</span><span>/plan</span><span>/review</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>quando invocado</small></div>
+        </article>
+        <article class="context-source context-source--external">
+          <header><i data-lucide="plug-zap"></i><h3>Sistemas externos</h3></header>
+          <div class="context-source-tags"><span>navegador</span><span>documentação</span><span>dados</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>consulta sob controle</small></div>
+        </article>
+      </div>
+      <div class="context-agent-runtime">
+        <div class="context-agent-runtime-header"><i data-lucide="bot"></i><strong>Agent Runtime</strong><span>seleciona, combina e executa</span></div>
+        <div class="context-window-core"><i data-lucide="panels-top-left"></i><strong>Contexto ativo</strong><small>intenção + regras + conhecimento + ferramentas</small></div>
+      </div>
     </div>
-    <h2><span class="accent">AGENTS.md</span> — O Contrato Vivo</h2>
+    <aside class="notes" aria-label="Notas do apresentador"><p>O desenvolvedor não despeja todo o conhecimento no prompt. O runtime compõe o contexto ativo a partir de fontes com ciclos de vida diferentes.</p><p>Instruções persistentes ficam pequenas; skills entram quando relevantes; comandos expressam intenção explícita; ferramentas externas fornecem dados sob controle. Os nomes e mecanismos variam entre produtos.</p></aside>
+  </section>
+
+  <section id="context-instructions" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(146,119,255,0.07) 0%, transparent 60%)" aria-label="Instruções pequenas e persistentes">
+    <div class="section-header"><span class="section-icon"><i data-lucide="file-lock-2"></i></span><span class="section-label">04 / Instructions</span></div>
+    <h2>Persistente Deve Ser <span class="accent">Pequeno</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="folder-git-2"></i></span><h3><code>AGENTS.md</code></h3><p>Contrato operacional do repositório: limites, comandos e roteamento de contexto.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="panels-top-left"></i></span><h3>Convenções do produto</h3><p><code>CLAUDE.md</code> e <code>copilot-instructions.md</code> pertencem às suas superfícies.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="signpost"></i></span><h3>Roteamento</h3><p>O arquivo raiz aponta para conteúdo especializado sem carregar tudo.</p></article>
+    </div>
+    <div class="highlight-box purple"><strong>Instructions</strong> guardam regras duráveis; referências e exemplos voláteis ficam fora do contexto persistente.</div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Os nomes variam por produto. Não apresente arquivos específicos como padrão universal entre agentes.</p><p>Uma instrução raiz útil funciona como roteador: pequena, acionável e estável.</p></aside>
+  </section>
+
+  <section id="context-map" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(0,221,179,0.07) 0%, transparent 60%)" aria-label="Mapa de contexto e fontes de verdade">
+    <div class="section-header"><span class="section-icon"><i data-lucide="waypoints"></i></span><span class="section-label">04 / Context Map</span></div>
+    <h2>Mostre Onde Está a <span class="accent">Verdade</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="list-tree"></i></span><h3>Índice</h3><p>Que domínio existe e qual arquivo responde cada tipo de pergunta?</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="database"></i></span><h3>Fonte canônica</h3><p>Spec, código, teste ou decisão: uma autoridade explícita por assunto.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="user-round-check"></i></span><h3>Owner e validade</h3><p>Quem mantém, quando revisar e como reconhecer conteúdo obsoleto.</p></article>
+    </div>
+    <div class="highlight-box"><code>Tarefa → contrato → fontes → checks → owner</code></div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Context map é um índice de descoberta, não uma cópia de toda a documentação.</p><p>Ele reduz busca ampla e conflito entre fontes ao declarar autoridade, ownership e validade.</p></aside>
+  </section>
+
+  <section id="agent-skills-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.1) 0%, transparent 60%)" aria-label="Abertura de Agent Skills">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(255,120,73,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(146,119,255,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-orange);">Mecanismo de contexto</div>
+      <h2 class="section-page-title gradient-text-purple">Agent<br />Skills</h2>
+      <p class="section-page-desc">Empacote conhecimento especializado e carregue-o somente quando a tarefa exigir.</p>
+      <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="package-open"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Agent Skills separam o conhecimento especializado das instruções persistentes do repositório.</p><p>A capa marca a mudança entre mapear fontes de verdade e carregar procedimentos reutilizáveis sob demanda.</p></aside>
+  </section>
+
+  <section id="agent-skills" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(255,120,73,0.07) 0%, transparent 60%)" aria-label="Agent Skills sob demanda">
+    <div class="section-header"><span class="section-icon"><i data-lucide="package-open"></i></span><span class="section-label">04 / Agent Skills</span></div>
+    <h2>Conhecimento Especializado <span class="accent">Sob Demanda</span></h2>
     <div class="two-cols">
-      <div>
-        <div class="definition" style="margin-bottom:0.7em;">
-          <p><strong>AGENTS.md</strong> é um padrão aberto para comunicar aos AI agents o contexto, regras e comportamentos esperados de um repositório. Posicionado na <em>raiz do projeto</em>, é lido por várias ferramentas e agentes (dependendo do produto/integração), servindo como um "README para agentes".</p>
-        </div>
-        <div class="card-grid-2" style="gap:0.6em;">
-          <div class="card">
-            <span class="card-icon"><i data-lucide="map-pin"></i></span>
-            <h3>Localização</h3>
-            <p style="font-size:0.72em;">Sempre na <code>raiz</code> do repositório — <code>./AGENTS.md</code></p>
-          </div>
-          <div class="card">
-            <span class="card-icon"><i data-lucide="refresh-cw"></i></span>
-            <h3>Documento Vivo</h3>
-            <p style="font-size:0.72em;">Atualizado junto com o projeto, reflete sempre o estado atual.</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <pre><code class="language-markdown"># AGENTS.md
-
-## Objetivo do Projeto
-API REST de gerenciamento de tarefas.
-
-## Stack Tecnológico
-- Node.js 22 + TypeScript strict
-- Express 5 + Prisma ORM
-- PostgreSQL 16
-- Vitest para testes
-
-## Convenções de Código
-- Nomenclatura: camelCase para variáveis
-- Imports: sempre absolutos (src/...)
-- Erros: nunca use `any`, use Result types
-
-## DO ✅
-- Escreva testes para cada função pública
-- Use TypeScript strict mode
-- Documente endpoints com JSDoc
-
-## DON'T ❌
-- Não use `any` type
-- Não faça commit sem testes passando
-- Não altere o schema sem migração</code></pre>
-      </div>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="package"></i></span><h3>Pacote descobrível</h3><p>Cada skill possui <code>SKILL.md</code> como entrypoint e pode incluir referências, scripts e assets.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="mouse-pointer-click"></i></span><h3>Ativação por intenção</h3><p>Nome e descrição ajudam o agente a escolher a skill adequada para a tarefa.</p></article>
     </div>
-    <aside class="notes">
-      <p>AGENTS.md funciona como manual operacional da IA para aquele repositório específico. Linguagem objetiva, regras acionáveis e limites claros — útil para humano e para agente.</p>
-      <p>Mais de 60 mil repositórios open source já têm um AGENTS.md na raiz. O padrão é stewarded pela Agentic AI Foundation (Linux Foundation), e compatível com a maioria dos agentes de código do mercado.</p>
-      <p>Dica prática: comece com 20-30 linhas. AGENTS.md de 500 linhas que ninguém mantém é pior do que um de 30 linhas sempre atualizado. Tamanho não é qualidade — clareza é.</p>
-  </aside>
+    <div class="highlight-box orange">Agent Skill é <strong>conhecimento reutilizável</strong>; comando nativo é uma capacidade específica do produto.</div>
+    <p style="font-size:0.52em; text-align:center; color:var(--text-muted);">Referência: <a href="https://agentskills.io/specification" target="_blank" rel="noopener noreferrer">Agent Skills Specification</a></p>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Uma skill é um pacote versionável e descobrível, não um arquivo solto com um nome informal.</p><p>O agente seleciona pela metadata e só carrega instruções e recursos quando a intenção corresponde.</p></aside>
   </section>
 
-  <!-- 7.3 Rules -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="settings-2"></i></span>
-      <span class="section-label">04 / Arquitetura — Rules</span>
+  <section id="progressive-disclosure" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.11) 0%, transparent 60%)" aria-label="Abertura de Progressive Disclosure">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(146,119,255,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-purple);">Mecanismo de contexto</div>
+      <h2 class="section-page-title gradient-text-purple">Progressive<br />Disclosure</h2>
+      <p class="section-page-desc">Revele instruções e recursos em camadas, somente quando eles se tornarem relevantes.</p>
+      <div class="section-page-icon" style="color:var(--accent-purple);"><i data-lucide="layers-3"></i></div>
     </div>
-    <h2><span class="accent">Rules</span> — Diretrizes Globais</h2>
-    <div class="two-cols">
-      <div>
-        <p style="font-size:0.8em; margin-bottom:0.6em;">
-          <strong>Rules</strong> são diretrizes globais que definem o comportamento padrão do agente para todo o workspace, independente do projeto ou tarefa específica.
-        </p>
-        <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 Cada agente expõe Rules de um jeito: Copilot usa <code>.github/copilot-instructions.md</code>; Codex prioriza <code>AGENTS.md</code>; outros agentes podem usar arquivos próprios.
-        </div>
-        <div class="highlight-box">
-          As Rules são o <em>"modo padrão"</em> do agente. AGENTS.md pode sobrescrever Rules para um projeto específico.
-        </div>
-      </div>
-      <div>
-        <div class="card" style="border-color:var(--accent-green); margin-bottom:0.7em;">
-          <h3><i data-lucide="check-circle"></i> DO — Sempre fazer</h3>
-          <ul class="checklist" style="font-size:0.78em;">
-            <li class="check">Use TypeScript strict mode</li>
-            <li class="check">Escreva testes para funções públicas</li>
-            <li class="check">Documente APIs com OpenAPI/JSDoc</li>
-            <li class="check">Siga os padrões SOLID e Clean Code</li>
-            <li class="check">Valide inputs em toda boundary externa</li>
-          </ul>
-        </div>
-        <div class="card" style="border-color:var(--accent-red);">
-          <h3 class="text-red"><i data-lucide="x-circle"></i> DON'T — Nunca fazer</h3>
-          <ul class="checklist" style="font-size:0.78em;">
-            <li class="cross">Usar <code>any</code> type no TypeScript</li>
-            <li class="cross">Commitar sem testes passando</li>
-            <li class="cross">Hardcodar credenciais ou segredos</li>
-            <li class="cross">Ignorar erros silenciosamente (empty catch)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Diferenciação simples: Rules são política global do workspace; AGENTS.md é contrato local do projeto. Rules valem sempre; AGENTS.md pode sobrescrever para um contexto específico.</p>
-      <p>No GitHub Copilot, <code>copilot-instructions.md</code> é o ponto principal de Rules globais. No Codex, <code>AGENTS.md</code> funciona como contrato operacional do repositório. Em outros agentes, o nome muda, mas o princípio continua: instruções globais e locais precisam estar alinhadas.</p>
-      <p>Quando os dois estão alinhados, você ganha consistência sem perder adaptação contextual. E isso por si só já reduz variação entre sessões e entre membros do time.</p>
-  </aside>
-  </section>
-
-  <!-- 7.4 Skills.md -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="wrench"></i></span>
-      <span class="section-label">04 / Arquitetura — Skills.md</span>
-    </div>
-    <h2><span class="accent">Skills.md</span> — Conhecimento Especializado</h2>
-    <div class="two-cols-60" style="gap:1em; align-items:start;">
-      <div>
-        <div class="definition" style="margin-bottom:0.32em; padding:0.82em 1.05em 0.82em 2.25em;">
-          <p style="font-size:0.72em; line-height:1.42;"><strong>Skills</strong> são unidades de conhecimento especializado, normalmente organizadas como diretórios com um arquivo <code>SKILL.md</code> como entrypoint. O agente mantém uma descrição curta no contexto e carrega o conteúdo completo apenas quando necessário: <strong>Progressive Disclosure</strong> na prática.</p>
-        </div>
-        <div class="card-grid-2" style="gap:0.42em;">
-          <div class="card fragment card--pad-sm">
-            <span class="card-icon"><i data-lucide="zap"></i></span>
-            <h3>Performance</h3>
-            <p style="font-size:0.66em; line-height:1.38;">Menos tokens consumidos = sessões mais eficientes e baratas.</p>
-          </div>
-          <div class="card fragment card--pad-sm">
-            <span class="card-icon"><i data-lucide="plug"></i></span>
-            <h3>Portabilidade</h3>
-            <p style="font-size:0.66em; line-height:1.38;">Skills funcionam em Codex, Claude Code, Cursor, Gemini CLI e outros AI tools compatíveis.</p>
-          </div>
-        </div>
-        <div class="highlight-box blue" style="margin-top:0.3em; font-size:0.66em; line-height:1.34; padding:0.58em 0.85em;">
-          📖 <strong>Ver seção 05</strong> para o aprofundamento em <em>Progressive Disclosure</em> — princípios, estrutura em camadas e boas práticas.
-        </div>
-      </div>
-      <div>
-        <div class="highlight-box blue" style="margin-top:0.18em; font-size:0.62em; line-height:1.38; padding:0.62em 0.86em;">
-          <strong>Exemplos reais (clicáveis):</strong><br />
-          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank" rel="noopener noreferrer">find-skills</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank" rel="noopener noreferrer">vercel-react-best-practices</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank" rel="noopener noreferrer">web-design-guidelines</a> ·
-          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank" rel="noopener noreferrer">frontend-design</a>
-        </div>
-        <div class="highlight-box" style="margin-top:0.4em; font-size:0.68em; line-height:1.36; padding:0.62em 0.86em;">
-          🎯 Carregue apenas a Skill da tarefa atual para reduzir ruído e tokens no contexto.
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Skills são especialização modular de conhecimento. Em vez de carregar tudo sempre, o agente aprofunda só quando a tarefa exige — isso melhora foco, reduz custo de contexto e aumenta qualidade da resposta.</p>
-      <p>O padrão agentskills.io é aberto e portável. Uma Skill bem escrita pode funcionar em Codex, Claude Code, Cursor, Gemini CLI e outros agentes compatíveis — sem reescrita conceitual.</p>
-      <p>Seta 1 — card Performance: menos tokens = sessões mais eficientes. Seta 2 — card Portabilidade: mesma Skill em múltiplos agentes. Fechamento: carregar contexto sob demanda é a prática de Progressive Disclosure que exploramos em detalhes na próxima seção.</p>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p>Agora entramos especificamente em Progressive Disclosure: uma política para controlar quando cada camada de contexto passa a ocupar a janela do modelo.</p>
+      <p>O sumário aponta para esta abertura. A partir daqui, avance para ver catálogo, ativação e recursos sob demanda.</p>
     </aside>
   </section>
 
-  <!-- 7.5 Context Architecture Mermaid + Resumo -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="map"></i></span>
-      <span class="section-label">04 / Arquitetura — Visão Completa</span>
-    </div>
-    <h2>Visão <span class="accent">Completa</span> da Arquitetura</h2>
-    <div class="two-cols" style="gap:1.5em; align-items:center;">
-      <div>
-        <!-- Visão Completa — pipeline HTML/CSS (sem Mermaid) -->
-        <div class="ctx-pipeline">
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-blue)"><i data-lucide="user"></i></div>
-            <div class="ctx-pipe-body"><strong>Desenvolvedor</strong><small>escreve spec.md</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
-            <div class="ctx-pipe-body"><strong>Agente organiza artefatos</strong><small>PRD.md + AGENTS.md</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-purple)"><i data-lucide="layers"></i></div>
-            <div class="ctx-pipe-body"><strong>Contexto do Agente</strong><small>Rules + Skills enriquecem</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-orange)"><i data-lucide="code-2"></i></div>
-            <div class="ctx-pipe-body"><strong>Implementação</strong><small>código, testes, docs</small></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-bottom:0.6em;">Os 4 pilares</h3>
-        <ul class="icon-list" style="font-size:0.82em;">
-          <li><span class="icon"><i data-lucide="clipboard-list"></i></span><div><strong class="text-green">PRD.md</strong> — o "o quê" e "por quê"</div></li>
-          <li><span class="icon"><i data-lucide="folder"></i></span><div><strong class="text-blue">AGENTS.md</strong> — o "como" e "contexto"</div></li>
-          <li><span class="icon"><i data-lucide="settings-2"></i></span><div><strong class="text-purple">Rules</strong> — as diretrizes globais</div></li>
-          <li><span class="icon"><i data-lucide="wrench"></i></span><div><strong class="text-orange">Skills.md</strong> — conhecimento especializado</div></li>
-        </ul>
-        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          🏆 <strong>Princípio fundamental:</strong> <em>Contexto certo, no momento certo, para a tarefa certa.</em>
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Os quatro pilares: PRD define o que e por que — intenção de produto. AGENTS.md define como e em qual contexto — contrato de comportamento. Rules são as diretrizes globais independentes de projeto. Skills trazem especialização modular sob demanda.</p>
-      <p>Com maior autonomia do agente — Agent Mode, execuções longas, tarefas multi-arquivo — mais crítica fica essa arquitetura de contexto. É ela que permite ao agente tomar decisões corretas de forma autônoma sem perguntar a cada passo.</p>
-      <p>Princípio fundamental: contexto certo, no momento certo, para a tarefa certa. Esse princípio não envelhecerá independente de qual modelo ou agente usar.</p>
-  </aside>
-  </section>
-
-</section><!-- /arquitetura -->
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  SLIDE — PROGRESSIVE DISCLOSURE  (vertical group)
-════════════════════════════════════════════════════════════════════════════ -->
-<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(255,120,73,0.15);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
-  <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-orange);">Seção 05</div>
-    <h2 class="section-page-title gradient-text-warm">Progressive<br>Disclosure</h2>
-    <p class="section-page-desc">Revelar apenas o contexto necessário, no momento certo — o segredo para um agente eficiente</p>
-    <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
-  </div>
-  <aside class="notes">
-    <p>Agora vamos para o princípio que permite escalar arquitetura de contexto com eficiência — progressive disclosure. É sobre como revelar só o que é necessário na hora certa.</p>
-  </aside>
-</section>
-<section id="progressive-disclosure">
-
-  <!-- PD 0 — Economia de Contexto -->
-  <section id="economia-contexto" data-background-gradient="radial-gradient(ellipse 72% 52% at 25% 78%, rgba(255,205,71,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="coins"></i></span>
-      <span class="section-label">05 / Economia de Contexto</span>
-    </div>
-    <h2>Contexto agora tem <span class="accent">custo</span></h2>
-    <div class="two-cols" style="gap:1.3em; align-items:start;">
-      <div>
-        <div class="highlight-box orange" style="margin-bottom:0.65em;">
-          <strong>Usage-based billing muda a conversa:</strong> contexto repetido, prompt longo e retrabalho deixam de ser apenas incômodo técnico — viram custo operacional.
-        </div>
-        <ul class="icon-list" style="font-size:0.76em;">
-          <li class="fragment"><span class="icon"><i data-lucide="arrow-down-up"></i></span><div><strong>Input tokens</strong><br><span class="text-muted">Tudo que você envia: prompt, contexto, arquivos e instruções.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="message-square-reply"></i></span><div><strong>Output tokens</strong><br><span class="text-muted">Tudo que o modelo devolve: planos, código, explicações e diffs.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="archive"></i></span><div><strong>Cached tokens</strong><br><span class="text-muted">Contexto reaproveitado com precificação própria, conforme documentação oficial.</span></div></li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="border-color:rgba(255,205,71,0.45);">
-          <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="badge-dollar-sign"></i></span>
-          <h3 style="color:var(--accent-gold);">GitHub AI Credits</h3>
-          <p style="font-size:0.74em;">A partir de <strong>01/06/2026</strong>, interações do Copilot passam a usar billing por consumo. A documentação define <strong>1 GitHub AI Credit = US$0.01</strong>.</p>
-        </div>
-        <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.72em;">
-          Não copie tabela de preços para slide: modelos, multiplicadores e allowances mudam. Linke a fonte oficial e revise antes da palestra.
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Dados verificados para a edição Maio/2026 na documentação oficial de GitHub Copilot models and pricing. Antes de apresentar, revise a página porque preços, modelos e multiplicadores podem mudar.</p>
-      <p>A mensagem não é "não use Copilot" nem "use Codex". A mensagem é: quando agentes são cobrados por uso, contexto vira orçamento. Progressive Disclosure passa a ser disciplina técnica e econômica.</p>
-      <p>Conecte com SDD: PRD claro reduz prompt repetido; AGENTS enxuto reduz ruído; Skills carregadas sob demanda reduzem contexto irrelevante; checks evitam ciclos caros de retrabalho.</p>
-    </aside>
-  </section>
-
-  <!-- PD 0.1 — Economia de Tokens -->
-  <section id="economia-tokens" data-background-gradient="radial-gradient(ellipse 72% 52% at 75% 78%, rgba(0,221,179,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="gauge"></i></span>
-      <span class="section-label">05 / Economia de Contexto — Práticas</span>
-    </div>
-    <h2>Economia de tokens: <span class="accent">o que funciona</span></h2>
-    <div class="card-grid-3" style="gap:0.38em; margin-top:0.55em;">
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="folder-open"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Contexto sob demanda</h3>
-        <p style="font-size:0.57em; line-height:1.32;">PRD, AGENTS.md e Skills carregam a informação certa quando a tarefa precisa dela.</p>
-      </div>
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="archive"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Cache e prefixos estáveis</h3>
-        <p style="font-size:0.57em; line-height:1.32;">Instruções estáveis no começo do contexto aumentam chance de reaproveitamento por prompt caching.</p>
-      </div>
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="route"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Modelo certo</h3>
-        <p style="font-size:0.57em; line-height:1.32;">Nem toda tarefa precisa do modelo mais caro: classifique risco, complexidade e necessidade de raciocínio.</p>
-      </div>
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="scissors"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Saída curta</h3>
-        <p style="font-size:0.57em; line-height:1.32;">Concisão reduz output tokens. Caveman é um exemplo prático, mas não elimina custo de reasoning e ferramentas.</p>
-      </div>
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="clock"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Batch e flex</h3>
-        <p style="font-size:0.57em; line-height:1.32;">Tarefas assíncronas podem usar processamento mais econômico quando a latência não é crítica.</p>
-      </div>
-      <div class="card" style="padding:0.46em;">
-        <span class="card-icon" style="font-size:1.22em;"><i data-lucide="bar-chart-3"></i></span>
-        <h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Observabilidade</h3>
-        <p style="font-size:0.57em; line-height:1.32;">Meça input, output, cached tokens, modelo usado, retrabalho e custo por execução.</p>
-      </div>
-    </div>
-    <div class="highlight-box blue" style="font-size:0.58em; line-height:1.28; margin-top:0.4em; padding:0.55em 0.9em;">
-      Regra prática: economizar tokens não é apenas escrever menos. É reduzir ambiguidade, repetição, loops longos e contexto irrelevante.
-    </div>
-    <aside class="notes">
-      <p>Este slide amplia a conversa além do billing de uma ferramenta. Economizar tokens envolve arquitetura de contexto, cache, roteamento de modelo, concisão de saída, processamento assíncrono e medição.</p>
-      <p>Sobre Caveman: apresente como exemplo de output discipline e compressão de linguagem. O cuidado é explicar que respostas mais curtas não garantem redução total quando o maior custo vem de reasoning tokens, tool calls, leitura de arquivos e geração de código.</p>
-      <p>Conecte com fontes oficiais: OpenAI cost optimization e prompt caching; Anthropic prompt caching e token-efficient tool use; GitHub billing para o contexto de Copilot; Caveman como referência comunitária experimental.</p>
-    </aside>
-  </section>
-
-  <!-- PD 0.2 — SDD como FinOps de Agentes -->
-  <section id="sdd-finops-agentes" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(56,200,250,0.06) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="wallet"></i></span>
-      <span class="section-label">05 / Economia de Contexto — SDD</span>
-    </div>
-    <h2>SDD como <span class="accent">FinOps de agentes</span></h2>
-    <div class="two-cols" style="gap:1em; align-items:start;">
-      <div class="card" style="border-color:rgba(0,221,179,0.35);">
-        <span class="card-icon"><i data-lucide="file-check-2"></i></span>
-        <h3>Spec clara reduz desperdício</h3>
-        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos prompts repetidos para explicar a mesma intenção.</div></li>
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos iterações longas para corrigir requisito implícito.</div></li>
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Menos tool calls exploratórias porque o critério já está definido.</div></li>
-        </ul>
-      </div>
-      <div class="card" style="border-color:rgba(255,205,71,0.42);">
-        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="ban"></i></span>
-        <h3 style="color:var(--accent-gold);">Anti-patterns caros</h3>
-        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Prompt gigante copiado em toda sessão.</div></li>
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Logs inteiros e outputs de ferramentas sem filtragem.</div></li>
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Modelo caro para triagem simples ou tarefa mecânica.</div></li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight-box" style="font-size:0.74em; margin-top:0.75em;">
-      SDD não é só qualidade de entrega. Em agentes, spec boa também é controle de custo, latência, risco e previsibilidade.
-    </div>
-    <aside class="notes">
-      <p>FinOps aqui é uma metáfora prática: não transformar a palestra em orçamento, mas mostrar que cada decisão de contexto tem impacto econômico quando agentes passam a consumir tokens, ferramentas e tempo de execução.</p>
-      <p>A spec atua como contrato e como mecanismo de redução de desperdício. Se o agente sabe objetivo, limites, critérios de aceitação e validação, ele explora menos e corrige menos.</p>
-      <p>Feche preparando o próximo slide: Progressive Disclosure é a técnica que operacionaliza essa economia sem empobrecer o contexto.</p>
-    </aside>
-  </section>
-
-  <!-- PD 1 — O que é Progressive Disclosure -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="layers"></i></span>
-      <span class="section-label">05 / Progressive Disclosure</span>
-    </div>
+  <section id="progressive-disclosure-loading" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)" aria-label="Explicação de Progressive Disclosure na IA">
+    <div class="section-header"><span class="section-icon"><i data-lucide="layers"></i></span><span class="section-label">04 / Progressive Disclosure</span></div>
     <h2><span class="accent">Progressive Disclosure</span></h2>
     <div class="two-cols two-cols--wide-start">
       <div>
@@ -434,146 +135,82 @@ API REST de gerenciamento de tarefas.
           <p><strong>Progressive Disclosure</strong> é o princípio de revelar apenas o contexto necessário para a tarefa atual. Em SDD, isso significa dividir o conhecimento do agente em camadas — carregando informação especializada <em>sob demanda</em>, economizando tokens, reduzindo ruído e diminuindo retrabalho.</p>
         </div>
         <ul style="font-size:0.82em;">
-          <li class="fragment"><strong>AGENTS.md raiz:</strong> mínimo, global, estável — regras que valem para <em>todas</em> as tarefas</li>
+          <li class="fragment"><strong>AGENTS.md raiz:</strong> mínimo, global e estável — regras válidas para <em>todas</em> as tarefas</li>
           <li class="fragment"><strong>Skills especializadas:</strong> carregadas sob demanda, apenas quando necessário</li>
-          <li class="fragment"><strong>Context Window:</strong> até 70% de economia de tokens <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></li>
-          <li class="fragment"><strong>Qualidade:</strong> menos ruído = respostas mais precisas e consistentes</li>
+          <li class="fragment"><strong>Context Window:</strong> até 70% de economia no fluxo medido pela autora</li>
+          <li class="fragment"><strong>Qualidade:</strong> menos ruído gera respostas mais precisas e consistentes</li>
         </ul>
       </div>
       <div>
-        <div class="card" style="text-align:center; border-color:var(--accent-orange);">
-          <span class="card-icon"><i data-lucide="layers"></i></span>
+        <article class="card" style="text-align:center; border-color:var(--accent-orange);">
+          <span class="card-icon"><i data-lucide="stethoscope"></i></span>
           <h3 class="text-orange">Analogia</h3>
-          <p style="font-size:0.75em;">Como um médico especialista — o clinico geral cuida do básico; o especialista é chamado apenas quando o problema exige. O contexto funciona igual: carregue o especialista só quando precisar.</p>
-        </div>
-        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          📊 AGENTS.md <strong>minimalista + Skills sob demanda</strong> pode reduzir em até 70% o uso de context window por sessão. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span>
-        </div>
+          <p>Como um médico especialista: o clínico geral cuida do básico; o especialista é chamado apenas quando o problema exige. O contexto funciona igual — carregue o especialista só quando precisar.</p>
+        </article>
+        <div class="highlight-box" style="margin-top:0.7em; font-size:0.72em;">AGENTS.md <strong>minimalista + Skills sob demanda</strong> reduz o contexto persistente sem perder profundidade.</div>
       </div>
     </div>
-    <p class="slide-nav-hint">
-      ↓ pressione ↓ para continuar nesta seção
-    </p>
-    <aside class="notes">
-      <p>Progressive Disclosure é sobre foco: carregar apenas o contexto necessário para a tarefa atual. Estratégia prática: base global mínima mais especialização sob demanda.</p>
-      <p>Isso reduz ruído, melhora assertividade da resposta e reduz custo de tokens por sessão. Menos ruído no contexto significa menos inferência necessária por parte do modelo, o que tende a resultar em output mais próximo da intenção.</p>
-      <p>Sobre os "até 70% de economia": é uma referência do meu próprio fluxo de trabalho documentado no artigo no LinkedIn (link na seção de referências). Não é pesquisa universal de mercado — é um resultado que vale como referência de campo. Cada time terá seu número; o ponto correto é: otimizar contexto de entrada é prática de engenharia mensurável, não intuição.</p>
-      <p>Seta 1 — AGENTS raiz mínimo e estável. Seta 2 — Skills sob demanda. Seta 3 — economia de tokens como resultado. Seta 4 — ganho de qualidade de resposta. Fechamento: menos ruído = respostas mais consistentes e previsíveis.</p>
-    </aside>
+    <p style="font-size:0.46em; text-align:center; color:var(--text-muted);">Fontes: <a href="https://agentskills.io/specification#progressive-disclosure" target="_blank" rel="noopener noreferrer">Agent Skills Specification</a> · <a href="https://www.linkedin.com/pulse/como-reduzi-em-70-o-uso-do-context-window-github-copilot-lemos-cycnf?originalSubdomain=pt" target="_blank" rel="noopener noreferrer">estudo da autora</a></p>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Progressive Disclosure é sobre foco: carregar apenas o contexto necessário para a tarefa atual. A estratégia prática é uma base global mínima mais especialização sob demanda.</p><p>Isso reduz ruído, melhora a assertividade da resposta e reduz o custo de tokens por sessão. Menos ruído significa menos inferência necessária por parte do modelo.</p><p>Os “até 70%” vêm do fluxo de trabalho da autora documentado no LinkedIn; não são uma promessa universal. Cada time deve medir seu próprio resultado.</p><p>Fechamento: menos ruído produz respostas mais consistentes e previsíveis.</p></aside>
   </section>
 
-  <!-- PD 2 — Estrutura em Camadas -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="folder-tree"></i></span>
-      <span class="section-label">05 / Progressive Disclosure — Estrutura</span>
+  <section id="context-subagents-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.1) 0%, transparent 60%)" aria-label="Abertura de Subagents">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(56,200,250,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(0,221,179,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-blue);">Isolamento de contexto</div>
+      <h2 class="section-page-title gradient-text">Subagents</h2>
+      <p class="section-page-desc">Delegue subproblemas bem delimitados sem poluir o contexto da tarefa principal.</p>
+      <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="git-fork"></i></div>
     </div>
-    <h2>Estrutura em <span class="accent">Camadas</span></h2>
-    <div class="two-cols">
-      <div>
-        <pre><code class="language-bash">projeto/
-├── AGENTS.md              ← Camada 1 (global, lean)
-├── docs/
-│   └── agents/            ← Camada 2 (especializada)
-│       ├── testing.md
-│       ├── architecture.md
-│       ├── conventions.md
-│       └── security.md
-├── .github/
-│   └── copilot-instructions.md  ← Rules (global)
-└── skills/                ← Skills (spec-kit)
-    ├── api-design.skill.md
-    └── react-patterns.skill.md</code></pre>
-        <div class="highlight-box callout-compact">
-          🎯 O AGENTS.md raiz aponta para os arquivos especializados via links. O agente os carrega <em>somente quando solicitado</em>.
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-bottom:0.5em; font-size:0.85em;">AGENTS.md — Exemplo Minimalista</h3>
-        <pre><code class="language-markdown"># AGENTS.md
-
-## Projeto
-API de gerenciamento de tarefas com JWT.
-
-## Regras Globais
-- TypeScript strict mode
-- Testes obrigatórios para funções públicas
-- Nunca use `any` type
-
-## Instruções Especializadas
-- Testes: docs/agents/testing.md
-- Arquitetura: docs/agents/architecture.md
-- Segurança: docs/agents/security.md
-
-## Limites do Agente
-- Não altere o schema sem migração
-- Não faça commit sem testes passando</code></pre>
-        <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.75em;">
-          💡 A IA gera os arquivos especializados automaticamente — você <em>não precisa criá-los manualmente</em>!
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Estrutura em camadas é simples de replicar e, mais importante, de manter. AGENTS enxuto na raiz com links para especialização por domínio — testing, arquitetura, segurança, convenções. Rules globais separadas. Skills como unidades de especialização carregadas sob demanda.</p>
-      <p>O resultado é um arquivo de contexto que ninguém vai se recusar a manter atualizado, porque é pequeno e objetivo. Arquivos monolíticos tendem a ficar desatualizados; arquivos curtos com links são mais fáceis de cuidar.</p>
-      <p>Detalhe útil: a IA pode gerar os arquivos especializados automaticamente quando você inicializa o projeto. Você fornece o contexto, ela estrutura os arquivos — você revisa e ajusta.</p>
-  </aside>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Agora o foco muda de carregar conhecimento para isolar trabalho.</p><p>Um subagent recebe uma pergunta delimitada e devolve resultado compacto, evidência e incertezas para a tarefa principal.</p></aside>
   </section>
 
-  <!-- PD 3 — 6 Princípios -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="list-checks"></i></span>
-      <span class="section-label">05 / Progressive Disclosure — Princípios</span>
+  <section id="context-subagents" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)" aria-label="Subagents como isolamento de contexto">
+    <div class="section-header"><span class="section-icon"><i data-lucide="git-fork"></i></span><span class="section-label">04 / Subagents</span></div>
+    <h2>Isole o <span class="accent">Subproblema</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="scan-line"></i></span><h3>Delegar</h3><p>Uma pergunta delimitada, com entradas e critério de retorno explícitos.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="box"></i></span><h3>Isolar</h3><p>Contexto de trabalho separado evita poluir a tarefa principal.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="corner-down-left"></i></span><h3>Retornar</h3><p>Resultado compacto, evidência, incerteza e próximos riscos.</p></article>
     </div>
-    <h2>6 Princípios do <span class="accent">Progressive Disclosure</span></h2>
-    <div class="card-grid-3" style="margin-top:0.35em; gap:0.4em;">
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="minimize-2"></i></span>
-        <h3>1. Minimalismo</h3>
-        <p style="font-size:0.7em;">AGENTS.md deve conter apenas regras necessárias para <em>todas</em> as tarefas do repositório. Regras específicas ficam em arquivos secundários.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="split"></i></span>
-        <h3>2. Separação</h3>
-        <p style="font-size:0.7em;">Instrução especializada → arquivo secundário (<code>docs/agents/</code>). Nada de "documento gigante" com tudo dentro.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="link"></i></span>
-        <h3>3. Delegação</h3>
-        <p style="font-size:0.7em;">AGENTS.md raiz declara <strong>onde encontrar</strong> instruções especializadas via links. O agente busca quando precisar.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="zap"></i></span>
-        <h3>4. Acionabilidade</h3>
-        <p style="font-size:0.7em;">Prefira instruções diretas: <em>"Antes de alterar código, explique o motivo."</em> Evite textos genéricos como "siga boas práticas".</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="shield"></i></span>
-        <h3>5. Estabilidade</h3>
-        <p style="font-size:0.7em;">Estruturas de pastas e informações instáveis <strong>não</strong> devem ir ao AGENTS.md raiz — apenas a arquivos secundários.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="trending-down"></i></span>
-        <h3>6. Economia</h3>
-        <p style="font-size:0.7em;">Cada token economizado = respostas mais rápidas e baratas. AGENTS.md enxuto eleva qualidade e reduz custo por sessão.</p>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
-      📚 Esses arquivos especializados também são chamados de <strong>"Skills"</strong> na comunidade de AI Agents (Claude Code, Cursor, etc.) — mesmo conceito, carregamento sob demanda.
-    </div>
-    <aside class="notes">
-      <p>Esses seis princípios são higiene de contexto. Parecem óbvios quando estão escritos, mas violamos cada um deles regularmente quando construímos AGENTS.md no improviso.</p>
-      <p>Se eu resumir em uma frase: clareza estrutural reduz custo e aumenta confiabilidade. Instrução genérica como "siga boas práticas" contribui zero para o agente. Instrução específica como "antes de alterar código de autenticação, explique por que a mudança é necessária" tem efeito real e verificável.</p>
-      <p>Esses princípios se aplicam também a prompts isolados — contexto bom sempre supera prompt elaborado sem contexto adequado.</p>
-      <p>Setas 1 a 6: Minimalismo → Separação → Delegação → Acionabilidade → Estabilidade → Economia. Fechamento: clareza estrutural é a prioridade — não volume de instrução.</p>
-    </aside>
+    <div class="highlight-box blue"><strong>Subagent</strong> é um trabalhador isolado; <strong>Skill</strong> é conhecimento reutilizável; <strong>comando nativo</strong> pertence a uma superfície.</div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Subagents ajudam quando o subproblema pode ser isolado e o retorno cabe em um resumo verificável.</p><p>Não trate subagent, Agent Skill e comando de produto como sinônimos; eles resolvem responsabilidades diferentes.</p></aside>
   </section>
 
-</section><!-- /progressive-disclosure -->
+  <section id="context-state-memory-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.1) 0%, transparent 60%)" aria-label="Abertura de State e Memory">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(0,221,179,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-green);">Continuidade entre execuções</div>
+      <h2 class="section-page-title gradient-text">State &amp;<br />Memory</h2>
+      <p class="section-page-desc">Preserve decisões e evidências úteis sem carregar o transcript inteiro.</p>
+      <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="brain-circuit"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Depois de isolar trabalho, precisamos decidir o que sobrevive entre execuções.</p><p>State mantém a situação atual; memory preserva conhecimento durável e curado, sem transformar todo o histórico em contexto permanente.</p></aside>
+  </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  SLIDE 8 — REFERÊNCIAS
-════════════════════════════════════════════════════════════════════════════ -->
+  <section id="context-state-memory" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(0,221,179,0.07) 0%, transparent 60%)" aria-label="Estado e memória entre execuções">
+    <div class="section-header"><span class="section-icon"><i data-lucide="brain-circuit"></i></span><span class="section-label">04 / State &amp; Memory</span></div>
+    <h2>Preserve Decisões, Não o <span class="accent">Transcript Inteiro</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="activity"></i></span><h3>State atual</h3><p>Objetivo, restrições, progresso e próxima decisão.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="library"></i></span><h3>Memory curada</h3><p>Fatos e decisões duráveis, com origem e validade.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="file-warning"></i></span><h3>Evidência</h3><p>Sucessos repetitivos podem ser resumidos; falhas preservam detalhes.</p></article>
+    </div>
+    <div class="highlight-box"><strong>compaction ≠ clearing ≠ editing ≠ isolation ≠ caching</strong></div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>Memory não é transcript integral. O que sobrevive deve apoiar decisões futuras sem carregar toda a conversa.</p><p>Compaction resume, clearing reinicia, editing altera, isolation separa e caching reutiliza processamento; são mecanismos distintos.</p></aside>
+  </section>
 
-
+  <section id="economia-contexto-ponte" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(255,205,71,0.08) 0%, transparent 60%)" aria-label="Ponte para Economia de Contexto">
+    <div class="section-header"><span class="section-icon"><i data-lucide="arrow-right-circle"></i></span><span class="section-label">04 / Transição para Economia</span></div>
+    <h2>Do Contexto Certo ao Contexto <span class="accent">Sustentável</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="filter"></i></span><h3>1 · Curadoria</h3><p><strong>Context Engineering</strong> decide quais fontes podem mudar a decisão atual.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="gauge"></i></span><h3>2 · Limites</h3><p><strong>Context Economy</strong> limita contexto, custo, tempo, tentativas e tamanho do diff.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="log-out"></i></span><h3>3 · Saída</h3><p>Sinais de degradação indicam quando concluir, compactar, isolar ou fazer handoff.</p></article>
+    </div>
+    <div class="highlight-box orange"><strong>Em uma frase:</strong> Context Engineering escolhe o que merece entrar; Context Economy define quanto cabe, por quanto tempo e qual sinal encerra o ciclo.</div>
+    <aside class="notes" aria-label="Notas do apresentador"><p>“Bridge” significava apenas uma transição editorial entre duas perguntas. A tela agora explica essa passagem diretamente.</p><p>Primeiro curamos o conjunto de informações. Depois colocamos limites operacionais e critérios de saída para que a sessão permaneça verificável.</p></aside>
+  </section>
+</section>

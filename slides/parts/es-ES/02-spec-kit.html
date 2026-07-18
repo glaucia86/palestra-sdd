@@ -4,7 +4,7 @@
   <div class="section-page-container">
     <div class="section-page-label text-green">Seccion 02</div>
     <h2 class="section-page-title gradient-text">spec-kit</h2>
-    <p class="section-page-desc">El toolkit open source que operacionaliza SDD con CLI y slash commands para agentes de IA</p>
+    <p class="section-page-desc">El toolkit open source que convierte la intención en spec, plan, tareas e implementación verificable</p>
     <div class="section-page-icon text-green"><i data-lucide="package"></i></div>
   </div>
   <aside class="notes">
@@ -25,14 +25,14 @@
     <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
-          <p>El <strong>spec-kit</strong> es un toolkit open source mantenido por GitHub que permite enfocarse en escenarios de producto y resultados predecibles, en lugar de hacer "vibe coding" en cada parte desde cero. <em>Operacionaliza</em> SDD con un CLI y slash commands para agentes de IA.</p>
+          <p>El <strong>spec-kit</strong> es un toolkit open source de GitHub que <em>operacionaliza</em> SDD con CLI, artefactos y comandos para agentes de IA. Prioriza escenarios de producto y resultados predecibles sobre el "vibe coding".</p>
         </div>
         <ul style="font-size:0.82em;">
           <li class="fragment"><strong>Open Source</strong> — MIT License · <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">github/spec-kit</a></li>
-          <li class="fragment"><strong>+70k estrellas</strong> no GitHub · 79 contribuidores</li>
           <li class="fragment"><strong>Mantenido por GitHub</strong>, inspirado en la investigacion de <em>John Lam</em></li>
           <li class="fragment"><strong>Specify CLI</strong> — instalable via <code>uv tool install</code></li>
-          <li class="fragment"><strong>Slash Commands</strong> via integracion del agente (<code>/speckit.*</code>, cuando este soportado)</li>
+          <li class="fragment"><strong>Artefactos canónicos</strong> — <code>spec.md</code>, <code>plan.md</code> y <code>tasks.md</code></li>
+          <li class="fragment"><strong>Comandos o Agent Skills</strong> por integración</li>
         </ul>
       </div>
       <div>
@@ -45,7 +45,7 @@
           💡 <strong>spec-kit ≠ vibe coding.</strong> Cada linea de codigo se rastrea hasta un requisito aprobado por una persona.
         </div>
         <div class="highlight-box callout-compact">
-          🤖 Compatible con: GitHub Copilot, Claude Code, Cursor, Gemini CLI, Windsurf, Codex CLI y <strong>+20 agentes</strong>!
+          🤖 Las integraciones evolucionan. Comprueba tu instalación con <code>specify integration list</code>.
         </div>
       </div>
     </div>
@@ -56,6 +56,7 @@
     <p>spec-kit operacionaliza el SDD: en lugar de hacer prompts por impulso, el ciclo comienza con la especificación. La CLI y los slash commands garantizan que el flujo sea repetible — cualquier miembro del equipo trabaja del mismo modo.</p>
     <p>Enfatizar que esto no es un framework teórico: es código instalable que el equipo puede adoptar ahora mismo.</p>
     <p>Flecha 1 — spec-kit en GitHub. Flecha 2 — CLI (specify). Flecha 3 — Slash commands. Flecha 4 — +20 agentes. Cierre: spec-kit es un puente entre la intención humana y la ejecución del agente.</p>
+    <p>Fuente oficial consultada el 2026-07-15: <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">github/spec-kit</a>. Caveat: los comandos, las integraciones y las formas de invocación evolucionan; valida la versión instalada antes de una demo.</p>
   </aside>
   </section>
 
@@ -71,12 +72,12 @@
         <h3 style="margin-bottom:0.5em; font-size:0.85em;">Opcion 1 - Instalacion permanente (recomendada)</h3>
         <pre><code class="language-bash"># Instala una vez, usalo en cualquier proyecto
 uv tool install specify-cli \
-  --from git+https://github.com/github/spec-kit.git
+  --from git+https://github.com/github/spec-kit.git@vX.Y.Z
 
-# Verifica herramientas disponibles
-specify check</code></pre>
+# Verifica versión y salud de la instalación
+specify self check</code></pre>
         <h3 style="margin-top:0.8em; margin-bottom:0.5em; font-size:0.85em;">Opcion 2 - Uso unico (sin instalar)</h3>
-        <pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git \
+        <pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z \
   specify init &lt;PROJECT_NAME&gt;</code></pre>
         <div class="highlight-box blue callout-compact">
           📋 <strong>Prerequisitos:</strong> Python 3.11+, <code>uv</code>, Git y un agente de IA soportado.
@@ -85,29 +86,24 @@ specify check</code></pre>
       <div>
         <h3 style="margin-bottom:0.5em; font-size:0.85em;">Inicializar proyecto</h3>
         <pre><code class="language-bash"># Nuevo proyecto con GitHub Copilot
-specify init mi-proyecto --ai copilot
+specify init mi-proyecto --integration copilot
 
-# En proyecto existente
-specify init --here --ai copilot
+# Proyecto actual con Agent Skills para Codex
+specify init . --integration codex \
+  --integration-options="--skills"
 
-# Windows (PowerShell)
-specify init mi-proyecto --ai copilot --script ps
-
-# Con AI Skills integradas
-specify init mi-proyecto --ai copilot --ai-skills
-
-# Con Claude Code
-specify init mi-proyecto --ai claude</code></pre>
+# Descubrir integraciones de esta instalación
+specify integration list</code></pre>
         <div class="highlight-box callout-compact">
-          🔧 <code>specify init</code> configura plantillas, slash commands (<code>/speckit.*</code>) y estructura de carpetas automaticamente.
+          🔧 <code>specify init</code> configura plantillas, contexto y comandos o Agent Skills para la integración.
         </div>
       </div>
     </div>
   <aside class="notes">
     <p>La parte práctica: dos modos de instalación. Se recomienda usar <code>uv tool install</code> para instalación permanente.</p>
     <p><code>specify init</code> prepara todo lo que el agente necesita: instrucciones, plantillas, estructura de carpetas. Después de eso, el agente ya tiene el contexto mínimo para comenzar el ciclo.</p>
-    <p>Mencionar que la opción <code>--ai-skills</code> instala skills especializadas (cubiertas en la sección de contexto más adelante).</p>
-    <p>Flechas: instalar → inicializar → validar con <code>specify check</code>. Cierre: configuracion en 5 minutos; ganancias de predictibilidad instantaneas.</p>
+    <p>Usa <code>specify integration list</code> para ver lo que la versión instalada realmente admite; las opciones no son universales.</p>
+    <p>Fuentes oficiales consultadas el 2026-07-15: <a href="https://github.github.io/spec-kit/reference/core.html" target="_blank" rel="noopener noreferrer">Core Commands</a> e <a href="https://github.com/github/spec-kit/blob/main/docs/reference/integrations.md" target="_blank" rel="noopener noreferrer">Integrations</a>. Caveat: sustituye <code>vX.Y.Z</code> por una etiqueta real y confirma las opciones en tu versión.</p>
   </aside>
   </section>
 
@@ -126,18 +122,19 @@ specify init mi-proyecto --ai claude</code></pre>
           <tbody>
             <tr><td><code>/speckit.constitution</code></td><td>Crea los principios y lineamientos del proyecto</td></tr>
             <tr><td><code>/speckit.specify</code></td><td>Define <em>que</em> construir (requisitos + historias de usuario)</td></tr>
-            <tr><td><code>/speckit.plan</code></td><td>Genera plan tecnico de implementacion (≈ PRD)</td></tr>
+            <tr><td><code>/speckit.plan</code></td><td>Crea <code>plan.md</code> con arquitectura y decisiones técnicas</td></tr>
             <tr><td><code>/speckit.tasks</code></td><td>Crea una lista de tareas accionables</td></tr>
             <tr><td><code>/speckit.implement</code></td><td>Ejecuta todas las tareas y construye el proyecto</td></tr>
           </tbody>
         </table>
-        <h3 style="margin-top:0.3em; margin-bottom:0.25em; font-size:0.82em;">🔍 Comandos opcionales</h3>
+        <h3 style="margin-top:0.3em; margin-bottom:0.25em; font-size:0.82em;">🔍 Calidad y Feedback</h3>
         <table class="table-compact" style="font-size:0.69em;">
           <thead><tr><th>Comando</th><th>Funcion</th></tr></thead>
           <tbody>
             <tr><td><code>/speckit.clarify</code></td><td>Aclara areas subespecificadas (antes del plan)</td></tr>
             <tr><td><code>/speckit.analyze</code></td><td>Analisis de consistencia entre artefactos</td></tr>
             <tr><td><code>/speckit.checklist</code></td><td>Genera checklists de calidad personalizados</td></tr>
+            <tr><td><code>/speckit.converge</code></td><td>Comprueba completitud y añade gaps a <code>tasks.md</code></td></tr>
           </tbody>
         </table>
       </div>
@@ -169,11 +166,13 @@ specify init mi-proyecto --ai claude</code></pre>
     <p>Los slash commands son la interfaz operacional de spec-kit dentro del agente. La secuencia lógica es: constitution → specify → plan → tasks → implement.</p>
     <p>En la práctica, no todos los entornos de agente soportan slash commands. La alternativa es usar la CLI y las plantillas manualmente — el resultado es el mismo, el flujo es equivalente.</p>
     <p>Flecha 1 — Comandos esenciales (core): constitution, specify, plan, tasks, implement. Flecha 2 — Comandos opcionales: clarify, analyze, checklist. Cierre: el comando solo funciona bien si el contexto (PRD, constitution) viene antes.</p>
+    <p>Después de implementar, <code>/speckit.converge</code> comprueba la completitud y añade el trabajo restante a <code>tasks.md</code>; si quedan gaps, el ciclo vuelve a la implementación.</p>
+    <p>Fuentes oficiales consultadas el 2026-07-15: <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">README de spec-kit</a> y <a href="https://github.github.io/spec-kit/guides/evolving-specs.html" target="_blank" rel="noopener noreferrer">Evolving Specs</a>. Caveat: la invocación puede usar un slash command o una Agent Skill según la integración.</p>
   </aside>
   </section>
 
   <!-- spec-kit 4 — Flujo SDD Pipeline -->
-  <section data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,255,157,0.04) 0%, transparent 70%)">
+  <section id="fluxo-sdd-spec-kit" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,255,157,0.04) 0%, transparent 70%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="refresh-cw"></i></span>
       <span class="section-label">02 / spec-kit — Flujo SDD</span>
@@ -205,7 +204,7 @@ specify init mi-proyecto --ai claude</code></pre>
         </div>
         <div class="sdd-step-label">
           <strong>Constitucion</strong>
-          <code>/constitution</code>
+          <code>/speckit.constitution</code>
         </div>
       </div>
 
@@ -220,7 +219,7 @@ specify init mi-proyecto --ai claude</code></pre>
         </div>
         <div class="sdd-step-label">
           <strong>Especificacion</strong>
-          <code>/specify</code>
+          <code>/speckit.specify</code>
         </div>
       </div>
 
@@ -235,23 +234,23 @@ specify init mi-proyecto --ai claude</code></pre>
         </div>
         <div class="sdd-step-label">
           <strong>Planificacion</strong>
-          <code>/plan</code>
+          <code>/speckit.plan</code>
         </div>
       </div>
 
       <div class="sdd-connector"><div class="sdd-line sdd-line--gold"></div></div>
 
-      <div class="sdd-step sdd-step--human">
+      <div class="sdd-step">
         <div class="sdd-circle-wrap">
-          <div class="sdd-circle sdd-circle--human" style="animation-delay:1.4s">
-            <i data-lucide="user-check"></i>
+          <div class="sdd-circle" style="animation-delay:1.4s">
+            <i data-lucide="list-checks"></i>
           </div>
+          <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
         </div>
         <div class="sdd-step-label">
-          <strong>✅ Aprobacion</strong>
-          <code>puerta humana</code>
+          <strong>Tareas</strong>
+          <code>/speckit.tasks</code>
         </div>
-        <div class="sdd-loop-note">↩ rechazado → /plan</div>
       </div>
 
       <div class="sdd-connector"><div class="sdd-line"></div></div>
@@ -264,8 +263,8 @@ specify init mi-proyecto --ai claude</code></pre>
           <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
         </div>
         <div class="sdd-step-label">
-          <strong>Tareas</strong>
-          <code>/tasks</code>
+          <strong>Implementar</strong>
+          <code>/speckit.implement</code>
         </div>
       </div>
 
@@ -274,129 +273,103 @@ specify init mi-proyecto --ai claude</code></pre>
       <div class="sdd-step sdd-step--deploy">
         <div class="sdd-circle-wrap">
           <div class="sdd-circle sdd-circle--deploy" style="animation-delay:2.1s">
-            <i data-lucide="upload-cloud"></i>
+            <i data-lucide="refresh-cw"></i>
           </div>
           <div class="sdd-hitl-badge"><i data-lucide="user"></i></div>
         </div>
         <div class="sdd-step-label">
-          <strong>Implementar</strong>
-          <code>/implement</code>
+          <strong>Converger</strong>
+          <code>/speckit.converge</code>
         </div>
+        <div class="sdd-loop-note">↩ gaps → implementar</div>
       </div>
 
     </div>
 
     <div class="highlight-box" style="margin-top:0.5em; font-size:0.75em;">
-    📌 <strong>Human-in-the-Loop:</strong> cada artefacto generado por spec-kit se revisa antes de avanzar. La IA ejecuta; el humano valida, corrige y aprueba.
+    📌 <strong>Feedback loop:</strong> usa <code>/speckit.analyze</code> antes de implementar; después, <code>/speckit.converge</code> añade gaps a <code>tasks.md</code> y el ciclo se repite con revisión humana.
     </div>
   <aside class="notes">
-    <p>El pipeline muestra el flujo completo de punta a punta — es el "contrato" que el equipo firma con el proceso SDD.</p>
-    <p>Cada etapa tiene una puerta humana real: no es solo un rubber-stamp. El bucle de rechazo (rechazado → /plan) es intencional — ahí es donde se preserva la calidad.</p>
-    <p>Flecha 1 — init. Flecha 2 — constitution (puerta humana). Flecha 3 — specify (puerta humana). Flecha 4 — plan (puerta humana). Flecha 5 — aprobación (puerta humana). Flecha 6 — tasks (puerta humana). Flecha 7 — implement (puerta humana). Cierre: cada flecha dorada es un punto donde un humano dice "ok, adelante."</p>
+    <p>El flujo mantiene vivos los artefactos: constitución, spec, plan y tareas guían la implementación, y la implementación vuelve a compararse con ellos.</p>
+    <p><code>/speckit.analyze</code> es un control de calidad recomendado entre tareas e implementación. <code>/speckit.converge</code> comprueba completitud y añade gaps a <code>tasks.md</code>; si queda trabajo, repetimos implement → converge.</p>
+    <p>Los iconos de persona no son decorativos: los cambios de artefactos y los nuevos lotes de tareas requieren revisión antes de continuar.</p>
+    <p>Fuente oficial consultada el 2026-07-15: <a href="https://github.github.io/spec-kit/guides/evolving-specs.html" target="_blank" rel="noopener noreferrer">Evolving Specs</a>. Caveat: <code>converge</code> cierra gaps; no sustituye la aprobación humana ni garantiza calidad por sí solo.</p>
   </aside>
   </section>
 
-  <!-- spec-kit 5 — PRD.md: artefacto central -->
+  <!-- spec-kit 5 — Artefactos canónicos -->
   <section>
     <div class="section-header">
       <span class="section-icon"><i data-lucide="clipboard-list"></i></span>
-      <span class="section-label">02 / spec-kit — PRD.md</span>
+      <span class="section-label">02 / spec-kit — Artefactos</span>
     </div>
-    <h2>PRD.md — <span class="accent">Punto de partida</span></h2>
+    <h2>Artefactos <span class="accent">Canónicos</span></h2>
     <div class="two-cols">
       <div>
         <div class="definition" style="margin-bottom:0.7em;">
-          <p>Tu <strong>defines</strong> el proyecto y creas el <strong>PRD.md</strong> con un prompt. Luego usas un prompt junto con <code>/speckit.specify</code> para que el agente lea ese archivo e inicie el ciclo: <em>specify → plan → tasks → implement</em>.</p>
+          <p>La intención humana se convierte en una cadena trazable: la <strong>spec</strong> define qué y por qué; el <strong>plan</strong> registra arquitectura y decisiones técnicas; las <strong>tasks</strong> organizan la ejecución.</p>
         </div>
-        <pre><code class="language-markdown"># PRD: [Nombre del Proyecto]
-
-## 1. Vision General
-Descripcion concisa del producto y objetivos.
-
-## 2. Requisitos funcionales
-- **RF01**: El sistema debe...
-- **RF02**: El sistema debe...
-
-## 3. Requisitos No Funcionales
-Rendimiento, seguridad, accesibilidad.
-
-## 4. Criterios de Aceptacion
-- **CA01**: Comprobable y verificable...
-
-## 5. Preguntas abiertas
-- Ambiguedades por resolver...</code></pre>
+        <pre><code class="language-text">.specify/memory/constitution.md
+specs/&lt;feature&gt;/
+├── spec.md    # qué / por qué
+├── plan.md    # arquitectura / tech
+└── tasks.md   # ejecución trazable</code></pre>
+        <div class="highlight-box blue callout-compact">
+          📋 Un <code>PRD.md</code> existente puede ser entrada o referencia; no es un output canónico obligatorio de <code>/speckit.plan</code>.
+        </div>
       </div>
       <div>
-        <div class="highlight-box" style="margin-bottom:0.7em;">
-          <strong>Por que importa PRD.md para la IA?</strong>
-          <ul style="font-size:0.85em; margin-top:0.4em;">
-            <li>Usa IDs unicos <code>RF01</code>, <code>CA01</code> para trazabilidad</li>
-            <li>Criterios de aceptacion comprobables y objetivos</li>
-            <li>Versionado en Git — historial de decisiones</li>
-            <li>Leido por humanos <em>y</em> maquinas</li>
-          </ul>
-        </div>
-        <table style="font-size:0.7em;">
-          <thead><tr><th>Sin PRD.md</th><th>Con PRD.md</th></tr></thead>
+        <table class="table-compact" style="font-size:0.68em;">
+          <thead><tr><th>Comando</th><th>Artefacto / intención</th></tr></thead>
           <tbody>
-            <tr><td>Contexto vago y efimero</td><td>Contexto estructurado y persistente</td></tr>
-            <tr><td>Alucinaciones frecuentes</td><td>Alucinaciones drasticamente reducidas</td></tr>
-            <tr><td>Trazabilidad imposible</td><td>Automatica via IDs (RF, CA)</td></tr>
-            <tr><td>Onboarding lento</td><td>Rapido con PRD.md + AGENTS.md</td></tr>
+            <tr><td><code>constitution</code></td><td>principios y gobernanza</td></tr>
+            <tr><td><code>specify</code></td><td><code>spec.md</code>: qué / por qué</td></tr>
+            <tr><td><code>plan</code></td><td><code>plan.md</code>: arquitectura y decisiones técnicas</td></tr>
+            <tr><td><code>tasks</code></td><td><code>tasks.md</code>: ejecución trazable</td></tr>
+            <tr><td><code>implement</code></td><td>cambios en el código</td></tr>
+            <tr><td><code>converge</code></td><td>gaps añadidos a <code>tasks.md</code></td></tr>
           </tbody>
         </table>
       </div>
     </div>
   <aside class="notes">
-    <p>El PRD.md es el artefacto central: una especificación estructurada que el agente lee para ejecutar. La clave es que debe ser legible tanto por humanos como por máquinas — sin ambigüedad.</p>
-    <p>Los IDs de trazabilidad (RF01, CA01) parecen exceso de ingeniería hasta el momento en que necesitamos auditar por qué el agente generó ese código. Entonces se vuelven esenciales.</p>
-    <p>Flechas 1–3: objetivos, requisitos, criterios. Flecha 4 — tabla "sin PRD vs con PRD". Cierre: el PRD.md es el punto de entrada del agente — a mejor PRD, más predecible la salida.</p>
+    <p>Este slide corrige una distinción importante: <code>/speckit.plan</code> crea el plan técnico, no un PRD canónico.</p>
+    <p>Un PRD existente puede enriquecer la entrada, pero los artefactos operativos son la constitución, <code>spec.md</code>, <code>plan.md</code> y <code>tasks.md</code>, seguidos por el código y la convergencia.</p>
+    <p>Fuentes oficiales consultadas el 2026-07-15: <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">README de spec-kit</a> y <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md" target="_blank" rel="noopener noreferrer">spec-driven.md</a>. Caveat: extensiones y presets pueden añadir artefactos sin cambiar el papel de los artefactos core.</p>
   </aside>
   </section>
 
-  <!-- spec-kit 6 — Mini Checklist de Calidad -->
+  <!-- spec-kit 6 — Agent Skills -->
   <section data-background-gradient="radial-gradient(ellipse 75% 50% at 85% 20%, rgba(56,200,250,0.06) 0%, transparent 65%)">
     <div class="section-header">
-      <span class="section-icon"><i data-lucide="clipboard-check"></i></span>
-      <span class="section-label">02 / spec-kit — Checklist Operacional</span>
+      <span class="section-icon"><i data-lucide="blocks"></i></span>
+      <span class="section-label">02 / spec-kit — Agent Skills</span>
     </div>
-    <h2>Mini Checklist de <span class="accent">Calidad</span> (Spec → Plan → Tasks)</h2>
+    <h2>Agent Skills + <span class="accent">SKILL.md</span></h2>
     <div class="card-grid-3" style="gap:0.7em; margin-top:0.7em;">
       <div class="card" style="border-color:var(--accent-green);">
-        <span class="card-icon"><i data-lucide="file-text"></i></span>
-        <h3 style="font-size:0.9em;">Spec</h3>
-        <ul class="checklist" style="font-size:0.74em;">
-          <li class="check">Objetivos + no objetivos explicitos</li>
-          <li class="check">Criterios de aceptacion comprobables</li>
-          <li class="check">Ejemplos y casos borde relevantes</li>
-        </ul>
+        <span class="card-icon"><i data-lucide="folder-cog"></i></span>
+        <h3 style="font-size:0.9em;">Paquete portátil</h3>
+        <p style="font-size:0.74em;">Cada skill vive en su propio directorio, con instrucciones en el archivo de entrada obligatorio <code>SKILL.md</code>.</p>
       </div>
       <div class="card" style="border-color:var(--accent-blue);">
-        <span class="card-icon"><i data-lucide="git-branch"></i></span>
-        <h3 style="font-size:0.9em;">Plan</h3>
-        <ul class="checklist" style="font-size:0.74em;">
-          <li class="check">Descomposicion incremental por etapas</li>
-          <li class="check">Dependencias y riesgos mapeados</li>
-          <li class="check">Puerta de revision humana antes de implementar</li>
-        </ul>
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3 style="font-size:0.9em;">Instalación</h3>
+        <p style="font-size:0.74em;">Las integraciones compatibles aceptan <code>--integration-options="--skills"</code> para generar Agent Skills.</p>
       </div>
       <div class="card" style="border-color:var(--accent-purple);">
-        <span class="card-icon"><i data-lucide="circle-check"></i></span>
-        <h3 style="font-size:0.9em;">Tasks</h3>
-        <ul class="checklist" style="font-size:0.74em;">
-          <li class="check">Small batches (cambios pequenos)</li>
-          <li class="check">Verificacion en cada lote (test/lint/build)</li>
-          <li class="check">Evidencia de finalizacion por tarea</li>
-        </ul>
+        <span class="card-icon"><i data-lucide="route"></i></span>
+        <h3 style="font-size:0.9em;">Invocación</h3>
+        <p style="font-size:0.74em;">El nombre y la sintaxis varían según el agente; la skill conserva la intención del comando spec-kit.</p>
       </div>
     </div>
     <div class="highlight-box blue" style="margin-top:0.65em; font-size:0.74em;">
-      ✅ Si el checklist pasa, el agente gana velocidad <em>sin</em> perder confiabilidad.
+      <code>speckit-plan/</code> → <code>SKILL.md</code> + recursos opcionales. Consulta la integración para conocer ruta e invocación.
     </div>
   <aside class="notes">
-    <p>El checklist opera en tres capas: spec, plan, tasks. Cada una tiene un conjunto mínimo de criterios que, al verificarse, reducen drásticamente el riesgo de retrabajo.</p>
-    <p>Los "small batches" en tasks no son opcionales — es el mecanismo que evita que el agente realice cambios grandes y difíciles de revertir.</p>
-    <p>Flechas 1–3: Spec → Plan → Tasks. Cierre: si el checklist pasa, el agente gana velocidad SIN perder confiabilidad.</p>
+    <p>Agent Skills empaquetan instrucciones reutilizables en directorios cuyo punto de entrada es <code>SKILL.md</code>. Spec-kit puede generar este formato para integraciones compatibles.</p>
+    <p>La invocación no es universal: algunas superficies usan slash commands y otras nombres de skill. El contrato duradero es el directorio de la skill y su <code>SKILL.md</code>.</p>
+    <p>Fuentes oficiales consultadas el 2026-07-15: <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">README de spec-kit</a> e <a href="https://github.com/github/spec-kit/blob/main/docs/reference/integrations.md" target="_blank" rel="noopener noreferrer">Integrations</a>. Caveat: soporte, directorios y sintaxis dependen de la integración y la versión instalada.</p>
   </aside>
   </section>
 
@@ -406,47 +379,48 @@ Rendimiento, seguridad, accesibilidad.
       <span class="section-icon"><i data-lucide="bot"></i></span>
       <span class="section-label">02 / spec-kit — Agentes Soportados</span>
     </div>
-    <h2>Agentes de IA <span class="accent">soportados</span></h2>
-    <p style="font-size:0.75em; text-align:center; margin-bottom:0.6em;">spec-kit es agnostico al agente. Funciona con los principales asistentes de codigo con IA del mercado.</p>
+    <h2>Integraciones <span class="accent">Descubiertas por la CLI</span></h2>
+    <p style="font-size:0.75em; text-align:center; margin-bottom:0.6em;">Ejemplos documentados en la fecha de consulta — confirma siempre en la versión instalada.</p>
     <div class="card-grid-3" style="gap:0.55em; margin-top:0.4em;">
       <div class="card" style="border-color:rgba(124,92,252,0.5); text-align:center; padding:0.6em;">
         <span class="card-icon"><i data-lucide="sparkles"></i></span>
         <h3 style="color:var(--accent-copilot-light); font-size:0.88em;">GitHub Copilot</h3>
-        <span class="tag purple">✅ Soporte Completo</span>
+        <span class="tag purple">Integración documentada</span>
       </div>
       <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="brain"></i></span>
         <h3 style="font-size:0.88em;">Claude Code</h3>
-        <span class="tag">✅ Soporte Completo</span>
+        <span class="tag">Integración documentada</span>
       </div>
       <div class="card fragment" style="border-color:rgba(56,200,250,0.35); text-align:center; padding:0.6em;">
         <span class="card-icon"><i data-lucide="mouse-pointer-2"></i></span>
         <h3 style="color:var(--accent-blue); font-size:0.88em;">Cursor</h3>
-        <span class="tag blue">✅ Soporte Completo</span>
+        <span class="tag blue">Integración documentada</span>
       </div>
       <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="globe"></i></span>
         <h3 style="font-size:0.88em;">Gemini CLI</h3>
-        <span class="tag green">✅ Soporte Completo</span>
-      </div>
-      <div class="card fragment card--center-compact">
-        <span class="card-icon"><i data-lucide="wind"></i></span>
-        <h3 style="font-size:0.88em;">Windsurf</h3>
-        <span class="tag">✅ Soporte Completo</span>
+        <span class="tag green">Integración documentada</span>
       </div>
       <div class="card fragment card--center-compact">
         <span class="card-icon"><i data-lucide="code-2"></i></span>
         <h3 style="font-size:0.88em;">Codex CLI</h3>
-        <span class="tag">✅ Soporte Completo</span>
+        <span class="tag">Agent Skills</span>
+      </div>
+      <div class="card fragment card--center-compact">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3 style="font-size:0.88em;">Devin for Terminal</h3>
+        <span class="tag">Agent Skills</span>
       </div>
     </div>
     <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.73em;">
-      🌍 <strong>+20 agentes soportados:</strong> Amp, Auggie CLI, Jules, Kilo Code, opencode, Qwen Code, Roo Code, SHAI (OVHcloud), IBM Bob, Amazon Q Developer CLI y mas!
+      🌍 <strong>Fuente de verdad local:</strong> ejecuta <code>specify integration list</code>. Las integraciones pueden añadirse, renombrarse o retirarse.
     </div>
   <aside class="notes">
     <p>spec-kit fue diseñado para ser agnóstico al agente desde el principio. El mismo flujo — constitution, specify, plan, tasks, implement — funciona independientemente del agente que elija el equipo.</p>
-    <p>Esto es estratégicamente intencional: evita el vendor lock-in con cualquier agente específico. El equipo puede cambiar de Copilot a Claude Code a Cursor sin reescribir el proceso.</p>
-    <p>Flecha 1 — soporte completo (Copilot, Claude, Cursor). Flecha 2 — soporte completo (Gemini CLI, Windsurf, Codex CLI). Flecha 3 — +20 agentes adicionales. Cierre: el proceso es más duradero que cualquier herramienta específica.</p>
+    <p>Los cards son ejemplos confirmados, no un catálogo fijo. La fuente de verdad para la audiencia es <code>specify integration list</code> ejecutado en la instalación del equipo.</p>
+    <p>Flechas 1–5: Claude Code → Cursor → Gemini CLI → Codex CLI → Devin for Terminal. Cierre: el proceso y los artefactos duran más que una plataforma específica.</p>
+    <p>Fuente oficial consultada el 2026-07-15: <a href="https://github.com/github/spec-kit/blob/main/docs/reference/integrations.md" target="_blank" rel="noopener noreferrer">Supported AI Coding Agent Integrations</a>. Superficie: CLI actual. Plan/status: ejemplos documentados en la consulta. Caveat: la lista cambia; confirma con <code>specify integration list</code>.</p>
   </aside>
   </section>
 

@@ -17,12 +17,15 @@ export interface AppMessages {
   slidesLoadDetails: string;
   partLoadTitle: string;
   partLoadDetails: (partIdx: number, reason: string) => string;
+  invalidPartPathReason: string;
+  emptyPartReason: string;
+  unknownPartReason: string;
   sourceLabel: string;
 }
 
 const APP_MESSAGES: Record<Locale, AppMessages> = {
   'pt-BR': {
-    documentTitle: 'Spec-Driven Development com AI Coding Agents | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development com AI Coding Agents | Julho 2026 | Glaucia Lemos',
     description:
       'Apresentação técnica sobre Spec-Driven Development (SDD) com AI Coding Agents: specs estruturadas, Codex/Copilot, economia de contexto e código previsível.',
     backToSummaryTitle: 'Voltar ao Sumário',
@@ -40,10 +43,13 @@ const APP_MESSAGES: Record<Locale, AppMessages> = {
     partLoadTitle: 'Erro ao carregar seção',
     partLoadDetails: (partIdx: number, reason: string): string =>
       `A seção #${partIdx} não pôde ser carregada (${reason}).`,
+    invalidPartPathReason: 'O path da seção é vazio, absoluto, externo ou contém traversal.',
+    emptyPartReason: 'A seção carregada não contém HTML.',
+    unknownPartReason: 'Erro de carregamento desconhecido.',
     sourceLabel: 'Origem',
   },
   'en-US': {
-    documentTitle: 'Spec-Driven Development with AI Coding Agents | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development with AI Coding Agents | July 2026 | Glaucia Lemos',
     description:
       'Technical talk about Spec-Driven Development (SDD) with AI Coding Agents: structured specs, Codex/Copilot, context economy, and predictable code.',
     backToSummaryTitle: 'Back to Agenda',
@@ -61,10 +67,13 @@ const APP_MESSAGES: Record<Locale, AppMessages> = {
     partLoadTitle: 'Failed to load section',
     partLoadDetails: (partIdx: number, reason: string): string =>
       `Section #${partIdx} could not be loaded (${reason}).`,
+    invalidPartPathReason: 'The section path is empty, absolute, external, or contains traversal.',
+    emptyPartReason: 'The loaded section contains no HTML.',
+    unknownPartReason: 'Unknown loading error.',
     sourceLabel: 'Source',
   },
   'es-ES': {
-    documentTitle: 'Spec-Driven Development con AI Coding Agents | Glaucia Lemos',
+    documentTitle: 'Spec-Driven Development con AI Coding Agents | Julio de 2026 | Glaucia Lemos',
     description:
       'Presentación técnica sobre Spec-Driven Development (SDD) con AI Coding Agents: specs estructuradas, Codex/Copilot, economía de contexto y código predecible.',
     backToSummaryTitle: 'Volver al Resumen',
@@ -82,6 +91,9 @@ const APP_MESSAGES: Record<Locale, AppMessages> = {
     partLoadTitle: 'Error al cargar sección',
     partLoadDetails: (partIdx: number, reason: string): string =>
       `No se pudo cargar la sección #${partIdx} (${reason}).`,
+    invalidPartPathReason: 'El path de la sección está vacío, es absoluto, externo o contiene traversal.',
+    emptyPartReason: 'La sección cargada no contiene HTML.',
+    unknownPartReason: 'Error de carga desconocido.',
     sourceLabel: 'Origen',
   },
 };

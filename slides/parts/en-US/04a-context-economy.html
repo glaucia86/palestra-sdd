@@ -1,0 +1,151 @@
+<section id="context-economy" aria-label="Context Economy">
+  <section id="economia-contexto" data-idea-count="3" data-transition="fade" data-background-gradient="radial-gradient(ellipse 72% 55% at 18% 82%, rgba(255,205,71,0.08) 0%, transparent 60%)" aria-label="Context treated as a budget">
+    <div class="section-header"><span class="section-icon"><i data-lucide="wallet-cards"></i></span><span class="section-label">04A / Context Economy</span></div>
+    <h2>Context Is a <span class="accent">Budget</span></h2>
+    <div class="context-budget-vector context-economy-visual" role="list" aria-label="Dimensions consumed by context">
+      <article class="fragment" role="listitem"><i data-lucide="brain"></i><strong>Attention</strong><span>active relevance</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="braces"></i><strong>Tokens</strong><span>input and output</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="timer"></i><strong>Latency</strong><span>decision time</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="gauge"></i><strong>Quota</strong><span>available capacity</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="scan-search"></i><strong>Review</strong><span>cost of confidence</span></article>
+    </div>
+    <div class="highlight-box orange">The goal is not to fill the window. It is to preserve <strong>high-quality decisions</strong> through the terminal state.</div>
+    <p style="font-size:0.5em; color:var(--text-muted); text-align:center;">↓ press ↓ to continue in this section</p>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> context is a multidimensional resource: attention, tokens, latency, quota, and review effort compete throughout the session.</p>
+      <p><strong>Executive impact:</strong> excess context surfaces as rework, delay, and decisions that are harder to audit, not merely as a larger bill.</p>
+      <p><strong>Control and KPI:</strong> bound the task and track first-pass acceptance, retries, review time, and total cost per accepted outcome.</p>
+      <p><strong>Caveat:</strong> no single dimension proves quality; calibrate the budget to the risk and nature of the work.</p>
+    </aside>
+  </section>
+
+  <section id="capacidade-contexto" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 82% 18%, rgba(56,200,250,0.08) 0%, transparent 60%)" aria-label="Maximum capacity, active context, and useful context">
+    <div class="section-header"><span class="section-icon"><i data-lucide="boxes"></i></span><span class="section-label">04A / Capacity ≠ Utility</span></div>
+    <h2>What Fits Is Not What <span class="accent">Helps</span></h2>
+    <div class="context-capacity-visual context-economy-visual" role="img" aria-label="Three nested boxes: maximum window contains active context, which contains useful context">
+      <div class="context-capacity-level context-capacity-level--max"><span>Maximum window</span>
+        <div class="context-capacity-level context-capacity-level--active"><span>Active context</span>
+          <div class="context-capacity-level context-capacity-level--useful"><span>Useful context</span><strong>relevant · current · actionable</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight-box blue"><strong>maximum window ≠ active context ≠ useful context</strong></div>
+    <p style="font-size:0.5em; text-align:center; color:var(--text-muted);">Sources: <a href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener noreferrer">Lost in the Middle</a> · <a href="https://www.trychroma.com/research/context-rot" target="_blank" rel="noopener noreferrer">Chroma Context Rot</a></p>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> the window is nominal capacity; active context is the content present; useful context is the relevant, current, and actionable subset.</p>
+      <p><strong>Executive impact:</strong> more capacity can expand the options, but it does not remove noise, contradictions, or review cost.</p>
+      <p><strong>Control and KPI:</strong> measure retrieval precision, regressions, retries, and time to a verifiable decision.</p>
+      <p><strong>Caveat:</strong> Lost in the Middle and Context Rot show conditional degradation; they do not establish a universal percentage for coding agents.</p>
+    </aside>
+  </section>
+
+  <section id="smart-zone-contexto" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 18% 82%, rgba(0,221,179,0.08) 0%, transparent 60%)" aria-label="Smart Zone and degradation zone as a tunable heuristic">
+    <div class="section-header"><span class="section-icon"><i data-lucide="activity"></i></span><span class="section-label">04A / Smart Zone</span></div>
+    <h2>Watch Signals, Not a <span class="accent">Magic Number</span></h2>
+    <div class="context-zone-bar context-economy-visual" role="img" aria-label="Operating range with Smart Zone, warning zone, and degradation zone, without fixed percentages">
+      <article class="context-zone context-zone--smart fragment"><span class="tag green">Smart Zone</span><strong>one slice · one source of truth</strong><small>single outcome, concise evidence, clear decision</small></article>
+      <article class="context-zone context-zone--alert fragment"><span class="tag orange">Warning zone</span><strong>signals accumulating</strong><small>slow review, imprecise retrieval, growing diff</small></article>
+      <article class="context-zone context-zone--degrade fragment"><span class="tag red">Degradation zone</span><strong>operational clarity dropped</strong><small>competing goals, stale docs, retries, and verbose outputs</small></article>
+    </div>
+    <div class="highlight-box"><strong>Tunable heuristic:</strong> end, compact, or isolate when the signals reduce confidence and verifiability.</div>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> Smart Zone names a healthy operating range; the warning zone appears before degradation and relies on observable signals.</p>
+      <p><strong>Executive impact:</strong> detecting lost clarity early reduces long sessions, broad diffs, and unproductive review cycles.</p>
+      <p><strong>Control and KPI:</strong> monitor simultaneous goals, retries, output volume, diff size, regressions, and review time.</p>
+      <p><strong>Caveat:</strong> this is a tunable heuristic, not a scientific benchmark or a fixed limit for any model or context window.</p>
+    </aside>
+  </section>
+
+  <section id="cache-nao-atencao" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 82% 18%, rgba(146,119,255,0.08) 0%, transparent 60%)" aria-label="Difference between prompt caching and context-window management">
+    <div class="section-header"><span class="section-icon"><i data-lucide="database-zap"></i></span><span class="section-label">04A / Cache ≠ Free Space</span></div>
+    <h2>Cache Saves Computation; It Does Not Free the <span class="accent">Window</span></h2>
+    <div class="context-mechanism-grid context-economy-visual" role="list" aria-label="Three questions that distinguish caching from context management">
+      <article class="fragment" role="listitem"><i data-lucide="database-zap"></i><strong>What does cache do?</strong><span>reuses an identical prefix and may reduce cost and latency</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="panel-top"></i><strong>What does it not do?</strong><span>cache-read tokens still count toward the context window</span></article>
+      <article class="fragment" role="listitem"><i data-lucide="filter"></i><strong>How do we free space?</strong><span>defer, edit, summarize, or isolate content that need not remain</span></article>
+    </div>
+    <div class="highlight-box purple"><strong>Cache answers “what does reprocessing cost?”</strong> Context management answers “what still needs to be in the window?”</div>
+    <p style="font-size:0.5em; text-align:center; color:var(--text-muted);">Sources: <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Prompt Caching</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank" rel="noopener noreferrer">Context Windows</a></p>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> prompt caching avoids reprocessing an identical prefix, but cache-read tokens still compose the window; Progressive Disclosure, context editing, compaction, and isolation act on present content.</p>
+      <p><strong>Executive impact:</strong> cache may reduce cost and latency without improving relevance or fixing stale documentation.</p>
+      <p><strong>Control and KPI:</strong> track cache hit rate alongside window use, first-pass acceptance, regressions, and review time.</p>
+      <p><strong>Caveat:</strong> a cache hit proves computational reuse, not the quality or relevance of reused content.</p>
+    </aside>
+  </section>
+
+  <section id="context-budget" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 18% 82%, rgba(255,120,73,0.08) 0%, transparent 60%)" aria-label="Context budget with six dimensions and backpressure">
+    <div class="section-header"><span class="section-icon"><i data-lucide="sliders-horizontal"></i></span><span class="section-label">04A / Context Budget</span></div>
+    <h2>Explicit Limits Create <span class="accent">Backpressure</span></h2>
+    <div class="context-budget-grid context-economy-visual" data-budget-dimensions="context,cost,time,attempts,parallelism,diff" role="list" aria-label="Budget for context, cost, time, attempts, parallelism, and diff">
+      <article class="fragment" role="listitem"><span>01</span><strong>Context</strong><small>sources and target artifacts</small></article>
+      <article class="fragment" role="listitem"><span>02</span><strong>Cost</strong><small>model, tools, and review</small></article>
+      <article class="fragment" role="listitem"><span>03</span><strong>Time</strong><small>maximum duration</small></article>
+      <article class="fragment" role="listitem"><span>04</span><strong>Attempts</strong><small>bounded retries</small></article>
+      <article class="fragment" role="listitem"><span>05</span><strong>Parallelism</strong><small>controlled WIP</small></article>
+      <article class="fragment" role="listitem"><span>06</span><strong>Diff</strong><small>reviewable change</small></article>
+    </div>
+    <div class="context-budget-signal" aria-label="Evidence and reserve policy"><span class="tag green">✓ summarize success</span><span class="tag red">failure preserves evidence</span><span class="tag orange">reserve capacity to verify and exit</span></div>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> the context budget combines limits for context, cost, time, attempts, parallelism, and diff size per slice.</p>
+      <p><strong>Executive impact:</strong> backpressure makes effort, review, and the point for stopping a degraded execution more predictable.</p>
+      <p><strong>Control and KPI:</strong> record consumed budget, retries, WIP, diff churn, and the share of outcomes accepted on the first pass.</p>
+      <p><strong>Caveat:</strong> the budget is a guardrail, not a consumption target; reserve capacity to verify, document failures, and produce a handoff.</p>
+    </aside>
+  </section>
+
+  <section id="vertical-slices" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 82% 18%, rgba(56,200,250,0.08) 0%, transparent 60%)" aria-label="Complete contract for an end-to-end Vertical Slice">
+    <div class="section-header"><span class="section-icon"><i data-lucide="panels-top-left"></i></span><span class="section-label">04A / Vertical Slices</span></div>
+    <h2>A Slice Ends in a <span class="accent">Verifiable Outcome</span></h2>
+    <div class="slice-contract context-economy-visual" data-contract-fields="id,title,outcome,status,execution_mode,owner,model_class,context_budget,depends_on,in_scope,out_of_scope,acceptance_criteria,relevant_interfaces,validation_commands,manual_validation,risks,rollback,handoff_required,terminal_states" role="group" aria-label="Complete VS-042 example for retrieving an order by ID">
+      <article class="fragment"><h3>Identity</h3><dl><dt>id · title</dt><dd><code>VS-042</code> · Retrieve order</dd><dt>outcome</dt><dd>order visible by authorized ID</dd><dt>status</dt><dd><code>ready</code></dd></dl></article>
+      <article class="fragment"><h3>Execution</h3><dl><dt>execution_mode · owner · model_class</dt><dd><code>HITL · pair · balanced</code></dd><dt>context_budget</dt><dd>order-by-id · 3 iter · 1 task · 90 min</dd><dt>depends_on</dt><dd><code>[API contract]</code></dd></dl></article>
+      <article class="fragment"><h3>Scope</h3><dl><dt>in_scope</dt><dd>UI + API + auth + test</dd><dt>out_of_scope</dt><dd>batch export</dd><dt>relevant_interfaces</dt><dd><code>GET /orders/:id</code></dd></dl></article>
+      <article class="fragment"><h3>Evidence and exit</h3><dl><dt>acceptance_criteria</dt><dd>200 authorized · 404 missing</dd><dt>validation_commands</dt><dd><code>npm test -- order</code></dd><dt>manual_validation</dt><dd>UI: happy path + 404</dd><dt>risks · rollback</dt><dd>data leak · feature flag off</dd><dt>handoff_required · terminal_states</dt><dd>true · DONE / BLOCKED / REVIEW</dd></dl></article>
+    </div>
+    <div class="highlight-box orange"><strong>Rejected:</strong> “replace the framework across every layer” is a broad horizontal task — neither end-to-end nor independently verifiable.</div>
+    <p style="font-size:0.5em; text-align:center; color:var(--text-muted);">Conceptual basis: <a href="https://www.jimmybogard.com/vertical-slice-architecture/" target="_blank" rel="noopener noreferrer">Vertical Slice Architecture</a>; the agentic contract is an adaptation for this talk.</p>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> the slice fills identity, outcome, state, execution, owner, model, budget, dependencies, scope, criteria, interfaces, validation, risk, rollback, handoff, and terminal states.</p>
+      <p><strong>Executive impact:</strong> an end-to-end unit lets teams prioritize value, estimate risk, and review evidence without waiting for an entire horizontal initiative.</p>
+      <p><strong>Control and KPI:</strong> track lead time per slice, first-pass acceptance, regressions, and the number of handoffs required to reach DONE_VERIFIED.</p>
+      <p><strong>Caveat:</strong> “Vertical Slice Context Engineering” is an agentic adaptation; it is not a formal pattern attributed to Jimmy Bogard.</p>
+    </aside>
+  </section>
+
+  <section id="ai-handoff" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 18% 82%, rgba(146,119,255,0.08) 0%, transparent 60%)" aria-label="Minimum AI Handoff envelope">
+    <div class="section-header"><span class="section-icon"><i data-lucide="package-check"></i></span><span class="section-label">04A / AI Handoff</span></div>
+    <h2>Transfer State, Not the <span class="accent">Transcript</span></h2>
+    <div class="handoff-envelope context-economy-visual" role="group" aria-label="Handoff envelope with state, evidence, and continuity">
+      <article class="fragment"><span class="card-icon"><i data-lucide="map-pinned"></i></span><h3>Minimum state</h3><p><strong>goal · source of truth</strong></p><p>completed · remaining</p><p>branch/worktree · changed files</p></article>
+      <article class="fragment"><span class="card-icon"><i data-lucide="clipboard-check"></i></span><h3>Evidence</h3><p>commands · results</p><p><strong>failed checks</strong></p><p>decisions · hypotheses</p></article>
+      <article class="fragment"><span class="card-icon"><i data-lucide="route"></i></span><h3>Continuity</h3><p>blockers · risks · budget</p><p>do not do · next action</p><p><strong>next owner · terminal state</strong></p></article>
+    </div>
+    <div class="highlight-box purple"><strong>Useful handoff = state + evidence + failures + decisions + risk + next action + owner + terminal state.</strong></div>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> the handoff transfers the minimum sufficient state, artifacts, evidence, failures, decisions, risks, next action, owner, and terminal state.</p>
+      <p><strong>Executive impact:</strong> a new session starts at the real work boundary, reducing rediscovery and repeated decisions.</p>
+      <p><strong>Control and KPI:</strong> measure restart time, reopened decisions, repeated checks, and handoffs that reach the next owner without extra clarification.</p>
+      <p><strong>Caveat:</strong> a full transcript is not a substitute for synthesis; secrets, cookies, and personal data never belong in the envelope.</p>
+    </aside>
+  </section>
+
+  <section id="economia-outcome" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 82% 18%, rgba(255,205,71,0.09) 0%, transparent 60%)" aria-label="Model routing by risk, phase, and verifiability">
+    <div class="section-header"><span class="section-icon"><i data-lucide="route"></i></span><span class="section-label">04A / Routing &amp; Outcome</span></div>
+    <h2>Route by Risk. Measure by <span class="accent">Accepted Outcome</span></h2>
+    <div class="routing-lane context-economy-visual" role="list" aria-label="Routing flow across specification, implementation, verification, review, and escalation">
+      <article class="fragment" role="listitem"><i data-lucide="brain-circuit"></i><span class="tag purple">specify</span><strong>strong reasoning</strong><small>ambiguity and architecture</small></article>
+      <article class="fragment" role="listitem"><i data-lucide="hammer"></i><span class="tag blue">implement</span><strong>proportional capability</strong><small>bounded, verifiable slice</small></article>
+      <article class="fragment" role="listitem"><i data-lucide="badge-check"></i><span class="tag green">verify</span><strong>deterministic tool</strong><small>objective rule first</small></article>
+      <article class="fragment" role="listitem"><i data-lucide="user-round-check"></i><span class="tag orange">review</span><strong>independent checker</strong><small>intent, risk, and caveat</small></article>
+      <article class="fragment" role="listitem"><i data-lucide="triangle-alert"></i><span class="tag red">escalate</span><strong>person or strong model</strong><small>high risk or low verifiability</small></article>
+    </div>
+    <div class="outcome-metric"><span>Total cost</span><strong>model + tools + retries + latency + review</strong><span>÷ accepted outcomes</span></div>
+    <aside class="notes" aria-label="Speaker notes">
+      <p><strong>Technical:</strong> routing combines phase, risk, and verifiability: strong reasoning for ambiguity, deterministic tools for objective rules, and independent review for intent.</p>
+      <p><strong>Executive impact:</strong> expensive capability is reserved for the point where it reduces risk; bounded tasks use the sufficient option, not the cheapest or most expensive by dogma.</p>
+      <p><strong>Control and KPI:</strong> compare total cost per accepted outcome, first-pass acceptance, retries, regressions, latency, and review effort.</p>
+      <p><strong>Caveat:</strong> aliases, availability, and rate cards change; no model family or price is a universal policy of this slide.</p>
+    </aside>
+  </section>
+</section>

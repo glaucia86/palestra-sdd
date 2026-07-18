@@ -1,5 +1,6 @@
 export interface RuntimeOptions {
   liteMode: boolean;
+  validationMode: boolean;
 }
 
 function isTruthyFlag(value: string | null): boolean {
@@ -12,5 +13,6 @@ export function resolveRuntimeOptions(search: string = window.location.search): 
   const params = new URLSearchParams(search);
   return {
     liteMode: isTruthyFlag(params.get('lite')),
+    validationMode: isTruthyFlag(params.get('validate')),
   };
 }

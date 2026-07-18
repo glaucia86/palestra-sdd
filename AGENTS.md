@@ -7,7 +7,7 @@
 
 ## Projeto
 
-Apresentação web interativa sobre **Spec-Driven Development (SDD) com GitHub Copilot**,
+Apresentação web interativa sobre **Spec-Driven Development (SDD) com AI Coding Agents**,
 construída com Reveal.js e runtime ESM no navegador.
 
 - `npm run start` sobe o servidor local na porta `3000`.
@@ -60,7 +60,7 @@ construída com Reveal.js e runtime ESM no navegador.
 | CSS, design system, layout | `docs/agents/styling.md`           |
 | JavaScript, Reveal.js, Mermaid, quiz e animações | `docs/agents/javascript.md` |
 | Estrutura e conteúdo dos slides | `docs/agents/content.md`      |
-| Skill de design frontend do repositório | `.github/skills/frontend-design/SKILL.md` |
+| Implementação visual especializada em Reveal.js | `.github/skills/reveal-js/SKILL.md` |
 
 ---
 

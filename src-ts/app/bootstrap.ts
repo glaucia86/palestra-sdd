@@ -7,6 +7,7 @@ import { syncSpecialSlideBackgrounds } from './features/special-backgrounds.js';
 import { syncDemoExperience } from './features/demo-experience.js';
 import { ensureSpeakerNotesParity } from './features/speaker-notes.js';
 import { syncTheEndExperience } from './features/the-end-experience.js';
+import { bindSummaryNavigation } from './features/summary-navigation.js';
 import type { RuntimeOptions } from './config/runtime-options.js';
 import type { Locale } from './i18n/language.js';
 import { getQuizData } from './quiz/data.js';
@@ -15,7 +16,7 @@ import { getQuizUiMessages, getQuizValidationMessages } from './quiz/messages.js
 
 export function bootstrapPresentation(locale: Locale, runtimeOptions: RuntimeOptions): void {
   initMermaid();
-  ensureSpeakerNotesParity(locale);
+  ensureSpeakerNotesParity(locale, runtimeOptions.validationMode);
 
   const quiz = new QuizController(getQuizData(locale), getQuizUiMessages(locale), getQuizValidationMessages(locale));
   quiz.bindGlobals();
@@ -23,6 +24,7 @@ export function bootstrapPresentation(locale: Locale, runtimeOptions: RuntimeOpt
   Reveal.initialize(revealConfig);
 
   Reveal.on('ready', () => {
+    bindSummaryNavigation();
     createStarfield(runtimeOptions.liteMode);
     createParticles(runtimeOptions.liteMode);
     createSectionCosmics(runtimeOptions.liteMode);

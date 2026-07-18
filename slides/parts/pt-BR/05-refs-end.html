@@ -1,27 +1,26 @@
 <section id="demo-talk-code" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,205,71,0.08) 0%, transparent 60%)" data-background-image="resources/images/darth-vader.gif" data-background-size="cover" data-background-position="center center" data-background-opacity="0.12">
   <div class="section-orb section-orb-1" style="--orb-color: rgba(214,0,0,0.22);"></div>
   <div class="section-orb section-orb-2" style="--orb-color: rgba(255,84,84,0.16);"></div>
-  <div class="demo-lightsaber-three" data-lightsaber-three>
-    <div class="demo-lightsaber-three-canvas" data-lightsaber-three-canvas aria-hidden="true"></div>
-  </div>
+  <div class="demo-lightsaber-three" data-lightsaber-three><div class="demo-lightsaber-three-canvas" data-lightsaber-three-canvas aria-hidden="true"></div></div>
   <div class="section-page-container">
     <div class="section-page-label" style="color:#ff6b6b;">Seção 07</div>
     <h2 class="section-page-title gradient-text">Demo</h2>
-    <p class="section-page-desc">Talk is cheap! Show me the A.I Code!</p>
-    <button class="demo-lightsaber-toggle-btn" type="button" data-lightsaber-toggle aria-pressed="false">OFF</button>
-    <p class="demo-easter-hint" data-demo-easter-hint>Dica: alguns comandos respondem a cliques em sequencia.</p>
-    <div class="demo-lightsaber" aria-hidden="true">
-      <span class="demo-lightsaber-hilt"></span>
-      <span class="demo-lightsaber-blade"></span>
-      <span class="demo-lightsaber-spark"></span>
-      <span class="demo-lightsaber-spark"></span>
+    <p class="section-page-desc">Contexto → execução → verifier → draft PR</p>
+    <div class="demo-loop-contract" role="list" aria-label="Estados terminais da demo">
+      <span class="tag" role="listitem">PASS → draft PR</span>
+      <span class="tag red" role="listitem">FAIL → BLOCKED</span>
+      <span class="tag purple" role="listitem">BUDGET → STOP</span>
     </div>
+    <p class="demo-loop-boundary"><i data-lucide="hand"></i> Revisão humana antes de merge, release ou deploy</p>
+    <button class="demo-lightsaber-toggle-btn" type="button" data-lightsaber-toggle aria-pressed="false">OFF</button>
+    <p class="demo-easter-hint" data-demo-easter-hint>Dica: alguns comandos respondem a cliques em sequência.</p>
+    <div class="demo-lightsaber" aria-hidden="true"><span class="demo-lightsaber-hilt"></span><span class="demo-lightsaber-blade"></span><span class="demo-lightsaber-spark"></span><span class="demo-lightsaber-spark"></span></div>
     <div class="section-page-icon" style="color:#ff6b6b;"><i data-lucide="terminal-square"></i></div>
   </div>
   <aside class="notes">
-    <p>Na demo, meu objetivo não é impressionar com velocidade — é mostrar previsibilidade e controle. O roteiro é curto e disciplinado: contexto de entrada, comando, resultado, validação.</p>
-    <p>Se algo não sair como esperado ao vivo, uso como exemplo: o agente entregou o que o contexto permitia. Iteração disciplinada é parte do processo, não falha do método.</p>
-    <p>Quem quiser ver o fluxo completo em mais profundidade: tenho um vídeo no YouTube com SDD + GitHub Copilot que cobre cenários que o tempo de demo não permite aqui. A próxima versão do roteiro também pode ser executada com Codex ou outros AI Coding Agents. Link no slide de referências.</p>
+    <p>Transparência: sou Codex Ambassador e Devin Ambassador. A demo usa um contrato neutro, fontes oficiais e limites explícitos; não é recomendação comercial nem comparação de ranking.</p>
+    <p>O roteiro é bounded: contexto de entrada, comando, resultado, verificação e evidência. Sucesso termina em draft PR para revisão humana — nunca em merge, release ou deploy automático.</p>
+    <p>Fallback: se rede, ferramenta ou comando falhar, percorra o fluxo estático deste slide, registre <code>BLOCKED</code> e use a falha para explicar state, budget e stop condition. Não improvise retries infinitos.</p>
   </aside>
 </section>
 
@@ -30,105 +29,74 @@
     <span class="section-icon"><i data-lucide="book-open"></i></span>
     <span class="section-label">08 / Referências</span>
   </div>
-  <h2 style="font-size:1.4em; margin-bottom:0.1em;">Referências e <span class="accent">Aprofundamento</span></h2>
-  <div class="refs-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 0.22em; font-size: 0.82em;">
+  <h2 style="font-size:1.4em; margin-bottom:0.1em;">Referências <span class="accent">curadas</span></h2>
+  <div class="refs-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 0.22em; font-size: 0.78em;">
     <div class="refs-category">
-      <h4><i data-lucide="target"></i> SDD — Spec-Driven Dev</h4>
+      <h4><i data-lucide="target"></i> SDD &amp; spec-kit</h4>
       <ul>
-        <li><a href="https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html" target="_blank" rel="noopener noreferrer">Context Engineering for Coding Agents — Martin Fowler</a></li>
-        <li><a href="https://github.blog" target="_blank" rel="noopener noreferrer">Spec-driven development with AI — GitHub Blog</a></li>
-        <li><a href="https://thoughtworks.com/radar" target="_blank" rel="noopener noreferrer">Spec-driven: Unpacking 2025's trend — Thoughtworks</a></li>
-      </ul>
-    </div>
-    <div class="refs-category">
-      <h4><i data-lucide="package"></i> spec-kit</h4>
-      <ul>
-        <li><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">github/spec-kit — Repositório oficial (GitHub)</a></li>
+        <li><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">spec-kit — repositório oficial</a></li>
         <li><a href="https://github.github.com/spec-kit/" target="_blank" rel="noopener noreferrer">Documentação oficial do spec-kit</a></li>
-        <li><a href="https://www.youtube.com/watch?v=a9eR1xsfvHg" target="_blank" rel="noopener noreferrer">Video Overview — spec-kit em ação (YouTube)</a></li>
-        <li><a href="https://github.com/github/spec-kit/blob/main/spec-driven.md" target="_blank" rel="noopener noreferrer">Spec-Driven Development Methodology — spec-kit docs</a></li>
+        <li><a href="https://github.github.com/spec-kit/guides/evolving-specs.html" target="_blank" rel="noopener noreferrer">Evolving Specs</a></li>
+        <li><a href="https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html" target="_blank" rel="noopener noreferrer">Context Engineering for Coding Agents</a></li>
       </ul>
     </div>
     <div class="refs-category">
-      <h4><i data-lucide="folder"></i> AGENTS.md</h4>
+      <h4><i data-lucide="wrench"></i> Contexto &amp; Skills</h4>
       <ul>
-        <li><a href="https://agents.md" target="_blank" rel="noopener noreferrer">agents.md — Padrão aberto oficial</a></li>
-        <li><a href="https://www.infoq.com/news/2025/08/agents-md/" target="_blank" rel="noopener noreferrer">AGENTS.md Emerges as Open Standard — InfoQ</a></li>
-        <li><a href="https://plgah.medium.com/one-agents-md-to-rule-them-all-70e6dc87a05f" target="_blank" rel="noopener noreferrer">One AGENTS.md to Rule Them All — Medium</a></li>
+        <li><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer">Agent Skills — especificação</a></li>
+        <li><a href="https://agents.md" target="_blank" rel="noopener noreferrer">AGENTS.md — padrão aberto</a></li>
+        <li><a href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener noreferrer">Lost in the Middle — pesquisa</a></li>
+        <li><a href="https://platform.openai.com/docs/guides/prompt-caching/overview" target="_blank" rel="noopener noreferrer">Prompt caching — OpenAI</a></li>
       </ul>
     </div>
     <div class="refs-category">
-      <h4><i data-lucide="wrench"></i> Skills.md &amp; Context</h4>
+      <h4><i data-lucide="bot"></i> AI Coding Agents</h4>
       <ul>
-        <li><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer">Agent Skills: Overview — agentskills.io</a></li>
-        <li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills" target="_blank" rel="noopener noreferrer">Use Agent Skills in VS Code — VS Code Docs</a></li>
-        <li><a href="https://medium.com/data-science-collective/skills-md-vs-agent-tools-are-we-reinventing-the-wheel-1eb0308110a2" target="_blank" rel="noopener noreferrer">Skill.md vs. Agent Tools — Medium</a></li>
+        <li><a href="https://developers.openai.com/codex/" target="_blank" rel="noopener noreferrer">Codex — documentação oficial</a></li>
+        <li><a href="https://docs.github.com/en/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot — documentação</a></li>
+        <li><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer">Claude Code — documentação</a></li>
+        <li><a href="https://developers.openai.com/codex/agent-approvals-security" target="_blank" rel="noopener noreferrer">Codex approvals &amp; security</a></li>
       </ul>
     </div>
     <div class="refs-category">
-      <h4><i data-lucide="bot"></i> AI Coding Agents &amp; Codex</h4>
+      <h4><i data-lucide="coins"></i> Economia &amp; billing</h4>
       <ul>
-        <li><a href="https://openai.com/pt-BR/codex/" target="_blank" rel="noopener noreferrer">Codex — página pública oficial da OpenAI</a></li>
-        <li><a href="https://developers.openai.com/codex/" target="_blank" rel="noopener noreferrer">Codex Developers — documentação oficial da OpenAI</a></li>
-        <li><a href="https://developers.openai.com/codex/app/features" target="_blank" rel="noopener noreferrer">Codex App features — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/cli/reference" target="_blank" rel="noopener noreferrer">Codex CLI command line options — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/cli/slash-commands" target="_blank" rel="noopener noreferrer">Codex CLI slash commands — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/noninteractive" target="_blank" rel="noopener noreferrer">Codex non-interactive mode — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/app/automations" target="_blank" rel="noopener noreferrer">Codex Automations — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/guides/agents-md/" target="_blank" rel="noopener noreferrer">AGENTS.md no Codex — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/agent-approvals-security" target="_blank" rel="noopener noreferrer">Agent approvals &amp; security — OpenAI Developers</a></li>
-        <li><a href="https://developers.openai.com/codex/changelog" target="_blank" rel="noopener noreferrer">Codex changelog — OpenAI Developers</a></li>
+        <li><a href="https://platform.openai.com/docs/guides/cost-optimization" target="_blank" rel="noopener noreferrer">Cost optimization — OpenAI</a></li>
+        <li><a href="https://docs.github.com/pt/copilot/reference/copilot-billing/models-and-pricing" target="_blank" rel="noopener noreferrer">Copilot billing — GitHub</a></li>
+        <li><a href="https://docs.devin.ai/admin/billing" target="_blank" rel="noopener noreferrer">Devin billing — documentação</a></li>
       </ul>
     </div>
     <div class="refs-category">
-      <h4><i data-lucide="coins"></i> GitHub Copilot &amp; Billing</h4>
-      <ul>
-        <li><a href="https://docs.github.com/en/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot Docs — GitHub Docs</a></li>
-        <li><a href="https://docs.github.com/en/copilot/get-started/plans" target="_blank" rel="noopener noreferrer">Plans for GitHub Copilot — GitHub Docs</a></li>
-        <li><a href="https://docs.github.com/en/copilot/reference/ai-models/supported-models" target="_blank" rel="noopener noreferrer">Supported AI models in Copilot — GitHub Docs</a></li>
-        <li><a href="https://github.com/features/copilot/cli" target="_blank" rel="noopener noreferrer">Copilot CLI — página oficial do produto</a></li>
-        <li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills" target="_blank" rel="noopener noreferrer">Agent Skills no Copilot — GitHub Docs</a></li>
-        <li><a href="https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/copilot-memory" target="_blank" rel="noopener noreferrer">Copilot Memory — GitHub Docs</a></li>
-        <li><a href="https://docs.github.com/pt/copilot/reference/copilot-billing/models-and-pricing" target="_blank" rel="noopener noreferrer">GitHub Copilot models and pricing — GitHub Docs</a></li>
-        <li><a href="https://docs.github.com/copilot/concepts/billing/usage-based-billing-for-individuals" target="_blank" rel="noopener noreferrer">Usage-based billing for individuals — GitHub Docs</a></li>
-        <li><a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener noreferrer">Copilot moving to usage-based billing — GitHub Blog</a></li>
-        <li><a href="https://github.blog/changelog/2026-04-27-github-copilot-code-review-will-start-consuming-github-actions-minutes-on-june-1-2026/" target="_blank" rel="noopener noreferrer">Copilot Code Review + Actions minutes — GitHub Changelog</a></li>
-        <li><a href="https://github.blog/changelog/2026-04-24-gpt-5-5-is-now-available-in-public-preview-for-github-copilot-in-vs-code-and-jetbrains-ides/" target="_blank" rel="noopener noreferrer">GPT-5.5 public preview — GitHub Changelog</a></li>
-        <li><a href="https://github.blog/changelog/2026-04-16-claude-opus-4-7-is-now-available-in-public-preview-for-github-copilot/" target="_blank" rel="noopener noreferrer">Claude Opus 4.7 public preview — GitHub Changelog</a></li>
-      </ul>
-    </div>
-    <div class="refs-category">
-      <h4><i data-lucide="gauge"></i> Economia de Tokens</h4>
-      <ul>
-        <li><a href="https://platform.openai.com/docs/guides/cost-optimization" target="_blank" rel="noopener noreferrer">Cost optimization — OpenAI Platform</a></li>
-        <li><a href="https://platform.openai.com/docs/guides/prompt-caching/overview" target="_blank" rel="noopener noreferrer">Prompt caching — OpenAI Platform</a></li>
-        <li><a href="https://docs.claude.com/en/docs/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Prompt caching — Anthropic Docs</a></li>
-        <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/token-efficient-tool-use" target="_blank" rel="noopener noreferrer">Token-efficient tool use — Anthropic Docs</a></li>
-        <li><a href="https://github.com/juliusbrussee/caveman" target="_blank" rel="noopener noreferrer">Caveman — output token discipline</a></li>
-        <li><a href="https://github.com/JuliusBrussee/caveman-compress" target="_blank" rel="noopener noreferrer">Caveman Compress — context compression</a></li>
-      </ul>
-    </div>
-    <div class="refs-category">
-      <h4><i data-lucide="shield-check"></i> Harness Engineering</h4>
+      <h4><i data-lucide="shield-check"></i> Harness &amp; Loop</h4>
       <ul>
         <li><a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">Harness Engineering — Martin Fowler</a></li>
-        <li><a href="https://www.humanlayer.dev/blog/skill-issue" target="_blank" rel="noopener noreferrer">It's a Skill Issue: Harness Engineering — HumanLayer Blog (Viv)</a></li>
-        <li><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">Harness Engineering at Scale — Codex, da OpenAI</a></li>
-        <li><a href="https://walkinglabs.github.io/learn-harness-engineering/en/" target="_blank" rel="noopener noreferrer">Learn Harness Engineering — Walking Labs</a></li>
+        <li><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">Harness Engineering — OpenAI</a></li>
+        <li><a href="https://blog.langchain.com/agent-engineering/" target="_blank" rel="noopener noreferrer">Agent Engineering — LangChain</a></li>
+        <li><a href="https://bun.com/blog/bun-port" target="_blank" rel="noopener noreferrer">Bun Zig → Rust — case publicado</a></li>
       </ul>
     </div>
     <div class="refs-category">
-      <h4><i data-lucide="waves"></i> @glaucia_lemos86 — Conteúdo Relacionado</h4>
+      <h4><i data-lucide="cloud-cog"></i> Devin</h4>
       <ul>
-        <li><a href="https://youtu.be/1MphzgEv6-0" target="_blank" rel="noopener noreferrer">Video: SDD + GitHub Copilot em ação — YouTube (@glaucia_lemos86)</a></li>
-        <li><a href="https://www.linkedin.com/pulse/como-reduzi-em-70-o-uso-do-context-window-github-copilot-lemos-cycnf?originalSubdomain=pt" target="_blank" rel="noopener noreferrer">Como reduzi em 70% o uso do Context Window — LinkedIn (Glaucia Lemos)</a></li>
+        <li><a href="https://docs.devin.ai/desktop/devin-desktop-faq" target="_blank" rel="noopener noreferrer">Devin Desktop FAQ</a></li>
+        <li><a href="https://docs.devin.ai/work-with-devin/devin-handoff" target="_blank" rel="noopener noreferrer">CLI e handoff para cloud</a></li>
+        <li><a href="https://docs.devin.ai/product-guides/skills" target="_blank" rel="noopener noreferrer">AGENTS.md e Skills</a></li>
+        <li><a href="https://docs.devin.ai/work-with-devin/advanced-capabilities" target="_blank" rel="noopener noreferrer">Advanced Capabilities</a></li>
+        <li><a href="https://devin.ai/pricing/" target="_blank" rel="noopener noreferrer">Plans and Pricing</a></li>
+      </ul>
+    </div>
+    <div class="refs-category">
+      <h4><i data-lucide="waves"></i> Conteúdo autoral</h4>
+      <ul>
+        <li><a href="https://youtu.be/1MphzgEv6-0" target="_blank" rel="noopener noreferrer">SDD + GitHub Copilot em ação</a></li>
+        <li><a href="https://www.linkedin.com/pulse/como-reduzi-em-70-o-uso-do-context-window-github-copilot-lemos-cycnf?originalSubdomain=pt" target="_blank" rel="noopener noreferrer">Estudo de economia de contexto</a></li>
       </ul>
     </div>
   </div>
   <aside class="notes">
-    <p>Curadoria intencional aqui: fontes primárias primeiro — OpenAI, GitHub Docs, GitHub Blog, repositório oficial spec-kit, Thoughtworks Radar, Martin Fowler. Depois fontes secundárias de qualidade — InfoQ, Medium com autoria identificada.</p>
-    <p>Quando algo está na documentação oficial, cite isso. Quando é interpretação de mercado, use como contexto, não como afirmação de fato.</p>
-    <p>Nota prática: preços, modelos, multiplicadores e allowances podem mudar. Antes de apresentar, revise as páginas oficiais de billing e de Codex, especialmente se a palestra for repetida em outra data.</p>
+    <p>Curadoria visível: fontes primárias e páginas estáveis, com no máximo cinco links por card. A lista completa e o ledger datado permanecem em <code>doc-specs/atualizacao-julho.md</code>, Parte X.</p>
+    <p>Claims de produto, billing, preview e disponibilidade foram verificados em 14–15 de julho de 2026 e devem ser revistos antes de cada apresentação.</p>
+    <p>Transparência: sou Codex Ambassador e Devin Ambassador. A seleção continua baseada em fontes oficiais, limitações documentadas e resultados claramente atribuídos; não há CTA comercial.</p>
   </aside>
 </section>
 
@@ -140,47 +108,26 @@
     <span class="section-icon"><i data-lucide="rocket"></i></span>
     <span class="section-label">09 / Conclusão</span>
   </div>
-  <h2>Conclusão — <span class="accent">Adote SDD Hoje!</span></h2>
+  <h2>Um contrato, do <span class="accent">intento ao outcome</span></h2>
   <div class="conclusion-grid">
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="file-pen"></i></span>
-      <p><strong>Comece com spec.md</strong><br />Documente sua intenção antes de qualquer prompt para a IA.</p>
-    </div>
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="package"></i></span>
-      <p><strong>Use o spec-kit</strong><br />Instale o <code>specify</code> CLI e use <code>/speckit.*</code> commands para automatizar sua pipeline de especificação.</p>
-    </div>
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="clipboard-list"></i></span>
-      <p><strong>PRD.md como ponto de partida</strong><br />Criado por você com a ideia inicial. O <code>/speckit.specify</code> lê esse arquivo e dispara o ciclo completo.</p>
-    </div>
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="folder"></i></span>
-      <p><strong>Configure AGENTS.md</strong><br />Defina contexto, regras e comportamento esperado para o agente. Mantenha-o minimalista.</p>
-    </div>
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="layers"></i></span>
-      <p><strong>Progressive Disclosure</strong><br />Context window enxuto + Skills sob demanda = até 70% de economia de tokens e respostas mais precisas.</p>
-    </div>
-    <div class="conclusion-item">
-      <span class="icon"><i data-lucide="user"></i></span>
-      <p><strong>Human-in-the-Loop sempre</strong><br />A IA é poderosa, mas você é o arquiteto das decisões. Nunca pule a revisão humana.</p>
-    </div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="file-pen"></i></span><p><strong>Spec</strong><br />Explicita intenção, critérios de aceite e limites antes do código.</p></div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="layers"></i></span><p><strong>Contexto</strong><br />Revela somente a informação necessária para a decisão atual.</p></div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="box"></i></span><p><strong>Slice</strong><br />Entrega um outcome verificável, com escopo e WIP controlados.</p></div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="arrow-right-left"></i></span><p><strong>Handoff</strong><br />Preserva estado, evidência, riscos e a próxima ação.</p></div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="shield-check"></i></span><p><strong>Harness</strong><br />Transforma políticas em guides, sensors, checks e observabilidade.</p></div>
+    <div class="conclusion-item"><span class="icon"><i data-lucide="infinity"></i></span><p><strong>Loop</strong><br />Repete com budget, terminal states e gate humano — nunca autonomia sem limite.</p></div>
   </div>
   <div class="conclusion-cta">
-    <p>🎯 <span class="gradient-text">SDD + spec-kit + AI Coding Agents = Desenvolvimento Previsível</span></p>
-    <p class="sub">A IA é tão boa quanto o contexto que você dá a ela. Comece com uma spec e veja a diferença.</p>
+    <p><span class="gradient-text">O mesmo contrato orienta um agente no IDE, no terminal ou em uma VM cloud.</span></p>
+    <p class="sub">A ferramenta propõe e verifica; pessoas continuam responsáveis por intenção, risco, aceitação e publicação.</p>
     <div style="margin-top:0.8em;">
-      <span class="tag">@glaucia_lemos86</span>
-      <span class="tag blue">github/spec-kit</span>
-      <span class="tag purple">#SDD #SpecDrivenDev #AICodingAgents</span>
+      <span class="tag">Spec</span><span class="tag blue">Context · Slice · Handoff</span><span class="tag purple">Harness · Loop · Human gate</span>
     </div>
   </div>
   <aside class="notes">
-    <p>Encerramento com plano de adoção em etapas. A mensagem prática: não tentem fazer tudo de uma vez. Comecem com spec.md e PRD.md básico. Evoluam para AGENTS.md enxuto. Depois o fluxo spec-kit completo. Skills e Progressive Disclosure são passos seguintes para times com maturidade maior.</p>
-    <p>O investimento na especificação antes do código é o único hábito com ROI comprovaável em qualidade, redução de retrabalho e rastreabilidade de decisões ao longo do tempo.</p>
-    <p>Human-in-the-loop não é cerimônia — é a diferença entre IA como ferramenta controlada e IA como variável não gerenciada no processo de engenharia.</p>
-    <p>Setas 1 a 6: Comece com spec.md → Use spec-kit → PRD.md como base → AGENTS.md → Progressive Disclosure → Human-in-the-Loop. Seta 7 — CTA final. Fechamento: sugerir um experimento de baixa complexidade na equipe na semana seguinte como primeiro passo concreto.</p>
+    <p>Feche o arco completo: spec define intenção; contexto seleciona conhecimento; slice delimita o outcome; handoff preserva continuidade; harness torna regras observáveis; loop repete apenas dentro de limites.</p>
+    <p>O mesmo contrato pode orientar um agente no IDE, no terminal ou em uma VM cloud. Superfície não muda accountability.</p>
+    <p>A mensagem final é responsabilidade humana: narrativa, risco, aceitação, merge, release e deploy permanecem sob decisão de pessoas.</p>
   </aside>
 </section>
 
@@ -232,17 +179,19 @@
         <span class="tag blue">100k+ devs</span>
         <span class="tag purple">Microsoft MVP</span>
         <span class="tag orange">Codex Ambassador</span>
+        <span class="tag blue">Devin Ambassador</span>
       </div>
     </div>
 
     <div class="sm-modern-content">
       <h2>Glaucia <span class="accent">Lemos</span></h2>
-      <p class="sm-modern-lead">Glaucia Lemos é Líder de Transformação em IA e Especialista em Engenharia II no Itaú Agro Varejo, em uma das maiores instituições financeiras da América Latina, atuando na adoção de GenAI, arquiteturas agênticas, RAG, Agent Skills, SDD e práticas emergentes de GenAI em ambientes enterprise altamente governados. Codex Ambassador e Microsoft MVP, ex-Microsoft (Developer Advocate JavaScript/TypeScript, AI and Cloud), compartilha conhecimento por meio de workshops, conteúdos educacionais e projetos open-source.</p>
+      <p class="sm-modern-lead">Glaucia Lemos é Líder de Transformação em IA e Especialista em Engenharia II no Itaú Agro Varejo, em uma das maiores instituições financeiras da América Latina, atuando na adoção de GenAI, arquiteturas agênticas, RAG, Agent Skills, SDD e práticas emergentes de GenAI em ambientes enterprise altamente governados. Codex Ambassador, Devin Ambassador e Microsoft MVP, ex-Microsoft (Developer Advocate JavaScript/TypeScript, AI and Cloud), compartilha conhecimento por meio de workshops, conteúdos educacionais e projetos open-source.</p>
 
       <div class="sm-modern-pills">
         <span class="tag purple">Líder de Transformação em IA</span>
         <span class="tag blue">Especialista em Engenharia II</span>
         <span class="tag orange">Codex Ambassador</span>
+        <span class="tag blue">Devin Ambassador</span>
         <span class="tag blue">Ex-Microsoft Dev Advocate</span>
         <span class="tag">JavaScript · TypeScript · Azure</span>
       </div>
@@ -272,6 +221,7 @@
     </div>
   </div>
   <aside class="notes">
+    <p>Transparência: sou Codex Ambassador e Devin Ambassador. O conteúdo permanece baseado em fontes oficiais, limitações documentadas e resultados claramente atribuídos.</p>
     <p>Apresentação objetiva e focada no que é relevante para o tema. Os projetos open source e samples com RAG, MCP e SDD mostram que o conteúdo discutido aqui é aplicado na prática, não só teoria.</p>
     <p>Convite para continuidade: LinkedIn, YouTube e GitHub estão no slide. Para quem quiser trocar experiências de implementação de SDD em ambiente real, estou disponível.</p>
   </aside>
