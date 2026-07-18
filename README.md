@@ -1,7 +1,7 @@
-# 🎤 Spec-Driven Development com GitHub Copilot
+# 🎤 Spec-Driven Development com AI Coding Agents
 
 <p align="center">
-  <img src="./resources/images/palestra-banner.png" alt="Banner da palestra Spec-Driven Development com GitHub Copilot" />
+  <img src="./resources/images/palestra-banner.png" alt="Banner da palestra Spec-Driven Development com AI Coding Agents" />
 </p>
 
 <p align="center">
@@ -31,14 +31,14 @@
 
 ## 📖 Visão Geral
 
-Este repositório contém a apresentação da **Glaucia Lemos** sobre **Spec-Driven Development (SDD) com GitHub Copilot**.
+Este repositório contém a apresentação da **Glaucia Lemos** sobre **Spec-Driven Development (SDD) com AI Coding Agents**, edição de **julho de 2026**.
 
-A experiência foi desenvolvida como slides web com Reveal.js, sem build step, com:
+A experiência foi desenvolvida como slides web localizados com Reveal.js e runtime ESM gerado de TypeScript, com:
 
-- 🔄 **Carregamento dinâmico** de seções (`slides/manifest.json` + `slides/parts/*.html`);
+- 🔄 **Carregamento localizado** de seções em PT-BR, EN-US e ES-ES (`slides/manifest.<locale>.json` + `slides/parts/<locale>/*.html`);
 - 🎨 **Design system** próprio em `css/custom.css`;
 - 🧩 **App JS modular** em `js/app/*`;
-- ✨ **Recursos interativos** como quiz, Mermaid, starfield, particles e backgrounds especiais.
+- ✨ **Recursos interativos** como quiz localizado, Mermaid, starfield, particles, demo e trilha final opt-in.
 
 ---
 
@@ -68,7 +68,7 @@ A experiência foi desenvolvida como slides web com Reveal.js, sem build step, c
 
 ### 🧪 Elementos Interativos
 - **Quiz Interativo** — Consolidação de conceitos
-- **Carregamento Dinâmico** — Slides carregados sob demanda
+- **Carregamento Localizado** — Partes carregadas por manifest, com fallback PT-BR
 - **Design System** — Estilos customizados e consistentes
 
 </td>
@@ -91,10 +91,12 @@ A experiência foi desenvolvida como slides web com Reveal.js, sem build step, c
 |--------|-----------|
 | 🎯 **Fundamentos SDD** | Conceitos básicos de Spec-Driven Development |
 | 🛠️ **spec-kit** | Como usar spec-kit no fluxo de desenvolvimento |
-| 🤖 **GitHub Copilot** | Agent Mode e otimização de contexto |
-| 📐 **Arquitetura** | PRD.md, AGENTS.md, Rules e Skills |
-| 🔄 **Progressive Disclosure** | Estratégias para reduzir ruído de contexto |
-| 🎬 **Demo Prática** | Elementos visuais e interativos ao vivo |
+| 🤖 **AI Coding Agents** | Superfícies de execução para um contrato SDD portátil |
+| 📐 **Context Engineering** | AGENTS.md, Rules, Skills e conhecimento ativo |
+| 💰 **Economia de Contexto** | Budget, custo, latência e qualidade |
+| 🔄 **Progressive Disclosure** | Profundidade carregada sob demanda |
+| 🛡️ **Harness Engineering** | Ambiente, sinais, guardrails e verificação |
+| 🎬 **Demo Prática** | Da spec à evidência em uma rota demonstrável |
 | 🏆 **Quiz Final** | Consolidação dos conceitos apresentados |
 
 ---
@@ -186,9 +188,10 @@ A página principal (`index.html`) inicia uma estrutura simples:
 
 1. carrega estilos e bibliotecas CDN (Reveal, Mermaid, Lucide);
 2. inicializa o app em `js/app/init.js`;
-3. carrega os arquivos definidos em `slides/manifest.json`;
-4. injeta os blocos de `slides/parts/*.html` dentro de `.reveal .slides`;
-5. executa bootstrap de recursos visuais, quiz e hooks de evento do Reveal.
+3. resolve `?lang=pt-BR|en-US|es-ES`, usando PT-BR como fallback;
+4. carrega o manifest localizado e injeta `slides/parts/<locale>/*.html` dentro de `.reveal .slides`;
+5. aplica metadata e shell localizados;
+6. executa bootstrap de recursos visuais, quiz, demo e encerramento com áudio opt-in.
 
 Esse desenho permite evoluir conteúdo e features sem acoplamento forte entre slides e runtime.
 
@@ -314,9 +317,9 @@ Este projeto está sob a licença **MIT**. Veja `LICENSE` para detalhes.
 ---
 
 <p align="center">
-  Feito com 💚 usando Reveal.js e GitHub Copilot
+  Feito com 💚 usando Reveal.js, TypeScript e AI Coding Agents
 </p>
 
 <p align="center">
-  <a href="#-spec-driven-development-com-github-copilot">⬆️ Voltar ao Topo</a>
+  <a href="#-spec-driven-development-com-ai-coding-agents">⬆️ Voltar ao Topo</a>
 </p>

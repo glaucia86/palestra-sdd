@@ -20,8 +20,12 @@ export interface QuizDomRefs {
   btnFinish: HTMLButtonElement | null;
 }
 
+export const QUIZ_QUESTION_COUNT = 12;
+export const QUIZ_OPTION_COUNT = 4;
+
 export interface QuizValidationMessages {
   noneFound: string;
+  invalidQuestionCount: string;
   invalidFormat: (qNum: number) => string;
   invalidQuestion: (qNum: number) => string;
   invalidOptionsCount: (qNum: number) => string;

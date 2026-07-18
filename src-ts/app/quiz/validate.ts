@@ -1,4 +1,14 @@
-import type { QuizQuestion, QuizValidationMessages, QuizValidationResult } from './types.js';
+import {
+  QUIZ_OPTION_COUNT,
+  QUIZ_QUESTION_COUNT,
+  type QuizQuestion,
+  type QuizValidationMessages,
+  type QuizValidationResult,
+} from './types.js';
+
+function containsHtml(value: string): boolean {
+  return /<[^>]*>/.test(value);
+}
 
 export function validateQuizData(quizData: QuizQuestion[], messages: QuizValidationMessages): QuizValidationResult {
   const errors = [];
@@ -6,6 +16,10 @@ export function validateQuizData(quizData: QuizQuestion[], messages: QuizValidat
   if (!Array.isArray(quizData) || quizData.length === 0) {
     errors.push(messages.noneFound);
   } else {
+    if (quizData.length !== QUIZ_QUESTION_COUNT) {
+      errors.push(messages.invalidQuestionCount);
+    }
+
     quizData.forEach((q: QuizQuestion, idx: number) => {
       const qNum = idx + 1;
 
@@ -14,23 +28,34 @@ export function validateQuizData(quizData: QuizQuestion[], messages: QuizValidat
         return;
       }
 
-      if (typeof q.question !== 'string' || !q.question.trim()) {
+      if (
+        typeof q.question !== 'string' ||
+        !q.question.trim() ||
+        !q.question.trim().startsWith(`${qNum}.`) ||
+        containsHtml(q.question)
+      ) {
         errors.push(messages.invalidQuestion(qNum));
       }
 
-      if (!Array.isArray(q.options) || q.options.length < 2) {
+      if (!Array.isArray(q.options) || q.options.length !== QUIZ_OPTION_COUNT) {
         errors.push(messages.invalidOptionsCount(qNum));
-      } else if (q.options.some((opt: string) => typeof opt !== 'string' || !opt.trim())) {
+      } else if (
+        q.options.some((opt: string) => typeof opt !== 'string' || !opt.trim() || containsHtml(opt))
+      ) {
         errors.push(messages.invalidOptionsValue(qNum));
       }
 
       if (!Number.isInteger(q.correct)) {
         errors.push(messages.invalidCorrectType(qNum));
-      } else if (Array.isArray(q.options) && (q.correct < 0 || q.correct >= q.options.length)) {
+      } else if (q.correct < 0 || q.correct >= QUIZ_OPTION_COUNT) {
         errors.push(messages.invalidCorrectRange(qNum));
       }
 
-      if (typeof q.explanation !== 'string' || !q.explanation.trim()) {
+      if (
+        typeof q.explanation !== 'string' ||
+        !q.explanation.trim() ||
+        containsHtml(q.explanation)
+      ) {
         errors.push(messages.invalidExplanation(qNum));
       }
     });

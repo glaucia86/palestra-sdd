@@ -4,7 +4,9 @@
     "slides/parts/es-ES/02-spec-kit.html",
     "slides/parts/es-ES/03-copilot.html",
     "slides/parts/es-ES/04-context-progressive.html",
+    "slides/parts/es-ES/04a-context-economy.html",
     "slides/parts/es-ES/04b-harness-engineering.html",
+    "slides/parts/es-ES/04c-loop-engineering.html",
     "slides/parts/es-ES/05-refs-end.html"
   ]
 }

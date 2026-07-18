@@ -14,20 +14,20 @@
     <div class="section-page-label" style="color:var(--accent-green);">Section 06</div>
     <h2 class="section-page-title gradient-text-green">Harness<br>Engineering</h2>
     <p class="section-page-desc">Agent = Model + Harness</p>
-    <p class="section-page-desc">Closing the loop between spec and production gate</p>
+    <p class="section-page-desc">Turning policies into executable signals</p>
     <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="shield-check"></i></div>
   </div>
   <aside class="notes">
-    <p>This is the most emerging topic of the talk — gaining traction in 2026 as teams scale autonomous agents and face a critical question: how do you ensure that automatically generated code is safe, correct, and aligned with the spec?</p>
-    <p>The term "Harness Engineering" was coined by Viv (HumanLayer, 2025) and gained momentum through Martin Fowler's article and OpenAI's Codex scale experiment. The core idea: if the agent is the sum of the model plus everything around it, then "Harness Engineering" is the practice of tending to that "everything around it" with the same rigor you apply to production code.</p>
-    <p>Present this as a natural extension of SDD — not a new framework to learn from scratch.</p>
+    <p><strong>Technical:</strong> Harness Engineering treats instructions, tools, environment, state, feedback, and observability as one execution system.</p>
+    <p><strong>Executive impact:</strong> the model is no longer the only focus; reliability becomes a property of the surrounding system.</p>
+    <p><strong>Source and caveat:</strong> HumanLayer, Martin Fowler, OpenAI, and Walking Labs, consulted in July 2026. The vocabulary is emergent, and this talk does not claim exclusive authorship.</p>
   </aside>
 </section>
 
 <section id="harness-engineering">
 
   <!-- 6.1 — What is Harness Engineering? -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 30% 70%, rgba(0,255,157,0.05) 0%, transparent 60%)">
+  <section id="harness-model" data-background-gradient="radial-gradient(ellipse 70% 50% at 30% 70%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="shield-check"></i></span>
       <span class="section-label">06 / Harness Engineering — What is it?</span>
@@ -41,17 +41,17 @@
           <p style="font-size:0.85em; color:var(--text-secondary);">system prompt · tools/MCPs · context · sub-agents · hooks</p>
         </div>
         <div class="definition" style="font-size:0.77em; line-height:1.4;">
-          <p><strong>Harness Engineering</strong> is the practice of designing instructions, tools, environment, state, and feedback to make agent work reliable.</p>
+          <p><strong>Harness Engineering</strong> designs instructions, tools, environment, state, feedback, and observability to make agent work reliable.</p>
         </div>
         <ul style="font-size:0.72em; margin-top:0.5em;">
           <li class="fragment"><strong>A subset of Context Engineering</strong>: focused on the agent operating system, not just the prompt</li>
           <li class="fragment"><strong>The problem it solves:</strong> two agents with the same model and same task produce radically different results — the difference is in the harness</li>
-          <li class="fragment"><strong>Coined by Viv</strong> (HumanLayer) · documented by Martin Fowler · popularized by OpenAI's Codex scale experiment</li>
+          <li class="fragment"><strong>Emergent vocabulary</strong>: HumanLayer, Martin Fowler, OpenAI, and Walking Labs offer complementary perspectives</li>
         </ul>
       </div>
       <div>
         <div class="card" style="border-color:var(--accent-green); text-align:center; padding:1em 0.8em;">
-          <div style="font-size:2em; margin-bottom:0.3em;">🏎️</div>
+          <span class="card-icon"><i data-lucide="gauge"></i></span>
           <h3 style="color:var(--accent-green); font-size:0.9em;">Formula 1</h3>
           <p style="font-size:0.68em; line-height:1.35; margin-top:0.4em;">The model is the <strong>driver</strong> — talented, but limited without support. The harness is the <strong>track + pit crew + telemetry</strong>: what enables a fast lap, safely.</p>
           <p style="font-size:0.62em; color:var(--text-secondary); margin-top:0.5em;">Replacing the driver with a faster one rarely solves the problem — the bottleneck is usually the harness.</p>
@@ -62,15 +62,15 @@
       </div>
     </div>
     <aside class="notes">
-      <p>The "Agent = Model + Harness" equation comes from the HumanLayer blog (Viv, 2025) and is the most compact way to explain why switching the model is rarely the right answer to agent quality issues. In most cases, the problem is the harness — the quality of instructions, the context provided, the feedback mechanisms.</p>
-      <p>The Walking Labs learning material reinforces the operational view: a harness is not a prompt file. It is the set of instructions, tools, environment, persistent state, and feedback that determines how much model capability becomes reliable execution.</p>
-      <p>Context Engineering is the broader term — Harness Engineering is a subset focused on the system around the agent: what it receives before acting (guides), what it may execute, how it preserves state, and what checks it after acting (sensors).</p>
-      <p>Arrow 1 — subset of Context Engineering. Arrow 2 — the problem it solves. Arrow 3 — origin of the term (Viv, Fowler, OpenAI). Closing: focus on the harness, not just the model.</p>
+      <p><strong>Technical:</strong> Agent = Model + Harness separates model capability from the system that provides instructions, tools, environment, state, feedback, and observability.</p>
+      <p><strong>Executive impact:</strong> before paying for more capability, the team can locate the layer that constrains reliable execution.</p>
+      <p><strong>Control and KPI:</strong> track first-pass acceptance, regressions, retries, and review time per harness configuration.</p>
+      <p><strong>Caveat:</strong> the Formula 1 analogy is instructional; failures can be in the model or the harness and require evidence for attribution.</p>
     </aside>
   </section>
 
   <!-- 6.2 — Guides & Sensors: the framework -->
-  <section data-background-gradient="radial-gradient(ellipse 75% 50% at 75% 30%, rgba(0,255,157,0.06) 0%, transparent 60%)">
+  <section id="harness-guides-sensors" data-background-gradient="radial-gradient(ellipse 75% 50% at 75% 30%, rgba(0,255,157,0.06) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="git-compare-arrows"></i></span>
       <span class="section-label">06 / Harness Engineering — Framework</span>
@@ -111,22 +111,24 @@
           <p style="font-size:0.7em; line-height:1.35;"><strong>GPS</strong> = Guide feedforward<br><span style="color:var(--text-secondary);">tells you where to turn before the curve</span></p>
           <span style="font-size:1.5em; color:var(--accent-copilot-light); display:block; margin:0.5em 0 0.3em;"><i data-lucide="camera"></i></span>
           <p style="font-size:0.7em; line-height:1.35;"><strong>Speed camera</strong> = Sensor feedback<br><span style="color:var(--text-secondary);">detects the error after it happened</span></p>
-          <p style="font-size:0.6em; color:var(--text-muted); margin-top:0.5em;">Good harnesses combine both, but prefer Guides.</p>
+          <p style="font-size:0.6em; color:var(--text-muted); margin-top:0.5em;">Guides prevent; Sensors prove and correct.</p>
         </div>
         <div class="highlight-box green fragment" style="margin-top:0.5em; font-size:0.66em; line-height:1.3;">
-          <strong>Computational</strong> = deterministic, fast, runs always.<br>
-          <strong>Inferential</strong> = semantic, expensive, runs selectively.
+          <strong>Objective rule:</strong> deterministic checker first.<br>
+          <strong>Inferential judgment:</strong> selective; never the only oracle.
         </div>
       </div>
     </div>
     <aside class="notes">
-      <p>Martin Fowler's framework (harness-engineering.html article, 2025) divides harness mechanisms on two axes: how they act (feedforward = Guides; feedback = Sensors) and how they are implemented (Computational = deterministic; Inferential = AI-based).</p>
-      <p>The key intuition: Guides are cheaper than Sensors because they prevent the error before it happens. A well-written AGENTS.md (Computational Guide) is infinitely cheaper than a code review agent (Inferential Sensor) running on every commit. Invest in Guides first.</p>
+      <p><strong>Technical:</strong> Guides act before; Sensors observe after. Both can be computational or inferential.</p>
+      <p><strong>Executive impact:</strong> prevention reduces rework, while feedback produces evidence to correct and govern execution.</p>
+      <p><strong>Control and KPI:</strong> for an objective rule, run tests, lint, or typecheck before semantic judgment; measure coverage and false positives.</p>
+      <p><strong>Caveat:</strong> an inferential sensor is probabilistic and selective; it does not replace a deterministic oracle when the rule is executable.</p>
     </aside>
   </section>
 
   <!-- 6.3 — Harness that scales -->
-  <section data-background-gradient="radial-gradient(ellipse 75% 55% at 50% 30%, rgba(56,200,250,0.05) 0%, transparent 60%)">
+  <section id="harness-controls" data-background-gradient="radial-gradient(ellipse 75% 55% at 50% 30%, rgba(56,200,250,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="layout-dashboard"></i></span>
       <span class="section-label">06 / Harness Engineering: Operationalization</span>
@@ -140,115 +142,62 @@
         <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Critical knowledge must live in the repository: architecture, commands, constraints, and decisions.</p>
       </div>
       <div class="card" style="padding:0.75em 0.7em;">
-        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="route"></i> Routing files</h3>
-        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);"><code>AGENTS.md</code> points the way. Details live in docs/skills on demand.</p>
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="route"></i> Agent Skills</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);"><code>AGENTS.md</code> routes; <code>SKILL.md</code> loads specialized knowledge on demand.</p>
       </div>
       <div class="card" style="padding:0.75em 0.7em;">
-        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="play-circle"></i> Initialization</h3>
-        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Before coding: environment runs, tests execute, and the task is split into verifiable steps.</p>
+        <h3 style="font-size:0.78em; color:var(--accent-green);"><i data-lucide="user-round-check"></i> Maker / Checker</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">High-risk change separates who produces from who verifies criteria and evidence.</p>
       </div>
       <div class="card" style="padding:0.75em 0.7em;">
         <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="list-checks"></i> WIP = 1</h3>
         <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">One active unit at a time, with acceptance criteria and executable completion evidence.</p>
       </div>
       <div class="card" style="padding:0.75em 0.7em;">
-        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="activity"></i> Observability</h3>
-        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Logs, traces, checks, rubrics, and history make “looks right” auditable.</p>
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="activity"></i> State + Observability</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">State, logs, traces, checks, and history make progress and failure auditable.</p>
       </div>
       <div class="card" style="padding:0.75em 0.7em;">
-        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="door-closed"></i> Clean exit</h3>
-        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">A session only ends with build/tests, progress, artifacts, and next step in a clear state.</p>
+        <h3 style="font-size:0.78em; color:var(--accent-copilot-light);"><i data-lucide="shield"></i> Limits ≠ Proof</h3>
+        <p style="font-size:0.62em; line-height:1.35; color:var(--text-secondary);">Sandbox and approvals limit action; tests and review prove the result.</p>
       </div>
     </div>
 
     <div class="highlight-box green fragment" style="margin-top:0.65em; font-size:0.67em; text-align:center; line-height:1.35;">
-      <strong>Practical rule:</strong> when the agent fails, inspect the harness first: vague task, invisible context, broken environment, missing feedback, or lost state.
+      <strong>Recurring failure:</strong> attribute it to instruction, tool, environment, state, feedback, or observability before changing the model.
     </div>
     <aside class="notes">
-      <p>This slide synthesizes the Walking Labs learning material. The key idea: Harness Engineering is not just prompt writing or AGENTS.md. It is the agent's operating system.</p>
-      <p>Repo as source: for an agent, what is not in the repository practically does not exist. Routing files: AGENTS.md should be short and point to specialized documentation according to the task — this connects directly to Progressive Disclosure.</p>
-      <p>Initialization separates setup from implementation. WIP=1 reduces overreach: the agent stops opening five fronts and finishes one verifiable unit.</p>
-      <p>Observability turns subjective review into evidence: logs, traces, tests, rubrics, and acceptance criteria. Clean exit closes the loop: build/tests/progress/artifacts must be in order so the next session does not start from zero.</p>
+      <p><strong>Technical:</strong> maker/checker, limited WIP, state, and observability reduce correlated error, dispersion, and continuity loss.</p>
+      <p><strong>Executive impact:</strong> each unit ends with reviewable evidence, a clear owner, and a controlled blast radius.</p>
+      <p><strong>Control and KPI:</strong> track WIP, checks per slice, restarts without rediscovery, regressions, and failures by harness layer.</p>
+      <p><strong>Caveat:</strong> sandbox and approvals reduce the capacity for harm, but do not prove correctness; tests and review remain necessary.</p>
     </aside>
   </section>
 
-  <!-- 6.4 — SDD + Harness Engineering = Closed Loop -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 80%, rgba(0,255,157,0.05) 0%, transparent 60%)">
+  <!-- 6.4 — Harness as a bridge to Loop Engineering -->
+  <section id="harness-to-loop" data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 80%, rgba(0,255,157,0.05) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="infinity"></i></span>
-      <span class="section-label">06 / Harness Engineering — Connection with SDD</span>
+      <span class="section-label">06 / Harness Engineering — Temporal bridge</span>
     </div>
-    <h2>SDD + Harness = <span class="accent">Closed Loop</span></h2>
-
-    <div class="two-cols" style="align-items:start; gap:1.4em; margin-top:0.4em;">
-      <div>
-        <p style="font-size:0.76em; color:var(--text-secondary); margin-bottom:0.6em;">Your SDD artifacts <em>already are</em> harness components — what's missing is recognizing and operationalizing them as such.</p>
-        <table style="font-size:0.66em; width:100%;">
-          <thead>
-            <tr>
-              <th>SDD Artifact</th>
-              <th>Role in Harness</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>spec.md / PRD.md</code></td>
-              <td><span style="color:var(--accent-green);">Computational Guide</span> — feedforward with structured intent</td>
-            </tr>
-            <tr>
-              <td><code>AGENTS.md</code></td>
-              <td><span style="color:var(--accent-green);">Computational Guide</span> — rules and constraints for the agent</td>
-            </tr>
-            <tr>
-              <td>Acceptance Criteria (AC)</td>
-              <td>Defines <span style="color:var(--accent-copilot-light);">Sensor targets</span> — "passed = spec-compliant"</td>
-            </tr>
-            <tr>
-              <td>Tests (CI/CD)</td>
-              <td><span style="color:var(--accent-copilot-light);">Computational Sensor</span> — deterministic feedback</td>
-            </tr>
-            <tr>
-              <td>Skills.md</td>
-              <td><span style="color:var(--accent-blue);">Inferential Guide</span> — specialized context on demand</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="highlight-box green fragment" style="margin-top:0.6em; font-size:0.7em; line-height:1.3;">
-          <i data-lucide="check-circle-2" style="vertical-align:middle;"></i>
-          <strong> If you practice SDD, you are already doing Harness Engineering.</strong><br>
-          <span style="font-size:0.88em;">Harness Engineering is the name for what you do when you tend to SDD artifacts with operational rigor.</span>
-        </div>
-      </div>
-      <div>
-        <div class="card fragment" style="padding:0.9em 0.85em; border-color:rgba(0,255,157,0.3);">
-          <h3 style="font-size:0.88em; color:var(--accent-green);">The cycle</h3>
-          <div style="font-size:0.68em; line-height:1.7; margin-top:0.4em;">
-            <div style="display:flex; align-items:center; gap:0.4em;">
-              <span style="color:var(--accent-green); font-size:1.1em;">①</span>
-              <span><strong>Spec (SDD)</strong> → feedforward Guide for the agent</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.4em; margin-top:0.2em;">
-              <span style="color:var(--accent-copilot-light); font-size:1.1em;">②</span>
-              <span>Agent generates → Computational Sensor evaluates</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.4em; margin-top:0.2em;">
-              <span style="color:var(--accent-blue); font-size:1.1em;">③</span>
-              <span>Failed → iterate until Sensors pass</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.4em; margin-top:0.2em;">
-              <span style="color:var(--accent-green); font-size:1.1em;">④</span>
-              <span>Passed → <strong>human reviews result</strong>, not process</span>
-            </div>
-          </div>
-        </div>
-        <div class="highlight-box blue fragment" style="margin-top:0.5em; font-size:0.64em; line-height:1.3;">
-          <strong>Codex, by OpenAI (2025):</strong> "Our biggest challenges now center on designing environments, feedback loops, and control systems" — 1 million lines of code with <strong>zero</strong> manually written lines.
-        </div>
-      </div>
+    <h2>Handoff preserves. Harness executes. <span class="accent">Loop reconciles.</span></h2>
+    <p style="font-size:0.72em; text-align:center; color:var(--text-secondary); margin-bottom:0.8em;">Each layer answers a different question and hands state to the next.</p>
+    <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:0.45em; margin-top:0.35em;" role="list" aria-label="Flow from SDD to Loop Engineering">
+      <article class="card fragment" role="listitem" style="padding:0.75em 0.55em; text-align:center;"><span class="tag green">SDD</span><h3 style="font-size:0.74em;">Intent</h3><p style="font-size:0.58em;">contract + criteria</p></article>
+      <article class="card fragment" role="listitem" style="padding:0.75em 0.55em; text-align:center;"><span class="tag blue">Slice</span><h3 style="font-size:0.74em;">Unit</h3><p style="font-size:0.58em;">scope + evidence</p></article>
+      <article class="card fragment" role="listitem" style="padding:0.75em 0.55em; text-align:center;"><span class="tag purple">Handoff</span><h3 style="font-size:0.74em;">Continuity</h3><p style="font-size:0.58em;">state + owner</p></article>
+      <article class="card fragment" role="listitem" style="padding:0.75em 0.55em; text-align:center;"><span class="tag orange">Harness</span><h3 style="font-size:0.74em;">Execution</h3><p style="font-size:0.58em;">guides + checks</p></article>
+      <article class="card fragment" role="listitem" style="padding:0.75em 0.55em; text-align:center;"><span class="tag red">Loop</span><h3 style="font-size:0.74em;">Time</h3><p style="font-size:0.58em;">repeat · stop · escalate</p></article>
+    </div>
+    <div class="highlight-box green fragment" style="margin-top:0.75em; font-size:0.72em; text-align:center; line-height:1.35;">
+      <strong>Temporal dimension:</strong> who triggers, how work progresses, what survives across runs, and when it must stop.<br>
+      <span style="color:var(--text-secondary);">Now we move from designing only the environment to designing the system that activates it.</span>
     </div>
     <aside class="notes">
-      <p>The table bridges what the audience already knows (SDD artifacts) with the new vocabulary (Guides/Sensors). There's nothing new to learn — it's about recognizing what they already do with the right name and an explicit framework.</p>
-      <p>The Codex quote is powerful: in 2025, the Codex team reported 1 million lines of code with zero manual intervention — and they described their biggest challenge not as the model, but as "designing environments, feedback loops, and control systems". That is the operational definition of Harness Engineering.</p>
+      <p><strong>Technical:</strong> SDD defines the contract, the Slice bounds work, the Handoff preserves state, the Harness provides execution and signals; Loop Engineering adds trigger, progression, and stop.</p>
+      <p><strong>Executive impact:</strong> the chain separates intent, accountability, evidence, and automation without hiding the human gate.</p>
+      <p><strong>Control and KPI:</strong> each transition must produce an owner, terminal state, and evidence; measure accepted outcomes, retries, and restart time.</p>
+      <p><strong>Caveat:</strong> this is a narrative bridge. The next section presents Loop Engineering as an emergent term, not a consolidated formal standard.</p>
     </aside>
   </section>
 

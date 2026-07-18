@@ -1,36 +1,8 @@
 import { bootstrapPresentation } from './bootstrap.js';
 import { resolveRuntimeOptions } from './config/runtime-options.js';
 import { getAppMessages } from './i18n/messages.js';
+import { loadSlides } from './slide-loader.js';
 import { DEFAULT_LOCALE, getSlidesManifestPath, resolveLocaleFromQuery, withLocaleQuery, } from './i18n/language.js';
-function escapeHtml(value) {
-    return String(value)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
-}
-function toSafeId(value) {
-    return String(value).toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-}
-function buildLoadErrorSlide(locale, title, details, sourcePath, slideId = 'load-error', sectionLabel = getAppMessages(locale).loadErrorSection) {
-    const messages = getAppMessages(locale);
-    return `
-  <section id="${escapeHtml(slideId)}" data-load-error="true" data-error-source="${escapeHtml(sourcePath)}" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 30%, rgba(255,92,122,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="triangle-alert"></i></span>
-      <span class="section-label">${escapeHtml(sectionLabel)}</span>
-    </div>
-    <h2>${escapeHtml(title)}</h2>
-    <div class="highlight-box orange" style="margin-top:0.7em; font-size:0.78em;">
-      ${escapeHtml(details)}
-    </div>
-    <p style="font-size:0.68em; color:var(--text-muted); margin-top:0.7em;">
-      ${escapeHtml(messages.sourceLabel)}: <code>${escapeHtml(sourcePath)}</code>
-    </p>
-  </section>
-`;
-}
 function applyDocumentLocale(locale) {
     const messages = getAppMessages(locale);
     document.documentElement.setAttribute('lang', locale);
@@ -52,75 +24,13 @@ async function loadSlidesAndBootstrap(locale) {
     }
     const manifestSrc = getSlidesManifestPath(locale);
     const slidesSrc = slidesRoot.dataset?.slidesSrc;
-    const messages = getAppMessages(locale);
-    slidesRoot.dataset.slidesManifest = manifestSrc;
-    if (manifestSrc) {
-        let parts = [];
-        try {
-            const manifestResponse = await fetch(manifestSrc, { cache: 'no-store' });
-            if (!manifestResponse.ok)
-                throw new Error(`HTTP ${manifestResponse.status} while loading manifest`);
-            const manifest = (await manifestResponse.json());
-            parts = Array.isArray(manifest.parts)
-                ? manifest.parts
-                : Array.isArray(manifest.slides)
-                    ? manifest.slides.map((slide) => slide.path).filter((path) => typeof path === 'string')
-                    : [];
-        }
-        catch (error) {
-            console.error('Failed to load slide manifest:', { manifestSrc, error });
-            slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.manifestLoadTitle, messages.manifestLoadDetails, manifestSrc, 'load-error-manifest', messages.bootstrapErrorSection);
-            bootstrapPresentation(locale, resolveRuntimeOptions());
-            return;
-        }
-        if (!parts.length) {
-            console.error('Slide manifest has no parts:', { manifestSrc });
-            slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.manifestEmptyTitle, messages.manifestEmptyDetails, manifestSrc, 'load-error-manifest-empty', messages.bootstrapErrorSection);
-            bootstrapPresentation(locale, resolveRuntimeOptions());
-            return;
-        }
-        const partResults = await Promise.allSettled(parts.map(async (part) => {
-            const partResponse = await fetch(part, { cache: 'no-store' });
-            if (!partResponse.ok)
-                throw new Error(`HTTP ${partResponse.status} while loading slide part`);
-            return {
-                path: part,
-                content: await partResponse.text(),
-            };
-        }));
-        const loadedSections = [];
-        const failedSections = [];
-        partResults.forEach((result, idx) => {
-            if (result.status === 'fulfilled') {
-                loadedSections.push(result.value.content);
-                return;
-            }
-            const partPath = parts[idx];
-            const reason = result.reason instanceof Error ? result.reason.message : 'Erro desconhecido';
-            failedSections.push(buildLoadErrorSlide(locale, messages.partLoadTitle, messages.partLoadDetails(idx + 1, reason), partPath, `load-error-part-${idx + 1}-${toSafeId(partPath)}`, `${messages.loadErrorSection} ${idx + 1}`));
-            console.error('Failed to load slide part:', {
-                part: partPath,
-                reason: result.reason,
-            });
-        });
-        slidesRoot.innerHTML = [...loadedSections, ...failedSections].join('\n');
-    }
-    else if (slidesSrc) {
-        try {
-            const response = await fetch(slidesSrc, { cache: 'no-store' });
-            if (!response.ok)
-                throw new Error(`HTTP ${response.status} while loading slides source`);
-            slidesRoot.innerHTML = await response.text();
-        }
-        catch (error) {
-            console.error('Failed to load fallback slides source:', {
-                slidesSrc,
-                error,
-            });
-            slidesRoot.innerHTML = buildLoadErrorSlide(locale, messages.slidesLoadTitle, messages.slidesLoadDetails, slidesSrc, 'load-error-slides-src', messages.bootstrapErrorSection);
-        }
-    }
-    bootstrapPresentation(locale, resolveRuntimeOptions());
+    await loadSlides({
+        locale,
+        slidesRoot,
+        manifestSrc,
+        slidesSrc,
+        bootstrap: () => bootstrapPresentation(locale, resolveRuntimeOptions()),
+    });
 }
 function showPresentation() {
     const revealRoot = document.querySelector('.reveal');

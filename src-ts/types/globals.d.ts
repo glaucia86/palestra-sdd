@@ -9,6 +9,8 @@ interface RevealGlobal {
   on(event: 'ready', callback: () => void): void;
   on(event: 'slidechanged', callback: (event: RevealSlideChangedEvent) => void): void;
   getCurrentSlide(): HTMLElement;
+  getIndices(slide?: HTMLElement): { h?: number; v?: number; f?: number };
+  slide(h: number, v?: number, f?: number): void;
   getSlideBackground?(slide: HTMLElement): HTMLElement | null;
 }
 

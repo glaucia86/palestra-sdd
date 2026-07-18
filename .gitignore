@@ -1,1 +1,7 @@
 node_modules
+_site/
+
+doc-specs/
+.devin/
+.agents/
+.harness/

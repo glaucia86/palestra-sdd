@@ -1,548 +1,216 @@
-<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
+<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)" data-idea-count="2" aria-label="Context Engineering section opening">
+  <div class="section-orb section-orb-1" style="--orb-color:rgba(56,200,250,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color:rgba(146,119,255,0.15);"></div>
   <div class="section-page-container">
     <div class="section-page-label" style="color:var(--accent-blue);">Section 04</div>
-    <h2 class="section-page-title gradient-text-purple">Context<br>Architecture</h2>
-    <p class="section-page-desc">PRD.md, AGENTS.md, Rules, and Skills — the four pillars of structured context</p>
-    <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></div>
+    <h2 class="section-page-title gradient-text-purple">Context<br />Engineering</h2>
+    <p class="section-page-desc">Select the knowledge the agent needs and reveal depth only when the task asks for it.</p>
+    <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="map"></i></div>
   </div>
-  <aside class="notes">
-    <p>Context architecture is the structural foundation that makes SDD work at scale. Without a clear architecture for how context flows to the agent, even good specs get diluted.</p>
-    <p>The four pillars — PRD.md, AGENTS.md, Rules, and Skills — each serve a distinct role: what and why, how and context, global guardrails, and specialized knowledge. Together they give the agent exactly what it needs, no more and no less.</p>
+  <aside class="notes" aria-label="Speaker notes">
+    <p>Context Engineering answers what the agent needs to know now. Model choice cannot compensate for a missing contract, the wrong source, or conflicting instructions.</p>
+    <p>This block separates context selection and loading from context economy, which comes in the next section.</p>
   </aside>
 </section>
-<section id="arquitetura">
 
-  <!-- 7.1 Overview -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 30% 70%, rgba(179,157,219,0.05) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="building-2"></i></span>
-      <span class="section-label">04 / Context Architecture</span>
+<section id="arquitetura" aria-label="Context Engineering and Progressive Disclosure">
+  <section id="context-engineering" data-idea-count="3" data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(56,200,250,0.07) 0%, transparent 60%)" aria-label="Active context selection">
+    <div class="section-header"><span class="section-icon"><i data-lucide="map"></i></span><span class="section-label">04 / Context Engineering</span></div>
+    <h2>Context Is an <span class="accent">Architecture Decision</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="target"></i></span><h3>Intent</h3><p>Spec, outcome, scope, and acceptance criteria define the current decision.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Constraints</h3><p>Instructions, security, architecture, and boundaries reduce ambiguity.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="badge-check"></i></span><h3>Evidence</h3><p>Code, tests, decisions, and sources of truth support the answer.</p></article>
     </div>
-    <h2>Context <span class="accent">Architecture</span></h2>
-    <p style="font-size:0.8em; text-align:center; max-width:700px; margin:0 auto 0.8em;">
-      The <strong>Context Architecture</strong> defines how SDD artifacts are organized to provide the AI agent exactly the context it needs. No more, no less.
-    </p>
-    <!-- Context Architecture — diagrama HTML/CSS (sem Mermaid) -->
-    <div class="ctx-arch">
-      <div class="ctx-inputs">
-        <div class="ctx-input-node" style="--clr:var(--accent-green)">
-          <span class="ctx-inp-icon"><i data-lucide="clipboard-list"></i></span>
-          <div class="ctx-inp-text"><strong>PRD.md</strong><small>Product Requirements</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-blue)">
-          <span class="ctx-inp-icon"><i data-lucide="folder"></i></span>
-          <div class="ctx-inp-text"><strong>AGENTS.md</strong><small>Context and Rules</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-purple)">
-          <span class="ctx-inp-icon"><i data-lucide="settings-2"></i></span>
-          <div class="ctx-inp-text"><strong>Rules</strong><small>Global Guidelines</small></div>
-        </div>
-        <div class="ctx-input-node" style="--clr:var(--accent-orange)">
-          <span class="ctx-inp-icon"><i data-lucide="wrench"></i></span>
-          <div class="ctx-inp-text"><strong>Skills</strong><small>Specialized Skills</small></div>
-        </div>
-      </div>
-
-      <div class="ctx-beam ctx-beam-l" aria-hidden="true"></div>
-
-      <div class="ctx-center-node">
-        <div class="ctx-ring ctx-ring-2"></div>
-        <div class="ctx-ring ctx-ring-1"></div>
-        <div class="ctx-core">
-          <i data-lucide="cpu"></i>
-          <strong>AI Agent</strong>
-          <small>Copilot · Codex · others</small>
-        </div>
-      </div>
-
-      <div class="ctx-beam ctx-beam-r" aria-hidden="true"></div>
-
-      <div class="ctx-outputs">
-        <div class="ctx-output-node"><i data-lucide="code-2"></i><span>Code</span></div>
-        <div class="ctx-output-node"><i data-lucide="flask-conical"></i><span>Tests</span></div>
-        <div class="ctx-output-node"><i data-lucide="book-open"></i><span>Docs</span></div>
-      </div>
-    </div>
-  <aside class="notes">
-    <p>The architecture diagram shows the four input layers flowing into the AI agent, which then produces code, tests, and docs. This isn't just organization — it's a token economy: every layer costs context window space.</p>
-    <p>The key insight: the agent's quality is bounded by the quality of its context. Better structured context → fewer hallucinations → more predictable output. The architecture exists to optimize that input.</p>
-    <p>Arrow: inputs (PRD, AGENTS, Rules, Skills) → AI Agent → outputs (Code, Tests, Docs). Closing: architecture controls what enters the agent's context window — that control is what makes SDD different from vibe coding.</p>
-  </aside>
+    <div class="highlight-box blue">The same model + the same task can produce different results when the <strong>selected context</strong> changes.</div>
+    <p style="font-size:0.5em; color:var(--text-muted); text-align:center;">↓ press ↓ to continue this section</p>
+    <aside class="notes" aria-label="Speaker notes"><p>The question is not how much fits in the window, but which artifacts reduce uncertainty for this decision.</p><p>Start with intent, constraints, and evidence. Specialized detail enters later, on demand.</p></aside>
   </section>
 
-  <!-- 7.2 AGENTS.md -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="folder"></i></span>
-      <span class="section-label">04 / Architecture - AGENTS.md</span>
+  <section id="context-architecture-flow" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 74% 55% at 50% 80%, rgba(56,200,250,0.08) 0%, transparent 62%)" aria-label="Context architecture flow">
+    <div class="section-header"><span class="section-icon"><i data-lucide="workflow"></i></span><span class="section-label">04 / Context Architecture</span></div>
+    <h2>How Context <span class="accent">Reaches the Agent</span></h2>
+    <div class="context-architecture-diagram">
+      <div class="context-architecture-actor"><i data-lucide="user-round"></i><strong>Developer</strong><span>defines intent and boundaries</span></div>
+      <div class="context-architecture-entry"><i data-lucide="arrow-down"></i><span>starts a task or invokes a command</span></div>
+      <div class="context-source-grid">
+        <article class="context-source context-source--persistent">
+          <header><i data-lucide="file-lock-2"></i><h3>Persistent context</h3></header>
+          <div class="context-source-tags"><span>AGENTS.md</span><span>project rules</span><span>local conventions</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>always available</small></div>
+        </article>
+        <article class="context-source context-source--skills">
+          <header><i data-lucide="package-open"></i><h3>On-demand skills</h3></header>
+          <div class="context-source-tags"><span>testing</span><span>domain</span><span>deployment</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>when relevant</small></div>
+        </article>
+        <article class="context-source context-source--commands">
+          <header><i data-lucide="terminal-square"></i><h3>Explicit commands</h3></header>
+          <div class="context-source-tags"><span>/tdd</span><span>/plan</span><span>/review</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>when invoked</small></div>
+        </article>
+        <article class="context-source context-source--external">
+          <header><i data-lucide="plug-zap"></i><h3>External systems</h3></header>
+          <div class="context-source-tags"><span>browser</span><span>documentation</span><span>data</span></div>
+          <div class="context-source-route"><i data-lucide="arrow-down"></i><small>controlled retrieval</small></div>
+        </article>
+      </div>
+      <div class="context-agent-runtime">
+        <div class="context-agent-runtime-header"><i data-lucide="bot"></i><strong>Agent Runtime</strong><span>selects, combines, and executes</span></div>
+        <div class="context-window-core"><i data-lucide="panels-top-left"></i><strong>Active context</strong><small>intent + rules + knowledge + tools</small></div>
+      </div>
     </div>
-    <h2><span class="accent">AGENTS.md</span> — The Living Contract</h2>
+    <aside class="notes" aria-label="Speaker notes"><p>The developer does not dump all knowledge into the prompt. The runtime composes active context from sources with different lifecycles.</p><p>Persistent instructions stay small; skills enter when relevant; commands express explicit intent; external tools provide data under control. Names and mechanisms vary by product.</p></aside>
+  </section>
+
+  <section id="context-instructions" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(146,119,255,0.07) 0%, transparent 60%)" aria-label="Small persistent instructions">
+    <div class="section-header"><span class="section-icon"><i data-lucide="file-lock-2"></i></span><span class="section-label">04 / Instructions</span></div>
+    <h2>Persistent Should Stay <span class="accent">Small</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="folder-git-2"></i></span><h3><code>AGENTS.md</code></h3><p>The repository operating contract: boundaries, commands, and context routing.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="panels-top-left"></i></span><h3>Product conventions</h3><p><code>CLAUDE.md</code> and <code>copilot-instructions.md</code> belong to their surfaces.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="signpost"></i></span><h3>Routing</h3><p>The root file points to specialized content without loading everything.</p></article>
+    </div>
+    <div class="highlight-box purple"><strong>Instructions</strong> hold durable rules; volatile references and examples stay outside persistent context.</div>
+    <aside class="notes" aria-label="Speaker notes"><p>Names vary by product. Do not present product-specific files as a universal cross-agent standard.</p><p>A useful root instruction file works as a router: small, actionable, and stable.</p></aside>
+  </section>
+
+  <section id="context-map" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(0,221,179,0.07) 0%, transparent 60%)" aria-label="Context map and sources of truth">
+    <div class="section-header"><span class="section-icon"><i data-lucide="waypoints"></i></span><span class="section-label">04 / Context Map</span></div>
+    <h2>Show Where the <span class="accent">Truth Lives</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="list-tree"></i></span><h3>Index</h3><p>Which domain exists, and which file answers each kind of question?</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="database"></i></span><h3>Canonical source</h3><p>Spec, code, test, or decision: one explicit authority per subject.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="user-round-check"></i></span><h3>Owner and freshness</h3><p>Who maintains it, when to review it, and how stale content is recognized.</p></article>
+    </div>
+    <div class="highlight-box"><code>Task → contract → sources → checks → owner</code></div>
+    <aside class="notes" aria-label="Speaker notes"><p>A context map is a discovery index, not a copy of all documentation.</p><p>It reduces broad search and source conflicts by declaring authority, ownership, and freshness.</p></aside>
+  </section>
+
+  <section id="agent-skills-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.1) 0%, transparent 60%)" aria-label="Agent Skills opening">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(255,120,73,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(146,119,255,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-orange);">Context mechanism</div>
+      <h2 class="section-page-title gradient-text-purple">Agent<br />Skills</h2>
+      <p class="section-page-desc">Package specialized knowledge and load it only when the task requires it.</p>
+      <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="package-open"></i></div>
+    </div>
+    <aside class="notes" aria-label="Speaker notes"><p>Agent Skills separate specialized knowledge from the repository's persistent instructions.</p><p>This cover marks the shift from mapping sources of truth to loading reusable procedures on demand.</p></aside>
+  </section>
+
+  <section id="agent-skills" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(255,120,73,0.07) 0%, transparent 60%)" aria-label="Agent Skills on demand">
+    <div class="section-header"><span class="section-icon"><i data-lucide="package-open"></i></span><span class="section-label">04 / Agent Skills</span></div>
+    <h2>Specialized Knowledge <span class="accent">On Demand</span></h2>
     <div class="two-cols">
-      <div>
-        <div class="definition" style="margin-bottom:0.7em;">
-          <p><strong>AGENTS.md</strong> is an open standard to communicate repository context, rules, and expected behavior to AI agents. Placed at the <em>project root</em>, it is read by multiple tools and agents (depending on product/integration), acting as a "README for agents".</p>
-        </div>
-        <div class="card-grid-2" style="gap:0.6em;">
-          <div class="card">
-            <span class="card-icon"><i data-lucide="map-pin"></i></span>
-            <h3>Location</h3>
-            <p style="font-size:0.72em;">Always at the repository <code>root</code> — <code>./AGENTS.md</code></p>
-          </div>
-          <div class="card">
-            <span class="card-icon"><i data-lucide="refresh-cw"></i></span>
-            <h3>Living Document</h3>
-            <p style="font-size:0.72em;">Updated alongside the project, always reflecting the current state.</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <pre><code class="language-markdown"># AGENTS.md
-
-## Project Goal
-Task management REST API.
-
-## Tech Stack
-- Node.js 22 + TypeScript strict
-- Express 5 + Prisma ORM
-- PostgreSQL 16
-- Vitest for tests
-
-## Code Conventions
-- Naming: camelCase for variables
-- Imports: always absolute (src/...)
-- Errors: never use `any`; use Result types
-
-## DO ✅
-- Write tests for each public function
-- Use TypeScript strict mode
-- Document endpoints with JSDoc
-
-## DON'T ❌
-- Do not use `any` type
-- Do not commit without passing tests
-- Do not change schema without migration</code></pre>
-      </div>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="package"></i></span><h3>Discoverable package</h3><p>Each skill uses <code>SKILL.md</code> as its entry point and may include references, scripts, and assets.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="mouse-pointer-click"></i></span><h3>Intent-based activation</h3><p>Name and description help the agent choose the right skill for the task.</p></article>
     </div>
-  <aside class="notes">
-    <p>AGENTS.md is the "README for agents" — it's the first thing an AI agent reads to understand the project. Location at the root is intentional: it's always discoverable, regardless of which file or directory the agent is working in.</p>
-    <p>"Living document" is the key phrase: AGENTS.md should be updated alongside the code, not written once and forgotten. When the tech stack changes, when conventions evolve, AGENTS.md changes too.</p>
-    <p>The example in the slide is a real minimal template. Note the explicit DO/DON'T structure: these are the clearest format for agent instructions. Avoid abstract guidelines like "follow best practices" — be specific and testable.</p>
-    <p>Closing: AGENTS.md is the persistent context that survives across sessions, team members, and model changes. Invest in it like you invest in tests.</p>
-  </aside>
+    <div class="highlight-box orange">An Agent Skill is <strong>reusable knowledge</strong>; a native command is a product-specific capability.</div>
+    <p style="font-size:0.52em; text-align:center; color:var(--text-muted);">Reference: <a href="https://agentskills.io/specification" target="_blank" rel="noopener noreferrer">Agent Skills Specification</a></p>
+    <aside class="notes" aria-label="Speaker notes"><p>A skill is a discoverable, versionable package, not a loose file with an informal name.</p><p>The agent selects it through metadata and loads instructions and resources only when the intent matches.</p></aside>
   </section>
 
-  <!-- 7.3 Rules -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="settings-2"></i></span>
-      <span class="section-label">04 / Architecture - Rules</span>
+  <section id="progressive-disclosure" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.11) 0%, transparent 60%)" aria-label="Progressive Disclosure opening">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(146,119,255,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-purple);">Context mechanism</div>
+      <h2 class="section-page-title gradient-text-purple">Progressive<br />Disclosure</h2>
+      <p class="section-page-desc">Reveal instructions and resources in layers, only when they become relevant.</p>
+      <div class="section-page-icon" style="color:var(--accent-purple);"><i data-lucide="layers-3"></i></div>
     </div>
-    <h2><span class="accent">Rules</span> — Global Guidelines</h2>
-    <div class="two-cols">
-      <div>
-        <p style="font-size:0.8em; margin-bottom:0.6em;">
-          <strong>Rules</strong> are global guidelines that define the default agent behavior across the whole workspace, regardless of project or task.
-        </p>
-        <div class="highlight-box blue" style="margin-bottom:0.6em;">
-          📌 Each agent exposes Rules differently: Copilot uses <code>.github/copilot-instructions.md</code>; Codex prioritizes <code>AGENTS.md</code>; other agents may use their own files.
-        </div>
-        <div class="highlight-box">
-          Rules are the agent <em>"default mode"</em>. AGENTS.md can override Rules for a specific project.
-        </div>
-      </div>
-      <div>
-        <div class="card" style="border-color:var(--accent-green); margin-bottom:0.7em;">
-          <h3><i data-lucide="check-circle"></i> DO — Always do</h3>
-          <ul class="checklist" style="font-size:0.78em;">
-            <li class="check">Use TypeScript strict mode</li>
-            <li class="check">Write tests for public functions</li>
-            <li class="check">Document APIs with OpenAPI/JSDoc</li>
-            <li class="check">Follow SOLID and Clean Code principles</li>
-            <li class="check">Validate inputs at every external boundary</li>
-          </ul>
-        </div>
-        <div class="card" style="border-color:var(--accent-red);">
-          <h3 class="text-red"><i data-lucide="x-circle"></i> DON'T — Never do</h3>
-          <ul class="checklist" style="font-size:0.78em;">
-            <li class="cross">Use <code>any</code> type in TypeScript</li>
-            <li class="cross">Commit without passing tests</li>
-            <li class="cross">Hardcode credentials or secrets</li>
-            <li class="cross">Silently ignore errors (empty catch)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <aside class="notes">
-    <p>Rules are the workspace-level guardrails that apply regardless of project or task. In Copilot, copilot-instructions.md is the primary vehicle. The distinction from AGENTS.md is scope: AGENTS.md is project-specific, Rules are workspace/organization-wide.</p>
-    <p>The DO/DON'T format is intentional: it maps directly to how agents parse instructions. Positive rules (always do X) and negative rules (never do Y) are processed differently — both are needed.</p>
-    <p>The security-focused DON'Ts (no hardcoded credentials, no silent errors) are non-negotiable. These are OWASP-aligned guardrails that the agent should enforce by default in every session.</p>
-    <p>Closing: Rules are the safety net. AGENTS.md provides project context. Together they ensure the agent operates within defined boundaries at all times.</p>
-  </aside>
-  </section>
-
-  <!-- 7.4 Skills.md -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="wrench"></i></span>
-      <span class="section-label">04 / Architecture - Skills.md</span>
-    </div>
-    <h2><span class="accent">Skills.md</span> — Specialized Knowledge</h2>
-    <div class="two-cols-60">
-      <div>
-        <div class="definition" style="margin-bottom:0.4em;">
-          <p><strong>Skills</strong> are <em>directories</em> with a <code>SKILL.md</code> file as entry point — an open <strong>agentskills.io</strong> pattern adopted by GitHub Copilot in Dec/2025. The agent keeps the description in context and loads full skill content only when needed: <strong>Progressive Disclosure</strong> in practice.</p>
-        </div>
-        <div class="card-grid-2" style="gap:0.5em;">
-          <div class="card fragment">
-            <span class="card-icon"><i data-lucide="zap"></i></span>
-            <h3>Performance</h3>
-            <p style="font-size:0.72em;">Fewer tokens used = more efficient and cheaper sessions.</p>
-          </div>
-          <div class="card fragment">
-            <span class="card-icon"><i data-lucide="plug"></i></span>
-            <h3>Portability</h3>
-            <p style="font-size:0.72em;">Skills work in Codex, Claude Code, Cursor, Gemini CLI, and other compatible AI tools.</p>
-          </div>
-        </div>
-        <div class="highlight-box blue" style="margin-top:0.35em; font-size:0.75em;">
-          📖 <strong>See section 05</strong> for a deep dive into <em>Progressive Disclosure</em> — principles, layered structure, and best practices.
-        </div>
-      </div>
-      <div>
-        <div class="highlight-box blue" style="margin-top:0.45em; font-size:0.7em;">
-          <strong>Real examples (clickable):</strong><br />
-          <a href="https://skills.sh/vercel-labs/skills/find-skills" target="_blank" rel="noopener noreferrer">find-skills</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices" target="_blank" rel="noopener noreferrer">vercel-react-best-practices</a> ·
-          <a href="https://skills.sh/vercel-labs/agent-skills/web-design-guidelines" target="_blank" rel="noopener noreferrer">web-design-guidelines</a> ·
-          <a href="https://skills.sh/anthropics/skills/frontend-design" target="_blank" rel="noopener noreferrer">frontend-design</a>
-        </div>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.75em;">
-          🎯 Load only the Skill for the current task to reduce noise and token usage in context.
-        </div>
-      </div>
-    </div>
-  <aside class="notes">
-    <p>Skills are the most powerful and underused layer of the context architecture. They solve a fundamental token economy problem: you can't load all domain knowledge into every prompt, so you load only what's relevant to the current task.</p>
-    <p>The agentskills.io pattern is open and portable: the same skills work across Copilot, Claude, Cursor, and other tools. This avoids tool lock-in on your domain knowledge investment.</p>
-    <p>Practical workflow: when starting a React task, instruct the agent to load `skills/react-patterns.skill.md`. When working on API design, load `skills/api-design.skill.md`. Each skill is focused, maintained, and reusable.</p>
-    <p>Closing: skills are the mechanism that makes Progressive Disclosure concrete — which is exactly what section 05 covers next.</p>
-  </aside>
-  </section>
-
-  <!-- 7.5 Context Architecture Mermaid + Resumo -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="map"></i></span>
-      <span class="section-label">04 / Architecture - Full View</span>
-    </div>
-    <h2><span class="accent">Complete</span> Architecture View</h2>
-    <div class="two-cols" style="gap:1.5em; align-items:center;">
-      <div>
-        <!-- Complete view - HTML/CSS pipeline (no Mermaid) -->
-        <div class="ctx-pipeline">
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-blue)"><i data-lucide="user"></i></div>
-            <div class="ctx-pipe-body"><strong>Developer</strong><small>writes spec.md</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-green)"><i data-lucide="bot"></i></div>
-            <div class="ctx-pipe-body"><strong>Agent organizes artifacts</strong><small>PRD.md + AGENTS.md</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-purple)"><i data-lucide="layers"></i></div>
-            <div class="ctx-pipe-body"><strong>Agent Context</strong><small>enriched by Rules + Skills</small></div>
-          </div>
-          <div class="ctx-pipe-connector"></div>
-          <div class="ctx-pipe-step">
-            <div class="ctx-pipe-dot" style="--c:var(--accent-orange)"><i data-lucide="code-2"></i></div>
-            <div class="ctx-pipe-body"><strong>Implementation</strong><small>code, tests, docs</small></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-bottom:0.6em;">The 4 pillars</h3>
-        <ul class="icon-list" style="font-size:0.82em;">
-          <li><span class="icon"><i data-lucide="clipboard-list"></i></span><div><strong class="text-green">PRD.md</strong> — the "what" and "why"</div></li>
-          <li><span class="icon"><i data-lucide="folder"></i></span><div><strong class="text-blue">AGENTS.md</strong> — the "how" and "context"</div></li>
-          <li><span class="icon"><i data-lucide="settings-2"></i></span><div><strong class="text-purple">Rules</strong> — global guidelines</div></li>
-          <li><span class="icon"><i data-lucide="wrench"></i></span><div><strong class="text-orange">Skills.md</strong> — specialized knowledge</div></li>
-        </ul>
-        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          🏆 <strong>Core principle:</strong> <em>Right context, at the right time, for the right task.</em>
-        </div>
-      </div>
-    </div>
-  <aside class="notes">
-    <p>This is the synthesis slide: the pipeline shows how all four pillars work together in sequence. Developer writes spec → Copilot generates artifacts → context enriched by Rules + Skills → implementation with traceability.</p>
-    <p>The core principle bears repeating: "Right context, at the right time, for the right task." This is not just a tagline — it's the operational definition of SDD context management. Too much context is as harmful as too little.</p>
-    <p>Closing: the architecture is the "how" behind the SDD promise. In the next section, Progressive Disclosure shows the depth of this principle in practice.</p>
-  </aside>
-  </section>
-
-</section><!-- /arquitetura -->
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  SLIDE — PROGRESSIVE DISCLOSURE  (vertical group)
-════════════════════════════════════════════════════════════════════════════ -->
-<section data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(255,120,73,0.15);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(146,119,255,0.15);"></div>
-  <div class="section-page-container">
-    <div class="section-page-label" style="color:var(--accent-orange);">Section 05</div>
-    <h2 class="section-page-title gradient-text-warm">Progressive<br>Disclosure</h2>
-    <p class="section-page-desc">Reveal only the necessary context, at the right time — the secret to an efficient agent</p>
-    <div class="section-page-icon" style="color:var(--accent-orange);"><i data-lucide="layers"></i></div>
-  </div>
-  <aside class="notes">
-    <p>Progressive Disclosure is the advanced context strategy that turns context architecture into a token-efficient, high-quality operational system. This section goes deeper than "load an AGENTS.md" — it explains how to structure context across multiple layers.</p>
-    <p>The doctor analogy in the slide is helpful: a general practitioner handles basics; a specialist is called only when needed. Context works the same way — load specialized knowledge only when the current task requires it.</p>
-  </aside>
-</section>
-<section id="progressive-disclosure">
-
-  <!-- PD 0 — Context Economy -->
-  <section id="economia-contexto" data-background-gradient="radial-gradient(ellipse 72% 52% at 25% 78%, rgba(255,205,71,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="coins"></i></span>
-      <span class="section-label">05 / Context Economy</span>
-    </div>
-    <h2>Context now has <span class="accent">cost</span></h2>
-    <div class="two-cols" style="gap:1.3em; align-items:start;">
-      <div>
-        <div class="highlight-box orange" style="margin-bottom:0.65em;">
-          <strong>Usage-based billing changes the conversation.</strong> Context is no longer only a quality concern: it also becomes cost, latency, and governance.
-        </div>
-        <ul class="icon-list" style="font-size:0.76em;">
-          <li class="fragment"><span class="icon"><i data-lucide="arrow-down-to-line"></i></span><div><strong>Input tokens</strong><br><span class="text-muted">Everything the model receives: prompts, specs, files, and instructions.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="message-square-reply"></i></span><div><strong>Output tokens</strong><br><span class="text-muted">Everything the model returns: plans, code, explanations, and diffs.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="archive"></i></span><div><strong>Cached tokens</strong><br><span class="text-muted">Reused context with its own pricing rules, according to official docs.</span></div></li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="border-color:rgba(255,205,71,0.45);">
-          <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="badge-dollar-sign"></i></span>
-          <h3 style="color:var(--accent-gold);">GitHub AI Credits</h3>
-          <p style="font-size:0.74em;">Starting <strong>06/01/2026</strong>, Copilot interactions move toward consumption-based billing. GitHub docs define <strong>1 GitHub AI Credit = US$0.01</strong>.</p>
-        </div>
-        <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.72em;">
-          Do not copy pricing tables into slides: models, multipliers, and allowances change. Link the official source and review before presenting.
-        </div>
-      </div>
-    </div>
-    <aside class="notes">
-      <p>Data verified for the May/2026 edition in the official GitHub Copilot models and pricing documentation. Review the page before presenting because prices, models, and multipliers may change.</p>
-      <p>The message is not "do not use Copilot" or "use Codex". The message is: when agents are billed by usage, context becomes budget. Progressive Disclosure becomes both a technical and economic discipline.</p>
+    <aside class="notes" aria-label="Speaker notes">
+      <p>We now move specifically into Progressive Disclosure: a policy that controls when each context layer enters the model window.</p>
+      <p>The summary points to this opening. From here, advance to catalog, activation, and on-demand resources.</p>
     </aside>
   </section>
 
-  <!-- PD 0.1 — Token Economy -->
-  <section id="economia-tokens" data-background-gradient="radial-gradient(ellipse 72% 52% at 75% 78%, rgba(0,221,179,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="gauge"></i></span>
-      <span class="section-label">05 / Context Economy — Practices</span>
-    </div>
-    <h2>Token economy: <span class="accent">what works</span></h2>
-    <div class="card-grid-3" style="gap:0.38em; margin-top:0.55em;">
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="folder-open"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">On-demand context</h3><p style="font-size:0.57em; line-height:1.32;">PRD, AGENTS.md, and Skills load the right information only when the task needs it.</p></div>
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="archive"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Cache and stable prefixes</h3><p style="font-size:0.57em; line-height:1.32;">Stable instructions at the beginning of context increase the chance of prompt caching reuse.</p></div>
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="route"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Right model</h3><p style="font-size:0.57em; line-height:1.32;">Not every task needs the most expensive model: classify risk, complexity, and reasoning needs.</p></div>
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="scissors"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Short output</h3><p style="font-size:0.57em; line-height:1.32;">Concise responses reduce output tokens. Caveman is a useful example, but it does not eliminate reasoning and tool costs.</p></div>
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="clock"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Batch and flex</h3><p style="font-size:0.57em; line-height:1.32;">Async tasks can use more economical processing when latency is not critical.</p></div>
-      <div class="card" style="padding:0.46em;"><span class="card-icon" style="font-size:1.22em;"><i data-lucide="bar-chart-3"></i></span><h3 style="font-size:0.72em !important; margin:0.18em 0 0.25em 0 !important;">Observability</h3><p style="font-size:0.57em; line-height:1.32;">Measure input, output, cached tokens, model, rework, and cost per execution.</p></div>
-    </div>
-    <div class="highlight-box blue" style="font-size:0.58em; line-height:1.28; margin-top:0.4em; padding:0.55em 0.9em;">
-      Rule of thumb: saving tokens is not only writing less. It is reducing ambiguity, repetition, long loops, and irrelevant context.
-    </div>
-  </section>
-
-  <!-- PD 0.2 — SDD as Agent FinOps -->
-  <section id="sdd-finops-agentes" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(56,200,250,0.06) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="wallet"></i></span>
-      <span class="section-label">05 / Context Economy — SDD</span>
-    </div>
-    <h2>SDD as <span class="accent">Agent FinOps</span></h2>
-    <div class="two-cols" style="gap:1em; align-items:start;">
-      <div class="card" style="border-color:rgba(0,221,179,0.35);">
-        <span class="card-icon"><i data-lucide="file-check-2"></i></span>
-        <h3>Clear specs reduce waste</h3>
-        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer repeated prompts explaining the same intent.</div></li>
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer long iterations to fix implicit requirements.</div></li>
-          <li><span class="icon"><i data-lucide="check"></i></span><div>Fewer exploratory tool calls because criteria are already defined.</div></li>
-        </ul>
-      </div>
-      <div class="card" style="border-color:rgba(255,205,71,0.42);">
-        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="ban"></i></span>
-        <h3 style="color:var(--accent-gold);">Expensive anti-patterns</h3>
-        <ul class="icon-list" style="font-size:0.68em; margin-top:0.45em;">
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Huge prompt copied into every session.</div></li>
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Full logs and unfiltered tool outputs.</div></li>
-          <li><span class="icon"><i data-lucide="x"></i></span><div>Expensive model for simple triage or mechanical work.</div></li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight-box" style="font-size:0.74em; margin-top:0.75em;">
-      SDD is not only delivery quality. With agents, a good spec is also cost, latency, risk, and predictability control.
-    </div>
-  </section>
-
-  <!-- PD 1 — What is Progressive Disclosure -->
-  <section data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="layers"></i></span>
-      <span class="section-label">05 / Progressive Disclosure</span>
-    </div>
+  <section id="progressive-disclosure-loading" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,165,0,0.05) 0%, transparent 60%)" aria-label="Progressive Disclosure explanation for AI">
+    <div class="section-header"><span class="section-icon"><i data-lucide="layers"></i></span><span class="section-label">04 / Progressive Disclosure</span></div>
     <h2><span class="accent">Progressive Disclosure</span></h2>
     <div class="two-cols two-cols--wide-start">
       <div>
         <div class="definition" style="margin-bottom:0.8em;">
-          <p><strong>Progressive Disclosure</strong> is the principle of revealing only the context needed for the current task. In SDD, this means layering the agent's knowledge — loading specialized information <em>on demand</em>, saving tokens, and reducing noise.</p>
+          <p><strong>Progressive Disclosure</strong> is the principle of revealing only the context needed for the current task. In SDD, this means layering the agent's knowledge — loading specialized information <em>on demand</em>, saving tokens, reducing noise, and decreasing rework.</p>
         </div>
         <ul style="font-size:0.82em;">
-          <li class="fragment"><strong>Root AGENTS.md:</strong> minimal, global, stable — rules that apply to <em>all</em> tasks</li>
+          <li class="fragment"><strong>Root AGENTS.md:</strong> minimal, global, and stable — rules that apply to <em>all</em> tasks</li>
           <li class="fragment"><strong>Specialized Skills:</strong> loaded on demand, only when needed</li>
-          <li class="fragment"><strong>Context Window:</strong> up to 70% token savings <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span></li>
-          <li class="fragment"><strong>Quality:</strong> less noise = more precise and consistent responses</li>
+          <li class="fragment"><strong>Context Window:</strong> up to 70% savings in the author's measured workflow</li>
+          <li class="fragment"><strong>Quality:</strong> less noise produces more precise and consistent responses</li>
         </ul>
       </div>
       <div>
-        <div class="card" style="text-align:center; border-color:var(--accent-orange);">
-          <span class="card-icon"><i data-lucide="layers"></i></span>
+        <article class="card" style="text-align:center; border-color:var(--accent-orange);">
+          <span class="card-icon"><i data-lucide="stethoscope"></i></span>
           <h3 class="text-orange">Analogy</h3>
-          <p style="font-size:0.75em;">Like in medicine: a general practitioner handles basics; a specialist is called only when needed. Context works the same way.</p>
-        </div>
-        <div class="highlight-box" style="margin-top:0.7em; font-size:0.78em;">
-          📊 A <strong>minimal AGENTS.md + on-demand Skills</strong> approach can reduce context-window usage by up to 70% per session. <span style="font-size:0.85em; opacity:0.7;">(ref. LinkedIn — Glaucia Lemos)</span>
-        </div>
+          <p>Like a medical specialist: the general practitioner handles the basics; the specialist is called only when the problem requires it. Context works the same way — load the specialist only when needed.</p>
+        </article>
+        <div class="highlight-box" style="margin-top:0.7em; font-size:0.72em;">A <strong>minimal AGENTS.md + on-demand Skills</strong> approach reduces persistent context without losing depth.</div>
       </div>
     </div>
-    <p class="slide-nav-hint">
-      ↓ press ↓ to continue in this section
-    </p>
-  <aside class="notes">
-    <p>Progressive Disclosure in practice: the root AGENTS.md stays minimal and stable — only rules that apply to all tasks all the time. Everything specialized lives in secondary files, loaded on demand.</p>
-    <p>The "up to 70% token savings" figure comes from my own structured workflow measurements — documented in my LinkedIn article. Your mileage will vary, but the direction is consistent: leaner context = faster responses, lower cost, less noise.</p>
-    <p>The quality point is crucial: it's not just about tokens. Less context noise means the agent focuses on what matters for the current task, producing more precise and consistent outputs.</p>
-    <p>Arrows 1–4: Root AGENTS.md (global) → Specialized Skills (on-demand) → Context Window efficiency → Quality improvement. Closing: Progressive Disclosure is the operational implementation of "right context, right time, right task."</p>
-  </aside>
+    <p style="font-size:0.46em; text-align:center; color:var(--text-muted);">Sources: <a href="https://agentskills.io/specification#progressive-disclosure" target="_blank" rel="noopener noreferrer">Agent Skills Specification</a> · <a href="https://www.linkedin.com/pulse/como-reduzi-em-70-o-uso-do-context-window-github-copilot-lemos-cycnf?originalSubdomain=pt" target="_blank" rel="noopener noreferrer">author's study</a></p>
+    <aside class="notes" aria-label="Speaker notes"><p>Progressive Disclosure is about focus: load only the context needed for the current task. The practical strategy is a minimal global base plus on-demand specialization.</p><p>This reduces noise, improves response accuracy, and lowers token cost per session. Less noise means less inference required from the model.</p><p>The “up to 70%” figure comes from the author's workflow documented on LinkedIn; it is not a universal promise. Each team should measure its own result.</p><p>Closing: less noise produces more consistent and predictable responses.</p></aside>
   </section>
 
-  <!-- PD 2 — Layered Structure -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="folder-tree"></i></span>
-      <span class="section-label">05 / Progressive Disclosure — Structure</span>
+  <section id="context-subagents-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.1) 0%, transparent 60%)" aria-label="Subagents opening">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(56,200,250,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(0,221,179,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-blue);">Context isolation</div>
+      <h2 class="section-page-title gradient-text">Subagents</h2>
+      <p class="section-page-desc">Delegate well-bounded subproblems without polluting the main task's context.</p>
+      <div class="section-page-icon" style="color:var(--accent-blue);"><i data-lucide="git-fork"></i></div>
     </div>
-    <h2><span class="accent">Layered</span> Structure</h2>
-    <div class="two-cols">
-      <div>
-        <pre><code class="language-bash">project/
-├── AGENTS.md              ← Layer 1 (global, lean)
-├── docs/
-│   └── agents/            ← Layer 2 (specialized)
-│       ├── testing.md
-│       ├── architecture.md
-│       ├── conventions.md
-│       └── security.md
-├── .github/
-│   └── copilot-instructions.md  ← Rules (global)
-└── skills/                ← Skills (spec-kit)
-    ├── api-design.skill.md
-    └── react-patterns.skill.md</code></pre>
-        <div class="highlight-box callout-compact">
-          🎯 Root AGENTS.md points to specialized files via links. The agent loads them <em>only when requested</em>.
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-bottom:0.5em; font-size:0.85em;">AGENTS.md — Minimal Example</h3>
-        <pre><code class="language-markdown"># AGENTS.md
-
-## Project
-Task management API with JWT.
-
-## Global Rules
-- TypeScript strict mode
-- Mandatory tests for public functions
-- Never use `any` type
-
-## Specialized Instructions
-- Testing: docs/agents/testing.md
-- Architecture: docs/agents/architecture.md
-- Security: docs/agents/security.md
-
-## Agent Limits
-- Do not change schema without migration
-- Do not commit without passing tests</code></pre>
-        <div class="highlight-box blue" style="margin-top:0.5em; font-size:0.75em;">
-          💡 AI generates specialized files automatically - you <em>do not need to create them manually</em>!
-        </div>
-      </div>
-    </div>
-  <aside class="notes">
-    <p>The layered folder structure is the practical implementation of Progressive Disclosure. The root AGENTS.md points to specialized files but doesn't load them — they're fetched only when explicitly requested for a task.</p>
-    <p>The "AI generates specialized files" point is important for adoption: you don't need to write every docs/agents/*.md file from scratch. Use spec-kit or Copilot to generate the initial versions from your AGENTS.md. Then refine iteratively.</p>
-    <p>The AGENTS.md minimal example in the slide shows the delegation pattern: each section points to where the agent can find more detail, without loading all that detail upfront.</p>
-    <p>Closing: the layered structure is a one-time investment that pays compound interest — every future session benefits from cleaner, faster context loading.</p>
-  </aside>
+    <aside class="notes" aria-label="Speaker notes"><p>The focus now shifts from loading knowledge to isolating work.</p><p>A subagent receives a bounded question and returns a compact result, evidence, and uncertainty to the main task.</p></aside>
   </section>
 
-  <!-- PD 3 — 6 Principles -->
-  <section>
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="list-checks"></i></span>
-      <span class="section-label">05 / Progressive Disclosure — Principles</span>
+  <section id="context-subagents" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)" aria-label="Subagents as context isolation">
+    <div class="section-header"><span class="section-icon"><i data-lucide="git-fork"></i></span><span class="section-label">04 / Subagents</span></div>
+    <h2>Isolate the <span class="accent">Subproblem</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="scan-line"></i></span><h3>Delegate</h3><p>A bounded question with explicit inputs and return criteria.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="box"></i></span><h3>Isolate</h3><p>A separate working context avoids polluting the main task.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="corner-down-left"></i></span><h3>Return</h3><p>A compact result with evidence, uncertainty, and remaining risks.</p></article>
     </div>
-    <h2>6 Principles of <span class="accent">Progressive Disclosure</span></h2>
-    <div class="card-grid-3" style="margin-top:0.35em; gap:0.4em;">
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="minimize-2"></i></span>
-        <h3>1. Minimalism</h3>
-        <p style="font-size:0.7em;">AGENTS.md should contain only rules required for <em>all</em> repository tasks. Specific rules belong in secondary files.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="split"></i></span>
-        <h3>2. Separation</h3>
-        <p style="font-size:0.7em;">Specialized instruction → secondary file (<code>docs/agents/</code>). Avoid one giant document with everything inside.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="link"></i></span>
-        <h3>3. Delegation</h3>
-        <p style="font-size:0.7em;">Root AGENTS.md declares <strong>where to find</strong> specialized instructions through links. The agent fetches them when needed.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="zap"></i></span>
-        <h3>4. Actionability</h3>
-        <p style="font-size:0.7em;">Prefer direct instructions: <em>"Before changing code, explain why."</em> Avoid generic text like "follow best practices".</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="shield"></i></span>
-        <h3>5. Stability</h3>
-        <p style="font-size:0.7em;">Unstable folder structures and volatile information should <strong>not</strong> go in root AGENTS.md - keep them in secondary files.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="trending-down"></i></span>
-        <h3>6. Efficiency</h3>
-        <p style="font-size:0.7em;">Every saved token = faster and cheaper responses. A lean AGENTS.md improves quality and lowers per-session cost.</p>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:0.3em; font-size:0.73em; padding:0.55em 1.1em;">
-      📚 These specialized files are also called <strong>"Skills"</strong> in the AI agent community (Claude Code, Cursor, etc.) — same concept, on-demand loading.
-    </div>
-  <aside class="notes">
-    <p>The six principles are the actionable checklist for implementing Progressive Disclosure: Minimalism, Separation, Delegation, Actionability, Stability, Efficiency. Each principle directly addresses a failure mode of naive context management.</p>
-    <p>"Actionability" deserves special attention: specific instructions like "before changing code, explain why" are infinitely more useful than "follow best practices." The agent can act on specific instructions; it interprets abstract ones unpredictably.</p>
-    <p>The community convergence point — Claude Code, Cursor, and others all using similar "Skills" patterns — validates that this approach is emerging as an industry standard, not a one-off technique.</p>
-    <p>Closing: these six principles are the implementation guide for the context architecture. Follow them and the architecture becomes self-maintaining as the project evolves.</p>
-  </aside>
+    <div class="highlight-box blue"><strong>Subagent</strong> is an isolated worker; <strong>Skill</strong> is reusable knowledge; a <strong>native command</strong> belongs to a surface.</div>
+    <aside class="notes" aria-label="Speaker notes"><p>Subagents help when the subproblem can be isolated and the return fits a verifiable summary.</p><p>Do not treat a subagent, an Agent Skill, and a product command as synonyms; they carry different responsibilities.</p></aside>
   </section>
 
-</section><!-- /progressive-disclosure -->
+  <section id="context-state-memory-intro" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.1) 0%, transparent 60%)" aria-label="State and Memory opening">
+    <div class="section-orb section-orb-1" style="--orb-color:rgba(0,221,179,0.16);"></div>
+    <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.13);"></div>
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-green);">Continuity across runs</div>
+      <h2 class="section-page-title gradient-text">State &amp;<br />Memory</h2>
+      <p class="section-page-desc">Preserve useful decisions and evidence without carrying the entire transcript.</p>
+      <div class="section-page-icon" style="color:var(--accent-green);"><i data-lucide="brain-circuit"></i></div>
+    </div>
+    <aside class="notes" aria-label="Speaker notes"><p>After isolating work, we need to decide what survives across runs.</p><p>State keeps the current situation; memory preserves durable, curated knowledge without turning the entire history into permanent context.</p></aside>
+  </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  SLIDE 8 — REFERÊNCIAS
-════════════════════════════════════════════════════════════════════════════ -->
+  <section id="context-state-memory" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(0,221,179,0.07) 0%, transparent 60%)" aria-label="State and memory across runs">
+    <div class="section-header"><span class="section-icon"><i data-lucide="brain-circuit"></i></span><span class="section-label">04 / State &amp; Memory</span></div>
+    <h2>Preserve Decisions, Not the <span class="accent">Entire Transcript</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="activity"></i></span><h3>Current state</h3><p>Goal, constraints, progress, and the next decision.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="library"></i></span><h3>Curated memory</h3><p>Durable facts and decisions with source and freshness.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="file-warning"></i></span><h3>Evidence</h3><p>Repeated successes may be summarized; failures keep their detail.</p></article>
+    </div>
+    <div class="highlight-box"><strong>compaction ≠ clearing ≠ editing ≠ isolation ≠ caching</strong></div>
+    <aside class="notes" aria-label="Speaker notes"><p>Memory is not the complete transcript. What survives should support future decisions without carrying the whole conversation.</p><p>Compaction summarizes, clearing restarts, editing changes, isolation separates, and caching reuses computation; they are distinct mechanisms.</p></aside>
+  </section>
+
+  <section id="economia-contexto-ponte" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 72% 55% at 82% 18%, rgba(255,205,71,0.08) 0%, transparent 60%)" aria-label="Bridge to Context Economy">
+    <div class="section-header"><span class="section-icon"><i data-lucide="arrow-right-circle"></i></span><span class="section-label">04 / Transition to Economy</span></div>
+    <h2>From the Right Context to <span class="accent">Sustainable Context</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment"><span class="card-icon"><i data-lucide="filter"></i></span><h3>1 · Curation</h3><p><strong>Context Engineering</strong> decides which sources can change the current decision.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="gauge"></i></span><h3>2 · Limits</h3><p><strong>Context Economy</strong> bounds context, cost, time, attempts, and diff size.</p></article>
+      <article class="card fragment"><span class="card-icon"><i data-lucide="log-out"></i></span><h3>3 · Exit</h3><p>Degradation signals tell us when to finish, compact, isolate, or hand off.</p></article>
+    </div>
+    <div class="highlight-box orange"><strong>In one sentence:</strong> Context Engineering chooses what deserves to enter; Context Economy defines how much fits, for how long, and what signal ends the cycle.</div>
+    <aside class="notes" aria-label="Speaker notes"><p>“Bridge” was only an editorial transition between two questions. The slide now explains that transition directly instead of presenting Bridge as a separate concept.</p><p>First we curate information. Then we add operating limits and exit criteria so the session remains verifiable.</p></aside>
+  </section>
+</section>

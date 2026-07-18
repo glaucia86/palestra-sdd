@@ -1,897 +1,690 @@
-<section aria-label="Abertura da seção AI Coding Agents" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(146,119,255,0.15);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
+<section aria-label="Abertura da seção AI Coding Agents" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.08) 0%, transparent 60%)">
+  <div class="section-orb section-orb-1" style="--orb-color:rgba(146,119,255,0.15);"></div>
+  <div class="section-orb section-orb-2" style="--orb-color:rgba(56,200,250,0.15);"></div>
   <div class="section-page-container">
     <div class="section-page-label text-copilot-light">Seção 03</div>
-    <h2 class="section-page-title gradient-text-purple">AI Coding<br>Agents</h2>
-    <p class="section-page-desc">Copilot, Codex e outros agentes como superfícies diferentes para o mesmo fluxo SDD</p>
+    <h2 class="section-page-title gradient-text-purple">AI Coding<br />Agents</h2>
+    <p class="section-page-desc">Quatro exemplos de superfícies e trade-offs; um contrato SDD atravessando todos eles</p>
     <div class="section-page-icon text-copilot-light" aria-label="Ícone de agente de IA"><i data-lucide="bot"></i></div>
   </div>
-  <aside class="notes" aria-label="Notas da seção">
-    <p>Agora a palestra muda de eixo: não vamos falar de uma ferramenta como destino final, e sim de uma categoria de trabalho — AI Coding Agents.</p>
-    <p>O ponto central é portabilidade. Se a metodologia depende de um produto, ela envelhece junto com o produto. Se depende de specs, contexto e validação, ela atravessa Copilot, Codex, Claude Code, Cursor e qualquer agente que venha depois.</p>
+  <aside class="notes" aria-label="Notas do apresentador">
+    <p><strong>Mensagem técnica:</strong> Copilot, Codex, Claude Code e Devin representam topologias diferentes de execução; SDD fornece o contrato comum.</p>
+    <p><strong>Mensagem executiva:</strong> a escolha de ferramenta não substitui clareza de objetivo, limites, governança e evidência.</p>
+    <p><strong>KPI sugerido:</strong> percentual de slices aceitas sem retrabalho relevante, segmentado por topologia.</p>
   </aside>
 </section>
 
-<section id="ai-coding-agents" aria-label="Grupo de slides sobre AI Coding Agents" data-auto-animate>
-
-  <section aria-label="De assistente para agente" data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+<section id="ai-coding-agents" aria-label="Grupo de slides sobre AI Coding Agents">
+  <section id="agents-autonomia" aria-label="Espectro de autonomia dos agentes" data-idea-count="3" data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
     <div class="section-header">
-      <span class="section-icon"><i data-lucide="network"></i></span>
+      <span class="section-icon"><i data-lucide="gauge"></i></span>
       <span class="section-label">03 / AI Coding Agents</span>
     </div>
-    <h2 data-id="agents-title">De Assistente para <span class="accent">Agente</span></h2>
-    <div class="two-cols" style="gap:1.5em; align-items:start;">
-      <div>
-        <div class="definition" style="margin-bottom:0.75em;">
-          <p>Um <strong>AI Coding Agent</strong> entende requisitos, navega pelo repositório, altera arquivos, executa comandos, revisa diffs e aprende com feedback. A diferença não está só no modelo: está no <strong>harness</strong> ao redor dele.</p>
-        </div>
-        <ul class="icon-list" style="font-size:0.78em;">
-          <li class="fragment"><span class="icon"><i data-lucide="message-square"></i></span><div><strong>IDE agents</strong><br><span class="text-muted">Copilot Chat, Cursor, extensões e contexto de editor.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="terminal-square"></i></span><div><strong>CLI agents</strong><br><span class="text-muted">Codex CLI, Copilot CLI, Gemini CLI e automações locais.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="monitor"></i></span><div><strong>App/Cloud agents</strong><br><span class="text-muted">Codex App, worktrees, cloud environments e tarefas paralelas.</span></div></li>
-        </ul>
-      </div>
-      <div>
-        <div class="card-grid-2" style="gap:0.55em;">
-          <div class="card fragment"><span class="card-icon"><i data-lucide="file-text"></i></span><h3>Spec</h3><p>Define intenção, escopo e critérios.</p></div>
-          <div class="card fragment"><span class="card-icon"><i data-lucide="folder"></i></span><h3>AGENTS</h3><p>Define regras e comportamento do repo.</p></div>
-          <div class="card fragment"><span class="card-icon"><i data-lucide="wrench"></i></span><h3>Skills</h3><p>Carregam especialização sob demanda.</p></div>
-          <div class="card fragment"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Checks</h3><p>Validam se a entrega bate com a spec.</p></div>
-        </div>
-        <div class="highlight-box purple" style="margin-top:0.55em; font-size:0.72em;">
-          <strong>Tese:</strong> modelo muda, produto muda, preço muda. O contrato SDD permanece.
-        </div>
-      </div>
+    <h2>De Assistente para <span class="accent">Agente</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="message-square"></i></span>
+        <h3>Assistir</h3>
+        <p>Sugerir, explicar e revisar com o humano dirigindo cada passo.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="route"></i></span>
+        <h3>Executar</h3>
+        <p>Planejar e modificar múltiplos arquivos dentro de limites explícitos.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="repeat-2"></i></span>
+        <h3>Operar</h3>
+        <p>Usar ferramentas, verificar resultados e parar em terminal states definidos.</p>
+      </article>
+    </div>
+    <div class="highlight-box purple">
+      Quanto maior a autonomia, mais importante o contrato: <strong>spec + contexto + permissões + verificadores</strong>.
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Use este slide para separar ferramenta de método. GitHub Copilot, Codex, Cursor e Claude Code têm interfaces diferentes, mas todos sofrem com o mesmo problema: se o contexto é ruim, a entrega fica instável.</p>
-      <p>A resposta do SDD é construir uma superfície de contexto reutilizável: spec, AGENTS, Skills e checks. Isso reduz dependência de produto e aumenta previsibilidade.</p>
+      <p><strong>Mensagem técnica:</strong> autonomia é um espectro de capacidade e responsabilidade, não um modo binário.</p>
+      <p><strong>Mensagem executiva:</strong> ampliar autonomia sem ampliar controles aumenta o custo potencial do erro.</p>
+      <p><strong>KPI sugerido:</strong> taxa de intervenções humanas não planejadas por slice.</p>
     </aside>
   </section>
 
-  <section id="github-copilot" aria-label="Abertura da seção GitHub Copilot" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.08) 0%, transparent 60%)">
-    <div class="section-orb section-orb-1" style="--orb-color: rgba(146,119,255,0.15);"></div>
-    <div class="section-orb section-orb-2" style="--orb-color: rgba(56,200,250,0.15);"></div>
+  <section id="copilot-sdd-verificavel" aria-label="Contrato SDD portável entre agentes" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="file-check-2"></i></span>
+      <span class="section-label">03 / Contrato Portável</span>
+    </div>
+    <h2>O Agente Muda. O <span class="accent">Contrato</span> Permanece.</h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="file-text"></i></span>
+        <h3>Intenção</h3>
+        <p>Spec, outcome, não escopo e critérios de aceite.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="book-open-check"></i></span>
+        <h3>Contexto</h3>
+        <p><code>AGENTS.md</code>, Skills e fontes de verdade sob demanda.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="git-pull-request-check"></i></span>
+        <h3>Evidência</h3>
+        <p>Checks, diff, review, handoff e PR com human gate.</p>
+      </article>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> artefatos versionados reduzem dependência de memória de sessão e de uma interface específica.</p>
+      <p><strong>Mensagem executiva:</strong> o investimento durável está no processo verificável, não em uma marca.</p>
+      <p><strong>KPI sugerido:</strong> critérios de aceite com evidência rastreável antes do PR.</p>
+    </aside>
+  </section>
+
+  <section id="copilot-modos" aria-label="Topologias de execução de AI Coding Agents" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 75% 52% at 20% 20%, rgba(56,200,250,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="network"></i></span>
+      <span class="section-label">03 / Superfícies</span>
+    </div>
+    <h2>Superfície é uma Escolha de <span class="accent">Topologia</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="laptop"></i></span>
+        <h3>Local e síncrona</h3>
+        <p>IDE, CLI e desktop mantêm humano, arquivos e feedback próximos.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="cloud"></i></span>
+        <h3>Remota e assíncrona</h3>
+        <p>Cloud e workspaces isolados sustentam tarefas longas e delegação.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="scan-search"></i></span>
+        <h3>Review e automação</h3>
+        <p>Checkers, schedules e eventos fecham ciclos com budgets e gates.</p>
+      </article>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> IDE, CLI, desktop, cloud, review e automations distribuem contexto e execução de maneiras diferentes.</p>
+      <p><strong>Mensagem executiva:</strong> escolha a topologia pelo fluxo de trabalho, risco e latência, não pelo volume de features.</p>
+      <p><strong>KPI sugerido:</strong> lead time e taxa de sucesso por topologia de execução.</p>
+    </aside>
+  </section>
+
+  <section id="github-copilot-intro" aria-label="Abertura do bloco GitHub Copilot" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.09) 0%, transparent 60%)">
     <div class="section-page-container">
-      <div class="section-page-label text-copilot-light">Seção 03-B</div>
-      <h2 class="section-page-title gradient-text-purple">GitHub<br>Copilot</h2>
-      <p class="section-page-desc">Chat, modelos, billing, linha do tempo, Skills e Agent Mode no fluxo SDD</p>
-      <div class="section-page-icon text-copilot-light"><i data-lucide="bot"></i></div>
+      <div class="section-page-label text-copilot-light">Ferramenta 01</div>
+      <h2 class="section-page-title gradient-text-purple">GitHub<br />Copilot</h2>
+      <p class="section-page-desc">IDE, CLI e delegação remota como superfícies para executar um contrato SDD</p>
+      <img class="tool-cover-logo tool-cover-logo--copilot" src="resources/images/github-copilot-icon.png" alt="Logo do GitHub Copilot" />
     </div>
-    <aside class="notes" aria-label="Notas do apresentador">
-      <p>Esse separador permite pular diretamente para GitHub Copilot quando esse for o foco da apresentação.</p>
-      <p>A narrativa continua a mesma: a ferramenta é uma superfície de execução; o contrato de trabalho é o SDD.</p>
-    </aside>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> o bloco separa assistência na IDE, execução no CLI e delegação remota.</p><p><strong>Mensagem executiva:</strong> a ferramenta muda a superfície de execução; a spec continua sendo o contrato.</p><p><strong>KPI sugerido:</strong> tarefas aceitas sem reabertura por escopo ambíguo.</p></aside>
   </section>
 
-  <!-- 5.1 — O que é GitHub Copilot Chat -->
-  <section aria-label="GitHub Copilot Chat no fluxo SDD" data-auto-animate data-transition="fade" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+  <section id="github-copilot" aria-label="GitHub Copilot no fluxo SDD" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 15% 85%, rgba(124,92,252,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="bot"></i></span>
-      <span class="section-label">03 / GitHub Copilot Chat</span>
+      <span class="section-label">03 / GitHub Copilot</span>
     </div>
-    <h2 data-id="copilot-title">GitHub <span class="accent">Copilot Chat</span></h2>
-    <div class="two-cols" style="align-items:center; gap:2.4em;">
-      <div style="text-align:center;">
-        <img src="resources/images/github-copilot-icon.png" alt="GitHub Copilot" style="max-width:160px; max-height:160px; filter:drop-shadow(0 0 32px rgba(124,92,252,0.55)); margin-bottom:0.7em;" />
-        <div style="font-family:'JetBrains Mono',monospace; font-size:0.52em; color:var(--accent-copilot-light); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5em;">Powered by AI</div>
-        <div style="display:flex; flex-wrap:wrap; gap:0.4em; justify-content:center;">
-          <span class="tag purple">GPT-5.3-Codex</span>
-          <span class="tag orange">Claude Sonnet 4.6</span>
-          <span class="tag">Claude Opus 4.6</span>
-          <span class="tag blue">Gemini 3.1 Pro</span>
-          <span class="tag red">+20 modelos</span>
-        </div>
-      </div>
-      <div>
-        <div class="definition" style="margin-bottom:0.8em;">
-          <p>O <strong>GitHub Copilot Chat</strong> é a interface conversacional do Copilot. Permite fazer perguntas em linguagem natural sobre código, gerar implementações, depurar e, no <strong>Agent Mode</strong>, executar tarefas complexas de forma totalmente autônoma.</p>
-        </div>
-        <ul style="font-size:0.8em;">
-          <li class="fragment"><strong>Completions em tempo real</strong> enquanto você digita</li>
-          <li class="fragment"><strong>Chat Panel</strong> para Q&amp;A, explicações e refatoração</li>
-          <li class="fragment"><strong>Inline Chat</strong> ( <code>Ctrl+I</code> ) diretamente no editor</li>
-          <li class="fragment"><strong>Agent Mode</strong> — execução autônoma e multi-etapas</li>
-          <li class="fragment"><strong>Multi-modal</strong> — aceita screenshots como contexto</li>
-        </ul>
-      </div>
-    </div>
-    <aside class="notes" aria-label="Notas do orador">
-      <p>Copilot Chat precisa ser entendido como interface de colaboração técnica — não apenas autocomplete. A diferença prática está em três níveis de uso: conversar para entender (Ask Mode), editar inline para iterar rapidamente (Edit Mode e Inline Chat), e executar fluxos complexos com autonomia crescente (Agent Mode + Plan Mode).</p>
-      <p>Nota sobre modelos: a lista mostrada no slide de modelos é uma fotografia de 27/02/2026. Modelos são adicionados, ajustados e retirados com frequência — para trabalho de produção, sempre valide em docs.github.com/en/copilot/reference/ai-models/supported-models antes de definir estratégia.</p>
-      <p>Setas 1 a 5: Completions → Chat Panel → Inline Chat (Ctrl+I) → Agent Mode → Multimodal com imagens. Fechamento: capacidade sem contexto estruturado ainda gera variabilidade — é aí que SDD entra.</p>
-    </aside>
-  </section>
-
-  <!-- 5.2 — Timeline 2021–2026 -->
-  <section id="copilot-timeline" aria-label="Linha do tempo do GitHub Copilot">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="clock"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Timeline</span>
-    </div>
-    <h2>Linha do <span class="accent">Tempo</span></h2>
-    <div class="copilot-timeline">
-      <article class="copilot-timeline-item top fragment fade-up">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">JUN 2021</div>
-          <p>Preview técnico do Copilot no VS Code.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
+    <h2>GitHub Copilot no <span class="accent">Fluxo SDD</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="code-2"></i></span>
+        <h3>IDE e Chat</h3>
+        <p>Explorar, editar e revisar perto do código e do contexto selecionado.</p>
       </article>
-      <article class="copilot-timeline-item bottom fragment fade-down">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">JUN 2022</div>
-          <p>Copilot GA para devs e equipes.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>CLI</h3>
+        <p>Operar no terminal com controles explícitos de contexto e delegação.</p>
       </article>
-      <article class="copilot-timeline-item top fragment fade-up">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">NOV 2023</div>
-          <p><strong>Copilot Chat GA</strong> em VS Code e Visual Studio.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item bottom fragment fade-down">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">JUN 2025</div>
-          <p><strong>Agent Mode GA</strong> com execução multi-etapas.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item top fragment fade-up copilot-timeline-item-cli">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">SET 2025</div>
-          <p><strong>Copilot CLI</strong> entra em <strong>public preview</strong> (25/09).</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item bottom fragment fade-down copilot-timeline-item-cli">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">OUT 2025</div>
-          <p><code>gh-copilot</code> é deprecado; migração para Copilot CLI.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item top fragment fade-up">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">DEZ 2025</div>
-          <p><strong>Agent Skills</strong> + Free + <strong>Plan Mode</strong> preview.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item bottom fragment fade-down">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">FEV 2026</div>
-          <p><strong>Copilot CLI GA</strong> + era multi-model.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
-      </article>
-      <article class="copilot-timeline-item top copilot-timeline-item-pricing">
-        <div class="copilot-timeline-content">
-          <div class="copilot-timeline-date">ABR–JUN 2026</div>
-          <p><strong>Pricing:</strong> AI Credits + Actions minutes em 01/06.</p>
-        </div>
-        <span class="copilot-timeline-connector"></span>
-        <span class="copilot-timeline-dot"></span>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="cloud-cog"></i></span>
+        <h3>Cloud agent</h3>
+        <p>Delegar trabalho delimitado e retornar com branch, checks e draft PR.</p>
       </article>
     </div>
-    <div class="highlight-box" style="margin-top:0.45em; font-size:0.66em; line-height:1.34;">
-      <strong>Leitura SDD:</strong> a evolução saiu de “autocomplete” para uma experiência completa de engenharia em <strong>IDE + terminal</strong>, com mais autonomia e governança.<br />
-      <strong>Pricing 01/06/2026:</strong> Copilot usage passa a AI Credits; Code Review também passa a consumir GitHub Actions minutes em repositórios privados.
-    </div>
-    <p style="font-size:0.52em; color:var(--text-muted); text-align:center; margin-top:0.35em;">
-      Datas de CLI: public preview em 25/09/2025, depreciação do <code>gh-copilot</code> em 25/10/2025 e GA em 25/02/2026.
-    </p>
-    <aside class="notes" aria-label="Notas sobre a evolução do Copilot">
-      <p>Essa timeline mostra uma evolução de maturidade técnica clara: de sugestão de código linear para execução multi-etapas com planos, memória e governança.</p>
-      <p>Dois marcos que merecem destaque: a CLI entrou em GA em 25/02/2026 — está estável para adoção em produção agora. Agent Skills entrou em GA em 18/12/2025 — tornando a modularização de contexto um recurso oficial. Ambas as datas foram validadas no GitHub Changelog.</p>
-      <p>Em março e abril de 2026, a velocidade de mudança ficou evidente: GPT-5.3-Codex virou LTS/base model para Business/Enterprise, GPT-5.5 e Claude Opus 4.7 chegaram ao Copilot, modelos antigos foram depreciados, Autopilot/agent permissions avançaram no VS Code e o billing caminhou para GitHub AI Credits.</p>
-      <p>Em 27/04/2026, o GitHub anunciou que, a partir de 01/06/2026, Copilot Code Review será cobrado de duas formas: uso do Copilot em AI Credits e consumo de GitHub Actions minutes quando reviews rodarem em GitHub-hosted runners para repositórios privados. A leitura SDD é clara: revisão automatizada também precisa de escopo, critério e governança de custo.</p>
-      <p>A leitura de SDD nessa linha do tempo: quanto mais capacidade de execução autônoma, mais crítica fica a qualidade da especificação de entrada.</p>
-      <p>Setas 1 a 9: percorra cada marco cronologicamente. Fechamento: maior autonomia exige melhor governança — e SDD é exatamente isso.</p>
-    </aside>
-  </section>
-
-  <!-- 5.3 — Modos do Copilot Chat -->
-  <section id="copilot-modos" aria-label="Modos do GitHub Copilot Chat">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="layers"></i></span>
-      <span class="section-label">03 / GitHub Copilot Chat — Modos</span>
-    </div>
-    <h2>Os 4 <span class="accent">Modos</span> do Copilot Chat</h2>
-    <div class="card-grid-2" style="margin-top:0.62em; gap:0.8em;">
-      <div class="card fragment">
-        <span class="card-icon"><i data-lucide="message-circle"></i></span>
-        <h3>Ask Mode</h3>
-        <p>Modo conversacional — faça perguntas, obtenha explicações, debata arquitetura. O Copilot responde mas <strong>não altera arquivos</strong>. Ideal para exploração.</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(56,200,250,0.35);">
-        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="pencil"></i></span>
-        <h3 style="color:var(--accent-blue);">Edit Mode</h3>
-        <p>Edições diretas e focadas no editor — inline, multi-file, ou via <kbd>Ctrl+I</kbd>. Ideal para iterações rápidas sem sair do contexto de código.</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(124,92,252,0.6); box-shadow:0 0 28px rgba(124,92,252,0.15);">
-        <span class="card-icon" style="color:var(--accent-copilot-light);"><i data-lucide="bot"></i></span>
-        <h3 style="color:var(--accent-copilot-light);">Agent Mode ✦</h3>
-        <p>Modo autônomo — executa tarefas de ponta a ponta: analisa o codebase, decide quais arquivos mudar, roda comandos no terminal e <strong>itera até concluir</strong>. O modo ideal para SDD.</p>
-      </div>
-      <div class="card fragment" style="border-color:rgba(255,205,71,0.35);">
-        <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="clipboard-check"></i></span>
-        <h3 style="color:var(--accent-gold);">Plan Mode</h3>
-        <p>O Copilot cria um plano de implementação detalhado para revisão humana <strong>antes</strong> de qualquer mudança de código. Perfeito para SDD.</p>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:0.42em; font-size:0.66em; line-height:1.25;">
-      <strong>Ask → Plan → Agent:</strong> entenda o codebase, crie o plano, execute com contexto estruturado. O fluxo completo do SDD.
-    </div>
-    <aside class="notes" aria-label="Notas do speaker sobre os modos do Copilot">
-      <p>Atenção crítica para audiência técnica: os modos oficiais do Copilot Chat na IDE, conforme documentado em docs.github.com, são quatro — Ask, Edit, Agent e Plan. O slide apresenta "Explore Mode" no lugar de "Edit Mode", o que merece esclarecimento direto.</p>
-      <p>"Explore" funciona bem como estratégia de trabalho — usar o agente para navegar e entender o codebase com ferramentas de leitura antes de qualquer edição. Mas não é um modo oficial no dropdown da IDE. O modo para edições diretas e focadas é o Edit Mode. Para exploração read-only estruturada, você pode usar Ask Mode ou Agent Mode com ferramentas de leitura.</p>
-      <p>Nomenclatura oficial para reforçar: Ask (conversacional, sem alterar arquivos) → Edit (edições diretas no editor) → Plan (plano detalhado para revisão humana antes de qualquer mudança) → Agent (execução autônoma ponta a ponta, modo central para SDD).</p>
-      <p>O fluxo recomendado para SDD: Ask (entenda) → Plan (planeje, com revisão humana obrigatória) → Agent (execute com contexto estruturado). Para edits pontuais, Edit Mode ou Inline Chat (Ctrl+I) são mais eficientes.</p>
-      <p>Seta 1 — Ask. Seta 2 — [Explore como estratégia, não modo oficial; veja nota]. Seta 3 — Agent, o modo central para SDD. Seta 4 — Plan, essential para human-in-the-loop. Fechamento: o fluxo Plan → Agent é o coração do SDD com Copilot Chat.</p>
-    </aside>
-  </section>
-
-  <!-- 5.4 — Modelos e planos disponíveis (Maio 2026) -->
-  <section id="copilot-modelos-pricing" aria-label="Modelos, planos e pricing do GitHub Copilot">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="cpu"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Modelos &amp; Pricing (Maio 2026)</span>
-    </div>
-    <h2>Modelos, Planos e <span class="accent">Pricing</span> — Maio/2026</h2>
-    <div style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:0.72em; align-items:start; margin-top:0.34em;">
-      <div>
-        <h3 style="font-size:0.9em; margin-bottom:0.38em;">Planos e acesso</h3>
-        <div class="card-grid-2" style="gap:0.42em;">
-          <div class="card card--pad-sm" style="border-color:rgba(0,221,179,0.34);">
-            <span class="card-icon"><i data-lucide="sparkles"></i></span>
-            <h3>Free</h3>
-            <p style="font-size:0.64em;">US$0 · <strong>50</strong> premium requests/mês · <strong>2.000</strong> completions/mês.</p>
-          </div>
-          <div class="card card--pad-sm" style="border-color:rgba(255,205,71,0.38);">
-            <span class="card-icon" style="color:var(--accent-gold);"><i data-lucide="graduation-cap"></i></span>
-            <h3 style="color:var(--accent-gold);">Student</h3>
-            <p style="font-size:0.64em;">Grátis para estudantes verificados · <strong>300</strong> premium requests/mês.</p>
-          </div>
-          <div class="card card--pad-sm" style="border-color:rgba(124,92,252,0.45);">
-            <span class="card-icon" style="color:var(--accent-copilot-light);"><i data-lucide="user"></i></span>
-            <h3 style="color:var(--accent-copilot-light);">Pro / Pro+</h3>
-            <p style="font-size:0.64em;">Pro: US$10 · <strong>300</strong> requests. Pro+: US$39 · <strong>1.500</strong> requests e acesso completo aos modelos.</p>
-          </div>
-          <div class="card card--pad-sm" style="border-color:rgba(56,200,250,0.42);">
-            <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="building-2"></i></span>
-            <h3 style="color:var(--accent-blue);">Business / Enterprise</h3>
-            <p style="font-size:0.64em;">Business: US$19/seat · <strong>300</strong>/usuário. Enterprise: US$39/seat · <strong>1.000</strong>/usuário.</p>
-          </div>
-        </div>
-        <div class="highlight-box orange" style="margin-top:0.42em; font-size:0.63em; line-height:1.28; padding:0.55em 0.8em;">
-          <strong>Atenção:</strong> novos sign-ups para Pro, Pro+ e Student estão temporariamente pausados desde <strong>20/04/2026</strong>. Organizações ainda podem restringir modelos por política/admin.
-        </div>
-      </div>
-      <div>
-        <h3 style="font-size:0.9em; margin-bottom:0.38em;">Modelos e multiplicadores</h3>
-        <div style="display:grid; gap:0.32em;">
-          <div class="highlight-box" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
-            <strong>0× / leves:</strong> GPT-4.1, GPT-5 mini, Raptor mini e modelos nano/mini. Em planos pagos, alguns modelos leves não consomem premium requests.
-          </div>
-          <div class="highlight-box blue" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
-            <strong>0.25×–0.33×:</strong> Claude Haiku 4.5, Gemini 3 Flash, GPT-5.4 mini, Grok Code Fast 1.
-          </div>
-          <div class="highlight-box purple" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
-            <strong>1×:</strong> GPT-5.2, GPT-5.2-Codex, GPT-5.3-Codex, GPT-5.4, Claude Sonnet 4/4.5/4.6, Gemini 2.5 Pro, Gemini 3.1 Pro.
-          </div>
-          <div class="highlight-box orange" style="font-size:0.6em; line-height:1.22; padding:0.48em 0.7em;">
-            <strong>3×+ / avançados:</strong> Claude Opus 4.5/4.6/4.7, GPT-5.5 e variantes avançadas. Mais poder, mais custo: use quando a tarefa justificar.
-          </div>
-        </div>
-        <div class="highlight-box" style="margin-top:0.42em; font-size:0.62em; line-height:1.28; padding:0.52em 0.78em;">
-          <strong>01/06/2026:</strong> premium request units dão lugar a GitHub AI Credits. O custo passa a considerar <strong>input</strong>, <strong>output</strong> e <strong>cached tokens</strong>. <strong>1 AI Credit = US$0.01</strong>. Completions seguem fora de AI credits nos planos pagos.
-        </div>
-      </div>
-    </div>
-    <p style="font-size:0.48em; color:var(--text-muted); text-align:center; margin-top:0.28em;">
-      Snapshot oficial para Maio/2026. Não copie a tabela completa: modelos, multiplicadores e disponibilidade mudam com frequência.
-    </p>
+    <div class="highlight-box purple"><strong>Bloco opcional:</strong> exemplo do ecossistema GitHub; a tese continua sendo SDD.</div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Dados verificados para a edição Maio/2026 nas páginas oficiais de GitHub Copilot plans, supported models e models and pricing. Revisar antes de cada apresentação.</p>
-      <p>Leitura de planos: Free é bom para experimentar, mas tem limites claros; Student/Pro têm 300 premium requests; Pro+ sobe para 1.500 e acesso completo aos modelos; Business e Enterprise trazem controle centralizado, políticas e allowances por usuário.</p>
-      <p>Importante: desde 20/04/2026, novos sign-ups para Pro, Pro+ e Student estão temporariamente pausados. Existing subscribers continuam; organizações/enterprises seguem com fluxo comercial e controles administrativos.</p>
-      <p>Leitura de custo: até 01/06/2026 a unidade operacional ainda é premium request; a partir daí, Copilot migra para GitHub AI Credits, calculados sobre input tokens, output tokens e cached tokens. Code completions e next edit suggestions não são cobrados em AI credits nos planos pagos.</p>
-      <p>Modelos como GPT-5.1 e GPT-5.1-Codex aparecem em tabelas históricas ou de transição, mas a página atual de modelos suportados lista substitutos mais novos, como GPT-5.3-Codex, GPT-5.4 e GPT-5.4 mini. Não trate modelos aposentados como disponibilidade atual sem nova verificação.</p>
-      <p>Mensagem para SDD: modelo poderoso com prompt ruim só acelera retrabalho caro. Specs claras, contexto enxuto, Skills sob demanda e critérios objetivos ajudam a escolher o modelo certo e reduzir loops desnecessários.</p>
-  </aside>
-  </section>
-
-  <!-- 5.5 — Features: participantes, comandos, MCP -->
-  <section aria-label="Features principais do GitHub Copilot Chat">
-    <div class="section-header" style="margin-bottom:0.1em;">
-      <span class="section-icon"><i data-lucide="puzzle"></i></span>
-      <span class="section-label">03 / GitHub Copilot Chat — Features</span>
-    </div>
-    <h2 style="font-size:1.4em; margin-bottom:0.1em;">Features <span class="accent">Principais</span></h2>
-    <div class="card-grid-3" style="font-size:0.68em; gap:0.26em; margin-top:0.05em;">
-      <div class="card card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="at-sign"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Participantes (@)</h3>
-        <ul style="font-size:0.7em; margin-top:0;">
-          <li><code>@workspace</code> — contexto do projeto inteiro</li>
-          <li><code>@vscode</code> — comandos e settings do editor</li>
-          <li><code>@terminal</code> — ajuda no terminal</li>
-          <li><code>@github</code> — PRs, issues, busca web</li>
-        </ul>
-      </div>
-      <div class="card card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="terminal"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Slash Commands (/)</h3>
-        <ul style="font-size:0.7em; margin-top:0;">
-          <li><code>/explain</code> — explica o código selecionado</li>
-          <li><code>/fix</code> — corrige bugs automaticamente</li>
-          <li><code>/tests</code> — gera testes unitários</li>
-          <li><code>/doc</code> — documenta funções e APIs</li>
-        </ul>
-      </div>
-      <div class="card card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="hash"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Chat Variables (#)</h3>
-        <ul style="font-size:0.7em; margin-top:0;">
-          <li><code>#file</code> — anexa arquivo como contexto</li>
-          <li><code>#web</code> — busca na web em tempo real</li>
-          <li><code>#selection</code> — foca no trecho selecionado</li>
-          <li><code>#codebase</code> — indexa o workspace inteiro</li>
-        </ul>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="plug"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">MCP Integration</h3>
-        <p style="font-size:0.7em;">Model Context Protocol — padrão aberto para conectar Copilot a ferramentas externas: bancos de dados, APIs, serviços cloud. GitHub MCP Server já disponível.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="image"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Suporte a Imagens</h3>
-        <p style="font-size:0.7em;">Anexe screenshots (JPEG, PNG, GIF, WEBP) — descreva UIs, explique diagramas de arquitetura ou analise erros visuais com modelos multimodais.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="keyboard"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Inline Chat</h3>
-        <p style="font-size:0.7em;"><code>Ctrl+I</code> diretamente no editor — edite código sem abrir o painel lateral. Refatore qualquer seleção com texto natural.</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="brain"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Copilot Memory</h3>
-        <p style="font-size:0.7em;">Memória persistente entre sessões — o Copilot lembra preferências, padrões de código e contexto do projeto. Enquanto AGENTS.md é contexto estático, Memory é contexto dinâmico aprendido. (Public Preview, GitHub.com)</p>
-      </div>
-      <div class="card fragment card--pad-sm">
-        <span class="card-icon" style="font-size:1.2em; margin-bottom:0.1em;"><i data-lucide="folder-open"></i></span>
-        <h3 style="margin:0.1em 0 0.25em;">Copilot Spaces</h3>
-        <p style="font-size:0.7em;">Espaços temáticos de conhecimento — concentre docs, PRDs, specs e guias em um repositório curado de contexto para o agente. Diretamente alinhado com SDD: um Copilot Space pode ser o "repositório de specs" do time.</p>
-      </div>
-    </div>
-    <aside class="notes" aria-label="Notas do apresentador">
-      <p>Organizo por categoria para facilitar memorização: participantes com @, slash commands com /, variáveis de chat com # e integrações (MCP, multimodal, inline).</p>
-      <p>Qualidade de resposta depende diretamente de qualidade de contexto. Usar @workspace + #file:PRD.md é significativamente mais eficaz do que abrir o chat sem contexto explícito. A combinação de contexto de workspace com arquivo específico é o padrão recomendado para SDD.</p>
-      <p>Disponibilidade de cada recurso pode variar por interface — IDE, github.com, mobile. Verifiquem no ambiente de uso.</p>
-      <p>Setas 1 a 3: percorrer colunas base (participantes, slash commands, variáveis). Seta 4 — MCP Integration. Seta 5 — Suporte a Imagens. Seta 6 — Inline Chat. Seta 7 — Copilot Memory. Seta 8 — Copilot Spaces. Fechamento: contexto bem selecionado é a diferença entre resposta genérica e resposta precisa.</p>
+      <p><strong>Mensagem técnica:</strong> Copilot conecta editor, terminal e delegação remota dentro do ecossistema GitHub.</p>
+      <p><strong>Mensagem executiva:</strong> integração reduz atrito, mas não elimina a necessidade de critérios e review.</p>
+      <p><strong>KPI sugerido:</strong> draft PRs aceitos após a primeira rodada de revisão.</p>
+      <p><strong>Fonte oficial:</strong> GitHub Copilot Docs e documentação do coding agent.</p>
+      <p><strong>Data de verificação:</strong> 14 jul. 2026.</p>
+      <p><strong>Superfície:</strong> IDE, Copilot CLI e cloud coding agent.</p>
+      <p><strong>Plano/status:</strong> disponibilidade depende do plano e da política organizacional.</p>
+      <p><strong>Caveats:</strong> nomes, disponibilidade e controles podem mudar; validar antes da apresentação.</p>
     </aside>
   </section>
 
-<section id="copilot-cli" aria-label="Abertura da seção GitHub Copilot CLI" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-  <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.16);"></div>
-  <div class="section-orb section-orb-2" style="--orb-color: rgba(124,92,252,0.14);"></div>
-  <div class="section-page-container">
-    <div class="section-page-label text-copilot-light">Seção 03-C</div>
-    <h2 class="section-page-title gradient-text-purple">GitHub Copilot CLI</h2>
-    <p class="section-page-desc">Terminal-first, governança e operação SDD com foco em execução</p>
-    <div class="section-page-icon text-copilot-light"><i data-lucide="terminal-square"></i></div>
-  </div>
-</section>
-
-
-  <!-- 5.5a — Copilot CLI: visão estratégica -->
-  <section aria-label="Visão geral do GitHub Copilot CLI" data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 20%, rgba(124,92,252,0.07) 0%, transparent 60%)">
+  <section id="copilot-cli" aria-label="Controles do Copilot CLI para SDD" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(56,200,250,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="terminal-square"></i></span>
-      <span class="section-label">03-C / GitHub Copilot CLI — Visão Geral</span>
+      <span class="section-label">03 / Copilot CLI</span>
     </div>
-    <h2>GitHub <span class="accent">Copilot CLI</span></h2>
-    <div class="two-cols" style="align-items:center; gap:1.6em;">
-      <div style="text-align:center;">
-        <img src="resources/images/copilot-cli.png" alt="GitHub Copilot CLI no terminal" style="max-width:92%; border-radius:0.55em; border:1px solid rgba(124,92,252,0.35); box-shadow:0 0 28px rgba(124,92,252,0.16);" />
-        <div style="margin-top:0.55em;">
-          <span class="tag purple">GA (25/02/2026)</span>
-          <span class="tag blue">Terminal-first</span>
-          <span class="tag">SDD-ready</span>
-        </div>
-      </div>
-      <div>
-        <div class="definition" style="margin-bottom:0.55em;">
-          <p>O <strong>Copilot CLI</strong> leva a experiência do GitHub Copilot para o terminal, complementando o Chat da IDE com execução orientada por linguagem natural no shell.</p>
-        </div>
-        <ul style="font-size:0.73em;">
-          <li class="fragment"><strong>Produto oficial GitHub</strong> em GA desde 25/02/2026</li>
-          <li class="fragment"><strong>Disponível para assinantes Copilot</strong> (Pro, Pro+, Business, Enterprise)</li>
-          <li class="fragment"><strong>Business/Enterprise:</strong> admins habilitam e governam por políticas</li>
-          <li class="fragment"><strong>Complementa o Copilot Chat</strong> (não substitui a IDE por completo)</li>
-          <li class="fragment"><strong>Útil em SDD</strong> para explorar, automatizar e iterar tarefas fora do editor</li>
-        </ul>
-        <div class="highlight-box purple" style="margin-top:0.45em; font-size:0.68em; line-height:1.24;">
-          <strong>IDE + Terminal = contexto contínuo:</strong> especifique no PRD, valide no plano e execute com rastreabilidade.
-        </div>
-      </div>
+    <h2>Quatro Comandos, Três <span class="accent">Controles</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="scan-text"></i></span>
+        <h3><code>/context</code></h3>
+        <p>Inspecionar o que está contribuindo para a sessão.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="shrink"></i></span>
+        <h3><code>/compact</code></h3>
+        <p>Resumir histórico quando a sessão precisa recuperar foco.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="git-branch-plus"></i></span>
+        <h3><code>/delegate</code> e <code>/fleet</code></h3>
+        <p>Delegar uma slice ou coordenar tarefas independentes com limites.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>O posicionamento central: a CLI não concorre com a IDE — ela complementa. Em SDD, você especifica no PRD (IDE), planeja no agente, e pode executar partes do ciclo diretamente no terminal sem perder rastreabilidade.</p>
-      <p>A CLI está em GA desde 25/02/2026, disponível para todos os planos Copilot — incluindo Free. Para Business e Enterprise, admins habilitam por política, o que abre métricas de uso no nível da organização, anunciadas em 27/02/2026.</p>
-      <p>Seta 1 — produto oficial GitHub em GA, data confirmada. Seta 2 — disponível em todos os planos. Seta 3 — governança enterprise-ready com políticas. Seta 4 — complementa IDE, não substitui. Seta 5 — uso em SDD para fluxos fora do editor. Fechamento: IDE + terminal = contexto contínuo com o mesmo contrato de especificação.</p>
+      <p><strong>Mensagem técnica:</strong> os comandos representam observabilidade, compactação e delegação; não são um catálogo de CLI.</p>
+      <p><strong>Mensagem executiva:</strong> controles explícitos ajudam a evitar sessões longas e delegação sem fronteiras.</p>
+      <p><strong>KPI sugerido:</strong> tarefas delegadas que chegam a draft PR dentro do budget.</p>
+      <p><strong>Fonte oficial:</strong> GitHub Docs para Copilot CLI, compactação e delegação ao coding agent.</p>
+      <p><strong>Data de verificação:</strong> 14 jul. 2026.</p>
+      <p><strong>Superfície:</strong> GitHub Copilot CLI.</p>
+      <p><strong>Plano/status:</strong> comandos e delegação dependem da versão e do acesso habilitado.</p>
+      <p><strong>Caveats:</strong> <code>/delegate</code> não transfere o mesmo payload do <code>/handoff</code> do Devin; confirmar comandos no dia.</p>
     </aside>
   </section>
 
-  <!-- 5.5aa — Copilot CLI: prática e governança -->
-  <section aria-label="Quando usar GitHub Copilot CLI no fluxo SDD" data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(56,200,250,0.07) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="workflow"></i></span>
-      <span class="section-label">03-C / GitHub Copilot CLI — Prática</span>
-    </div>
-    <h2>Quando Usar no Fluxo <span class="accent">SDD</span></h2>
-    <div class="card-grid-2" style="gap:0.8em; margin-top:0.45em;">
-      <div class="card" style="padding:0.95em 1em;">
-        <span class="card-icon"><i data-lucide="list-checks"></i></span>
-        <h3>Cenários ideais</h3>
-        <ul style="font-size:0.7em; margin-top:0.25em;">
-          <li>Explorar e entender repositórios direto no terminal</li>
-          <li>Gerar comandos shell com linguagem natural</li>
-          <li>Acelerar automações locais e workflows repetitivos</li>
-          <li>Apoiar triagem de erros e ajustes rápidos fora da IDE</li>
-        </ul>
-      </div>
-      <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
-        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="shield-check"></i></span>
-        <h3 style="color:var(--accent-blue);">Governança e segurança</h3>
-        <pre style="font-size:0.64em; margin-top:0.35em;"><code class="language-bash"># Fluxo SDD no terminal
-/init
-# revisar e aprovar plano
-# executar implementacao
-/diff
-/review
-# commit somente apos validacao</code></pre>
-        <p style="font-size:0.66em; margin-top:0.35em; color:var(--text-secondary);">
-          Mantenha <strong>human-in-the-loop</strong>: use aprovações, políticas e hooks para bloquear comandos/argumentos inseguros antes da execução.
-        </p>
-      </div>
-    </div>
-    <p style="font-size:0.56em; color:var(--text-muted); text-align:center; margin-top:0.65em;">
-      Public preview: <strong>25 de setembro de 2025</strong>. Caminho antigo (<code>gh-copilot</code>) deprecado em <strong>25 de outubro de 2025</strong>. GA em <strong>25 de fevereiro de 2026</strong>.
-    </p>
-    <aside class="notes" aria-label="Notas do apresentador">
-      <p>Governança operacional: autonomia com responsabilidade. A sequência no terminal segue a mesma lógica do spec-kit — plan → aprovar → executar → revisar diff → commit. Nunca commitar sem inspecionar o que foi gerado.</p>
-      <p>Human-in-the-loop no terminal é tão importante quanto na IDE. Use aprovações, políticas e hooks para bloquear comandos inseguros antes da execução. O modelo pode sugerir comandos tecnicamente corretos que são contextualmente errados para o seu ambiente.</p>
-      <p>Nota sobre migração: quem ainda usa <code>gh copilot suggest</code> (extensão gh-copilot, descontinuada em outubro/2025) deve migrar para a CLI nativa — <code>npm install -g @github/copilot</code>. A experiência é substancialmente mais rica e o caminho antigo não recebe mais atualizações.</p>
-      <p>Novidades de navegação (Abr/2026): <strong>Plan Mode</strong> (Shift+Tab) — alterna entre modo de planejamento e modo de execução sem iniciar nova sessão; flag <code>-p</code> / <code>--prompt</code> — permite passar o prompt diretamente na linha de comando, ideal para scripts e automações CI/CD (<code>copilot -p "explain this error"</code>).</p>
-  </aside>
-  </section>
-
-  <!-- 5.5ab — Copilot CLI: Preview -> GA -->
-  <section id="copilot-cli-preview-ga" aria-label="Evolução do Copilot CLI de preview para GA" data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 78%, rgba(124,92,252,0.07) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="arrow-up-right"></i></span>
-      <span class="section-label">03-C / GitHub Copilot CLI — Preview para GA</span>
-    </div>
-    <h2>Preview <span class="accent">→ GA</span>: o que maturou</h2>
-    <div class="highlight-box purple" style="margin-top:0.38em; margin-bottom:0.38em; font-size:0.64em; line-height:1.22;">
-      <strong>Leitura SDD:</strong> o CLI deixa de ser experimento e vira camada estável de engenharia agentica no terminal.
-    </div>
-    <div class="card-grid-2" style="gap:0.58em; margin-top:0.28em; font-size:0.9em;">
-      <div class="card fragment">
-        <span class="card-icon"><i data-lucide="route"></i></span>
-        <h3>Plan + Autopilot</h3>
-        <p>Planejar, aprovar e executar ponta a ponta com menos troca de contexto.</p>
-      </div>
-      <div class="card fragment">
-        <span class="card-icon"><i data-lucide="git-compare"></i></span>
-        <h3>/diff + /review + rewind</h3>
-        <p>Revisão no terminal com checkpoints e desfazer por snapshot para manter controle humano.</p>
-      </div>
-      <div class="card fragment">
-        <span class="card-icon"><i data-lucide="puzzle"></i></span>
-        <h3>Plugins, Skills e Hooks</h3>
-        <p>Extensibilidade madura para adaptar o agente ao contexto do time com governança embutida.</p>
-      </div>
-      <div class="card fragment">
-        <span class="card-icon"><i data-lucide="database"></i></span>
-        <h3>Memória e sessões longas</h3>
-        <p>Memória de repositório e continuidade em sessões longas para tarefas multi-etapas.</p>
-      </div>
-    </div>
-    <div class="highlight-box blue fragment" style="margin:0.34em auto 0 auto; max-width:78%; font-size:0.58em; line-height:1.16; text-align:center; padding:0.55em 0.75em;">
-      <strong>Prontidão enterprise:</strong> políticas e controles administrativos reforçam adoção em escala com segurança operacional.
-    </div>
-    <aside class="notes" aria-label="Notas do apresentador sobre evolução do Copilot CLI">
-      <p>Esse slide mostra a maturação da CLI do preview (set/2025) para GA (fev/2026): quatro capacidades que solidificam o produto como camada estável de engenharia agêntica no terminal.</p>
-      <p>Plan + Autopilot é o mais relevante para SDD: você define o plano, aprova, e a CLI executa sem precisar voltar ao editor. /diff e /review trazem revisão contextualizada no próprio terminal. Plugins e Skills adicionam extensibilidade com governança. Memória de sessão suporta tarefas verdadeiramente longas sem perda de contexto entre comandos.</p>
-      <p>Mensagem central: a CLI passou de "útil para scripts isolados" para "plataforma de execução agêntica no terminal". Isso muda o design dos fluxos de automação de engenharia.</p>
-      <p>Setas 1 a 4: Plan + Autopilot → /diff + /review + rewind → Plugins, Skills e Hooks → Memória e sessões longas. Fechamento: enterprise-ready com políticas e controles administrativos.</p>
-    </aside>
-  </section>
-
-  <!-- 5.5ac — Copilot CLI: Métricas enterprise -->
-  <section id="copilot-cli-metricas" aria-label="Métricas enterprise do GitHub Copilot CLI" data-background-gradient="radial-gradient(ellipse 74% 52% at 80% 25%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="bar-chart-3"></i></span>
-      <span class="section-label">03-C / GitHub Copilot CLI — Métricas</span>
-    </div>
-    <h2>Como Provar <span class="accent">Valor</span> no Enterprise</h2>
-    <div class="two-cols" style="gap:1.4em; align-items:start;">
-      <div class="card" style="padding:0.95em 1em;">
-        <span class="card-icon"><i data-lucide="activity"></i></span>
-        <h3>KPIs de adoção CLI</h3>
-        <ul style="font-size:0.7em; margin-top:0.25em;">
-          <li>Usuários ativos de CLI (DAU/WAU)</li>
-          <li>Sessões e requests por time</li>
-          <li>Tendência de tokens por fluxo</li>
-          <li>Comparativo de adoção IDE vs CLI</li>
-        </ul>
-      </div>
-      <div class="card" style="padding:0.95em 1em; border-color:rgba(56,200,250,0.35);">
-        <span class="card-icon" style="color:var(--accent-blue);"><i data-lucide="line-chart"></i></span>
-        <h3 style="color:var(--accent-blue);">Uso para rollout</h3>
-        <ul style="font-size:0.7em; margin-top:0.25em;">
-          <li>Identificar squads com menor adoção</li>
-          <li>Guiar treinamento por dados reais</li>
-          <li>Priorizar fluxos com maior retorno</li>
-          <li>Medir evolução após política/processo</li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.7em;">
-      Métricas de Copilot/CLI no nível enterprise foram anunciadas em <strong>27/02/2026</strong>; use esses dados para comprovar adoção e impacto.
-    </div>
-    <aside class="notes" aria-label="Speaker notes about Copilot/CLI metrics">
-      <p>Métricas de Copilot/CLI no nível enterprise entraram em GA em 27/02/2026. Isso resolve um problema real que times enfrentavam: dificuldade de comprovar ROI de adoção de IA sem dados objetivos por squad ou organização.</p>
-      <p>Com DAU/WAU de CLI, comparativo IDE vs terminal e tendência de tokens por fluxo, o engineering manager tem dados concretos para priorizar treinamentos e guiar rollout em squads com menor adoção.</p>
-      <p>Recomendo usar as métricas de forma iterativa: baseline inicial → intervenção (treinamento, processo, squad champion) → nova medição. O ciclo de melhoria precisa de dados para ter direção — e agora esses dados existem no nível da organização.</p>
-    </aside>
-  </section>
-
-  <!-- 5.5b — Agent Skills (Dez 2025) -->
-  <section id="copilot-agent-skills" aria-label="Agent Skills no GitHub Copilot">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="wrench"></i></span>
-      <span class="section-label">03 / GitHub Copilot — Agent Skills</span>
-    </div>
-    <h2>Agent <span class="accent">Skills</span> — Dez/2025</h2>
-    <div class="two-cols" style="align-items:start; gap:1.5em; margin-top:0.3em;">
-      <div>
-        <div class="definition" style="margin-bottom:0.5em;">
-          <p style="font-size:0.9em;">O GitHub Copilot suporta nativamente <strong>Agent Skills</strong> — diretórios com um arquivo <code>SKILL.md</code> como entrypoint, seguindo o padrão aberto <strong>agentskills.io</strong> introduzido pela Anthropic para o Claude Code e adotado pelo GitHub em Dez/2025.</p>
-        </div>
-        <ul style="font-size:0.77em;">
-          <li class="fragment"><strong>Padrão aberto:</strong> <a href="https://agentskills.io" target="_blank" rel="noopener noreferrer">agentskills.io</a> — especificação de diretórios com SKILL.md</li>
-          <li class="fragment"><strong>Auto-descoberta:</strong> Copilot varre <code>.github/skills/</code> automaticamente</li>
-          <li class="fragment"><strong>Progressive Disclosure:</strong> descrição sempre no contexto; skill completa carregada sob demanda</li>
-          <li class="fragment"><strong>Portabilidade:</strong> mesmo padrão funciona no Claude Code, Cursor, Gemini CLI e outros agentes</li>
-          <li class="fragment"><strong>VS Code:</strong> crie Skills pelo chat — <em>"@copilot create a skill for React patterns"</em></li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="border-color:var(--accent-green);">
-          <h3>Estrutura de uma Skill</h3>
-          <pre style="font-size:0.63em;"><code class="language-bash">.github/
-└── skills/
-    └── react-patterns/
-        ├── SKILL.md        ← entrypoint
-        ├── hooks.md
-        └── examples/</code></pre>
-        </div>
-        <div class="card fragment" style="margin-top:0.4em; border-color:var(--accent-copilot);">
-          <h3 style="color:var(--accent-copilot-light);">SKILL.md — Entrypoint</h3>
-          <pre style="font-size:0.63em;"><code class="language-markdown">---
-name: react-patterns
-description: Padrões de componentes React
-  com hooks, Context API e performance.
----
-
-Carregue esta skill ao trabalhar
-com componentes React. Inclui:
-hooks, Context, memo, lazy.</code></pre>
-        </div>
-      </div>
-    </div>
-    <aside class="notes" aria-label="Speaker notes for Agent Skills section">
-      <p>Agent Skills são modularização de conhecimento especializado: você não injeta todo o contexto de uma vez, injeta o que é relevante para a tarefa atual.</p>
-      <p>Com SKILL.md como entrypoint e carregamento sob demanda, o agente mantém foco e não gasta tokens em contexto que não contribui para a tarefa presente. Isso se alinha diretamente com Progressive Disclosure — que veremos na seção seguinte.</p>
-      <p>Ponto importante: Agent Skills entrou em GA no GitHub Copilot em 18/12/2025. O mesmo padrão agentskills.io funciona em Claude Code, Cursor e Gemini CLI — o investimento em criar Skills é portável entre ferramentas.</p>
-      <p>Seta 1 — padrão aberto agentskills.io. Seta 2 — auto-descoberta em .github/skills/. Seta 3 — carregamento sob demanda (Progressive Disclosure). Seta 4 — portabilidade entre agentes. Seta 5 — criação via VS Code Chat. Seta 6 — estrutura do SKILL.md. Fechamento: Skills como unidade de especialização modular — menos ruído, mais foco por tarefa.</p>
-    </aside>
-  </section>
-
-  <!-- 5.6 — Copilot + SDD -->
-  <section id="copilot-sdd-verificavel" aria-label="GitHub Copilot e SDD verificável" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(124,92,252,0.06) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="link-2"></i></span>
-      <span class="section-label">03 / GitHub Copilot Chat — SDD</span>
-    </div>
-    <h2>GitHub Copilot + <span class="accent">SDD</span> = 🚀</h2>
-    <div class="two-cols" style="gap:2em;">
-      <div>
-        <div class="highlight-box purple" style="margin-bottom:0.8em;">
-          <strong>A spec é o prompt perfeito.</strong> Quando você dá ao GitHub Copilot um PRD.md bem estruturado + AGENTS.md, ele tem todo o contexto necessário para entregar exatamente o que você precisa.
-        </div>
-        <ul style="font-size:0.82em;">
-          <li class="fragment"><strong>PRD.md</strong> como contexto principal via <code>#file</code></li>
-          <li class="fragment"><strong>AGENTS.md</strong> carregado automaticamente no Agent Mode</li>
-          <li class="fragment"><strong>Agent Mode</strong> executa RF por RF com rastreabilidade</li>
-          <li class="fragment"><strong>Plan Mode</strong> cria o plano de implementação para revisão humana</li>
-          <li class="fragment"><strong>Iteração</strong> guiada pelos critérios de aceite (CA) do PRD</li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="border-color:var(--accent-copilot); box-shadow:0 0 24px rgba(124,92,252,0.15);">
-          <h3 style="color:var(--accent-copilot-light);">Prompt SDD Ideal</h3>
-          <pre style="background:rgba(6,12,30,0.9); border-color:rgba(124,92,252,0.3); font-size:0.7em; margin-top:0.6em;"><code class="language-markdown">@workspace Com base em:
-- #file:PRD.md (requisitos)
-- #file:AGENTS.md (contexto)
-
-Implemente o RF01 seguindo
-exatamente os critérios de aceite
-CA01 e CA02. Escreva testes para
-cobrir os dois cenários descritos.</code></pre>
-        </div>
-        <div class="highlight-box" style="margin-top:0.7em; font-size:0.75em;">
-          🎯 <em>SDD transforma prompts vagos em instruções precisas e o GitHub Copilot em um colaborador previsível.</em>
-        </div>
-      </div>
-    </div>
-    <aside class="notes" aria-label="Speaker notes">
-      <p>Fecho essa seção com um prompt orientado por artefato — porque ele traduz bem o espírito de SDD na prática. Com PRD e AGENTS no contexto, o pedido pode ser curto e objetivo: implementar um RF específico com critérios de aceite explicitamente testados.</p>
-      <p>A saída esperada deixa de ser "qualquer código" e passa a ser entrega verificável. A combinação de @workspace + #file:PRD.md + #file:AGENTS.md é o padrão canônico de trabalho com SDD no Copilot.</p>
-      <p>Seta 1 — PRD como contexto principal via #file. Seta 2 — AGENTS carregado automaticamente ou via #file. Seta 3 — Agent Mode executa RF por RF com rastreabilidade. Seta 4 — Plan Mode cria plano para revisão humana. Seta 5 — iteração pelos CAs como critério objetivo de conclusão. Fechamento: resultado esperado é entrega verificável, não só código.</p>
-    </aside>
-  </section>
-
-
-  <section id="codex-app-cli" aria-label="Abertura da seção Codex App e CLI" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-    <div class="section-orb section-orb-1" style="--orb-color: rgba(56,200,250,0.15);"></div>
-    <div class="section-orb section-orb-2" style="--orb-color: rgba(0,221,179,0.15);"></div>
+  <section id="codex-intro" aria-label="Abertura do bloco Codex" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.09) 0%, transparent 60%)">
     <div class="section-page-container">
-      <div class="section-page-label text-blue">Seção 03-D</div>
-      <h2 class="section-page-title gradient-text">Codex<br>App/CLI</h2>
-      <p class="section-page-desc">App, editor, terminal, Skills, sandbox e automação no fluxo SDD</p>
-      <div class="section-page-icon text-blue"><i data-lucide="terminal-square"></i></div>
+      <div class="section-page-label" style="color:var(--accent-blue);">Ferramenta 02</div>
+      <h2 class="section-page-title gradient-text">Codex</h2>
+      <p class="section-page-desc">App, CLI e cloud para executar, revisar e delegar trabalho com evidência</p>
+      <img class="tool-cover-logo tool-cover-logo--codex" src="resources/images/codex-color.png" alt="Logo do Codex" />
     </div>
-    <aside class="notes" aria-label="Speaker notes">
-      <p>Esse separador permite pular diretamente para Codex quando esse for o foco da apresentação.</p>
-      <p>A leitura continua agnóstica: Codex é a ferramenta da vez, mas os artefatos SDD continuam sendo o centro do fluxo.</p>
-    </aside>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> o bloco mostra superfícies locais e remotas, worktrees, sandbox e revisão.</p><p><strong>Mensagem executiva:</strong> autonomia cresce quando o perímetro e os gates permanecem observáveis.</p><p><strong>KPI sugerido:</strong> mudanças aprovadas por ciclo de revisão.</p></aside>
   </section>
 
-  <section id="codex-fluxo-sdd" aria-label="Codex no fluxo SDD" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(86,130,255,0.09) 0%, transparent 60%)">
+  <section id="codex-app-cli" aria-label="Superfícies do Codex" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(56,200,250,0.08) 0%, transparent 60%)">
     <div class="section-header">
-      <span class="section-icon"><i data-lucide="terminal-square"></i></span>
-      <span class="section-label">03-D / Codex</span>
+      <span class="section-icon"><i data-lucide="panels-top-left"></i></span>
+      <span class="section-label">03 / Codex</span>
     </div>
-    <h2><span class="accent">Codex</span> no Fluxo SDD</h2>
-    <div class="two-cols" style="align-items:center; gap:1.6em;">
-      <div style="text-align:center;">
-        <img src="resources/images/codex-color.png" alt="Codex" style="width:154px; max-width:42%; filter:drop-shadow(0 0 30px rgba(86,130,255,0.58)) drop-shadow(0 0 18px rgba(0,221,179,0.22)); margin-bottom:0.62em;" />
-        <div style="display:flex; flex-wrap:wrap; gap:0.35em; justify-content:center;">
-          <span class="tag blue">App</span>
-          <span class="tag purple">Editor</span>
-          <span class="tag">CLI</span>
-          <span class="tag orange">Skills</span>
-          <span class="tag blue">Automations</span>
-        </div>
-      </div>
-      <div>
-        <div class="definition" style="margin-bottom:0.65em; border-color:rgba(86,130,255,0.45); box-shadow:0 0 28px rgba(86,130,255,0.12);">
-          <p>Codex pode operar como <strong>command center</strong>, extensão de editor e agente de terminal. Em SDD, o valor aparece quando ele recebe <strong>spec, AGENTS.md, Skills e critérios de validação</strong> antes de executar.</p>
-        </div>
-        <ul class="icon-list" style="font-size:0.74em;">
-          <li class="fragment"><span class="icon"><i data-lucide="panel-left"></i></span><div><strong>Codex App</strong><br><span class="text-muted">Threads, worktrees, cloud environments, terminal e Git.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="code-2"></i></span><div><strong>Editor</strong><br><span class="text-muted">Contexto de arquivos, seleção e revisão próxima do código.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="terminal"></i></span><div><strong>Codex CLI</strong><br><span class="text-muted">Execução local, automação e modo não interativo com <code>codex exec</code>.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="shield-check"></i></span><div><strong>Sandbox e approvals</strong><br><span class="text-muted">Permissões explícitas para manter controle humano.</span></div></li>
-        </ul>
-      </div>
+    <h2>Codex: do Local ao <span class="accent">Cloud</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>CLI e IDE</h3>
+        <p>Investigar, editar e verificar dentro do workspace e do sandbox.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="blocks"></i></span>
+        <h3>App e worktrees</h3>
+        <p>Isolar threads e mudanças paralelas sem misturar o estado do Git.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="calendar-clock"></i></span>
+        <h3>Cloud e Automations</h3>
+        <p>Executar tarefas assíncronas ou recorrentes com contexto e limites declarados.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Este slide faz o mesmo papel visual do bloco GitHub Copilot: cria uma entrada de ferramenta com logo, tags e uma mensagem objetiva.</p>
-      <p>A página pública apresenta Codex como App, editor e terminal trabalhando como superfícies da mesma experiência. Para SDD, o ponto importante é que Codex torna explícito o fluxo de contexto: instruções, Skills, sandbox, comandos, diff, review e PR.</p>
-      <p>Use este slide como abertura do bloco Codex antes de entrar nos workflows, comandos e automação.</p>
+      <p><strong>Mensagem técnica:</strong> Codex oferece App, CLI, IDE e cloud como superfícies complementares, com worktrees para isolamento.</p>
+      <p><strong>Mensagem executiva:</strong> paralelismo só gera valor quando ownership, escopo e verificação continuam claros.</p>
+      <p><strong>KPI sugerido:</strong> conflitos entre worktrees e retrabalho por sobreposição de escopo.</p>
+      <p><strong>Fonte oficial:</strong> OpenAI Codex Developers, App features e Automations.</p>
+      <p><strong>Data de verificação:</strong> 14 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Codex App, CLI, IDE e cloud.</p>
+      <p><strong>Plano/status:</strong> recursos variam por superfície, plano e ambiente.</p>
+      <p><strong>Caveats:</strong> continuidade entre superfícies não significa contexto perfeito; confirme disponibilidade atual.</p>
     </aside>
   </section>
 
-  <section aria-label="Codex como fluxo de engenharia" data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(0,221,179,0.07) 0%, transparent 60%)">
+  <section id="codex-fluxo-sdd" aria-label="Codex aplicado ao contrato SDD" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 75% 50% at 80% 18%, rgba(0,221,179,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="workflow"></i></span>
-      <span class="section-label">03-E / Codex — Workflows</span>
+      <span class="section-label">03 / Codex + SDD</span>
     </div>
-    <h2><span class="accent">Codex</span> como Fluxo de Engenharia</h2>
-    <div class="card-grid-3" style="gap:0.48em; margin-top:0.35em;">
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="git-pull-request"></i></span><h3>Engenharia de ponta a ponta</h3><p>Features, refactors, migrações, bugs e PRs como tarefas de produto.</p></div>
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="split"></i></span><h3>Multiagente</h3><p>Threads e worktrees permitem várias frentes de trabalho em paralelo.</p></div>
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="wrench"></i></span><h3>Skills</h3><p>Conhecimento alinhado ao padrão do time, carregado sob demanda.</p></div>
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="calendar-clock"></i></span><h3>Automations</h3><p>Triagem, alertas e rotinas de CI/CD como tarefas recorrentes.</p></div>
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="shield-check"></i></span><h3>Qualidade</h3><p>Testes, revisão, commits e pull requests como parte do fluxo.</p></div>
-      <div class="card fragment card--pad-sm"><span class="card-icon"><i data-lucide="repeat-2"></i></span><h3>Continuidade</h3><p>Mesmo agente no App, editor e terminal, sem quebrar o contexto.</p></div>
-    </div>
-    <div class="highlight-box blue" style="margin-top:0.38em; font-size:0.66em; line-height:1.32; padding:0.58em 0.9em;">
-      <strong>Leitura SDD:</strong> Codex mostra que o valor não está só em gerar código, mas em controlar ciclo completo: requisito → execução → validação → PR.<br />
-      <span class="text-muted">Fonte: <a href="https://openai.com/pt-BR/codex/" target="_blank" rel="noopener noreferrer">Codex — página oficial da OpenAI</a></span>
+    <h2>Contexto, Execução e <span class="accent">Handoff</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="book-key"></i></span>
+        <h3>Orientar</h3>
+        <p><code>AGENTS.md</code>, profiles e Skills carregam regras e procedimentos relevantes.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="play-square"></i></span>
+        <h3>Executar</h3>
+        <p><code>/status</code>, <code>/permissions</code> e <code>codex exec</code> tornam o perímetro observável.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="git-pull-request-check"></i></span>
+        <h3>Verificar</h3>
+        <p><code>/diff</code>, <code>/review</code>, checks e handoff preservam evidência para o humano.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Este slide posiciona Codex como fluxo de engenharia, não como autocomplete. Isso conversa diretamente com SDD porque conecta requisito, contexto, execução, validação e entrega.</p>
-      <p>A fonte oficial está linkada no card de leitura SDD. Não vamos copiar imagens nem fazer clone visual da página; usamos a narrativa como referência para explicar como o agente trabalha quando recebe bons artefatos.</p>
+      <p><strong>Mensagem técnica:</strong> a curadoria mostra somente comandos e artefatos que sustentam SDD, segurança e evidência.</p>
+      <p><strong>Mensagem executiva:</strong> automação confiável começa quando a tarefa tem contrato e saída verificável.</p>
+      <p><strong>KPI sugerido:</strong> execuções não interativas encerradas com checks e terminal state registrados.</p>
+      <p><strong>Fonte oficial:</strong> OpenAI Codex CLI reference, slash commands, AGENTS.md, Skills e non-interactive mode.</p>
+      <p><strong>Data de verificação:</strong> 14 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Codex CLI e App.</p>
+      <p><strong>Plano/status:</strong> comandos podem variar por versão e configuração.</p>
+      <p><strong>Caveats:</strong> não usar permissões amplas como padrão; validar nomes e comportamento antes da apresentação.</p>
     </aside>
   </section>
 
-  <section aria-label="Sandbox approvals e confiança no Codex" data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 78%, rgba(255,120,73,0.07) 0%, transparent 60%)">
+  <section id="claude-code-intro" aria-label="Abertura do bloco Claude Code" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-orange);">Ferramenta 03</div>
+      <h2 class="section-page-title gradient-text-purple">Claude<br />Code</h2>
+      <p class="section-page-desc">Terminal, IDE, web e subagents com políticas explícitas de contexto</p>
+      <img class="tool-cover-logo tool-cover-logo--claude" src="resources/images/claude-code.png" alt="Logo do Claude Code" />
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> o bloco distingue superfícies, subagents, compactação e instruções persistentes.</p><p><strong>Mensagem executiva:</strong> mais contexto não substitui curadoria nem limites operacionais.</p><p><strong>KPI sugerido:</strong> sessões concluídas antes de degradação de contexto.</p></aside>
+  </section>
+
+  <section id="claude-code" aria-label="Superfícies do Claude Code" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 18% 82%, rgba(255,120,73,0.07) 0%, transparent 60%)">
     <div class="section-header">
-      <span class="section-icon"><i data-lucide="lock"></i></span>
-      <span class="section-label">03-F / Codex — Segurança</span>
+      <span class="section-icon"><i data-lucide="braces"></i></span>
+      <span class="section-label">03 / Claude Code</span>
     </div>
-    <h2>Sandbox, <span class="accent">Approvals</span> e Confiança</h2>
-    <div class="two-cols" style="gap:1.1em;">
-      <div>
-        <div class="card" style="border-color:rgba(255,120,73,0.4);">
-          <h3 class="text-orange">Sandbox</h3>
-          <ul style="font-size:0.72em;">
-            <li><code>read-only</code>: inspeção sem mutação.</li>
-            <li><code>workspace-write</code>: edição dentro do workspace.</li>
-            <li><code>danger-full-access</code>: só em ambiente isolado.</li>
-          </ul>
-        </div>
-        <div class="card" style="margin-top:0.55em; border-color:rgba(56,200,250,0.4);">
-          <h3 class="text-blue">Approvals</h3>
-          <ul style="font-size:0.72em;">
-            <li><code>on-request</code>: pede aprovação para sair do sandbox.</li>
-            <li><code>never</code>: não pausa para pedir aprovação.</li>
-            <li><code>untrusted</code>: exige aprovação para mutações.</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="highlight-box orange">
-          <strong>Autonomia sem limite vira risco.</strong> O harness correto define onde o agente pode ler, escrever e executar.
-        </div>
-        <pre style="font-size:0.68em; margin-top:0.65em;"><code class="language-bash"># Preset prático para trabalho local
-codex --full-auto
-
-# Equivale a:
-# --sandbox workspace-write
-# --ask-for-approval on-request</code></pre>
-        <div class="highlight-box blue" style="margin-top:0.42em; font-size:0.58em; line-height:1.28; padding:0.55em 0.8em;">
-          <strong>Nota de atualização:</strong> Codex evolui em ritmo acelerado. Esta palestra deve ser revisada mensalmente e os detalhes de sandbox/approvals precisam ser conferidos na documentação oficial antes de cada apresentação.
-        </div>
-      </div>
+    <h2>Claude Code: Múltiplas <span class="accent">Superfícies</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>Terminal e IDE</h3>
+        <p>Interação local, contexto do repositório e feedback próximo do diff.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="monitor-smartphone"></i></span>
+        <h3>Desktop e Web</h3>
+        <p>Outras formas de coordenar ou continuar trabalho conforme o produto.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="triangle-alert"></i></span>
+        <h3>Sem promessa de paridade</h3>
+        <p>Recursos, contexto e integração podem diferir entre superfícies.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Sandbox e approvals são parte do harness. Eles não substituem testes e revisão, mas definem limites operacionais para a autonomia do agente.</p>
-      <p>Em ambientes governados, a pergunta não é "o agente consegue?". A pergunta é: "o agente consegue dentro de um perímetro seguro, auditável e reversível?".</p>
-      <p>Como Codex recebe atualizações frequentes, trate este slide como snapshot operacional. Antes de cada palestra, valide comandos, presets, nomes de policies e comportamento atual de approvals na documentação oficial. A proposta é revisar esta palestra mensalmente para acompanhar esse ritmo.</p>
+      <p><strong>Mensagem técnica:</strong> Claude Code aparece em terminal, IDE, desktop e web, mas cada superfície deve ser verificada separadamente.</p>
+      <p><strong>Mensagem executiva:</strong> disponibilidade em vários canais não garante o mesmo fluxo operacional em todos eles.</p>
+      <p><strong>KPI sugerido:</strong> falhas de continuidade atribuídas a diferenças entre superfícies.</p>
+      <p><strong>Fonte oficial:</strong> Anthropic Claude Code overview.</p>
+      <p><strong>Data de verificação:</strong> 15 jul. 2026.</p>
+      <p><strong>Superfície:</strong> terminal, IDE, desktop e web.</p>
+      <p><strong>Plano/status:</strong> verificar disponibilidade e políticas aplicáveis à organização.</p>
+      <p><strong>Caveats:</strong> não afirmar feature parity; nenhum modelo específico é citado nesta rota.</p>
     </aside>
   </section>
 
-  <section aria-label="Comandos Codex no fluxo SDD" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.06) 0%, transparent 60%)">
+  <section id="claude-code-contexto" aria-label="Política de contexto no Claude Code" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(146,119,255,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="layers-3"></i></span>
+      <span class="section-label">03 / Claude Code + Contexto</span>
+    </div>
+    <h2>Harness e Context Policy <span class="accent">Importam</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="book-open"></i></span>
+        <h3>Persistir e revelar</h3>
+        <p><code>CLAUDE.md</code> mantém instruções; Skills carregam procedimentos sob demanda.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="split"></i></span>
+        <h3>Isolar e controlar</h3>
+        <p>Subagents isolam contexto; hooks e MCP conectam lifecycle e ferramentas.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="minimize-2"></i></span>
+        <h3>Compactar com caveat</h3>
+        <p><code>/compact</code> reduz histórico; não substitui decomposição nem handoff explícito.</p>
+      </article>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> instruções, Skills, subagents, hooks, MCP e compactação formam uma política de contexto e controle.</p>
+      <p><strong>Mensagem executiva:</strong> qualidade depende tanto do harness quanto da capacidade do modelo.</p>
+      <p><strong>KPI sugerido:</strong> sessões que terminam sem compactações repetidas ou perda de decisão.</p>
+      <p><strong>Fonte oficial:</strong> Anthropic Docs para memory, Skills, subagents e hooks.</p>
+      <p><strong>Data de verificação:</strong> 15 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Claude Code.</p>
+      <p><strong>Plano/status:</strong> comportamento e disponibilidade devem ser confirmados na documentação vigente.</p>
+      <p><strong>Caveats:</strong> subagent não é handoff nativo entre produtos; compactação não recupera contexto que nunca foi registrado.</p>
+    </aside>
+  </section>
+
+  <section id="devin-intro" aria-label="Abertura do bloco Devin" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,205,71,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-gold);">Ferramenta 04</div>
+      <h2 class="section-page-title gradient-text">Devin</h2>
+      <p class="section-page-desc">Cloud, CLI, Desktop e Review conectando execução assíncrona ao PR</p>
+      <img class="tool-cover-logo tool-cover-logo--devin" src="resources/images/devin.png" alt="Logo do Devin" />
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> o bloco acompanha a passagem entre cloud, terminal, desktop e revisão.</p><p><strong>Mensagem executiva:</strong> delegação assíncrona precisa de checkpoints e evidência, não apenas autonomia.</p><p><strong>KPI sugerido:</strong> PRs aceitos sem rediscovery relevante.</p></aside>
+  </section>
+
+  <section id="devin-superficies" aria-label="Devin Cloud CLI Desktop e Review" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 74% 52% at 20% 80%, rgba(255,205,71,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="cloud-cog"></i></span>
+      <span class="section-label">03 / Devin</span>
+    </div>
+    <h2>Uma Plataforma, Três <span class="accent">Superfícies</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="cloud"></i></span>
+        <h3>Devin Cloud</h3>
+        <p>Delegar e continuar trabalho assíncrono em ambiente isolado.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>Devin CLI</h3>
+        <p>Investigar e executar perto dos arquivos e serviços locais.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="monitor"></i></span>
+        <h3>Devin Desktop — antigo Windsurf</h3>
+        <p>Coordenar agentes, código, PRs e revisão em um command center.</p>
+      </article>
+    </div>
+    <div class="highlight-box orange"><strong>Devin Review</strong> é camada transversal de verificação, não uma quarta superfície equivalente.</div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Disclosure:</strong> Sou Devin Ambassador e Codex Ambassador. Claims de produto usam documentação oficial; métricas são marcadas como publicadas pela Cognition ou pelo cliente.</p>
+      <p><strong>Mensagem técnica:</strong> Cloud, CLI e Desktop atendem topologias diferentes; Review fecha parte do feedback loop.</p>
+      <p><strong>Mensagem executiva:</strong> este é um exemplo técnico de arquitetura de workflow, sem CTA comercial ou vencedor implícito.</p>
+      <p><strong>KPI sugerido:</strong> findings resolvidos antes do human gate.</p>
+      <p><strong>Fonte oficial:</strong> Devin Docs e Devin Desktop FAQ.</p>
+      <p><strong>Data de verificação:</strong> 15 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Devin Cloud, Devin CLI, Devin Desktop e Devin Review.</p>
+      <p><strong>Plano/status:</strong> recursos variam por produto e contrato.</p>
+      <p><strong>Caveats:</strong> métricas de fornecedor, quando usadas, exigem atribuição; nenhuma métrica aparece nesta rota.</p>
+    </aside>
+  </section>
+
+  <section id="devin-sdd" aria-label="Devin conectado ao fluxo SDD" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.07) 0%, transparent 60%)">
     <div class="section-header">
       <span class="section-icon"><i data-lucide="list-checks"></i></span>
-      <span class="section-label">03-G / Codex — Comandos</span>
+      <span class="section-label">03 / Devin + SDD</span>
     </div>
-    <h2>Comandos <span class="accent">Codex</span> no Fluxo SDD</h2>
-    <div class="two-cols" style="gap:1.1em; align-items:start;">
-      <div class="card" style="border-color:rgba(56,200,250,0.45); padding:0.82em 0.95em;">
-        <h3 class="text-blue">Preparar contexto</h3>
-        <ul style="font-size:0.68em; line-height:1.34;">
-          <li><code>/init</code>: cria base de <code>AGENTS.md</code>.</li>
-          <li><code>/mention</code>: destaca specs, PRDs e arquivos-chave.</li>
-          <li><code>/status</code>: confere modelo, política, writable roots e tokens.</li>
-        </ul>
-      </div>
-      <div class="card" style="border-color:rgba(0,221,179,0.45); padding:0.82em 0.95em;">
-        <h3 class="text-green">Controlar entrega</h3>
-        <ul style="font-size:0.68em; line-height:1.34;">
-          <li><code>/permissions</code>: ajusta autonomia e approvals.</li>
-          <li><code>/compact</code>: resume histórico e libera contexto.</li>
-          <li><code>/diff</code> + <code>/review</code>: revisa mudança antes do PR.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight-box blue" style="margin-top:0.55em; font-size:0.66em; line-height:1.32; padding:0.58em 0.9em;">
-      <strong>Leitura SDD:</strong> comandos não substituem especificação. Eles ajudam a apontar contexto, limitar autonomia, revisar evidências e manter a conversa enxuta.
-    </div>
-    <aside class="notes" aria-label="Notas do instrutor">
-      <p>Não vale transformar este ponto em manual de CLI. A curadoria é intencional: só entram comandos que ajudam o fluxo SDD.</p>
-      <p>Dados verificados para a edição Maio/2026 na documentação oficial de slash commands do Codex CLI. Antes de reapresentar, conferir se nomes e comportamento continuam iguais.</p>
-      <p>Conexão pedagógica: /init ajuda a criar instruções persistentes, /mention reduz ambiguidade, /permissions controla risco, /compact conversa com economia de contexto, /diff e /review fecham o ciclo de validação.</p>
-    </aside>
-  </section>
-
-  <section aria-label="Codex exec e automação SDD" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(0,221,179,0.06) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="play-square"></i></span>
-      <span class="section-label">03-H / Codex — Automação</span>
-    </div>
-    <h2><code>codex exec</code> e <span class="accent">Automação SDD</span></h2>
-    <div class="two-cols" style="gap:1.2em;">
-      <div>
-        <div class="definition">
-          <p><code>codex exec</code> é o modo não interativo do Codex para scripts, CI/CD e tarefas repetíveis. Em SDD, ele só deve entrar quando a spec, os limites e a validação já estão claros.</p>
-        </div>
-        <ul style="font-size:0.7em; margin-top:0.72em; line-height:1.35;">
-          <li class="fragment"><code>--full-auto</code>: permite edição no workspace com baixo atrito.</li>
-          <li class="fragment"><code>--json</code>: emite eventos JSONL para automações.</li>
-          <li class="fragment"><code>--output-last-message</code>: salva a resposta final.</li>
-          <li class="fragment"><code>--output-schema</code>: valida saída estruturada.</li>
-          <li class="fragment">Prompts, logs e tool output podem conter dados sensíveis.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="border-color:var(--accent-green);">
-          <h3>Exemplo seguro</h3>
-          <pre style="font-size:0.62em;"><code class="language-bash">codex exec --full-auto \
-  --json \
-  --output-last-message resumo.md \
-  "Leia o PRD.md, implemente apenas
-   o RF01, rode os testes e pare."</code></pre>
-        </div>
-        <div class="highlight-box orange" style="margin-top:0.55em; font-size:0.66em; line-height:1.32;">
-          Evite <code>danger-full-access</code> fora de runners isolados. Automação boa começa com escopo pequeno e checks objetivos.
-        </div>
-      </div>
+    <h2>Da Spec ao PR com <span class="accent">Evidência</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="file-input"></i></span>
+        <h3>Contrato</h3>
+        <p>Spec, <code>AGENTS.md</code>, Skills e critérios definem o trabalho aceito.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="brain-circuit"></i></span>
+        <h3>Contexto da superfície</h3>
+        <p>Knowledge, Playbooks e Secrets pertencem ao Cloud; não presumir paridade no CLI.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="badge-check"></i></span>
+        <h3>Fechamento</h3>
+        <p>Plan, execução, verificadores, Review, draft PR e human gate.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Esse é o ponto onde SDD encontra automação de verdade. Se o requisito está claro e o harness valida o resultado, uma tarefa pode ser executada de forma não interativa.</p>
-      <p>Mas a condição é importante: não automatize ambiguidade. Automatize tarefas pequenas, bem especificadas e com critérios de aceite objetivos.</p>
-      <p>Dados verificados para a edição Maio/2026 na documentação oficial de non-interactive mode e command line options do Codex CLI.</p>
+      <p><strong>Mensagem técnica:</strong> Devin consome os mesmos contratos SDD, mas o contexto disponível varia entre Cloud, CLI e Desktop.</p>
+      <p><strong>Mensagem executiva:</strong> continuidade operacional exige explicitar o que cada superfície recebe e entrega.</p>
+      <p><strong>KPI sugerido:</strong> handoffs sem reabertura por contexto ausente.</p>
+      <p>Automations e Managed Devins pertencem ao bloco de loops: usar somente com trigger, budget, terminal states e human gate; Devin Review atua como checker transversal.</p>
+      <p><strong>Fonte oficial:</strong> Devin Docs para CLI quickstart, Knowledge, Playbooks, Skills e Review.</p>
+      <p><strong>Data de verificação:</strong> 15 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Devin Cloud, Devin CLI e Devin Review.</p>
+      <p><strong>Plano/status:</strong> Knowledge, Playbooks e Secrets são recursos do fluxo Cloud na documentação consultada.</p>
+      <p><strong>Caveats:</strong> não prometer que o CLI acessa automaticamente o contexto da conta Cloud; confirmar paridade atual.</p>
     </aside>
   </section>
 
-  <section aria-label="SDD e agentes como contrato portátil" data-background-gradient="radial-gradient(ellipse 74% 52% at 80% 25%, rgba(56,200,250,0.08) 0%, transparent 60%)">
-    <div class="section-header">
-      <span class="section-icon"><i data-lucide="link-2"></i></span>
-      <span class="section-label">03-I / SDD Portável</span>
+  <section id="agent-handoff-intro" aria-label="Abertura do tópico AI Handoff Concept" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-blue);">Novo tópico</div>
+      <h2 class="section-page-title gradient-text">AI Handoff<br />Concept</h2>
+      <p class="section-page-desc">Transferir estado, evidência e próxima ação sem pressupor contexto perfeito</p>
+      <div class="section-page-icon" style="color:var(--accent-blue);" aria-label="Ícone de transferência"><i data-lucide="repeat-2"></i></div>
     </div>
-    <h2>SDD + Agentes = <span class="accent">Contrato Portável</span></h2>
-    <div class="two-cols" style="gap:1.4em; align-items:start;">
-      <div class="card" style="padding:0.95em 1em;">
-        <span class="card-icon"><i data-lucide="route"></i></span>
-        <h3>Pedido enxuto</h3>
-        <pre style="font-size:0.66em;"><code class="language-markdown">Com base em:
-- PRD.md
-- AGENTS.md
-- Skill de testes
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> handoff é um envelope de continuidade, não uma cópia mágica da memória do agente.</p><p><strong>Mensagem executiva:</strong> uma transição confiável reduz rediscovery e reabertura.</p><p><strong>KPI sugerido:</strong> handoffs aceitos sem contexto essencial ausente.</p></aside>
+  </section>
 
-Implemente o RF01 e valide
-os critérios CA01 e CA02.</code></pre>
-      </div>
-      <div>
-        <ul class="icon-list" style="font-size:0.78em;">
-          <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Menos prompt</strong><br><span class="text-muted">A spec já carrega intenção e escopo.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Menos retrabalho</strong><br><span class="text-muted">Critérios de aceite ficam explícitos.</span></div></li>
-          <li class="fragment"><span class="icon"><i data-lucide="check-circle"></i></span><div><strong>Menos lock-in</strong><br><span class="text-muted">Artefatos servem para Copilot, Codex e outros agentes.</span></div></li>
-        </ul>
-        <div class="highlight-box" style="margin-top:0.6em; font-size:0.72em;">
-          SDD transforma o agente em executor de um contrato, não em adivinhador de intenção.
-        </div>
-      </div>
+  <section id="agent-handoff" aria-label="Handoff local cloud e review" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 80%, rgba(56,200,250,0.08) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="arrow-right-left"></i></span>
+      <span class="section-label">03 / AI Handoff</span>
+    </div>
+    <h2>Continuar sem Prometer <span class="accent">Contexto Perfeito</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h3>Local</h3>
+        <p>Devin CLI reúne conversa, contexto coletado e branch para <code>/handoff</code>.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="cloud"></i></span>
+        <h3>Cloud</h3>
+        <p>A sessão remota continua com estado transferido, ambiente próprio e novos limites.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="user-check"></i></span>
+        <h3>Review e human gate</h3>
+        <p>Desktop/Review, checks e humano confirmam o resultado antes da integração.</p>
+      </article>
+    </div>
+    <div class="highlight-box blue">Handoff preserva <strong>estado suficiente</strong>; não garante feature parity nem reprodução perfeita da sessão local.</div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> <code>/handoff</code> é específico do Devin; <code>/delegate</code> do Copilot e subagents do Claude resolvem problemas diferentes.</p>
+      <p><strong>Mensagem executiva:</strong> continuidade confiável depende de envelope explícito, não da esperança de que a ferramenta adivinhe o estado.</p>
+      <p><strong>KPI sugerido:</strong> handoffs aceitos sem rediscovery relevante.</p>
+      <p><strong>Fonte oficial:</strong> Devin Docs para handoff e GitHub Docs para delegação remota.</p>
+      <p><strong>Data de verificação:</strong> Devin em 15 jul. 2026; Copilot em 14 jul. 2026.</p>
+      <p><strong>Superfície:</strong> Devin CLI para Devin Cloud; Copilot CLI para cloud coding agent.</p>
+      <p><strong>Plano/status:</strong> acesso remoto e Review dependem do produto e do plano.</p>
+      <p><strong>Caveats:</strong> não existe payload universal de handoff nem garantia de feature parity.</p>
+    </aside>
+  </section>
+
+  <section id="agent-security-intro" aria-label="Abertura do tópico Segurança e Permissões" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,120,73,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-orange);">Novo tópico</div>
+      <h2 class="section-page-title gradient-text-purple">Segurança &amp;<br />Permissões</h2>
+      <p class="section-page-desc">Definir o que o agente pode ler, executar, alterar e publicar</p>
+      <div class="section-page-icon" style="color:var(--accent-orange);" aria-label="Ícone de escudo"><i data-lucide="shield-check"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> sandbox, approvals e least privilege formam o perímetro de execução.</p><p><strong>Mensagem executiva:</strong> autonomia segura depende de limites verificáveis.</p><p><strong>KPI sugerido:</strong> ações bloqueadas antes de ultrapassar o perímetro.</p></aside>
+  </section>
+
+  <section id="agent-security" aria-label="Segurança transversal entre agentes" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 25% 78%, rgba(255,120,73,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="shield-check"></i></span>
+      <span class="section-label">03 / Segurança Transversal</span>
+    </div>
+    <h2>Autonomia Dentro de um <span class="accent">Perímetro</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="box"></i></span>
+        <h3>Isolar</h3>
+        <p>Sandbox, worktrees ou VMs reduzem blast radius e mistura de estado.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="key-round"></i></span>
+        <h3>Autorizar</h3>
+        <p>Least privilege, approvals e secrets controlados antes de cada escalada.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="git-pull-request-draft"></i></span>
+        <h3>Verificar</h3>
+        <p>Branch protection, diff review, checks e draft-only antes do merge.</p>
+      </article>
+    </div>
+    <div class="highlight-box orange">Agentes ACP externos mantêm <strong>billing, privacidade e termos do próprio provedor</strong>.</div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> sandbox, permissions e review são camadas complementares do harness.</p>
+      <p><strong>Mensagem executiva:</strong> autonomia governada deve ser reversível, auditável e proporcional ao risco.</p>
+      <p><strong>KPI sugerido:</strong> escaladas de permissão justificadas e incidentes evitados antes do merge.</p>
+      <p>Não demonstrar bypass, auto-merge, credenciais visíveis ou permissões irrestritas. Ao usar ACP no Devin Desktop, aplicar também billing, privacidade e termos do agente externo.</p>
+    </aside>
+  </section>
+
+  <section id="agent-model-routing-intro" aria-label="Abertura do tópico Model Routing" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(146,119,255,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label text-copilot-light">Novo tópico</div>
+      <h2 class="section-page-title gradient-text-purple">Model<br />Routing</h2>
+      <p class="section-page-desc">Escolher capacidade por fase, risco e necessidade de verificação</p>
+      <div class="section-page-icon text-copilot-light" aria-label="Ícone de rotas"><i data-lucide="route"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> o routing considera tarefa, risco, ferramentas e evidência necessária.</p><p><strong>Mensagem executiva:</strong> o modelo mais caro não precisa executar todas as etapas.</p><p><strong>KPI sugerido:</strong> custo por outcome aceito.</p></aside>
+  </section>
+
+  <section id="agent-model-routing" aria-label="Model routing por fase e risco" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(146,119,255,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="route"></i></span>
+      <span class="section-label">03 / Model Routing</span>
+    </div>
+    <h2>Capacidade Onde o <span class="accent">Risco</span> Exige</h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="brain"></i></span>
+        <h3>Especificar</h3>
+        <p>Use raciocínio suficiente para remover ambiguidade e definir verificadores.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="layers"></i></span>
+        <h3>Implementar</h3>
+        <p>Roteie slices bem delimitadas para capacidade proporcional ao risco.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="scan-search"></i></span>
+        <h3>Verificar</h3>
+        <p>Use checks independentes e escale quando a evidência não sustentar aceitação.</p>
+      </article>
     </div>
     <aside class="notes" aria-label="Notas do apresentador">
-      <p>Fechamento da seção: a spec vira o prompt perfeito porque ela reduz a quantidade de coisa que você precisa explicar toda vez.</p>
-      <p>Quando o time documenta intenção, limites e validação em artefatos versionados, a ferramenta vira detalhe de execução. Esse é o ganho estratégico.</p>
+      <p><strong>Mensagem técnica:</strong> model routing é uma política por fase, risco e evidência, não um ranking estático.</p>
+      <p><strong>Mensagem executiva:</strong> capacidade mais cara deve proteger decisões de alto impacto, não ser o default irrefletido.</p>
+      <p><strong>KPI sugerido:</strong> custo por slice aceita e taxa de escalonamento justificado.</p>
     </aside>
   </section>
 
-</section><!-- /ai-coding-agents -->
+  <section id="agent-topology-choice-intro" aria-label="Abertura do tópico Escolha por Topologia" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,221,179,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label text-green">Novo tópico</div>
+      <h2 class="section-page-title gradient-text">Escolha por<br />Topologia</h2>
+      <p class="section-page-desc">Combinar superfície e agente com o modo real de execução do trabalho</p>
+      <div class="section-page-icon text-green" aria-label="Ícone de topologia"><i data-lucide="network"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> escolha síncrona, assíncrona, paralela ou com handoff antes de escolher a marca.</p><p><strong>Mensagem executiva:</strong> adequação operacional importa mais que ranking genérico.</p><p><strong>KPI sugerido:</strong> tempo até evidência revisável.</p></aside>
+  </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  SLIDE — ARQUITETURA DE CONTEXTO  (vertical group)
-════════════════════════════════════════════════════════════════════════════ -->
+  <section id="agent-topology-choice" aria-label="Escolha de agente por topologia" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 74% 52% at 20% 80%, rgba(0,221,179,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="waypoints"></i></span>
+      <span class="section-label">03 / Escolha por Topologia</span>
+    </div>
+    <h2>Não Pergunte “Qual é o <span class="accent">Melhor?</span>”</h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="map-pinned"></i></span>
+        <h3>Onde executa?</h3>
+        <p>Local, cloud, ambiente isolado ou dentro do ecossistema existente.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="clock-3"></i></span>
+        <h3>Como continua?</h3>
+        <p>Síncrono, assíncrono, delegação, worktrees ou handoff explícito.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="shield-question"></i></span>
+        <h3>Como prova?</h3>
+        <p>Permissions, verifier, review, terminal state e human gate.</p>
+      </article>
+    </div>
+    <div class="highlight-box"><strong>Workload + risco + latência + integração + custo</strong> definem a escolha.</div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> uma comparação útil começa pelo workload e pelas restrições do ambiente.</p>
+      <p><strong>Mensagem executiva:</strong> portfólio de ferramentas pode ser saudável quando existe política comum de uso e aceitação.</p>
+      <p><strong>KPI sugerido:</strong> outcomes aceitos por tipo de workload, sem leaderboard de fornecedor.</p>
+    </aside>
+  </section>
+
+  <section id="agent-loop-economy-intro" aria-label="Abertura do tópico Economia do Loop" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,205,71,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-gold);">Novo tópico</div>
+      <h2 class="section-page-title gradient-text">Economia<br />do Loop</h2>
+      <p class="section-page-desc">Comparar custo pelo resultado aceito, não por unidades comerciais incompatíveis</p>
+      <div class="section-page-icon" style="color:var(--accent-gold);" aria-label="Ícone de ciclo e custo"><i data-lucide="refresh-cw"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> cada produto mede uso de forma diferente; normalize pelo outcome.</p><p><strong>Mensagem executiva:</strong> preço unitário não captura retries, review nem retrabalho.</p><p><strong>KPI sugerido:</strong> custo total por mudança aceita.</p></aside>
+  </section>
+
+  <section id="agent-loop-economy" aria-label="Economia do loop entre agentes" data-idea-count="3" data-volatile-claim="true" data-background-gradient="radial-gradient(ellipse 70% 55% at 80% 20%, rgba(255,205,71,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="circle-dollar-sign"></i></span>
+      <span class="section-label">03 / Economia do Loop</span>
+    </div>
+    <h2>Não Misture <span class="accent">Unidades de Cobrança</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="badge-dollar-sign"></i></span>
+        <h3>Regimes separados</h3>
+        <p>GitHub AI Credits; ChatGPT/Codex credits; OpenAI API; Devin quota, on-demand credits ou ACUs.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="repeat-2"></i></span>
+        <h3>Custo do loop</h3>
+        <p>Tokens, tools, ambiente, retries, verificação e review entram na conta.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="target"></i></span>
+        <h3>Unidade de valor</h3>
+        <p>Compare custo por outcome aceito, com qualidade e dentro do budget.</p>
+      </article>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> cada fornecedor e método de autenticação possui regime próprio; não converter unidades sem taxa oficial.</p>
+      <p><strong>Mensagem executiva:</strong> preço por prompt ou token isolado não mede o custo do trabalho concluído.</p>
+      <p><strong>KPI sugerido:</strong> custo total por slice aceita, incluindo retries e review.</p>
+      <p><strong>Fonte oficial:</strong> GitHub Copilot billing, OpenAI Codex e API pricing, Devin billing.</p>
+      <p><strong>Data de verificação:</strong> Copilot/Codex em 14 jul. 2026; Devin em 15 jul. 2026.</p>
+      <p><strong>Superfície:</strong> GitHub Copilot, Codex com login ChatGPT, OpenAI API e Devin.</p>
+      <p><strong>Plano/status:</strong> regras dependem de plano, autenticação e contrato; planos anuais legados Copilot Pro/Pro+ podem seguir regras de transição. Devin self-serve usa quota/on-demand credits; Enterprise usa ACUs conforme contrato.</p>
+      <p><strong>Caveats:</strong> não comparar GitHub AI Credits, ChatGPT/Codex credits, tokens da API, quota Devin ou ACUs como unidades equivalentes.</p>
+    </aside>
+  </section>
+
+  <section id="agent-claims-ledger-intro" aria-label="Abertura do tópico Claims Ledger" data-idea-count="2" data-background-color="#04091b" data-background-gradient="radial-gradient(ellipse 80% 50% at 50% 50%, rgba(56,200,250,0.09) 0%, transparent 60%)">
+    <div class="section-page-container">
+      <div class="section-page-label" style="color:var(--accent-blue);">Apêndice opcional</div>
+      <h2 class="section-page-title gradient-text">Claims<br />Ledger</h2>
+      <p class="section-page-desc">Separar princípios duráveis de capacidades, preços e comandos que mudam</p>
+      <div class="section-page-icon" style="color:var(--accent-blue);" aria-label="Ícone de ledger"><i data-lucide="clipboard-check"></i></div>
+    </div>
+    <aside class="notes" aria-label="Notas do apresentador"><p><strong>Mensagem técnica:</strong> cada claim volátil registra fonte, data, superfície, status e caveat.</p><p><strong>Mensagem executiva:</strong> o ledger reduz o risco de apresentar catálogo antigo como verdade atual.</p><p><strong>KPI sugerido:</strong> claims voláteis com fonte e data verificáveis.</p></aside>
+  </section>
+
+  <section id="agent-claims-ledger" aria-label="Apêndice de claims datados" data-idea-count="3" data-background-gradient="radial-gradient(ellipse 70% 55% at 20% 80%, rgba(56,200,250,0.07) 0%, transparent 60%)">
+    <div class="section-header">
+      <span class="section-icon"><i data-lucide="clipboard-check"></i></span>
+      <span class="section-label">03 / Apêndice Opcional</span>
+    </div>
+    <h2>Claim Volátil Precisa de <span class="accent">Ledger</span></h2>
+    <div class="card-grid-3">
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="calendar-check"></i></span>
+        <h3>Datado</h3>
+        <p>Registrar quando o fato foi verificado e qual superfície foi consultada.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="link"></i></span>
+        <h3>Atribuído</h3>
+        <p>Preferir documentação oficial; métricas de fornecedor permanecem atribuídas.</p>
+      </article>
+      <article class="card fragment">
+        <span class="card-icon"><i data-lucide="message-circle-warning"></i></span>
+        <h3>Com caveat</h3>
+        <p>Plano, status, retenção, expiração e disponibilidade acompanham o claim.</p>
+      </article>
+    </div>
+    <div class="highlight-box blue">Snapshots de modelos, pricing, promoções e depreciações ficam nas <strong>notes ou no ledger</strong>, nunca como catálogo da rota principal.</div>
+    <aside class="notes" aria-label="Notas do apresentador">
+      <p><strong>Mensagem técnica:</strong> o ledger desacopla a narrativa durável dos detalhes que expiram rapidamente.</p>
+      <p><strong>Mensagem executiva:</strong> transparência reduz risco factual e evita que a palestra pareça material comercial.</p>
+      <p><strong>KPI sugerido:</strong> claims voláteis revisados dentro da janela de validade definida.</p>
+      <p>Snapshot de implementação: Copilot e Codex verificados em 14 jul. 2026; Claude Code e Devin verificados em 15 jul. 2026. Nenhum modelo específico, preço, promoção ou depreciação foi levado à rota principal.</p>
+    </aside>
+  </section>
+</section>
